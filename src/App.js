@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Restaurants from './pages/Restaurants';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route exact path = "/about" component={About}/>
       <Route exact path = "/login" component={Login}/>
       <Route exact path = "/register" component={Register}/>
+      <Route exact path = "/restaurants" component={Restaurants}/>
 
     </div>
   );
