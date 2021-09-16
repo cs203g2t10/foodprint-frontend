@@ -9,6 +9,13 @@ class LogInService {
             "password": "SuperSecurePassw0rd"
           })
     }
+
+    userLogIn(email, password) {
+        return axios.post( LOGIN_REST_API_URL+"/login",{
+            "email": email,
+            "password": password
+          })
+    }
 }
 
 export default new LogInService();
