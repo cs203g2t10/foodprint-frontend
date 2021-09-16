@@ -8,7 +8,7 @@ import { useAppContext } from '../lib/contextLib';
 
 
 const Login = () => {
-    const { userHasAuthenticated } = useAppContext();
+    const { isAuthenticated, userHasAuthenticated } = useAppContext();
     
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -29,7 +29,11 @@ const Login = () => {
         })
     }
     
-    
+    if (isAuthenticated) {
+        return (
+            <Redirect to = "/"/>
+        )
+    }
 
     return (
         <div className=" w-full h-full">

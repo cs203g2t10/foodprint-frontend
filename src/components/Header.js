@@ -15,8 +15,11 @@ const Header = () => {
         <header>
             <nav>
                 <div className="flex gap-2 bg-green-100 ">
-                    <div className="grid grid-cols-2 mx-20 my-3 w-full h-full">
-                        <div className=""><Link to='/'>FoodPrint</Link></div>
+                    <div className="grid grid-cols-2 mx-20 my-4 w-full h-full">
+                        <div className="flex gap-x-8">
+                            <Link to='/' className="font-bold tracking-widest">FoodPrint</Link>
+                            <Link to='/restaurants' className="inline-block align-middle">Marketplace</Link>
+                            </div>
                         <div className="justify-self-end ">
                             <Link to='/about' className="mx-2">About Us</Link>
                             {isAuthenticated ? (
