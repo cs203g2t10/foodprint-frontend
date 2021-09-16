@@ -1,12 +1,12 @@
 import React from 'react'
-import RestaurantListing from '../components/RestaurantListing'
+import RestaurantList from '../components/RestaurantList'
 
 
 const Restaurants = () => {
     return (
         <div>
             <h1 className="text-center text-7xl py-12">Restaurants</h1>
-            <RestaurantListing />
+            <RestaurantList />
         </div>
     )
 }
