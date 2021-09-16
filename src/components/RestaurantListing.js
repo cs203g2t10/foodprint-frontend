@@ -1,6 +1,5 @@
 import React from "react";
 import RestaurantService from "../services/RestaurantService";
-import LogInService from "../services/LogInService";
 
 class RestaurantListing extends React.Component {
 
@@ -12,31 +11,18 @@ class RestaurantListing extends React.Component {
     }
 
     componentDidMount() {
-        LogInService.logIn().then((response) => {
-            console.log(response.data.token)
-            window.sessionStorage.setItem("token", response.data.token)
-        })
-
         RestaurantService.getRestaurants().then((response) => {
             this.setState({
                 restaurants: response.data
             })
             console.log(response.data)
         })
-
-
     }
 
     render() {
         return (
             <div>
                 <div className="flex justify-center grid grid-cols-1 mx-64">
-                    {/* <div className="grid grid-cols-3 gap-x-48 text-center text-xl">
-                        <div>Name</div>
-                        <div>Description</div>
-                        <div>Location</div>
-                    </div> */}
-
                     <figure className="md:flex bg-gray-100 rounded-xl p-8 md:p-0 justify-center">
                         <img className="w-32 h-32 rounded-full ml-32 my-6" src="/images/macs.jpeg" alt="" width="384" height="512" />
                         <div className="pt-6 md:p-8 text-center md:text-left space-y-4">
@@ -66,8 +52,6 @@ class RestaurantListing extends React.Component {
                                 </div>
                         )
                     }
-
-
                 </div>
             </div>
         )
