@@ -5,11 +5,11 @@ import Routes from './Routes';
 
 
 function App() {
-  const [isAuthenticated, userHasAuthenticated] = useState(false);
+  const [isAuthenticated, userHasAuthenticated] = useState(window.sessionStorage.getItem("token"));
 
   return (
     <div className="App">
-      <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
+      <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated}}>
         <Header />
         <Routes />
       </AppContext.Provider>
