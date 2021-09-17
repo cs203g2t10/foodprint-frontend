@@ -5,7 +5,7 @@ import Routes from './Routes';
 
 
 function App() {
-  const [isAuthenticated, userHasAuthenticated] = useState(window.sessionStorage.getItem("token"));
+  const [isAuthenticated, userHasAuthenticated] = useState(window.sessionStorage.getItem("token") > 0);
 
   return (
     <div className="App">

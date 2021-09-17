@@ -35,7 +35,8 @@ const RestaurantList = () => {
                 </figure>
 
                 {
-                    restaurants.map(
+                    
+                    restaurants?.map(
                         restaurant =>
                             <div className="grid grid-cols-3 gap-x-48 text-center" key={restaurant.restaurantId}>
                                 <div> {restaurant.restaurantName} </div>

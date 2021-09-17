@@ -10,7 +10,7 @@ import { useAppContext } from '../lib/contextLib';
 const Login = () => {
     const { isAuthenticated, userHasAuthenticated } = useAppContext();
     
-    const [email, setEmail] = useState("")
+    const [email, setEmail] = useState(window.sessionStorage.getItem("email"))
     const [password, setPassword] = useState("")
 
     const validateForm = () => {
@@ -23,8 +23,6 @@ const Login = () => {
                 console.log(response.data.token)
                 window.sessionStorage.setItem("token", response.data.token)
                 userHasAuthenticated(true);
-                <Link to="/" onClick="true"></Link>
-                return <Redirect to='/home'/>
             }
         })
     }

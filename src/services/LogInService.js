@@ -9,6 +9,15 @@ class LogInService {
             "password": password
           })
     }
+
+    userRegister(email, password, firstName, lastName) {
+        return axios.post( LOGIN_REST_API_URL+"/register", {
+            "email": email,
+            "password": password,
+            "firstName" : firstName,
+            "lastName": lastName
+        })
+    }
 }
 
 export default new LogInService();
