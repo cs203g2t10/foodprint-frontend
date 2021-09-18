@@ -1,10 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAppContext } from '../lib/contextLib'
+import LogInService from '../services/LogInService'
 
 
 const Home = () => {
     const { isAuthenticated } = useAppContext()
+
+    const getUserName = () => {
+        const userInfo = LogInService.getUserDetails();
+        return `${userInfo.userFname} ${userInfo.userLname}`;
+    }
 
     return (
         <div>
@@ -12,7 +18,7 @@ const Home = () => {
 
             {isAuthenticated ? (
                 <>
-                    <h1 className="text-center text-1xl">Hello, Bobby!</h1>
+                    <h1 className="text-center text-1xl">Hello, {getUserName()}!</h1>
                     <div className="flex justify-center">
                         <Link to="/restaurants" className="mt-4 py-3 border border-gray-200 w-1/5 text-center hover:shadow rounded-xl">Start browsing now!</Link>
                     </div>

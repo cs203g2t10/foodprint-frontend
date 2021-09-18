@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### `npm install --global yarn`
+
+Installs yarn on your computer.\
+This requires Node to be installed on your computer.
+
 ## Available Scripts
 
 In the project directory, you can run:

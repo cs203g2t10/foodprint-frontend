@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import { useAppContext } from '../lib/contextLib';
+import LogInService from "../services/LogInService";
 
 
 const Header = () => {
@@ -9,6 +10,11 @@ const Header = () => {
     const handleLogout = () => {
         userHasAuthenticated(false)
         window.sessionStorage.removeItem("token")
+    }
+
+    const getUserName = () => {
+        const userInfo = LogInService.getUserDetails();
+        return `${userInfo.userFname} ${userInfo.userLname}`;
     }
 
     return (
@@ -23,7 +29,10 @@ const Header = () => {
                         <div className="justify-self-end ">
                             <Link to='/about' className="mx-2">About Us</Link>
                             {isAuthenticated ? (
-                                <Link onClick={handleLogout} to="/login" className="mx-2">Logout</Link>
+                                <>
+                                    <span>{getUserName()}</span>
+                                    <Link onClick={handleLogout} to="/login" className="mx-2">Logout</Link>
+                                </>
                             ) : (
                                 <>
                                     <Link to='/login' className="mx-2">Log In</Link>

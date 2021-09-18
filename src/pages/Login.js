@@ -43,7 +43,6 @@ const Login = () => {
                         <input className="focus:outline-none px-4 py-1 my-1 rounded shadow border border-gray-100 md:w-2/5"
                             placeholder="test@example.com"
                             type="email"
-                            value={email}
                             onChange={e => setEmail(e.target.value)} />
                     </div>
 
@@ -52,7 +51,6 @@ const Login = () => {
                         <input className="focus:outline-none px-4 py-1 my-1 rounded shadow border border-gray-100 md:w-2/5"
                             placeholder="********"
                             type="password"
-                            value={password}
                             onChange={e => setPassword(e.target.value)} />
                     </div>
 
