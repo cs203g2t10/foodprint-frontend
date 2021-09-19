@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAppContext } from '../lib/contextLib'
 import LogInService from '../services/LogInService'
@@ -6,7 +6,6 @@ import LogInService from '../services/LogInService'
 
 const Home = () => {
     const { isAuthenticated } = useAppContext()
-    // const [isAuthenticated, setAuthenticated] = useState(true);
     const getUserName = () => {
         const userInfo = LogInService.getUserDetails();
         return `${userInfo.userFname} ${userInfo.userLname}`;
@@ -27,7 +26,7 @@ const Home = () => {
                             </div>
                         </div>
                         <div className="md:col-span-3 md:my-24">
-                            <img src="/images/landingPage.webp"/>
+                            <img src="/images/landingPage.webp" alt="cooking illustration"/>
                         </div>
                     </div>
 
@@ -44,7 +43,7 @@ const Home = () => {
                             </div>
                         </div>
                         <div className="md:col-span-3 md:my-24">
-                            <img src="/images/landingPage.webp"/>
+                            <img src="/images/landingPage.webp" alt="cooking illustration"/>
                         </div>
                     </div>
                     <h1 className="text-center text-1xl">Log in to your account or Register to get started!</h1>
