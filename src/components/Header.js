@@ -20,10 +20,10 @@ const Header = () => {
     return (
         <header>
             <nav>
-                <div className="flex gap-2 bg-green-100 ">
+                <div className="flex gap-2 bg-yellow-standard ">
                     <div className="grid grid-cols-2 mx-20 my-4 w-full h-full">
                         <div className="flex gap-x-8">
-                            <Link to='/' className="font-bold tracking-widest">FoodPrint</Link>
+                            <Link to='/' className="font-bold tracking-widest">FOODPRINT</Link>
                             <Link to='/restaurants' className="inline-block align-middle">Marketplace</Link>
                             </div>
                         <div className="justify-self-end ">

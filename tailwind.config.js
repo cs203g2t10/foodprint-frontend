@@ -8,4 +8,18 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+
+  theme: {
+    colors: {
+      yellow: {
+        standard: '#F3E8C9',
+      },
+      green: {
+        standard: '#2A572C',
+      },
+      white: {
+        standard: '#FFFFFF',
+      }
+    }
+  },
 }
