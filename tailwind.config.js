@@ -21,7 +21,9 @@ module.exports = {
         standard: '#FFFFFF',
       },
       grey: {
+        standard: '#605F5F',
         light: '#858484',
+        lighter: '#818181',
       },
     }
   },

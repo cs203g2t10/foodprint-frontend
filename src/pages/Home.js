@@ -87,14 +87,6 @@ const Home = () => {
                             </div>
                         </motion.div>
                     </div>
-
-                    <div className="flex w-full absolute z-30 mt-12">
-                        <div>
-
-                        </div>
-                        <h1>ahdhhsahashi</h1>
-                    </div>
-                    <img src="/images/Footer.png" alt="footer" />
                 </>
             ) : (
                 <>
