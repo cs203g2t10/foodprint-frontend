@@ -38,7 +38,7 @@ const LineItem = () => {
 
 
                     <p className="pb-2 pt-6">Quantity: </p>
-                    <input onChange={e => setQuantity(e.target.value)} className=" px-3 py-1 rounded" placeholder="Quantity of food" type="number" min="0" max="20"/>
+                    <input onChange={e => setQuantity(e.target.value)} className=" px-3 py-1 rounded" placeholder="0" type="number" min="0" max="20"/>
 
                     <div className="flex justify-center my-4 gap-x-4">
                         <button onClick={addLineItem} className="border px-4 ">Confirm</button>
