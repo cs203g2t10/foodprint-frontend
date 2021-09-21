@@ -28,36 +28,21 @@ const Home = () => {
     }, [controls, inView]);
 
     const fadeInRight = {
-        hidden: {
-            x: "300px",
-            opacity: 0
-        },
+        hidden: { x: "300px"},
 
         visible: {
             x: "0px",
-            opacity: 1,
-            transition: {
-                duration: 0.5
-            }
+            transition: { duration: 0.5 }
         }
-
     }
 
     const fadeInLeft = {
-        hidden: {
-            x: "-300px",
-            opacity: 0
-        },
+        hidden: {x: "-300px"},
 
         visible: {
             x: "0px",
-            scale: 1,
-            opacity: 1,
-            transition: {
-                duration: 0.5
-            }
+            transition: { duration: 0.5 }
         }
-
     }
 
     const [restaurants, setRestaurants] = useState([])
@@ -73,7 +58,6 @@ const Home = () => {
         <div>
             {isAuthenticated ? (
                 <>
-
                     <div className="grid md:grid-cols-7 gap-4 bg-yellow-standard h-screen">
                         <div className="border-1 md:col-span-4 md:pl-44">
                             <h1 className="text-2xl md:pt-52 text-green-standard pl-1 pb-1 animate__animated animate__fadeIn">Hello, {getUserName()} !</h1>
@@ -87,12 +71,12 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-4 md:pt-10 bg-white-standard md:pb-16">
+                    <div className="grid md:grid-cols-2 gap-4 md:pt-10 bg-white-standard md:pb-16 md:pl-12">
                         <motion.div ref={ref} className="Box" initial="hidden" animate={controls} variants={fadeInLeft}>
                             <img className="transform scale-75" src="/images/landingPage2.webp" alt="cooking illustration" />
                         </motion.div>
                         <motion.div ref={ref} initial="hidden" animate={controls} variants={fadeInRight}>
-                            <h1 className="text-4xl md:pt-32 md:pr-64 pl-1 font-bold">Reduce food waste and Save money</h1>
+                            <h1 className="text-4xl md:pt-32 md:pr-64 font-bold">Reduce food waste and Save money</h1>
                             <h2 className="md:pt-4 md:pr-44 text-grey-light">Here at foodPrint, we encourage restaurant reservation to help F&B establishments reduce food waste. </h2>
                             <div className="flex justify-left">
                                 <Link to="/restaurants" className="border border-gray-200 mt-4 pt-2 pb-3 px-5 text-center text-green-standard hover:shadow-lg rounded-3xl">Discover Restaurants</Link>
@@ -100,16 +84,9 @@ const Home = () => {
                         </motion.div>
                     </div>
 
-                    <div className="md:pl-24 md:pt-10 bg-white-standard md:pb-32 ">
-                        <h1 className="text-4xl md:pr-64 pl-1 font-bold pb-7" >What's Trending</h1>
-                            <div className=" flex flex-row gap-x-10 w-11/12">
-                                {/* <div>
-                                    <img className="rounded-xl object-contain" width="240" height="330"  src="/images/restaurant.jpg" alt="restaurant" />
-                                    <h2 className="text-grey-standard text-lg md:pt-3 pl-1">Bread Palace Cafe</h2>
-                                    <h3 className="text-grey-light text-base md:pt-1 pl-1">Serangoon</h3>
-                                </div> */}
-                                {/* <TrendingRestaurant name="Bread Palace Cafe" location="Serangoon" src="/images/restaurant.jpg" /> */}
-                                
+                    <div className="md:pl-24 md:pt-10 bg-white-standard md:pb-24 ">
+                        <h1 className="text-4xl md:pr-64 pl-1 font-extrabold pb-7" >What's Trending</h1>
+                            <div className="flex flex-row gap-x-10 w-11/12 overflow-x-scroll">
                                 {
                                     restaurants.map(restaurant => 
                                         <TrendingRestaurant  name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
@@ -117,7 +94,18 @@ const Home = () => {
                                 }
 
                             </div>
+                    </div>
 
+                    <div className="md:pl-24 bg-white-standard md:pb-32 ">
+                        <h1 className="text-4xl md:pr-64 pl-1 font-extrabold pb-7" >Up to 50% deals</h1>
+                            <div className="flex flex-row gap-x-10 w-11/12 overflow-x-scroll">
+                                {
+                                    restaurants.map(restaurant => 
+                                        <TrendingRestaurant  name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
+                                    )
+                                }
+
+                            </div>
                     </div>
                 </>
             ) : (

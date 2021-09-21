@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
     return (
         <div>
-            <div className="flex absolute z-30 mt-12 w-3/5">
+            <div className="flex absolute z-30 mt-8 w-3/5">
                 <div className = "md:pl-24 md:mt-10">
                     <h1 className = "text-green-standard font-bold text-4xl tracking-wide">foodPrint</h1>
                     <h2 className = "md:pt-2 md:pr-44 text-grey-light">Here at foodPrint, we encourage restaurant reservation to help F&B establishments reduce food waste. </h2>
