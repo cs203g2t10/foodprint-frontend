@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import RestaurantService from '../services/RestaurantService'
 
 const Restaurant = () => {
     let id = useParams();
     const [restaurantDetails, setRestaurantDetails] = useState([]);
+    let location = useLocation();
 
 
     useEffect(() => {
-        console.log(id.id)
         RestaurantService.getRestaurant(id.id).then((response) => {
-            console.log(response.data)
+            // console.log(response.data)
             setRestaurantDetails(response.data)
         })
     }, [id])
@@ -23,10 +24,10 @@ const Restaurant = () => {
                 {
                     restaurantDetails.allFood?.map(
                         food =>
-                            <div className="border">
-                                <div key={food.foodId} className="flex flex-row gap-2 p-6 rounded-md">
-                                    <img src="/images/{food.picturePath}" className="h-full w-32 border " alt="food pic" />
-                                    <div className="flex-col">
+                            <div className="border rounded shadow-md py-3" key={food.foodId}>
+                                <div className="flex flex-row gap-2 p-6 rounded-md">
+                                    <img src="/images/{food.picturePath}" className="h-full w-32 border flex-col mx-auto" alt="food pic" />
+                                    <div className="flex-col mx-auto">
                                         <h1>{food.foodId}</h1>
                                         <p>{food.foodName}</p>
                                         <p>{food.foodDesc}</p>
@@ -38,17 +39,24 @@ const Restaurant = () => {
                                     <div className="flex-col">
                                         
                                     </div>
-                                    <button className="flex inline-block flex-col border px-4 py-2 my-4 rounded-lg hover:shadow text-center justify-center">
+                                    <Link 
+                                    to={{
+                                        pathname: `/restaurant/${id.id}/${food.foodId}`,
+                                        // This is the trick! This link sets
+                                        // the `background` in location state.
+                                        state: { background: location }
+                                      }}
+                                    
+                                    className="flex flex-col border px-4 py-2 my-4 rounded-lg hover:shadow text-center mx-auto">
                                         Add to order
-                                    </button>
+                                    </Link>
                                 </div>
 
                             </div>
                     )
                 }
             </div>
-            <button className="flex mx-auto py-2 px-4 border my-10 rounded">Make Reservation</button>
-
+            <button className="flex mx-auto py-2 px-4 border my-10 rounded shadow-md">Make Reservation</button>
         </div>
     )
 }
