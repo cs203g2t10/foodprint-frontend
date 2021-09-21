@@ -102,7 +102,7 @@ const Home = () => {
 
                     <div className="md:pl-24 md:pt-10 bg-white-standard md:pb-32 ">
                         <h1 className="text-4xl md:pr-64 pl-1 font-bold pb-7" >What's Trending</h1>
-                            <div className=" flex flex-row gap-x-10 w-11/12 h-96 overflow-x-scroll">
+                            <div className=" flex flex-row gap-x-10 w-11/12">
                                 {/* <div>
                                     <img className="rounded-xl object-contain" width="240" height="330"  src="/images/restaurant.jpg" alt="restaurant" />
                                     <h2 className="text-grey-standard text-lg md:pt-3 pl-1">Bread Palace Cafe</h2>
