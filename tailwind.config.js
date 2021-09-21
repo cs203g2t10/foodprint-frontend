@@ -24,7 +24,20 @@ module.exports = {
         standard: '#605F5F',
         light: '#858484',
         lighter: '#818181',
+        lightest: '#DCDCDC',
       },
+    },
+    borderRadius: {
+      'none': '0',
+      'sm': '0.125rem',
+      DEFAULT: '0.25rem',
+      DEFAULT: '4px',
+      'md': '0.375rem',
+      'lg': '0.5rem',
+      'full': '9999px',
+      'large': '12px',
+      'xl': '25px',
+      'xxl': '50px',
     }
   },
 }
