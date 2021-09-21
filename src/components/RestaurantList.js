@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import RestaurantService from "../services/RestaurantService";
+import { Link } from 'react-router-dom';
 
 const RestaurantList = () => {
     const [restaurants, setRestaurants] = useState([])
@@ -35,14 +36,14 @@ const RestaurantList = () => {
                 </figure>
 
                 {
-                    
                     restaurants?.map(
                         restaurant =>
-                            <div className="grid grid-cols-3 gap-x-48 text-center" key={restaurant.restaurantId}>
+                            <Link to={"/restaurant/" + restaurant.restaurantId} className="flex gap-x-48 text-center border p-5 my-2 rounded-lg" key={restaurant.restaurantId}>
+                                <div> {restaurant.restaurantId} </div>
                                 <div> {restaurant.restaurantName} </div>
                                 <div> {restaurant.restaurantDesc} </div>
                                 <div> {restaurant.restaurantLocation}</div>
-                            </div>
+                            </Link>
                     )
                 }
             </div>
