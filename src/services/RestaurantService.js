@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const RESTAURANTS_REST_API_URL = "http://localhost:8080/api/v1/restaurant"
+const RESTAURANTS_REST_API_URL = process.env.CF_PAGES ? "http://api.foodprint.works/api/v1/restaurant" : "http://localhost:8080/api/v1/restaurant";
 
 class RestaurantService {
     headers = () => {
