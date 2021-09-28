@@ -19,6 +19,12 @@ class RestaurantService {
     getRestaurant = (restaurantId) => {
         return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}`, this.headers());
     }
+
+    getFood = (restaurantId, foodId) => {
+        return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/food/${foodId}`, this.headers());
+    }
+
+
 }
 
 export default new RestaurantService();

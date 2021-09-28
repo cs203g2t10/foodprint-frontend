@@ -13,7 +13,7 @@ import LineItem from "./components/LineItem";
 export default function Routes() {
     let location = useLocation();
     let background = location.state && location.state.background;
-
+    
     return (
         <div>
             <Switch location={background || location}>

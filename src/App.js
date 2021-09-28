@@ -9,7 +9,7 @@ function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(window.sessionStorage.getItem("token"));
 
   return (
-    <div className="App" >
+    <div className="App " >
       <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated}}>
         <Header />
         <Routes />
