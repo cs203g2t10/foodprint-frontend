@@ -16,14 +16,13 @@ class RestaurantService {
         return axios.get(`${RESTAURANTS_REST_API_URL}`, this.headers());
     }
 
-    getRestaurant = (restaurantId) => {
+    getRestaurant = (restaurantId: number) => {
         return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}`, this.headers());
     }
 
-    getFood = (restaurantId, foodId) => {
+    getFood = (restaurantId: number, foodId: number) => {
         return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/food/${foodId}`, this.headers());
     }
-
 
 }
 
