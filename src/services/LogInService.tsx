@@ -3,6 +3,12 @@ import jwt_decode from 'jwt-decode'
 
 const LOGIN_REST_API_URL = process.env.REACT_APP_CF_PAGES ? "https://api.foodprint.works/api/v1/auth" : "http://localhost:8080/api/v1/auth";
 
+type UserDetails = {
+    email: String
+    userFname: String
+    userLname: String
+};
+
 class LogInService {
     userLogIn = (email: string, password: string) => {
         const requestBody = {
@@ -36,15 +42,24 @@ class LogInService {
     // Does not require API call to backend since JWT stores user properties too
     getUserDetails = () => {
         const token : string | null = window.sessionStorage.getItem("token");
-        if (typeof token === "string") {
-
-            var decodedHeader = jwt_decode(token, { header: true });
-            return decodedHeader
-        } else {
-            return {};
+        if (typeof token !== "string") {
+            return {
+                email: "",
+                userFname: "",
+                userLname: ""
+            }
         }
 
+        let decodedHeader : any = jwt_decode(token, { header: true });
+        console.log(decodedHeader);
+        let userDetails : UserDetails = {
+            email: decodedHeader.email,
+            userFname: decodedHeader.userFname,
+            userLname: decodedHeader.userLname
+        }
+        return userDetails;
     }
 }
 
 export default new LogInService();
+export type { UserDetails };

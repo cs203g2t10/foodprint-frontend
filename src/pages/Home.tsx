@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useAppContext } from '../lib/contextLib'
-import LogInService from '../services/LogInService'
 import "animate.css"
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+
+import { useAppContext } from '../lib/contextLib'
+import LogInService from '../services/LogInService'
+import type { UserDetails } from '../services/LogInService';
 import TrendingRestaurant from '../components/TrendingRestaurant'
 import RestaurantService from '../services/RestaurantService'
 
+
 const Home = () => {
-    const { isAuthenticated } = useAppContext()
+    const { isAuthenticated } = useAppContext() || {}
     const getUserName = () => {
-        const userInfo = LogInService.getUserDetails();
+        const userInfo : UserDetails = LogInService.getUserDetails();
         return `${userInfo.userFname} ${userInfo.userLname}`;
     }
 
@@ -45,7 +48,7 @@ const Home = () => {
         }
     }
 
-    const [restaurants, setRestaurants] = useState([])
+    const [restaurants, setRestaurants] = useState<any[]>([])
     
     useEffect(() => {
         RestaurantService.getRestaurants().then((response) => {
@@ -89,7 +92,7 @@ const Home = () => {
                             <div className="flex flex-row gap-x-10 w-11/12 overflow-x-scroll">
                                 {
                                     restaurants.map(restaurant => 
-                                        <TrendingRestaurant  name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
+                                        <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
                                     )
                                 }
 
@@ -101,7 +104,7 @@ const Home = () => {
                             <div className="flex flex-row gap-x-10 w-11/12 overflow-x-scroll">
                                 {
                                     restaurants.map(restaurant => 
-                                        <TrendingRestaurant  name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
+                                        <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
                                     )
                                 }
 
