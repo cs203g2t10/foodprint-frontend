@@ -1,8 +1,6 @@
 import React from 'react'
 
 const TrendingRestaurant = (props) => {
-    
-
     return (
         <div className="w-64 flex-none">
             <img className="rounded-xl" src={props.src} alt="restaurant" />

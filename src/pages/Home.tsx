@@ -15,7 +15,7 @@ import RestaurantService from '../services/RestaurantService'
 const Home = () => {
     const { isAuthenticated } = useAppContext() || {}
     const getUserName = () => {
-        const userInfo : UserDetails = LogInService.getUserDetails();
+        const userInfo: UserDetails = LogInService.getUserDetails();
         return `${userInfo.userFname} ${userInfo.userLname}`;
     }
 
@@ -32,7 +32,7 @@ const Home = () => {
     }, [controls, inView]);
 
     const fadeInRight = {
-        hidden: { x: "300px"},
+        hidden: { x: "300px" },
 
         visible: {
             x: "0px",
@@ -41,7 +41,7 @@ const Home = () => {
     }
 
     const fadeInLeft = {
-        hidden: {x: "-300px"},
+        hidden: { x: "-300px" },
 
         visible: {
             x: "0px",
@@ -50,7 +50,7 @@ const Home = () => {
     }
 
     const [restaurants, setRestaurants] = useState<any[]>([])
-    
+
     useEffect(() => {
         RestaurantService.getRestaurants().then((response) => {
             console.log(response)
@@ -90,26 +90,30 @@ const Home = () => {
 
                     <div className="md:pl-24 md:pt-10 bg-white-standard md:pb-24 ">
                         <h1 className="text-4xl md:pr-64 pl-1 font-extrabold pb-7" >What's Trending</h1>
-                            <div className="flex flex-row gap-x-10 w-11/12 overflow-x-scroll">
-                                {
-                                    restaurants.map(restaurant => 
-                                        <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" key={restaurant.restaurantId}/>
-                                    )
-                                }
+                        <div className="flex flex-row gap-x-10 w-11/12 overflow-x-scroll">
+                            {
+                                restaurants.map(restaurant =>
+                                    <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
+                                        <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
+                                    </Link>
+                                )
+                            }
 
-                            </div>
+                        </div>
                     </div>
 
                     <div className="md:pl-24 bg-white-standard md:pb-32 ">
-                        <h1 className="text-4xl md:pr-64 pl-1 font-extrabold pb-7" >Up to 50% deals</h1>
-                            <div className="flex flex-row gap-x-10 w-11/12 overflow-x-scroll">
-                                {
-                                    restaurants.map(restaurant => 
-                                        <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" key={restaurant.restaurantId}/>
-                                    )
-                                }
+                        <h1 className="text-4xl md:pr-64 pl-1 font-extrabold pb-7" >Up to 50% off deals</h1>
+                        <div className="flex flex-row gap-x-10 w-11/12 overflow-x-scroll">
+                            {
+                                restaurants.map(restaurant =>
+                                    <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
+                                        <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
+                                    </Link>
+                                )
+                            }
 
-                            </div>
+                        </div>
                     </div>
                 </>
             ) : (

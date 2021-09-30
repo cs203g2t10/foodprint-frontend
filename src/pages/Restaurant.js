@@ -14,11 +14,13 @@ const Restaurant = () => {
     let id = useParams();
     const [restaurantDetails, setRestaurantDetails] = useState([]);
     const [lineItems, setLineItems] = useState([]);
-    const [quantity, setQuantity] = useState(0);
     const [modalIsOpen, setModal] = useState(false);
     const [pax, setPax] = useState(1);
     const [startDate, setStartDate] = useState();
     const [reserved, setReserved] = useState(false);
+    const [isVaccinated, setVaccinated] = useState(false);
+    const [selectDate, setSelectDate] = useState(false);
+    const [haveFood, setHaveFood] = useState(false);
 
     useEffect(() => {
         RestaurantService.getRestaurant(id.id).then((response) => {
@@ -27,6 +29,14 @@ const Restaurant = () => {
     }, [id])
 
     const makeReservation = () => {
+        if (startDate === undefined) {
+            console.log('hi');
+            setSelectDate(true);
+            return;
+        } else if (lineItems.length === 0) {
+            console.log('hallo');
+            return;
+        }
         startDate.setHours(startDate.getHours() + 8);
         ReservationService.makeReservation(startDate, pax, true, lineItems, id.id);
         startDate.setHours(startDate.getHours() - 8);
@@ -47,7 +57,7 @@ const Restaurant = () => {
             <h1 className="text-center text-7xl pt-12 pb-4">{restaurantDetails.restaurantName}</h1>
             <p className="text-center text-2xl ">{restaurantDetails.restaurantDesc}</p>
             <p className="text-center text-1xl pb-4 ">{restaurantDetails.restaurantLocation}</p>
-            <div className="flex grid lg:grid-cols-3 mx-14 gap-y-12 gap-x-5 ">
+            <div className="flex grid lg:grid-cols-3 mx-14 gap-y-12 gap-x-5 mb-10">
                 {
                     restaurantDetails.allFood?.map(
                         food =>
@@ -62,27 +72,22 @@ const Restaurant = () => {
                                         <div className="flex py-2">
                                             <p>Qty:</p>
                                             <input onChange={e => {
-                                                setQuantity(e.target.value)
+                                                if (e.target.value === '0') {
+                                                    setLineItems(oldArray => [...oldArray.filter(lineItem =>
+                                                        lineItem.food.foodId !== food.foodId
+                                                    )])
+                                                } else {
+                                                    setLineItems(oldArray => [...oldArray.filter(lineItem =>
+                                                        lineItem.food.foodId !== food.foodId
+                                                    ), {
+                                                        food,
+                                                        quantity: e.target.value
+                                                    }])
+                                                }
                                             }
                                             }
                                                 className="focus:outline-none px-3 rounded" placeholder="0" type="number" min="0" max="20" />
                                         </div>
-
-                                        <button onClick={() => {
-                                            if (quantity === 0) {
-                                                return;
-                                            }
-                                            setLineItems(oldArray => [...oldArray.filter(lineItem =>
-                                                lineItem.food.foodId !== food.foodId
-                                            ), {
-                                                food,
-                                                quantity
-                                            }])
-                                            setQuantity(0)
-                                        }}
-                                            className="flex flex-col border px-4 py-2 my-4 rounded-lg hover:shadow text-center mx-auto">
-                                            Add to order
-                                        </button>
                                     </div>
                                 </div>
                                 <div className="flex">
@@ -91,11 +96,19 @@ const Restaurant = () => {
                     )
                 }
             </div>
-            <button className="flex mx-auto py-2 px-4 border my-10 rounded shadow-md" onClick={() => setModal(true)}>Make Reservation</button>
-            <Modal isOpen={modalIsOpen} >
-                <div className="flex grid justify-center items-center gap-y-3">
-                    <h1 className="flex flex-col text-7xl pt-12 pb-4">Reservation</h1>
-                    <h1 className="flex flex-col text-lg text-center underline">Confirm your order below </h1>
+            {
+                (haveFood ? <h1 className="text-center pb-2">Please order some food</h1> : <></>)
+            }
+            <button className="flex mx-auto py-2 px-4 border rounded shadow-md" onClick={() => {
+                if (lineItems.length === 0) {
+                    setHaveFood(true);
+                } else { setModal(true) }
+            }}>Make Reservation</button>
+
+            <Modal isOpen={modalIsOpen} className="m-10">
+                <div className="flex grid justify-center items-center gap-y-3 m-10 rounded-lg border-2 shadow lg:mx-64 pb-10 bg-white-offWhite">
+                    <h1 className="flex text-5xl pt-12 mx-auto">Reservation</h1>
+                    <h1 className="flex mx-auto text-lg text-center">Please confirm your order below </h1>
                     <div>
                         {
                             lineItems?.map(
@@ -112,31 +125,39 @@ const Restaurant = () => {
                     <div className="flex gap-x-4 justify-center">
                         <h1>Select Pax (5 max): </h1>
                         <input className="border flex focus:outline-none rounded px-3 w-1/6"
+                            placeholder="0" type="number" min="1" max="5"
                             onChange={(e) => setPax(e.target.value)}
                             value={pax} required></input>
                     </div>
+                    {
+                        (selectDate ? <h1 className="flex mx-auto">Please select a booking slot!</h1> : <></>)
+                    }
                     <div className="flex gap-x-4 items-center justify-center mx-auto">
                         <h1 className="text-right">Booking: </h1>
-                        <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} showTimeSelect
+                        <DatePicker selected={startDate} onChange={(date) => { setStartDate(date); setSelectDate(false) }} showTimeSelect
                             dateFormat="d/MM/yyyy, h:mm aa" className="flex flex-col focus:outline-none border text-center rounded py-0.5"
                             minDate={new Date()} filterTime={filterAcceptableTimings}
                         />
                     </div>
-
+                    <h1 className="text-center mx-auto flex">Please declare the following: </h1>
                     <div className="flex gap-x-4 items-center justify-center mx-auto">
-                        <h1 className="text-right">Please declare that all guests are vaccinated: </h1>
-
+                        <div className="flex">
+                            <input
+                                name="isVaccinated"
+                                type="checkbox"
+                                checked={isVaccinated}
+                                onChange={(e) => {
+                                    setVaccinated(e.target.type === 'checkbox' ? e.target.checked : e.target.value)
+                                }} className="align-center my-auto mx-2" />
+                            <h1>I hereby declare that all of the guests are vaccinated (compulsory)</h1>
+                        </div>
                     </div>
-
                     <div className="flex gap-x-4 justify-center">
-                        {/* {
-                            (reserved ? <button className="border px-3 py-1 rounded">Proceed to payment</button> : <button className="border px-3 py-1 rounded" onClick={makeReservation}>Confirm</button>)
-                        } */}
-                        <button className="border px-3 py-1 rounded" onClick={makeReservation}>Confirm</button>
+                        <button className="border px-3 py-1 rounded" onClick={makeReservation} disabled={!isVaccinated}>Confirm</button>
                         <button className="border px-3 py-1 rounded" onClick={() => setModal(false)}>Close</button>
                     </div>
                     {
-                        (reserved ? <div className="pt-8">
+                        (reserved ? <div>
                             <div className="text-center pb-2">Your reservation is successful! :)</div>
                             <button className="border px-3 py-1 rounded flex mx-auto">Proceed to payment</button>
                         </div>
