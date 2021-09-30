@@ -67,7 +67,7 @@ const Home = () => {
                             <h1 className="text-2xl md:pt-52 text-green-standard pl-1 pb-1 animate__animated animate__fadeIn">Hello, {getUserName()} !</h1>
                             <h1 className="text-left text-6xl pb-2 animate__animated animate__fadeIn">Discover and book the best restaurants.</h1>
                             <div className="flex justify-left">
-                                <Link to="/restaurants" className="bg-green-standard mt-4 pt-2 pb-3 px-5 text-center text-white-standard hover:shadow-lg rounded-3xl">Start browsing now !</Link>
+                                <Link to="/restaurants" className="bg-green-standard mt-4 pt-2 pb-3 px-5 text-center text-white-standard hover:shadow-lg rounded-xl">Start browsing now !</Link>
                             </div>
                         </div>
                         <div className="md:col-span-3 md:my-24">
@@ -83,7 +83,7 @@ const Home = () => {
                             <h1 className="text-4xl md:pt-32 md:pr-64 font-bold">Reduce food waste and Save money</h1>
                             <h2 className="md:pt-4 md:pr-44 text-grey-light">Here at foodPrint, we encourage restaurant reservation to help F&B establishments reduce food waste. </h2>
                             <div className="flex justify-left">
-                                <Link to="/restaurants" className="border border-gray-200 mt-4 pt-2 pb-3 px-5 text-center text-green-standard hover:shadow-lg rounded-3xl">Discover Restaurants</Link>
+                                <Link to="/restaurants" className="border border-gray-200 mt-4 pt-2 pb-3 px-5 text-center text-green-standard hover:shadow-lg rounded-xl">Discover Restaurants</Link>
                             </div>
                         </motion.div>
                     </div>
@@ -120,7 +120,7 @@ const Home = () => {
                             <h1 className="text-left text-6xl pb-2">Discover and book the best restaurants.</h1>
 
                             <div className="flex justify-left">
-                                <Link to="/restaurants" className="bg-green-standard mt-4 pt-2 pb-3 px-5 text-center text-white-standard hover:shadow-lg rounded-3xl">Start browsing now !</Link>
+                                <Link to="/restaurants" className="bg-green-standard mt-4 pt-2 pb-3 px-5 text-center text-white-standard hover:shadow-lg rounded-xl">Start browsing now !</Link>
                             </div>
                         </div>
                         <div className="md:col-span-3 md:my-24">
