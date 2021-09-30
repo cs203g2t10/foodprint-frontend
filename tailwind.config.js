@@ -19,6 +19,8 @@ module.exports = {
       },
       white: {
         standard: '#FFFFFF',
+        offWhite: '#fafbfc',
+        creamWhite: '#f9f9f9',
       },
       grey: {
         standard: '#605F5F',
