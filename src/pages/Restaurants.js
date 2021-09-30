@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FiSearch } from "react-icons/fi"
 import RestaurantService from '../services/RestaurantService'
 import { Link } from 'react-router-dom'
-import 'react-dropdown/style.css';
+
 
 const Restaurants = () => {
     const [restaurants, setRestaurants] = useState([])
