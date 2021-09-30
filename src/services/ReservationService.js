@@ -21,21 +21,14 @@ class ReservationService {
                 foodId,
                 quantity
             })
-        },
-            console.log(lineItems2)
-        )
+        })
         return axios.post(`${RESERVATIONS_REST_API_URL}`, {
-            'date': date,
-            'pax': pax,
-            'isVaccinated': isVaccinated,
-            'lineItems': [{
-                foodId: 1,
-                quantity: 2
-            },{ 
-                foodId:2,
-                quantity:2
-            }],
-            'restaurantId': restaurantId,
+            date,
+            pax,
+            isVaccinated,
+            lineItems: lineItems2,
+            restaurantId,
+            status: "ONGOING"
         }, this.headers())
     }
 }

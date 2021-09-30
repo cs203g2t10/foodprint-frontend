@@ -3,6 +3,9 @@ import { useParams } from 'react-router'
 import RestaurantService from '../services/RestaurantService'
 import ReservationService from '../services/ReservationService'
 import Modal from 'react-modal'
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 Modal.setAppElement('#root')
 
@@ -13,17 +16,31 @@ const Restaurant = () => {
     const [lineItems, setLineItems] = useState([]);
     const [quantity, setQuantity] = useState(0);
     const [modalIsOpen, setModal] = useState(false);
+    const [pax, setPax] = useState(1);
+    const [startDate, setStartDate] = useState();
+    const [reserved, setReserved] = useState(false);
 
     useEffect(() => {
         RestaurantService.getRestaurant(id.id).then((response) => {
-            // console.log(response.data)
             setRestaurantDetails(response.data)
         })
     }, [id])
 
     const makeReservation = () => {
-        ReservationService.makeReservation("2021-12-25T17:21:29.142Z", 4, true, lineItems, id.id);
+        startDate.setHours(startDate.getHours() + 8);
+        ReservationService.makeReservation(startDate, pax, true, lineItems, id.id);
+        startDate.setHours(startDate.getHours() - 8);
+        setReserved(true);
     }
+
+    const filterAcceptableTimings = (time) => {
+        const currentDate = new Date()
+        const selectedDate = new Date(time)
+        // const opening = restaurantDetails.restaurantWeekdayOpeningHour * 3600000 + restaurantDetails.restaurantWeekdayOpeningMinutes * 60000;
+        // const closing = restaurantDetails.restaurantWeekdayClosingHour * 3600000 + restaurantDetails.restaurantWeekdayClosingMinutes * 60000;
+        // return currentDate.getTime() < selectedDate.getTime() && selectedDate.getTime() > opening && selectedDate.getTime() < closing;
+        return currentDate.getTime() < selectedDate.getTime()
+    };
 
     return (
         <div>
@@ -76,26 +93,56 @@ const Restaurant = () => {
             </div>
             <button className="flex mx-auto py-2 px-4 border my-10 rounded shadow-md" onClick={() => setModal(true)}>Make Reservation</button>
             <Modal isOpen={modalIsOpen} >
-                <div className="flex grid justify-center items-center">
-                    <h1 className="flex flex-col text-7xl pt-12 pb-4">Make Reservation</h1>
+                <div className="flex grid justify-center items-center gap-y-3">
+                    <h1 className="flex flex-col text-7xl pt-12 pb-4">Reservation</h1>
+                    <h1 className="flex flex-col text-lg text-center underline">Confirm your order below </h1>
                     <div>
                         {
                             lineItems?.map(
                                 lineItem =>
                                     <div key={lineItem.food.foodId}>
-                                        <div className="flex justify-center items-center">
-                                            <p>{lineItem.quantity} x </p>
-                                            <h1> {lineItem.food.foodName}</h1>
-
+                                        <div className="flex justify-center items-center gap-x-2">
+                                            <p>{lineItem.quantity} x</p>
+                                            <h1>{lineItem.food.foodName}</h1>
                                         </div>
                                     </div>
                             )
                         }
                     </div>
                     <div className="flex gap-x-4 justify-center">
-                        <button className="border p-3 rounded" onClick={makeReservation}>Confirm</button>
-                        <button className="border p-3 rounded" onClick={() => setModal(false)}>Close</button>
+                        <h1>Select Pax (5 max): </h1>
+                        <input className="border flex focus:outline-none rounded px-3 w-1/6"
+                            onChange={(e) => setPax(e.target.value)}
+                            value={pax} required></input>
                     </div>
+                    <div className="flex gap-x-4 items-center justify-center mx-auto">
+                        <h1 className="text-right">Booking: </h1>
+                        <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} showTimeSelect
+                            dateFormat="d/MM/yyyy, h:mm aa" className="flex flex-col focus:outline-none border text-center rounded py-0.5"
+                            minDate={new Date()} filterTime={filterAcceptableTimings}
+                        />
+                    </div>
+
+                    <div className="flex gap-x-4 items-center justify-center mx-auto">
+                        <h1 className="text-right">Please declare that all guests are vaccinated: </h1>
+
+                    </div>
+
+                    <div className="flex gap-x-4 justify-center">
+                        {/* {
+                            (reserved ? <button className="border px-3 py-1 rounded">Proceed to payment</button> : <button className="border px-3 py-1 rounded" onClick={makeReservation}>Confirm</button>)
+                        } */}
+                        <button className="border px-3 py-1 rounded" onClick={makeReservation}>Confirm</button>
+                        <button className="border px-3 py-1 rounded" onClick={() => setModal(false)}>Close</button>
+                    </div>
+                    {
+                        (reserved ? <div className="pt-8">
+                            <div className="text-center pb-2">Your reservation is successful! :)</div>
+                            <button className="border px-3 py-1 rounded flex mx-auto">Proceed to payment</button>
+                        </div>
+                            : <></>)
+                    }
+
                 </div>
             </Modal>
         </div>

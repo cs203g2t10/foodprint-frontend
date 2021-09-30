@@ -93,7 +93,7 @@ const Home = () => {
                             <div className="flex flex-row gap-x-10 w-11/12 overflow-x-scroll">
                                 {
                                     restaurants.map(restaurant => 
-                                        <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
+                                        <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" key={restaurant.restaurantId}/>
                                     )
                                 }
 
@@ -105,7 +105,7 @@ const Home = () => {
                             <div className="flex flex-row gap-x-10 w-11/12 overflow-x-scroll">
                                 {
                                     restaurants.map(restaurant => 
-                                        <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
+                                        <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" key={restaurant.restaurantId}/>
                                     )
                                 }
 
