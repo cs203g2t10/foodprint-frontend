@@ -16,7 +16,7 @@ const Restaurant = () => {
     const [lineItems, setLineItems] = useState([]);
     const [modalIsOpen, setModal] = useState(false);
     const [pax, setPax] = useState(1);
-    const [startDate, setStartDate] = useState();
+    const [bookingDate, setBookingDate] = useState();
     const [reserved, setReserved] = useState(false);
     const [isVaccinated, setVaccinated] = useState(false);
     const [selectDate, setSelectDate] = useState(false);
@@ -29,7 +29,7 @@ const Restaurant = () => {
     }, [id])
 
     const makeReservation = () => {
-        if (startDate === undefined) {
+        if (bookingDate === undefined) {
             console.log('hi');
             setSelectDate(true);
             return;
@@ -37,9 +37,9 @@ const Restaurant = () => {
             console.log('hallo');
             return;
         }
-        startDate.setHours(startDate.getHours() + 8);
-        ReservationService.makeReservation(startDate, pax, true, lineItems, id.id);
-        startDate.setHours(startDate.getHours() - 8);
+        bookingDate.setHours(bookingDate.getHours() + 8);
+        ReservationService.makeReservation(bookingDate, pax, true, lineItems, id.id);
+        bookingDate.setHours(bookingDate.getHours() - 8);
         setReserved(true);
     }
 
@@ -96,10 +96,8 @@ const Restaurant = () => {
                     )
                 }
             </div>
-            {
-                (haveFood ? <h1 className="text-center pb-2">Please order some food</h1> : <></>)
-            }
-            <button className="flex mx-auto py-2 px-4 border rounded shadow-md" onClick={() => {
+            { (haveFood ? <h1 className="text-center pb-2">You have not selected any food</h1> : <></>) }
+            <button className="flex mx-auto py-2 px-4 border rounded shadow-md hover:shadow-lg" onClick={() => {
                 if (lineItems.length === 0) {
                     setHaveFood(true);
                 } else { setModal(true) }
@@ -134,7 +132,7 @@ const Restaurant = () => {
                     }
                     <div className="flex gap-x-4 items-center justify-center mx-auto">
                         <h1 className="text-right">Booking: </h1>
-                        <DatePicker selected={startDate} onChange={(date) => { setStartDate(date); setSelectDate(false) }} showTimeSelect
+                        <DatePicker selected={bookingDate} onChange={(date) => { setBookingDate(date); setSelectDate(false) }} showTimeSelect
                             dateFormat="d/MM/yyyy, h:mm aa" className="flex flex-col focus:outline-none border text-center rounded py-0.5"
                             minDate={new Date()} filterTime={filterAcceptableTimings}
                         />
