@@ -21,6 +21,9 @@ const Restaurant = () => {
     const [isVaccinated, setVaccinated] = useState(false);
     const [selectDate, setSelectDate] = useState(false);
     const [haveFood, setHaveFood] = useState(false);
+    const [declare, setDeclare] = useState(false);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [finalPrice, setFinalPrice] = useState(0);
 
     useEffect(() => {
         RestaurantService.getRestaurant(id.id).then((response) => {
@@ -28,13 +31,24 @@ const Restaurant = () => {
         })
     }, [id])
 
+    useEffect(() => {
+        setTotalPrice(0);
+        lineItems.map((lineItem) => {
+            return setTotalPrice((old) => old + lineItem.food.foodPrice * lineItem.quantity)
+        })
+    }, [lineItems])
+
+    useEffect(() => {
+        setFinalPrice(totalPrice * 1.17)
+    }, [totalPrice])
+
     const makeReservation = () => {
         if (bookingDate === undefined) {
             console.log('hi');
             setSelectDate(true);
             return;
-        } else if (lineItems.length === 0) {
-            console.log('hallo');
+        } else if (isVaccinated === false) {
+            setDeclare(true);
             return;
         }
         bookingDate.setHours(bookingDate.getHours() + 8);
@@ -96,7 +110,7 @@ const Restaurant = () => {
                     )
                 }
             </div>
-            { (haveFood ? <h1 className="text-center pb-2">You have not selected any food</h1> : <></>) }
+            {(haveFood ? <h1 className="text-center pb-2 text-red-600">Please select some food before continuing</h1> : <div className="pt-9" />)}
             <button className="flex mx-auto py-2 px-4 border rounded shadow-md hover:shadow-lg" onClick={() => {
                 if (lineItems.length === 0) {
                     setHaveFood(true);
@@ -104,7 +118,7 @@ const Restaurant = () => {
             }}>Make Reservation</button>
 
             <Modal isOpen={modalIsOpen} className="m-10">
-                <div className="flex grid justify-center items-center gap-y-3 m-10 rounded-lg border-2 shadow lg:mx-64 pb-10 bg-white-offWhite">
+                <div className="flex grid justify-center items-center gap-y-2 m-10 rounded-lg border-2 shadow lg:mx-64 pb-10 bg-white-offWhite">
                     <h1 className="flex text-5xl pt-12 mx-auto">Reservation</h1>
                     <h1 className="flex mx-auto text-lg text-center">Please confirm your order below </h1>
                     <div>
@@ -115,20 +129,28 @@ const Restaurant = () => {
                                         <div className="flex justify-center items-center gap-x-2">
                                             <p>{lineItem.quantity} x</p>
                                             <h1>{lineItem.food.foodName}</h1>
+                                            <h1>- ${lineItem.food.foodPrice * lineItem.quantity}</h1>
                                         </div>
                                     </div>
+
                             )
                         }
+                        <div className="flex justify-center items-center gap-x-2 text-lg">Total: ${totalPrice}</div>
+                        <div className="flex justify-center items-center gap-x-2 text-lg mx-auto">
+                            <div className="">GST: ${(totalPrice * 0.07).toFixed(2)}, </div>
+                            <div className="">Service Charge: ${(totalPrice * 1.07 * 0.1).toFixed(2)}</div>
+                        </div>
+                        <div className="flex justify-center items-center gap-x-2 text-lg">Final price :${(finalPrice).toFixed(2)}</div>
                     </div>
                     <div className="flex gap-x-4 justify-center">
                         <h1>Select Pax (5 max): </h1>
-                        <input className="border flex focus:outline-none rounded px-3 w-1/6"
+                        <input className="border flex focus:outline-none rounded px-3 "
                             placeholder="0" type="number" min="1" max="5"
                             onChange={(e) => setPax(e.target.value)}
                             value={pax} required></input>
                     </div>
                     {
-                        (selectDate ? <h1 className="flex mx-auto">Please select a booking slot!</h1> : <></>)
+                        (selectDate ? <h1 className="flex mx-auto text-red-500">Please select a booking slot</h1> : <></>)
                     }
                     <div className="flex gap-x-4 items-center justify-center mx-auto">
                         <h1 className="text-right">Booking: </h1>
@@ -137,7 +159,11 @@ const Restaurant = () => {
                             minDate={new Date()} filterTime={filterAcceptableTimings}
                         />
                     </div>
-                    <h1 className="text-center mx-auto flex">Please declare the following: </h1>
+                    {
+                        (declare ? <h1 className="text-center mx-auto flex text-red-600">You have not declared the following: </h1>
+                            : <h1 className="text-center mx-auto flex">Please declare the following: </h1>)
+                    }
+                    {/* <h1 className="text-center mx-auto flex">Please declare the following: </h1> */}
                     <div className="flex gap-x-4 items-center justify-center mx-auto">
                         <div className="flex">
                             <input
@@ -145,19 +171,20 @@ const Restaurant = () => {
                                 type="checkbox"
                                 checked={isVaccinated}
                                 onChange={(e) => {
-                                    setVaccinated(e.target.type === 'checkbox' ? e.target.checked : e.target.value)
+                                    setVaccinated(e.target.type === 'checkbox' ? e.target.checked : e.target.value);
+                                    setDeclare(false);
                                 }} className="align-center my-auto mx-2" />
                             <h1>I hereby declare that all of the guests are vaccinated (compulsory)</h1>
                         </div>
                     </div>
                     <div className="flex gap-x-4 justify-center">
-                        <button className="border px-3 py-1 rounded" onClick={makeReservation} disabled={!isVaccinated}>Confirm</button>
-                        <button className="border px-3 py-1 rounded" onClick={() => setModal(false)}>Close</button>
+                        <button className="border px-3 py-1 rounded hover:shadow" onClick={makeReservation}>Confirm</button>
+                        <button className="border px-3 py-1 rounded hover:shadow" onClick={() => setModal(false)}>Edit order</button>
                     </div>
                     {
                         (reserved ? <div>
                             <div className="text-center pb-2">Your reservation is successful! :)</div>
-                            <button className="border px-3 py-1 rounded flex mx-auto">Proceed to payment</button>
+                            <button className="border px-3 py-1 rounded flex mx-auto hover:shadow">Proceed to payment</button>
                         </div>
                             : <></>)
                     }
