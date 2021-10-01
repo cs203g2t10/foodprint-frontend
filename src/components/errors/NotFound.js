@@ -2,7 +2,7 @@ import React from 'react'
 
 const NotFound = () => {
     return (
-        <div className="h-screen">
+        <div className="h-min-screen">
             <div>
                     <img className = "flex mx-auto"style = {{height:520}}src="/images/error.webp" alt="404" />
                     <h1 className="text-8xl text-center mb-3 text-grey-standard">oops!</h1>
