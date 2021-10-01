@@ -33,6 +33,11 @@
     }
 }
 
+.rotate {
+    transform: rotate(180deg)
+}
+
+
 /*Shrinking for mobile*/
 
 /* @media (max-width: 768px) {

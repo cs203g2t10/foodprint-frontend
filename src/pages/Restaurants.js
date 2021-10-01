@@ -15,7 +15,7 @@ const Restaurants = () => {
     }, [])
 
     return (
-        <div className="h-min-screen">
+        <div className="min-h-screen">
             <div className="bg-yellow-standard">
                 <img className="h-32 mx-auto pt-7" src="/images/burgers.png" alt="burger" />
                 <h1 className="flex items-center justify-center text-4xl font-bold tracking-wide">Make reservations, reduce food waste</h1>

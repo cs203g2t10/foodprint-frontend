@@ -25,6 +25,7 @@ module.exports = {
         standard: '#FFFFFF',
         offWhite: '#fafbfc',
         creamWhite: '#f9f9f9',
+        dirtyWhite: '#F6F6F6',
       },
       grey: {
         standard: '#605F5F',
