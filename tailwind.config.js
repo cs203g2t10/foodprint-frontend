@@ -32,6 +32,7 @@ module.exports = {
         light: '#858484',
         lighter: '#818181',
         lightest: '#DCDCDC',
+        dark: '#1F1F1F',
       },
     },
     borderRadius: {
