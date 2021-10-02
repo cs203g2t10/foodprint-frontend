@@ -13,7 +13,7 @@ function App() {
       <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated}}>
         <Header />
         <Routes />
-        <Footer />
+        <Footer/>
       </AppContext.Provider>
     </div>
   );

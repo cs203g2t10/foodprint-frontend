@@ -27,11 +27,11 @@ const Header = () => {
                             <Link to='/restaurants' className="inline-block align-middle">Marketplace</Link>
                             </div>
                         <div className="justify-self-end ">
-                            <Link to='/about' className="mx-2">About Us</Link>
+                            <Link to='/about' className="mx-5">About Us</Link>
                             {isAuthenticated ? (
                                 <>
                                     <span>{getUserName()}</span>
-                                    <Link onClick={handleLogout} to="/login" className="mx-2">Logout</Link>
+                                    <Link onClick={handleLogout} to="/login" className="mx-5">Logout</Link>
                                 </>
                             ) : (
                                 <>

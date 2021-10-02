@@ -136,8 +136,8 @@ const Restaurant = () => {
                 } else { setModal(true) }
             }}>Make Reservation</button>
 
-                <Modal isOpen={modalIsOpen} className="m-10 z-30">
-                    <div className="flex grid justify-center items-center gap-y-2 m-10 rounded-lg border-2 shadow lg:mx-64 pb-10 bg-white-offWhite">
+                <Modal isOpen={modalIsOpen} className="mt-32" style={customStyles}>
+                    <div className="flex grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-64 pb-10 bg-grey-lightest">
                         <h1 className=" flex text-5xl pt-12 mx-auto">Reservation</h1>
                         <h1 className=" flex mx-auto text-lg text-center">Please confirm your order below </h1>
                         <div>
@@ -213,5 +213,9 @@ const Restaurant = () => {
         </div>
     )
 }
+
+const customStyles = {
+    overlay: {zIndex: 1000}
+};
 
 export default Restaurant

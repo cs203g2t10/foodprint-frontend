@@ -59,7 +59,7 @@ const Home = () => {
     }, [])
 
     return (
-        <div>
+        <div className="w-screen">
             {isAuthenticated ? (
                 <>
                     <div className="grid md:grid-cols-7 gap-4 bg-yellow-standard h-screen">
@@ -144,5 +144,6 @@ const Home = () => {
         </div>
     )
 }
+  
 
 export default Home
