@@ -34,6 +34,9 @@ module.exports = {
         lightest: '#DCDCDC',
         dark: '#1F1F1F',
       },
+      red: {
+        standard: '#db544b'
+      }
     },
     borderRadius: {
       'none': '0',

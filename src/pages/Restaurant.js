@@ -186,7 +186,7 @@ const Restaurant = () => {
                                         value={pax} required></input>
                                 </div>
                                 {
-                                    (selectDate ? <h1 className="flex text-red-500">Please select a booking slot</h1> : <></>)
+                                    (selectDate ? <h1 className="text-red-standard text-base">Please select a booking slot</h1> : <></>)
                                 }
                                 <div className="flex mb-8">
                                     <h1 className="flex text-md text-green-standard mr-5">Booking: </h1>
@@ -196,8 +196,8 @@ const Restaurant = () => {
                                     />
                                 </div>
                                 {
-                                    (declare ? <h1 className="text-center flex text-red-600">You have not declared the following: </h1>
-                                        : <h1 className="flex text-md text-green-standard">Please declare the following: </h1>)
+                                    (declare ? <h1 className="text-center flex text-red-standard text-base">You have not declared the following: </h1>
+                                        : <h1 className="flex text-base text-green-standard">Please declare the following: </h1>)
                                 }
                                 {/* <h1 className="text-center mx-auto flex">Please declare the following: </h1> */}
                                 <div className="flex mb-5">
@@ -219,8 +219,8 @@ const Restaurant = () => {
                                 </div>
                                 {
                                     (reserved ? <div>
-                                        <div className="text-center pb-2">Your reservation is successful! :)</div>
-                                        <button className="border px-3 py-1 rounded flex mx-auto hover:shadow">Proceed to payment</button>
+                                        <div className="pt-5 pb-3 text-green-standard">Your reservation is successful!</div>
+                                        <button className="bg-green-standard text-white-standard px-7 py-1 rounded-xl flex shadow-md hover:shadow-lg">Proceed to payment</button>
                                     </div>
                                         : <></>)
                                 }
