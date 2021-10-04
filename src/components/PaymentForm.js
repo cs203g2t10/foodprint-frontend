@@ -46,6 +46,22 @@ const PaymentForm = () => {
         setError(event.error ? event.error.message : "");
     };
 
+    // function stripeTokenHandler(token) {
+    //     const paymentData = {token: token.id};
+
+    //     // const response = await fetch('/charge', {
+    //     //   method: 'POST',
+    //     //   headers: {
+    //     //     'Content-Type': 'application/json'
+    //     //   },
+    //     //   body: JSON.stringify(paymentData),
+    //     // });
+    //     console.log(paymentData)
+    //     // const response = PaymentService.makePayment(paymentData);
+    //     // Return and display the result of the charge.
+    //     // return response;
+    //   }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         setProcessing(true)
@@ -62,10 +78,26 @@ const PaymentForm = () => {
         if (!error) {
             try {
                 const { id } = paymentMethod
-                const response = await PaymentService.makePayment(amount, id)
-                if (response.data.success) {
+                console.log('id is ', id)
+                // console.log('the id is', id)
+                // console.log(paymentMethod)
+
+                const card = elements.getElement(CardElement);
+                const result = await stripe.createToken(card);
+                // console.log(result)
+                if (result.error) {
+                    console.log(result.error.message)
+                } else {
+                    console.log('token is', result.token.id);
+                    // stripeTokenHandler(result.token);
+                }
+
+                const response = await PaymentService.makePayment(amount, id, result.token.id);
+                console.log(response)
+                if (response.data.status === "succeeded") {
                     console.log("Successful payment")
                     setSuccess(true)
+                    setProcessing(false)
                 }
             } catch (error) {
                 console.log("Error", error)
@@ -93,7 +125,7 @@ const PaymentForm = () => {
                         {processing ? (
                             < div className="spinner" id="spinner"></div>
                         ) : (
-                            'Pay $ '+ amount / 100
+                            'Pay $ ' + amount / 100
                         )}
                     </span>
                 </button>
@@ -102,14 +134,16 @@ const PaymentForm = () => {
                         {error}
                     </div>
                 )}
+                {
+                    (success) ?
+                        <div className="Result">
+                            <h1 className="ResultTitle"> Congratulations!</h1>
+                            <h1 className="ResultMessage"> Your payment is successful!</h1>
+                        </div>
+                        : <></>
+                }
             </form>
-            {
-                (success) ?
-                    <div className="h-48 w-48 border py-10">
-                        <h1 className="text-6xl text-center"> Your payment is successful!</h1>
-                    </div>
-                    : <></>
-            }
+
 
 
         </>
