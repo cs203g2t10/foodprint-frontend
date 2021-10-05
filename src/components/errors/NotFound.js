@@ -3,9 +3,9 @@ import React from 'react'
 const NotFound = () => {
     return (
         <div className="min-h-screen">
-            <div className="grid grid-col-2">
+            <div className="mt-20">
                 <div>
-                    <img className = "my-0 flex mx-auto"style = {{height:490}}src="/images/error.webp" alt="404" />
+                    <img className = "my-0 flex mx-auto"style = {{height:380}}src="/images/error.png" alt="404" />
                 </div>
                 <div>
                     <h1 className="text-8xl text-center mb-3 text-grey-standard">oops!</h1>

@@ -4,6 +4,7 @@ import NotFound from "./components/errors/NotFound";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 import EnvTest from "./pages/EnvTest";
 import Restaurants from "./pages/Restaurants";
@@ -32,6 +33,9 @@ export default function Routes() {
                 </Route>
                 <Route exact path="/restaurants">
                     <Restaurants />
+                </Route>
+                <Route exact path="/profile">
+                    <Profile />
                 </Route>
                 <Route exact path="/envtest">
                     <EnvTest />
