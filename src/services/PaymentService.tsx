@@ -16,18 +16,11 @@ class PaymentService {
         return axios.post(`${PAYMENT_REST_API_URL}/`, {
             description: 'test',
             amount,
-            currency: 'EUR',
+            currency: 'SGD',
             stripeEmail: 'youcanfinddaryl@gmail.com',
             stripeToken: token
-        }, this.headers()).catch((error) => {
-            console.log(error)
-        })
+        }, this.headers())
     }
-
-    // makePayment = (paymentData: any) => {
-    //     return axios.post(`${PAYMENT_REST_API_URL}/`, JSON.stringify(paymentData), this.headers())
-    // }
-
 }
 
 export default new PaymentService();

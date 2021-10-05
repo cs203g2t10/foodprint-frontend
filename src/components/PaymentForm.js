@@ -34,7 +34,7 @@ const PaymentForm = () => {
     const [processing, setProcessing] = useState('');
     const [disabled, setDisabled] = useState(true);
 
-    const [amount, setAmount] = useState(6900)
+    const [amount, setAmount] = useState(690)
 
     const stripe = useStripe()
     const elements = useElements()
@@ -45,22 +45,6 @@ const PaymentForm = () => {
         setDisabled(event.empty);
         setError(event.error ? event.error.message : "");
     };
-
-    // function stripeTokenHandler(token) {
-    //     const paymentData = {token: token.id};
-
-    //     // const response = await fetch('/charge', {
-    //     //   method: 'POST',
-    //     //   headers: {
-    //     //     'Content-Type': 'application/json'
-    //     //   },
-    //     //   body: JSON.stringify(paymentData),
-    //     // });
-    //     console.log(paymentData)
-    //     // const response = PaymentService.makePayment(paymentData);
-    //     // Return and display the result of the charge.
-    //     // return response;
-    //   }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -79,25 +63,24 @@ const PaymentForm = () => {
             try {
                 const { id } = paymentMethod
                 console.log('id is ', id)
-                // console.log('the id is', id)
-                // console.log(paymentMethod)
 
                 const card = elements.getElement(CardElement);
                 const result = await stripe.createToken(card);
-                // console.log(result)
+
                 if (result.error) {
                     console.log(result.error.message)
                 } else {
                     console.log('token is', result.token.id);
-                    // stripeTokenHandler(result.token);
                 }
 
                 const response = await PaymentService.makePayment(amount, id, result.token.id);
-                console.log(response)
+                console.log('hallo', response)
                 if (response.data.status === "succeeded") {
                     console.log("Successful payment")
                     setSuccess(true)
                     setProcessing(false)
+                } else {
+                    console.log(response)
                 }
             } catch (error) {
                 console.log("Error", error)
