@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import PaymentService from '../services/PaymentService'
@@ -34,7 +34,11 @@ const PaymentForm = (props) => {
     const [processing, setProcessing] = useState('');
     const [disabled, setDisabled] = useState(true);
 
-    const [amount, setAmount] = useState(690)
+    const [amount, setAmount] = useState(0)
+
+    useEffect(() => {
+        setAmount(props.amount * 1/5)
+    }, [props])
 
     const stripe = useStripe()
     const elements = useElements()
@@ -85,7 +89,7 @@ const PaymentForm = (props) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="Form mx-48 px-36 pb-20 pt-10 bg-yellow-standard rounded shadow">
+            <form onSubmit={handleSubmit} className="Form mx-48 px-36 pb-10 pt-10 bg-yellow-standard rounded shadow">
                 <h1 className="text-center pb-10">Please fill up your payment details below</h1>
                 <fieldset className="FormGroup">
                     <div className="FormRow">
@@ -97,7 +101,7 @@ const PaymentForm = (props) => {
                         {processing ? (
                             < div className="spinner" id="spinner"></div>
                         ) : (
-                            'Pay $ ' + amount / 100
+                            'Pay $ ' + (amount / 100).toFixed(2)
                         )}
                     </span>
                 </button>

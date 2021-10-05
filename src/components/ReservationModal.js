@@ -19,7 +19,7 @@ const ReservationModal = (
     const [selectDate, setSelectDate] = useState(false);
     const [declare, setDeclare] = useState(false);
     const [reservationId, setReservationId] = useState();
-    const [noSlot, setNoSlot] = useState(false);
+    // const [noSlot, setNoSlot] = useState(false);
 
     const filterAcceptableTimings = (time) => {
         const currentDate = new Date()

@@ -34,6 +34,10 @@ class ReservationService {
             return error.response;
         })
     }
+
+    getReservation = (reservationId) => {
+        return axios.get(`${RESERVATIONS_REST_API_URL}/${reservationId}`, this.headers());
+    }
 }
 
 export default new ReservationService();
