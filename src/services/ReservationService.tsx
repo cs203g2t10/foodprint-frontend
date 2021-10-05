@@ -12,9 +12,9 @@ class ReservationService {
         }
     }
 
-    makeReservation = (date, pax, isVaccinated, lineItems, restaurantId) => {
-        var lineItems2 = [];
-        lineItems.forEach(lineItem => {
+    makeReservation = (date: Date, pax: Number, isVaccinated: Boolean, lineItems: any, restaurantId: Number) => {
+        var lineItems2: any = [];
+        lineItems.forEach((lineItem: any) => {
             var foodId = lineItem.food.foodId;
             var quantity = lineItem.quantity;
             lineItems2.push({
@@ -35,7 +35,7 @@ class ReservationService {
         })
     }
 
-    getReservation = (reservationId) => {
+    getReservation = (reservationId: Number) => {
         return axios.get(`${RESERVATIONS_REST_API_URL}/${reservationId}`, this.headers());
     }
 }

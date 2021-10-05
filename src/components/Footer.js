@@ -10,7 +10,7 @@ const Footer = () => {
                     <div className = "md:pl-24 md:mt-14">
                         <h1 className = "text-green-standard font-bold lg:text-4xl tracking-wide">foodPrint</h1>
                         <h2 className = "lg:pt-2 lg:pr-44 text-grey-light">Here at foodPrint, we encourage restaurant reservation to help F&B establishments reduce food waste. </h2>
-                        <div className="grid grid-cols-4 gap-12 md:pt-4 flex">
+                        <div className="grid grid-cols-4 gap-12 md:pt-4">
                             <div>
                                 <h1 className = "lg:text-md text-grey-standard tracking-widest">LEGAL</h1>
                                 <h2 className = "lg:text-sm text-grey-lighter text-xs">Terms and Conditions</h2>
@@ -26,7 +26,7 @@ const Footer = () => {
                                 <h2 className = "lg:text-sm text-grey-lighter text-xs">Singapore</h2>
                             </div><div>
                                 <h1 className = "lg:text-md text-grey-standard tracking-widest">SOCIALS</h1>
-                                <div className="grid lg:grid-cols-3 flex absolute">
+                                <div className="grid lg:grid-cols-3 absolute">
                                     <img className = "transform scale-50 opacity-50" src="/images/instagram.png" alt="footer" />
                                     <img className = "transform scale-50 opacity-50" src="/images/linkedIn.png" alt="footer" />
                                     <img className = "transform scale-50 opacity-50" src="/images/twitter.png" alt="footer" />
