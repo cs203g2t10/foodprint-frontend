@@ -12,9 +12,9 @@ class PaymentService {
         }
     }
 
-    makePayment = (amount: number, id: string, token:any) => {
+    makePayment = (reservationId : number, amount: number, token:any) => {
         return axios.post(`${PAYMENT_REST_API_URL}/`, {
-            description: 'test',
+            description: `${'Deposit payment for Reservation with id: ' + reservationId}`,
             amount,
             currency: 'SGD',
             stripeEmail: 'youcanfinddaryl@gmail.com',

@@ -30,6 +30,9 @@ class ReservationService {
             restaurantId,
             status: "ONGOING"
         }, this.headers())
+        .catch((error) => {
+            return error.response;
+        })
     }
 }
 

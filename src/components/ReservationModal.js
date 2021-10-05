@@ -2,14 +2,15 @@ import { useState } from 'react'
 import Modal from 'react-modal'
 import DatePicker from "react-datepicker";
 import ReservationService from '../services/ReservationService'
+import { Link } from 'react-router-dom';
 
 Modal.setAppElement('#root')
 
 const ReservationModal = (
-            {id,
-            modalIsOpen, lineItems, finalPrice, totalPrice, 
-            setModal}
-    ) => {
+    { id,
+        modalIsOpen, lineItems, finalPrice, totalPrice,
+        setModal }
+) => {
 
     const [pax, setPax] = useState(1);
     const [bookingDate, setBookingDate] = useState();
@@ -17,6 +18,8 @@ const ReservationModal = (
     const [isVaccinated, setVaccinated] = useState(false);
     const [selectDate, setSelectDate] = useState(false);
     const [declare, setDeclare] = useState(false);
+    const [reservationId, setReservationId] = useState();
+    const [noSlot, setNoSlot] = useState(false);
 
     const filterAcceptableTimings = (time) => {
         const currentDate = new Date()
@@ -29,7 +32,6 @@ const ReservationModal = (
 
     const makeReservation = () => {
         if (bookingDate === undefined) {
-            console.log('hi');
             setSelectDate(true);
             return;
         } else if (isVaccinated === false) {
@@ -37,13 +39,22 @@ const ReservationModal = (
             return;
         }
         bookingDate.setHours(bookingDate.getHours() + 8);
-        ReservationService.makeReservation(bookingDate, pax, true, lineItems, id.id);
+
+        const response = ReservationService.makeReservation(bookingDate, pax, true, lineItems, id.id)
+        response.then((resp) => {
+            if (resp.status === 404) {
+                console.log('Error:', resp.data.message)
+            } else if (resp.status === 201){
+                console.log("Reservation successful, id: ", resp.data.reservationId)
+                setReservationId(resp.data.reservationId);
+                setReserved(true);
+            }
+        })
         bookingDate.setHours(bookingDate.getHours() - 8);
-        setReserved(true);
     }
 
     const customStyles = {
-        overlay: {zIndex: 1000}
+        overlay: { zIndex: 1000 }
     };
 
     return <Modal lineItems={lineItems} isOpen={modalIsOpen} className="mt-20" style={customStyles}>
@@ -130,7 +141,7 @@ const ReservationModal = (
                     {
                         (reserved ? <div>
                             <div className="pt-5 pb-3 text-green-standard">Your reservation is successful!</div>
-                            <button className="bg-green-standard text-white-standard px-7 py-1 rounded-xl flex shadow-md hover:shadow-lg">Proceed to payment</button>
+                            <Link to={"/payment/" + reservationId} className="bg-green-standard text-white-standard px-7 py-1 rounded-xl flex shadow-md hover:shadow-lg">Proceed to payment</Link>
                         </div>
                             : <></>)
                     }

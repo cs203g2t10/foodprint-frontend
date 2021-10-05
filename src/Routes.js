@@ -37,10 +37,8 @@ export default function Routes() {
                     <EnvTest />
                 </Route>
                 <Route path="/restaurant/:id" children={<Restaurant />}>
-                    {/* <Restaurant /> */}
                 </Route>
-                <Route path="/payment">
-                    <Payment />
+                <Route path="/payment/:id" children={<Payment />}>
                 </Route>
                 <Route>
                     <NotFound />

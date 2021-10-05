@@ -28,7 +28,7 @@ const CARD_OPTIONS = {
     }
 };
 
-const PaymentForm = () => {
+const PaymentForm = (props) => {
     const [success, setSuccess] = useState(false)
     const [error, setError] = useState(null);
     const [processing, setProcessing] = useState('');
@@ -55,40 +55,29 @@ const PaymentForm = () => {
             return;
         }
 
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
-            type: "card",
-            card: elements.getElement(CardElement)
-        })
-        if (!error) {
-            try {
-                const { id } = paymentMethod
-                console.log('id is ', id)
+        try {
+            const card = elements.getElement(CardElement);
+            const result = await stripe.createToken(card);
 
-                const card = elements.getElement(CardElement);
-                const result = await stripe.createToken(card);
+            if (result.error) {
+                console.log(result.error.message)
+            } else {
+                console.log('token is', result.token.id);
+            }
 
-                if (result.error) {
-                    console.log(result.error.message)
-                } else {
-                    console.log('token is', result.token.id);
-                }
-
-                const response = await PaymentService.makePayment(amount, id, result.token.id);
-                console.log('hallo', response)
-                if (response.data.status === "succeeded") {
-                    console.log("Successful payment")
-                    setSuccess(true)
-                    setProcessing(false)
-                } else {
-                    console.log(response)
-                }
-            } catch (error) {
-                console.log("Error", error)
-                setError(error.message)
+            const response = await PaymentService.makePayment(props.reservationId, amount, result.token.id);
+            if (response.data.status === "succeeded") {
+                console.log("Successful payment")
+                setSuccess(true)
+                setProcessing(false)
+            } else {
+                var message = response.data.message.split(";")[0];
+                console.log(message)
+                setError(message)
                 setProcessing(false)
             }
-        } else {
-            console.log(error.message)
+        } catch (error) {
+            console.log("Error", error)
             setError(error.message)
             setProcessing(false)
         }
@@ -96,7 +85,7 @@ const PaymentForm = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="Form mx-28 px-36 pb-20 pt-10 bg-yellow-standard rounded shadow">
+            <form onSubmit={handleSubmit} className="Form mx-48 px-36 pb-20 pt-10 bg-yellow-standard rounded shadow">
                 <h1 className="text-center pb-10">Please fill up your payment details below</h1>
                 <fieldset className="FormGroup">
                     <div className="FormRow">
