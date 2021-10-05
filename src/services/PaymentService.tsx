@@ -20,6 +20,10 @@ class PaymentService {
             stripeEmail: 'youcanfinddaryl@gmail.com',
             stripeToken: token
         }, this.headers())
+        .catch((error) => {
+            console.log(error.response);
+            return error.response;
+        })
     }
 }
 
