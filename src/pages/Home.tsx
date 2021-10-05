@@ -131,13 +131,6 @@ const Home = () => {
                             <img src="/images/landingPage.webp" alt="cooking illustration" />
                         </div>
                     </div>
-
-
-                    <h1 className="text-center mt-10 text-1xl">Log in to your account or Register to get started!</h1>
-                    <div className="flex justify-center gap-x-3">
-                        <Link to="/login" className="mt-4 py-3 border border-gray-200 w-1/6 text-center hover:shadow rounded-xl">Log In </Link>
-                        <Link to="/register" className="mt-4 py-3 border border-gray-200 w-1/6 text-center hover:shadow rounded-xl">Register</Link>
-                    </div>
                 </>
             )}
 
