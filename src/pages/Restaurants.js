@@ -33,10 +33,14 @@ const Restaurants = () => {
             <div className="justify-items-center grid lg:grid-cols-4 gap-y-16 mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
                 {
                     restaurants?.map(
-                        restaurant =>
-                            <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId}>
+                        restaurant => {
+                            let imageUrl = "/images/shop.jpg";
+                            if (restaurant.pictures.length > 0) {
+                                imageUrl = restaurant.pictures[0].url;
+                            }
+                            return <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId}>
                                 <div className="bg-white-creamWhite h-auto w-64 shadow-md hover:shadow-lg rounded-xl flex-none pb-1">
-                                    <img className="object-fill w-full h-40 rounded-xl " src="/images/restaurant.jpg" alt="burger" />
+                                    <img className="object-fill w-full h-40 rounded-xl " src={imageUrl} alt="burger" />
                                     <div className="my-4 mx-5">
                                         <h2 className="bg-yellow-standard w-4/12 text-center rounded-xl text-base py-1">-42%</h2>
                                         <h1 className=" mt-2">{restaurant.restaurantName}</h1>
@@ -44,6 +48,8 @@ const Restaurants = () => {
                                     </div>
                                 </div>
                             </Link>
+                        }
+
                     )
                 }
             </div>
