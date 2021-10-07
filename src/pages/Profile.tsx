@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
+import { Link } from 'react-router-dom'
 import { useAppContext } from '../lib/contextLib'
 import LogInService from '../services/LogInService'
 import type { UserDetails } from '../services/LogInService';
+import ReservationService from '../services/ReservationService';
 
 const Profile = () => {
     const { isAuthenticated } = useAppContext() || {}
@@ -10,6 +12,23 @@ const Profile = () => {
         const userInfo: UserDetails = LogInService.getUserDetails();
         return `${userInfo.userFname} ${userInfo.userLname}`;
     }
+
+    const [upcomingReservation, setUpcomingReservation] = useState<any[]>([])
+    const [pastReservation, setPastReservation] = useState<any[]>([])
+    
+    useEffect(() => {
+        ReservationService.getUpcomingReservation().then((response) => {
+            console.log(response)
+            setUpcomingReservation(response.data)
+        })
+    }, [])
+
+    useEffect(() => {
+        ReservationService.getPastReservation().then((response) => {
+            console.log(response)
+            setPastReservation(response.data)
+        })
+    }, [])
 
     return (
         <div className="min-h-screen">
@@ -50,26 +69,33 @@ const Profile = () => {
                                     <h2 className="my-auto text-xl col-span-1 text-grey-standard text-xs">Orders</h2>
                                 </div> */}
                                 <div className="overflow-y-auto h-64">
-                                    <div className="grid grid-cols-6 bg-white-standard rounded-xl px-5 py-2 shadow-sm mb-3">
-                                        <img src="/images/restaurant.jpg" className="w-16 h-16 shadow-md rounded-full col-span-1" alt="food pic" />
-                                        <h1 className="my-auto text-xl">Sushi-ya</h1>
-                                    </div>
-                                    <div className="grid grid-cols-6 bg-white-standard rounded-xl px-5 py-2 shadow-sm mb-3">
-                                        <img src="/images/restaurant.jpg" className="w-16 h-16 shadow-md rounded-full col-span-1" alt="food pic" />
-                                        <h1 className="my-auto text-xl">Sushi-ya</h1>
-                                    </div>
-                                    <div className="grid grid-cols-6 bg-white-standard rounded-xl px-5 py-2 shadow-sm mb-3">
-                                        <img src="/images/restaurant.jpg" className="w-16 h-16 shadow-md rounded-full col-span-1" alt="food pic" />
-                                        <h1 className="my-auto text-xl">Sushi-ya</h1>
-                                    </div>
-                                    <div className="grid grid-cols-6 bg-white-standard rounded-xl px-5 py-2 shadow-sm mb-3">
-                                        <img src="/images/restaurant.jpg" className="w-16 h-16 shadow-md rounded-full col-span-1" alt="food pic" />
-                                        <h1 className="my-auto text-xl">Sushi-ya</h1>
-                                    </div>
+                                    {
+                                        upcomingReservation.map(upcomingReservation =>
+                                            <Link to={"/reservation/" + upcomingReservation.date} key={upcomingReservation.reservationId} >
+                                                <div className="flex">
+                                                    <h1 className="pr-8">{upcomingReservation.date}</h1>
+                                                    <h1>{upcomingReservation.restaurantId}</h1>
+                                                </div>
+                                            </Link>
+                                        )
+                                    }
                                 </div>
                             </div>
-                            <div className="bg-white-dirtyWhite rounded-xxl h-80 shadow-md px-10 py-6 ">
-                                <h1 className="text-green-standard text-2xl font-bold tracking-wide">Past Reservations</h1>
+                            <div className="bg-white-dirtyWhite rounded-xxl h-80 shadow-md px-10 py-6">
+                                <h1 className="text-green-standard text-2xl font-bold tracking-wide ">Past Reservations</h1>
+                               
+                                <div className="overflow-y-auto h-56">
+                                    {
+                                        pastReservation.map(pastReservation =>
+                                            <Link to={"/reservation/" + pastReservation.date} key={pastReservation.reservationId} >
+                                                <div className="flex">
+                                                    <h1 className="pr-8">{pastReservation.date}</h1>
+                                                    <h1>{pastReservation.restaurantId}</h1>
+                                                </div>
+                                            </Link>
+                                        )
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>

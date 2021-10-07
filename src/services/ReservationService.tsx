@@ -38,6 +38,14 @@ class ReservationService {
     getReservation = (reservationId: Number) => {
         return axios.get(`${RESERVATIONS_REST_API_URL}/${reservationId}`, this.headers());
     }
+
+    getUpcomingReservation = () => {
+        return axios.get(`${RESERVATIONS_REST_API_URL}/upcoming`, this.headers());
+    }
+
+    getPastReservation = () => {
+        return axios.get(`${RESERVATIONS_REST_API_URL}/past`, this.headers());
+    }
 }
 
 export default new ReservationService();
