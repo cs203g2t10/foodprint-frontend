@@ -9,7 +9,6 @@ import Register from "./pages/Register";
 import EnvTest from "./pages/EnvTest";
 import Restaurants from "./pages/Restaurants";
 import Restaurant from "./pages/Restaurant";
-import LineItem from "./components/LineItem";
 import Payment from "./pages/Payment";
 import ManageUser from "./pages/ManageUser";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -56,8 +55,6 @@ export default function Routes() {
                     <NotFound />
                 </Route>
             </Switch>
-            
-            {background && <Route path="/restaurant/:id/:foodId" children={<LineItem />} />}
         </div>
 
     );
