@@ -57,7 +57,7 @@ const Login = () => {
                         <div className="pt-5 flex">
                             <button className="rounded-xl px-5 border hover:shadow text-justify h-8" disabled={!validateForm}
                                 onClick={userLogin}>Log in</button>
-                            <Link to="/login" className="mx-2 py-2 px-2 self-end text-blue-700 ">Forgot Password?</Link>
+                            <Link to="/forgotpassword" className="mx-2 py-2 px-2 self-end text-blue-700 ">Forgot Password?</Link>
                         </div>
                     </div>
 
