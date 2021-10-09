@@ -11,6 +11,7 @@ import Restaurants from "./pages/Restaurants";
 import Restaurant from "./pages/Restaurant";
 import LineItem from "./components/LineItem";
 import Payment from "./pages/Payment";
+import ForgotPassword from "./pages/ForgotPassword";
 
 export default function Routes() {
     let location = useLocation();
@@ -43,6 +44,9 @@ export default function Routes() {
                 <Route path="/restaurant/:id" children={<Restaurant />}>
                 </Route>
                 <Route path="/payment/:id" children={<Payment />}>
+                </Route>
+                <Route exact path="/forgotpassword">
+                    <ForgotPassword />
                 </Route>
                 <Route>
                     <NotFound />
