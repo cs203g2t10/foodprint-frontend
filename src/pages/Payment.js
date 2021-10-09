@@ -30,12 +30,6 @@ const Payment = () => {
 
 
     return (
-        // paid ?
-        //     <div className="py-10">
-        //         <h1 className="text-center text-4xl pt-8 pb-10">You have already paid!</h1>
-        //         <Link to={"/"} className="mx-auto bg-green-standard text-white-standard px-7 py-1 rounded-xl flex shadow-md hover:shadow-lg w-56 text-center items-center">Back to Home</Link>
-        //     </div>
-        //     :
         <>
             <div>
                 <h1 className="text-center text-4xl pt-8 pb-2">Reservation #{params.id}</h1>

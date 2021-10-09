@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useParams } from 'react-router'
 import RestaurantService from '../services/RestaurantService'
 import ReservationModal from '../components/ReservationModal'
@@ -11,6 +11,7 @@ const Restaurant = () => {
     let id = useParams();
 
     const [restaurantDetails, setRestaurantDetails] = useState([]);
+    const [food, setFood] = useState([]);
     const [lineItems, setLineItems] = useState([]);
     const [modalIsOpen, setModal] = useState(false);
 
@@ -18,9 +19,24 @@ const Restaurant = () => {
     const [haveFood, setHaveFood] = useState(false);
     const [totalPrice, setTotalPrice] = useState(0);
 
+    let imageUrl = "/images/shop.jpg";
+
     useEffect(() => {
         RestaurantService.getRestaurant(id.id).then((response) => {
+            console.log(response.data.pictures.length)
             setRestaurantDetails(response.data)
+        })
+    }, [id])
+
+    useRef(() => {
+        if (restaurantDetails.pictures.length > 0) {
+            imageUrl = restaurantDetails.pictures[0].url;
+        }
+    }, [id])
+
+    useEffect(() => {
+        RestaurantService.getAllFood(id.id).then((response) => {
+            setFood(response.data)
         })
     }, [id])
 
@@ -43,10 +59,9 @@ const Restaurant = () => {
         }
     }
 
-    let imageUrl = "/images/shop.jpg";
-    if (restaurantDetails.pictures.length > 0) {
-        imageUrl = restaurantDetails.pictures[0].url;
-    }
+    // if (restaurantDetails.pictures.length > 0) {
+    //     imageUrl = restaurantDetails.pictures[0].url;
+    // }
 
     return (
         <div>
@@ -75,8 +90,8 @@ const Restaurant = () => {
 
             <div className="grid items-center justify-items-center lg:grid-cols-5 gap-y-16 mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
                 {
-                    restaurantDetails.allFood?.map(
-                        food => <RestaurantFood {...{food, setLineItems}}/>
+                    food?.map(
+                        food => <RestaurantFood {...{ food, setLineItems }} key={food.foodId} />
                     )
                 }
             </div>

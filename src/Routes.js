@@ -11,6 +11,7 @@ import Restaurants from "./pages/Restaurants";
 import Restaurant from "./pages/Restaurant";
 import LineItem from "./components/LineItem";
 import Payment from "./pages/Payment";
+import ManageUser from "./pages/ManageUser";
 
 export default function Routes() {
     let location = useLocation();
@@ -36,6 +37,9 @@ export default function Routes() {
                 </Route>
                 <Route exact path="/profile">
                     <Profile />
+                </Route>
+                <Route exact path="/manageuser">
+                    <ManageUser />
                 </Route>
                 <Route exact path="/envtest">
                     <EnvTest />

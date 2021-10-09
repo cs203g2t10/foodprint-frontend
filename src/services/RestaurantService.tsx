@@ -24,6 +24,10 @@ class RestaurantService {
         return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/food/${foodId}`, this.headers());
     }
 
+    getAllFood = (restaurantId: number) => {
+        return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/food`, this.headers());
+    }
+
     searchRestaurant = (searchQuery: String) => {
         return axios.get(`${RESTAURANTS_REST_API_URL}/search`, {
             headers:  this.headers().headers,
