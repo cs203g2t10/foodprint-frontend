@@ -24,6 +24,15 @@ class RestaurantService {
         return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/food/${foodId}`, this.headers());
     }
 
+    searchRestaurant = (searchQuery: String) => {
+        return axios.get(`${RESTAURANTS_REST_API_URL}/search`, {
+            headers:  this.headers().headers,
+            params: {
+                q: searchQuery
+            }
+        })
+    }
+
 }
 
 export default new RestaurantService();
