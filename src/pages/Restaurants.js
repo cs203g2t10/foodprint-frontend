@@ -44,8 +44,8 @@ const Restaurants = () => {
                                         <img className="object-fill w-full h-40 rounded-xl " src={imageUrl} alt="burger" />
                                         <div className="my-4 mx-5">
                                             <h2 className="bg-yellow-standard w-4/12 text-center rounded-xl text-base py-1">-42%</h2>
-                                            <h1 className=" mt-2">{restaurant.restaurantName}</h1>
-                                            <h1 className="text-base">{restaurant.restaurantLocation}</h1>
+                                            <h1 className=" mt-2 text-xl text-grey-dark">{restaurant.restaurantName}</h1>
+                                            <h1 className="text-base text-grey-light">{restaurant.restaurantLocation}</h1>
                                         </div>
                                     </div>
                                 </Link>

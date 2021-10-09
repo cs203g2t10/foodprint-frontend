@@ -22,7 +22,7 @@ const CARD_OPTIONS = {
             }
         },
         invalid: {
-            iconColor: "#ffc7ee",
+            iconColor: "#ffc7ee", 
             color: "#ffc7ee"
         }
     }
@@ -89,8 +89,7 @@ const PaymentForm = (props) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="Form mx-48 px-36 pb-10 pt-10 bg-yellow-standard rounded shadow">
-                <h1 className="text-center pb-10">Please fill up your payment details below</h1>
+            <form onSubmit={handleSubmit} className="Form py-10">
                 <fieldset className="FormGroup">
                     <div className="FormRow">
                         <CardElement options={CARD_OPTIONS} onChange={handleChange}></CardElement>

@@ -9,8 +9,8 @@ const RestaurantFood = ({food, setLineItems}) => {
         {/* <img src="/images/{food.picturePath}" className="mx-auto w-32 h-32 shadow-md rounded-full" alt="food pic" /> */}
         <img src={foodUrl} className="mx-auto w-32 h-32 shadow-md rounded-full" alt="food pic" />
         <div className="flex-col mx-auto">
-            <h1 className="flex justify-center">{food.foodName}</h1>
-            <p className="text-grey-standard text-xl">{food.foodDesc}</p>
+            <h1 className="flex justify-center text-xl mt-2">{food.foodName}</h1>
+            <p className="text-grey-standard">{food.foodDesc}</p>
             <p className="flex justify-center text-3xl font-bold text-green-standard">${food.foodPrice}</p>
 
             <div className="flex justify-center py-2">
