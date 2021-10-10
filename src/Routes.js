@@ -12,6 +12,7 @@ import Restaurant from "./pages/Restaurant";
 import Payment from "./pages/Payment";
 import ManageUser from "./pages/ManageUser";
 import ForgotPassword from "./pages/ForgotPassword";
+import VerifyAccount from "./pages/VerifyAccount";
 
 export default function Routes() {
     let location = useLocation();
@@ -31,6 +32,9 @@ export default function Routes() {
                 </Route>
                 <Route exact path="/register">
                     <Register />
+                </Route>
+                <Route exact path="/verifyaccount">
+                    <VerifyAccount />
                 </Route>
                 <Route exact path="/restaurants">
                     <Restaurants />

@@ -28,7 +28,7 @@ const Register = () => {
 
     if (successfulReg) {
         window.sessionStorage.setItem("email", email)
-        return <Redirect to="/login" />
+        return <Redirect to="/verifyaccount" />
     }
 
     return (
