@@ -28,11 +28,13 @@ class RestaurantService {
         return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/food`, this.headers());
     }
 
-    searchRestaurant = (searchQuery: String) => {
+    searchRestaurant = (searchQuery: String, sortBy: String = "restaurantName", sortDesc : Boolean = false) => {
         return axios.get(`${RESTAURANTS_REST_API_URL}/search`, {
             headers:  this.headers().headers,
             params: {
-                q: searchQuery
+                q: searchQuery,
+                sortBy: sortBy,
+                sortDesc: sortDesc
             }
         })
     }
