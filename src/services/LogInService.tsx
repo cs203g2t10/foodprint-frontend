@@ -39,6 +39,10 @@ class LogInService {
         return axios.get(LOGIN_REST_API_URL+"/whoami", settings);
     }
 
+    userConfirmToken = (emailToken:any) => {
+        return axios.get(LOGIN_REST_API_URL+"/register/confirm/"+emailToken);
+    }
+
     // Does not require API call to backend since JWT stores user properties too
     getUserDetails = () => {
         const token : string | null = window.sessionStorage.getItem("token");
