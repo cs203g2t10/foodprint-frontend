@@ -20,7 +20,18 @@ class AdminService {
         return axios.delete(ADMIN_REST_API_URL+"/"+id, this.headers());
     }
 
-    
+    updateUser = (id:number, email:any, firstName:any, lastName:any, roles:any) => {
+        console.log(id, email, firstName, lastName, roles);
+        const url = ADMIN_REST_API_URL+"/"+id;
+        const requestBody = {
+            id,
+            email,
+            firstName,
+            lastName,
+            roles
+        };
+        return axios.patch(url, requestBody, this.headers());
+    }
 }
 
 export default new AdminService();

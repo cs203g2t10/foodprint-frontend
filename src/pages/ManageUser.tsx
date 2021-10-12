@@ -12,13 +12,14 @@ const ManageUser = () => {
         })
     }, [])
 
-    
+
 
     return (
         <div>
-            <h1 className="text-center text-2xl py-10">Manage Users</h1>
-            <div className="mx-14 border py-7 rounded shadow">
-                <div className="grid grid-cols-1 gap-y-10 items-center">
+            <h1 className="text-center text-2xl pt-10">Manage Users</h1>
+            <div className="pt-1 text-center pb-7">Please only edit those fields that you wish to change</div>
+            <div className="mx-14 border pt-6 pb-8 rounded shadow">
+                <div className="grid grid-cols-1 gap-y-9 items-center">
                     <div className="mx-10 flex gap-x-24 px-20">
                         <p className="">User ID</p>
                         <p>Email</p>
@@ -28,24 +29,10 @@ const ManageUser = () => {
                     {
                         userDetails?.map(
                             (user: any) => {
-
                                 return (
-                                    <>
-                                        {/* <div className="mx-10 flex gap-x-10" key={user.id}>
-                                            <button className="border" onClick={() => {
-                                                open = !open
-                                                console.log(open)
-                                            }}>Edit</button>
-                                            <p>{user.id}</p>
-                                            <p>{user.email}</p>
-                                            <p>{user.firstName} {user.lastName} </p>
-                                            <p>{user.roles}</p>
-                                        </div> */}
-                                        <UserListing id={user.id} email={user.email} firstName={user.firstName} lastName={user.lastName} roles={user.roles} keys={user.id}/>
-                                    </>
+                                    <UserListing id={user.id} email={user.email} firstName={user.firstName} lastName={user.lastName} roles={user.roles} key={user.id} />
                                 )
                             }
-
                         )
                     }
                 </div>
