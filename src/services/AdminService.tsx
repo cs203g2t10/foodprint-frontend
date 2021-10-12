@@ -12,8 +12,9 @@ class AdminService {
         }
     }
 
-    getAllUsers = async () => {
-        return await axios.get(ADMIN_REST_API_URL+"/", this.headers());
+    getAllUsers = async (page:number) => {
+        const url = ADMIN_REST_API_URL+"?page="+page;
+        return await axios.get(url, this.headers());
     }
 
     deleteUser = (id:number) => {

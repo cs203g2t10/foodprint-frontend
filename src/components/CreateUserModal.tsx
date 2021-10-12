@@ -36,31 +36,31 @@ const CreateUserModal = (
             <div className="grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-64 pb-10 bg-white-dirtyWhite">
                 <h1 className=" flex text-5xl pt-12 text-green-standard mx-20 font-bold mx-auto">Create User</h1>
                 <h1 className=" flex text-md mx-20 mb-2 text-grey-standard font-light mx-auto">Please fill up all details below </h1>
-                <div className="grid justify-start gap-y-5 grid-cols-2">
-                    <div className="flex gap-x-2">
+                <div className="grid gap-y-5 grid-cols-2 mt-10 mb-14 gap-x-10">
+                    <div className="flex gap-x-2 justify-between">
                         <div>Email: </div>
-                        <input className="focus:outline-none px-2 rounded" onChange={(e) => { setEmail(e.target.value) }}></input>
+                        <input type="email" className="focus:outline-none px-2 rounded" onChange={(e) => { setEmail(e.target.value) }}></input>
                     </div>
-                    <div className="flex gap-x-2">
+                    <div className="flex gap-x-2 justify-between">
                         <div>Password: </div>
-                        <input className="focus:outline-none px-2 rounded" onChange={(e) => { setPassword(e.target.value) }}></input>
+                        <input type="password" className="focus:outline-none px-2 rounded" onChange={(e) => { setPassword(e.target.value) }}></input>
                     </div>
-                    <div className="flex gap-x-2">
+                    <div className="flex gap-x-2 justify-between">
                         <div>First Name: </div>
                         <input className="focus:outline-none px-2 rounded" onChange={(e) => { setFirstName(e.target.value) }}></input>
                     </div>
-                    <div className="flex gap-x-2">
+                    <div className="flex gap-x-2 justify-between">
                         <div>Last Name: </div>
                         <input className="focus:outline-none px-2 rounded" onChange={(e) => { setLastName(e.target.value) }}></input>
                     </div>
-                    <div className="flex gap-x-4 ">
+                    <div className="flex gap-x-2 justify-between">
                         <div>Role: </div>
                         <input className="focus:outline-none px-2 rounded" onChange={(e) => { setRoles(e.target.value) }}></input>
                     </div>
                 </div>
 
 
-                <div className="flex grid grid-cols-2 gap-x-10 mr-2 mt-2 justify-center">
+                <div className="flex grid grid-cols-2 gap-x-10 justify-center mx-28">
                     <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
                         onClick={() => createNewUser(email, firstName, lastName, password, roles)}>Confirm</button>
                     <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setCreateUser(false)}>Cancel</button>
