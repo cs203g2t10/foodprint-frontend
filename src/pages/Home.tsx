@@ -64,10 +64,10 @@ const Home = () => {
                 <>
                     <div className="grid md:grid-cols-7 gap-4 bg-yellow-standard h-screen">
                         <div className="border-1 md:col-span-4 md:pl-44">
-                            <h1 className="text-2xl md:pt-52 text-green-standard pl-1 pb-1 animate__animated animate__fadeIn">Hello, {getUserName()} !</h1>
+                            <h1 className="text-2xl md:pt-52 text-green-standard pl-1 pb-1 animate__animated animate__fadeIn">Hello, {getUserName()}!</h1>
                             <h1 className="text-left text-6xl pb-2 animate__animated animate__fadeIn">Discover and book the best restaurants.</h1>
                             <div className="flex justify-left">
-                                <Link to="/restaurants" className="bg-green-standard mt-4 pt-2 pb-3 px-5 text-center text-white-standard hover:shadow-lg rounded-xl">Start browsing now !</Link>
+                                <Link to="/restaurants" className="bg-green-standard mt-4 pt-2 pb-3 px-5 text-center text-white-standard hover:shadow-lg rounded-xl">Start browsing now!</Link>
                             </div>
                         </div>
                         <div className="md:col-span-3 md:my-24">
@@ -120,11 +120,11 @@ const Home = () => {
                 <>
                     <div className="grid md:grid-cols-7 gap-4 bg-yellow-standard h-screen">
                         <div className="border-1 md:col-span-4 md:pl-44">
-                            <h1 className="text-2xl md:pt-52 text-green-standard pl-1 pb-1">Hello !</h1>
+                            <h1 className="text-2xl md:pt-52 text-green-standard pl-1 pb-1">Hello!</h1>
                             <h1 className="text-left text-6xl pb-2">Discover and book the best restaurants.</h1>
 
                             <div className="flex justify-left">
-                                <Link to="/restaurants" className="bg-green-standard mt-4 pt-2 pb-3 px-5 text-center text-white-standard hover:shadow-lg rounded-xl">Start browsing now !</Link>
+                                <Link to="/restaurants" className="bg-green-standard mt-4 pt-2 pb-3 px-5 text-center text-white-standard hover:shadow-lg rounded-xl">Start browsing now!</Link>
                             </div>
                         </div>
                         <div className="md:col-span-3 md:my-24">
