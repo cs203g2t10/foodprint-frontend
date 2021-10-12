@@ -11,6 +11,7 @@ const Payment = () => {
     let params = useParams();
 
     const [reservationDetails, setReservationDetails] = useState([]);
+    // const [reservationOrders, setReservationOrder] = useState([])
     const [paid, setPaid] = useState(false);
 
     useEffect(() => {
@@ -23,6 +24,13 @@ const Payment = () => {
             console.log('Response: ', response.data);
         })
     }, [params])
+
+    // useEffect(() => {
+    //     ReservationService.getReservationOrder(params.id).then((response) => {
+    //         console.log('Response: ', response.data);
+    //         setReservationOrder(response.data)
+    //     })
+    // }, [params])
 
     const STRIPE_PUBLIC_KEY = "pk_test_51JWxIgJomapQlvkOKjy27IVPV75f4t6LyEU6NxqtjawVAJTwS5s3ghrQevyGrUXI3vs5RHGGkEfyHbGU0aazJyik00TbOClJ64";
 
@@ -43,19 +51,44 @@ const Payment = () => {
                     <div className="pb-8"></div>
                 </div>
 
-                <div className="grid grid-cols-2 py-24 px-14">
-                    <div>
-                        <h1 className="text-center text-lg">Total bill: ${(reservationDetails.price / 100).toFixed(2)}</h1>
-                        <h1 className="text-center text-lg pb-5">Deposit (20% total): ${(reservationDetails.price / 100 / 5).toFixed(2)}</h1>
-
-                        <div className="overflow-y-auto max-h-72">
-                            
+                <div className="grid grid-cols-7 gap-x-12 py-24 px-40">
+                    <div className="col-span-3 bg-white-dirtyWhite rounded-xxl shadow:md h-auto p-8">
+                        <h1 className="flex items-center justify-center text-3xl font-bold tracking-wide text-green-standard pb-2">Your Order</h1>
+                        <div className="overflow-y-auto max-h-64">
+                            {
+                                reservationDetails.lineItems?.map(reservationOrders =>
+                                    <Link to={"/reservation/" + reservationOrders.foodName} key={reservationOrders.reservationId} >
+                                        <div className="mx-8 grid grid-cols-7 flex bg-white-standard rounded-xl justify-center items-center py-2 mb-3 ">
+                                            <div className="col-span-2 ml-8">
+                                                <img src="/images/sushi.jpg" className=" w-14 h-14 shadow-md rounded-full" alt="food pic" />
+                                            </div>
+                                            <div className="col-span-4 mx-5">
+                                                <h1 className="text-grey-dark text-xl">{reservationOrders.foodName}</h1>
+                                            </div>
+                                            <h1 className="text-grey-light text-sm">x {reservationOrders.quantity}</h1>
+                                        </div>
+                                    </Link>
+                                )
+                            }
                         </div>
+                        
+                        <div className="grid grid-cols-4 mx-8">
+                            <div className="col-span-2">
+                                <div className="gap-x-2 text-md text-green-standard">Total bill:</div>
+                                <div className="gap-x-2 text-md text-green-standard">Deposit (20% total):</div>
+                            </div>
+                            <div className="col-span-2 mx-3">
+                                <h1 className="gap-x-2 text-base text-grey-standard">${(reservationDetails.price / 100).toFixed(2)}</h1>
+                                <h1 className="gap-x-2 text-base text-grey-standard">${(reservationDetails.price / 100 / 5).toFixed(2)}</h1>
+                            </div>
+                        </div>
+
                     </div>
                     
-                    <div className="bg-white-dirtyWhite rounded-xxl shadow:md h-auto p-8">
-                    <h1 className="flex items-center justify-center text-3xl font-bold tracking-wide text-green-standard pb-2">Payment Information</h1>
-                        <h1 className="text-center text-base text-grey-standard pb-8">We require you to make a small deposit amount of 20% of your total bill</h1>
+                    <div className="col-span-4 bg-white-dirtyWhite rounded-xxl shadow:md h-auto p-8">
+                    <h1 className="flex items-center justify-center text-3xl font-bold tracking-wide text-green-standard pb-5">Payment Information</h1>
+                        <h1 className="text-center text-base text-grey-standard">We require you to make a small deposit amount</h1>
+                        <h1 className="text-center text-base text-grey-standard pb-8">of 20% of your total bill</h1>
                         {
                             (paid ?
                                 <div className=" bg-yellow-standard rounded shadow">

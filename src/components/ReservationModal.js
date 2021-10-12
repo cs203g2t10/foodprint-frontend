@@ -135,13 +135,13 @@ const ReservationModal = (
                         </div>
                     </div>
                     <div className="flex grid grid-cols-2 gap-x-10 mr-2 justify-center">
-                        <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={makeReservation} disabled={reserved}>Confirm</button>
-                        <button className="bg-green-standard text-white-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setModal(false)}>Edit order</button>
+                        <button className=" bg-green-standard text-white-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border" onClick={makeReservation} disabled={reserved}>Confirm</button>
+                        <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setModal(false)}>Edit order</button>
                     </div>
                     {
                         (reserved ? <div>
                             <div className="pt-5 pb-3 text-green-standard">Your reservation is successful!</div>
-                            <Link to={"/payment/" + reservationId} className="bg-green-standard text-white-standard px-7 py-1 rounded-xl flex shadow-md hover:shadow-lg">Proceed to payment</Link>
+                            <Link to={"/payment/" + reservationId} className="border text-green-standard px-7 py-1 rounded-xl flex shadow-md hover:shadow-lg">Proceed to payment</Link>
                         </div>
                             : <></>)
                     }
