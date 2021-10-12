@@ -34,8 +34,8 @@ const CreateUserModal = (
     return (
         <Modal style={customStyles} isOpen={createUser} className="mt-20">
             <div className="grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-64 pb-10 bg-white-dirtyWhite">
-                <h1 className=" flex text-5xl pt-12 text-green-standard mx-20 font-bold mx-auto">Create User</h1>
-                <h1 className=" flex text-md mx-20 mb-2 text-grey-standard font-light mx-auto">Please fill up all details below </h1>
+                <h1 className=" flex text-5xl pt-12 text-green-standard font-bold mx-auto">Create User</h1>
+                <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Please fill up all details below </h1>
                 <div className="grid gap-y-5 grid-cols-2 mt-10 gap-x-10">
                     <div className="flex gap-x-2 justify-between">
                         <div>Email: </div>
@@ -63,7 +63,7 @@ const CreateUserModal = (
                     (created ?
                         <>
                             <div className="mx-auto pt-7 pb-2">User has been successfully created!</div>
-                            <div className="flex grid grid-cols-2 gap-x-10 justify-center mx-28">
+                            <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28">
                                 <button className=" text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
                                     onClick={() => {
                                         setCreated(false);
@@ -77,7 +77,7 @@ const CreateUserModal = (
                                     onClick={() => { setCreateUser(false) }}>Return</button>
                             </div>
                         </> :
-                        <div className="flex grid grid-cols-2 gap-x-10 justify-center mx-28 pt-16">
+                        <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28 pt-16">
                             <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
                                 onClick={() => createNewUser(email, firstName, lastName, password, roles)}>Confirm</button>
                             <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setCreateUser(false)}>Cancel</button>

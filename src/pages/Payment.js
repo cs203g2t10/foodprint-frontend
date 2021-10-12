@@ -58,7 +58,7 @@ const Payment = () => {
                             {
                                 reservationDetails.lineItems?.map(reservationOrders =>
                                     <Link to={"/reservation/" + reservationOrders.foodName} key={reservationOrders.reservationId} >
-                                        <div className="mx-8 grid grid-cols-7 flex bg-white-standard rounded-xl justify-center items-center py-2 mb-3 ">
+                                        <div className="mx-8 grid grid-cols-7 bg-white-standard rounded-xl justify-center items-center py-2 mb-3 ">
                                             <div className="col-span-2 ml-8">
                                                 <img src="/images/sushi.jpg" className=" w-14 h-14 shadow-md rounded-full" alt="food pic" />
                                             </div>

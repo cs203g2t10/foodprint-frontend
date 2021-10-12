@@ -16,7 +16,6 @@ module.exports = {
     colors: {
       black: colors.black,
       blue: colors.blue,
-      red: colors.red,
       yellow: {
         standard: '#F3E8C9',
       },
@@ -43,7 +42,6 @@ module.exports = {
     borderRadius: {
       'none': '0',
       'sm': '0.125rem',
-      DEFAULT: '0.25rem',
       DEFAULT: '4px',
       'md': '0.375rem',
       'lg': '0.5rem',
