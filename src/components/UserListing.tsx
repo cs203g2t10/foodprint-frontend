@@ -3,15 +3,18 @@ import AdminService from '../services/AdminService';
 
 const UserListing = (props: any) => {
 
+    const {setDeleteMessage} = props;
+
     const [edit, setEdit] = useState(false);
     const [email, setEmail] = useState(props.email);
     const [firstName, setFirstName] = useState(props.firstName);
     const [lastName, setLastName] = useState(props.lastName);
     const [roles, setRoles] = useState(props.roles);
 
-    const deleteUser: any = (id: number) => {
+    const deleteUser: any = async (id: number) => {
         console.log(id)
-        AdminService.deleteUser(id);
+        await AdminService.deleteUser(id);
+        setDeleteMessage("User with id: " + id + " has been deleted.")
     }
 
     const updateUserDetails: any = (id: number, email: any, firstName: any, lastName: any, roles: any) => {
