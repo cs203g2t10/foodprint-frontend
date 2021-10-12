@@ -48,7 +48,7 @@ const ManageUser = () => {
                     }
                 </div>
             </div>
-            <p className="mx-auto text-red-200 text-center pt-2">{deleteMessage}</p>
+            <p className="mx-auto text-green-standard text-center pt-4">{deleteMessage}</p>
             <PageLinks {...{ numPages, currPage, setCurrPage}} />
             <div>
             </div>
