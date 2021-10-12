@@ -25,7 +25,11 @@ class LogInService {
             "firstName" : firstName,
             "lastName": lastName
         };
-        return axios.post(LOGIN_REST_API_URL+"/register", requestBody);
+        return axios.post(LOGIN_REST_API_URL+"/register", requestBody)
+        .catch((error) => {
+            console.log(error.response);
+            return error.response;
+        });
     }
 
     // Requires API call to backend

@@ -8,6 +8,7 @@ const Register = () => {
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [error, setError] = useState("")
 
     const [successfulReg, setSuccessfulReg] = useState(false)
 
@@ -18,11 +19,15 @@ const Register = () => {
     const userRegister = () => {
         LogInService.userRegister(email, password, firstName, lastName).then((response) => {
             if (response.data.status === "SUCCESS") {
-                console.log(response.data)
+                console.log('Successful registration')
                 setSuccessfulReg(true)
+            } 
+            else {
+                console.log(response.data.message)
+                // response.data.message.forEach((msg) => {
+                //     setError(msg);
+                // })
             }
-        }).catch((response) => {
-            console.log(response)
         })
     }
 
@@ -120,6 +125,12 @@ const Register = () => {
                                     onChange={e => setPassword(e.target.value)} />
                             </div>
 
+                            {
+                                (error ? <>
+                                <h1 className="text-sm text-red-standard">{error}</h1>
+                                </> 
+                                    : <></>)
+                            }
 
 
                             <div className="pt-5 flex">
@@ -127,6 +138,7 @@ const Register = () => {
                                     onClick={userRegister}>Sign up</button>
                                 <Link to="/login" className="mx-2 py-2 px-2 self-end">Log In to existing Account</Link>
                             </div>
+
                         </div>
 
                         <div>
