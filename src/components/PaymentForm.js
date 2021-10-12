@@ -8,22 +8,22 @@ const CARD_OPTIONS = {
     iconStyle: "solid",
     style: {
         base: {
-            iconColor: "#c4f0ff",
+            iconColor: "#F3E8C9",
             color: "#fff",
             fontWeight: 500,
             fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
             fontSize: "16px",
             fontSmoothing: "antialiased",
             ":-webkit-autofill": {
-                color: "#fce883"
+                color: "#F3E8C9"
             },
             "::placeholder": {
-                color: "#87bbfd"
+                color: "#F3E8C9"
             }
         },
         invalid: {
-            iconColor: "#ffc7ee", 
-            color: "#ffc7ee"
+            iconColor: "#F3E8C9", 
+            color: "#F3E8C9"
         }
     }
 };
