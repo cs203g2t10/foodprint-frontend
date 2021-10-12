@@ -12,8 +12,8 @@ class AdminService {
         }
     }
 
-    getAllUsers = () => {
-        return axios.get(ADMIN_REST_API_URL+"/", this.headers());
+    getAllUsers = async () => {
+        return await axios.get(ADMIN_REST_API_URL+"/", this.headers());
     }
 
     deleteUser = (id:number) => {
@@ -31,6 +31,25 @@ class AdminService {
             roles
         };
         return axios.patch(url, requestBody, this.headers());
+    }
+
+    adminCreateUser = (email: string, firstName: string, lastName: string, password: string, roles: string) => {
+        const url = ADMIN_REST_API_URL+"/";
+        const requestBody = {
+            email,
+            firstName,
+            lastName,
+            password,
+            roles,
+            lastLogin: new Date(),
+            registeredOn: new Date(),
+            reservations: [],
+            vaccinationName: "",
+            vaccinationDob: "",
+            token: [],
+            vaccinated: false
+        }
+        return axios.post(url, requestBody, this.headers());
     }
 }
 
