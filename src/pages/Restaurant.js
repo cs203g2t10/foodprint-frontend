@@ -59,10 +59,6 @@ const Restaurant = () => {
         }
     }
 
-    // if (restaurantDetails.pictures.length > 0) {
-    //     imageUrl = restaurantDetails.pictures[0].url;
-    // }
-
     return (
         <div>
             <div className>
