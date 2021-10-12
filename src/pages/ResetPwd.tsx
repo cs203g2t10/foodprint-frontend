@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import ResetPwdService from '../services/ResetPwdService';
 import queryString from 'query-string'
 
-
-
 const ResetPwd = (props: any) => {
     const value=queryString.parse(window.location.search);
     const emailToken=value.token;
@@ -54,7 +52,7 @@ const ResetPwd = (props: any) => {
                         {
                             (success ?
                                 <>
-                                    <div className="pb-4">Your password has been successfully changed!</div>
+                                    <div className="pb-6">Your password has been successfully changed!</div>
                                     <Link to="/login" className="bg-green-standard mt-4 pt-2 pb-3 px-5 text-center text-white-standard hover:shadow-lg rounded-xl">Proceed to log in!</Link>
                                 </>
                                 : <div className="flex">
@@ -64,7 +62,7 @@ const ResetPwd = (props: any) => {
                         }
                     </div>
                     <div>
-                        <img className="mt-16 my-7 w-80 transform scale-90" src="/images/login.png" alt="log in illustration" />
+                        <img className="mt-16 my-7 w-85 transform scale-90" src="/images/login.png" alt="log in illustration" />
                     </div>
                 </div>
             </div>

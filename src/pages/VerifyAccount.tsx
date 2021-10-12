@@ -58,7 +58,7 @@ const VerifyAccount = () => {
                             (success ?
                                 <>
                                     <div className="pb-4">Your account has been verified!</div>
-                                    <Link to="/login" className="bg-green-standard mt-4 pt-2 pb-3 px-5 text-center text-white-standard hover:shadow-lg rounded-xl">Proceed to log in !</Link>
+                                    <Link to="/login" className="bg-green-standard mt-4 pt-2 pb-3 px-5 text-center text-white-standard hover:shadow-lg rounded-xl">Proceed to log in!</Link>
                                 </>
                                 : <div className="flex">
                                     <button className="rounded-xl px-5 border hover:shadow text-justify h-8"
