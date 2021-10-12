@@ -7,8 +7,8 @@ const ManageUser = () => {
 
     useEffect(() => {
         AdminService.getAllUsers().then((response) => {
-            console.log(response.data)
-            setUserDetails(response.data)
+            console.log(response.data.content)
+            setUserDetails(response.data.content)
         })
     }, [])
 
@@ -20,10 +20,12 @@ const ManageUser = () => {
             <div className="pt-1 text-center pb-7">Please only edit those fields that you wish to change</div>
             <div className="mx-14 border pt-6 pb-8 rounded shadow">
                 <div className="grid grid-cols-1 gap-y-9 items-center">
-                    <div className="mx-10 flex gap-x-24 px-20">
-                        <p className="">User ID</p>
-                        <p>Email</p>
-                        <p>Name</p>
+                    <div className="grid grid-cols-12 gap-x-24 mx-10 justify-between">
+                        <p className="col-span-1"></p>
+                        <p className="col-span-1">UserID</p>
+                        <p className="col-span-3">Email</p>
+                        <p className="col-span-2">Name</p>
+
                         <p>Role</p>
                     </div>
                     {

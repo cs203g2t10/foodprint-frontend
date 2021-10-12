@@ -11,8 +11,9 @@ import Restaurants from "./pages/Restaurants";
 import Restaurant from "./pages/Restaurant";
 import Payment from "./pages/Payment";
 import ManageUser from "./pages/ManageUser";
-import ForgotPassword from "./pages/ForgotPassword";
+import RequestResetPwd from "./pages/RequestResetPwd";
 import VerifyAccount from "./pages/VerifyAccount";
+import ResetPwd from "./pages/ResetPwd";
 
 export default function Routes() {
     let location = useLocation();
@@ -53,7 +54,10 @@ export default function Routes() {
                 <Route path="/payment/:id" children={<Payment />}>
                 </Route>
                 <Route exact path="/forgotpassword">
-                    <ForgotPassword />
+                    <RequestResetPwd />
+                </Route>
+                <Route exact path="/resetpassword">
+                    <ResetPwd />
                 </Route>
                 <Route>
                     <NotFound />

@@ -1,12 +1,11 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import ResetPwdService from '../services/ResetPwdService'
 
-
-
 const ResetPwd = () => {
     const [email, setEmail] = useState(window.sessionStorage.getItem("email"))
+
+    const [successfulReq, setSuccessfulReq] = useState(false)
 
     const validateForm = () => {
         return email > 0;
@@ -14,10 +13,12 @@ const ResetPwd = () => {
 
     const requestResetPwd = () => {
         ResetPwdService.requestResetPwd(email).then((response) => {
-            if (response.data.status === "SUCCESS") {
-                console.log(response.data.token)
-                window.sessionStorage.setItem("token", response.data.token)
+            if (response.data === "Email sent, check your inbox!") {
+                console.log(response.data)
+                setSuccessfulReq(true)
             }
+        }).catch((response) => {
+            console.log(response)
         })
     }
 
@@ -39,6 +40,10 @@ const ResetPwd = () => {
                             <button className="rounded-xl px-5 bg-green-standard text-white-standard shadow-sm hover:shadow-md text-justify h-8" disabled={!validateForm}
                                 onClick={requestResetPwd}>Reset Password</button>
                         </div>
+
+                        {
+                            (successfulReq ? <div className="text-green-standard pb-4 mt-4">We have sent you an email!</div> : <div className=""></div>)
+                        }
                     </div>
 
                     <div>
