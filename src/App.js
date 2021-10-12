@@ -11,6 +11,7 @@ function App() {
   return (
     <div className="App" >
       <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated}}>
+        
         <Header />
         <Routes />
         <Footer/>

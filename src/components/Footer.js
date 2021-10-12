@@ -5,7 +5,7 @@ import "../css/waves.css"
 const Footer = () => {
     return (
         <div className = "mt-8 h-48">
-            <div className = "object-scale-down h-24 w-full">
+            <div className = "object-contain object-scale-down h-24 w-full">
                 <div className="flex absolute mt-6 w-3/5">
                     <div className = "md:pl-24 md:mt-14">
                         <h1 className = "text-green-standard font-bold lg:text-4xl tracking-wide">foodPrint</h1>

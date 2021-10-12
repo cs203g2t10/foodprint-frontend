@@ -8,6 +8,7 @@ const Register = () => {
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [error, setError] = useState("")
 
     const [successfulReg, setSuccessfulReg] = useState(false)
 
@@ -18,11 +19,15 @@ const Register = () => {
     const userRegister = () => {
         LogInService.userRegister(email, password, firstName, lastName).then((response) => {
             if (response.data.status === "SUCCESS") {
-                console.log(response.data)
+                console.log('Successful registration')
                 setSuccessfulReg(true)
+            } 
+            else {
+                console.log(response.data.message)
+                // response.data.message.forEach((msg) => {
+                //     setError(msg);
+                // })
             }
-        }).catch((response) => {
-            console.log(response)
         })
     }
 
@@ -83,54 +88,60 @@ const Register = () => {
 
             <div className="bg-yellow-standard h-screen ">
                 <div className="flex justify-center">
-                    <div className="mt-10 mb-10 bg-white-standard w-7/12 grid md:grid-cols-2 shadow-xxl shadow rounded-xxl">
+                    <div className="mt-20 mb-10 bg-white-standard w-7/12 grid md:grid-cols-2 shadow-xxl shadow rounded-xxl">
                         <div className="ml-16 mt-12 mb-10">
-                            <h1 className="text-3xl font-bold mb-2">Register</h1>
+                            <h1 className="text-3xl font-bold mb-2 text-green-standard">Register</h1>
                             <h2 className="text-grey-lighter mb-5">Sign up now to get started!</h2>
 
                             <div className="mb-4">
-                                <h1 className="pl-4">First Name</h1>
+                                {/* <h1 className="pl-4">First Name</h1> */}
                                 <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"
-                                    placeholder="Bobby"
+                                    placeholder="Your first name"
                                     value={firstName}
                                     onChange={e => setFirstName(e.target.value)} />
                             </div>
 
                             <div className="mb-4">
-                                <h1 className="pl-4">Last Name</h1>
+                                {/* <h1 className="pl-4">Last Name</h1> */}
                                 <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"
-                                    placeholder="Tan"
+                                    placeholder="Your last name"
                                     value={lastName}
                                     onChange={e => setLastName(e.target.value)} />
                             </div>
 
                             <div className="mb-4">
-                                <h1 className="pl-4">Email</h1>
-                                <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"
-                                    placeholder="test@example.com"
+                                {/* <h1 className="pl-4">Email</h1> */}
+                                <input className="text-sm focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"
+                                    placeholder="Your email"
                                     type="email"
                                     onChange={e => setEmail(e.target.value)} />
                             </div>
 
                             <div className="">
-                                <h1 className="pl-4">Password</h1>
                                 <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"
                                     placeholder="********"
                                     type="password"
                                     onChange={e => setPassword(e.target.value)} />
                             </div>
 
+                            {
+                                (error ? <>
+                                <h1 className="text-sm text-red-standard">{error}</h1>
+                                </> 
+                                    : <></>)
+                            }
 
 
                             <div className="pt-5 flex">
-                                <button className="rounded-xl px-5 border hover:shadow text-justify h-8" disabled={!validateForm}
+                                <button className="rounded-xl px-5 bg-green-standard text-white-standard shadow hover:shadow-md text-justify h-8" disabled={!validateForm}
                                     onClick={userRegister}>Sign up</button>
-                                <Link to="/login" className="mx-2 py-2 px-2 self-end">Log In to existing Account</Link>
+                                <Link to="/login" className="ml-6 py-1 px-5 self-end rounded-full text-green-standard border">Log In to existing Account</Link>
                             </div>
+
                         </div>
 
                         <div>
-                            <img className="mt-16 my-7 transform scale-90" src="/images/login.png" alt="log in illustration" />
+                            <img className="mt-16 my-7 transform scale-90" src="/images/register.png" alt="Register illustration" />
                         </div>
                     </div>
                 </div>
