@@ -5,6 +5,7 @@ const RESETPWD_REST_API_URL = process.env.REACT_APP_CF_PAGES ? "https://api.food
 
 type ResetPwdDetails = {
     email: String
+    password: String
 };
 
 class ResetPwdService {
@@ -27,9 +28,17 @@ class ResetPwdService {
         let decodedHeader : any = jwt_decode(token, { header: true });
         console.log(decodedHeader);
         let resetPwdDetails : ResetPwdDetails = {
-            email: decodedHeader.email
+            email: decodedHeader.email,
+            password: decodedHeader.password
         }
         return resetPwdDetails;
+    }
+
+    resetPwd = (emailToken:any, newPassword: string) => {
+        const requestBody = {
+            "password": newPassword
+        };
+        return axios.post(RESETPWD_REST_API_URL+"/resetpwd/"+emailToken, requestBody);
     }
 }
 
