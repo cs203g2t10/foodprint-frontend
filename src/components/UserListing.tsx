@@ -3,15 +3,18 @@ import AdminService from '../services/AdminService';
 
 const UserListing = (props: any) => {
 
+    const {setDeleteMessage} = props;
+
     const [edit, setEdit] = useState(false);
     const [email, setEmail] = useState(props.email);
     const [firstName, setFirstName] = useState(props.firstName);
     const [lastName, setLastName] = useState(props.lastName);
     const [roles, setRoles] = useState(props.roles);
 
-    const deleteUser: any = (id: number) => {
+    const deleteUser: any = async (id: number) => {
         console.log(id)
-        AdminService.deleteUser(id);
+        await AdminService.deleteUser(id);
+        setDeleteMessage("User with id: " + id + " has been deleted.")
     }
 
     const updateUserDetails: any = (id: number, email: any, firstName: any, lastName: any, roles: any) => {
@@ -23,10 +26,10 @@ const UserListing = (props: any) => {
             <button className="border px-2 rounded bg-red-standard text-white-standard text-center" onClick={() => { deleteUser(props.id) }}>X</button>
             <div>{props.id}</div>
             {(edit ? <>
-                <input className=" border pl-2 rounded col-span-3" onChange={(e) => { setEmail(e.target.value) }} placeholder={email} />
-                <input className=" border pl-2 rounded col-span-1" onChange={(e) => { setFirstName(e.target.value) }} placeholder={firstName} />
-                <input className=" border pl-2 rounded col-span-1" onChange={(e) => { setLastName(e.target.value) }} placeholder={lastName} />
-                <input className=" border pl-2 rounded col-span-2" onChange={(e) => { setRoles(e.target.value) }} placeholder={roles} />
+                <input className=" border pl-2 rounded col-span-3 focus:outline-none" onChange={(e) => { setEmail(e.target.value) }} value={email} />
+                <input className=" border pl-2 rounded col-span-1 focus:outline-none" onChange={(e) => { setFirstName(e.target.value) }} value={firstName} />
+                <input className=" border pl-2 rounded col-span-1 focus:outline-none" onChange={(e) => { setLastName(e.target.value) }} value={lastName} />
+                <input className=" border pl-2 rounded col-span-2 focus:outline-none" onChange={(e) => { setRoles(e.target.value) }} value={roles} />
                 <button className=" border px-2 rounded bg-green-standard text-white-standard hover:shadow text-center"
                     onClick={() => {
                         updateUserDetails(props.id, email, firstName, lastName, roles)

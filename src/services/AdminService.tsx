@@ -23,7 +23,7 @@ class AdminService {
 
     updateUser = (id:number, email:any, firstName:any, lastName:any, roles:any) => {
         console.log(id, email, firstName, lastName, roles);
-        const url = ADMIN_REST_API_URL+"/"+id;
+        const url = ADMIN_REST_API_URL+"/admin/"+id;
         const requestBody = {
             id,
             email,

@@ -9,6 +9,7 @@ const ManageUser = () => {
     const [createUser, setCreateUser] = useState(false);
     const [numPages, setNumPages] = useState(0);
     const [currPage, setCurrPage] = useState(0);
+    const [deleteMessage, setDeleteMessage] = useState("");
 
     useEffect(() => {
         AdminService.getAllUsers(currPage).then((response) => {
@@ -16,7 +17,7 @@ const ManageUser = () => {
             setUserDetails(response.data.content)
             setNumPages(response.data.totalPages)
         })
-    }, [currPage])
+    }, [currPage, createUser, deleteMessage])
 
 
 
@@ -40,13 +41,14 @@ const ManageUser = () => {
                         userDetails?.map(
                             (user: any) => {
                                 return (
-                                    <UserListing id={user.id} email={user.email} firstName={user.firstName} lastName={user.lastName} roles={user.roles} key={user.id} />
+                                    <UserListing id={user.id} email={user.email} firstName={user.firstName} lastName={user.lastName} roles={user.roles} key={user.id} {...{setDeleteMessage}}/>
                                 )
                             }
                         )
                     }
                 </div>
             </div>
+            <p className="mx-auto text-green-standard text-center pt-4">{deleteMessage}</p>
             <PageLinks {...{ numPages, currPage, setCurrPage}} />
             <div>
             </div>

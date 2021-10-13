@@ -58,7 +58,7 @@ const ReservationModal = (
     };
 
     return <Modal lineItems={lineItems} isOpen={modalIsOpen} className="mt-20" style={customStyles}>
-        <div className="flex grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-64 pb-10 bg-white-dirtyWhite">
+        <div className="grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-64 pb-10 bg-white-dirtyWhite">
             <h1 className=" flex text-5xl pt-12 text-green-standard mx-20 font-bold">Reservation</h1>
             <h1 className=" flex text-md mx-20 mb-2 text-grey-standard font-light">Please confirm your order below </h1>
             <div className="grid lg:grid-cols-2 gap-x-16 mx-20">
@@ -68,7 +68,7 @@ const ReservationModal = (
                             lineItems?.map(
                                 lineItem =>
                                     <div key={lineItem.food.foodId}>
-                                        <div className="grid grid-cols-7 flex bg-white-standard rounded-xl justify-center items-center gap-x-2 py-2 mb-3 ">
+                                        <div className="grid grid-cols-7 bg-white-standard rounded-xl justify-center items-center gap-x-2 py-2 mb-3 ">
                                             <div className="col-span-2 ml-5">
                                                 <img src="/images/sushi.jpg" className=" w-16 h-16 shadow-md rounded-full" alt="food pic" />
                                             </div>
@@ -134,7 +134,7 @@ const ReservationModal = (
                             <h1 className="text-sm text-grey-standard">I hereby declare that all of the guests are vaccinated (compulsory)</h1>
                         </div>
                     </div>
-                    <div className="flex grid grid-cols-2 gap-x-10 mr-2 justify-center">
+                    <div className="grid grid-cols-2 gap-x-10 mr-2 justify-center">
                         <button className=" bg-green-standard text-white-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border" onClick={makeReservation} disabled={reserved}>Confirm</button>
                         <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setModal(false)}>Edit order</button>
                     </div>

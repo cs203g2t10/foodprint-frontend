@@ -15,7 +15,7 @@ const RestaurantList = () => {
 
     return (
         <div>
-            <div className="flex justify-center grid grid-cols-1 mx-64">
+            <div className="justify-center grid grid-cols-1 mx-64">
                 {
                     restaurants?.map(
                         restaurant =>
