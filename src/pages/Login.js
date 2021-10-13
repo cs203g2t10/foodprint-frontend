@@ -59,9 +59,7 @@ const Login = () => {
                                 type="password"
                                 onChange={e => setPassword(e.target.value)} />
                         </div>
-
                         
-
                         <div className="flex pt-5">
                             <button className="rounded-xl px-5 mr-5 bg-green-standard shadow-sm hover:shadow-md text-white-standard text-justify h-8" disabled={!validateForm}
                                 onClick={userLogin}>Log in</button>
@@ -69,10 +67,9 @@ const Login = () => {
                         </div>
 
                         {
-                            (error ? <div className="py-2">{error}</div> : <></>)
+                            (error ? <div className="pt-3 pb-2 text-red-standard">{error}</div> : <></>)
                         }
 
-                        
                     </div>
 
 
