@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-import ResetPwdService from '../services/ResetPwdService';
+import { Link } from 'react-router-dom'
+import ResetPwdService from '../services/ResetPwdService'
 import queryString from 'query-string'
 
 const ResetPwd = (props: any) => {

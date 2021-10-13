@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import LogInService from '../services/LogInService'
 
 const Register = () => {
@@ -42,7 +42,6 @@ const Register = () => {
 
     if (successfulReg) {
         window.sessionStorage.setItem("email", email)
-        return <Redirect to="/verifyaccount" />
     }
 
     return (
@@ -135,13 +134,16 @@ const Register = () => {
 
                         {
                             (error ? <>
-                                <h1 className="text-sm text-red-standard">{error}</h1>
+                                <h1 className="text-sm text-red-standard mt-2">{error}</h1>
                             </>
                                 : <></>)
                         }
+                        {
+                            (successfulReg ? <div className="text-green-standard mt-2">We have sent you an email!</div> : <div className=""></div>)
+                        }
 
 
-                        <div className="pt-5 flex">
+                        <div className="pt-5 pb-5 flex">
                             <button className="rounded-xl px-5 bg-green-standard text-white-standard shadow hover:shadow-md text-justify h-8" disabled={!validateForm}
                                 onClick={userRegister}>
                                 <span id="button-text">
@@ -152,8 +154,6 @@ const Register = () => {
                                     )}
                                 </span>
                             </button>
-
-
 
                             <Link to="/login" className="ml-6 py-1 px-5 self-end rounded-full text-green-standard border">Log In to existing Account</Link>
                         </div>
