@@ -64,19 +64,19 @@ const Profile = () => {
                             <div className="bg-white-dirtyWhite rounded-xxl h-96 shadow-md px-10 py-6 mb-8">
                                 <h1 className="text-green-standard text-2xl font-bold tracking-wide pb-5">Upcoming Reservations</h1>
                                 {/* <div className="grid grid-cols-6 mb-2">
-                                    <h2 className="my-auto text-xl col-span-3 text-grey-standard text-sm">Restaurant</h2>
-                                    <h2 className="my-auto text-xl col-span-1 text-grey-standard text-xs">Date</h2>
-                                    <h2 className="my-auto text-xl col-span-1 text-grey-standard text-xs">Orders</h2>
+                                    <h2 className="my-auto col-span-3 text-grey-standard text-sm">Restaurant</h2>
+                                    <h2 className="my-auto col-span-1 text-grey-standard text-xs">Date</h2>
+                                    <h2 className="my-auto col-span-1 text-grey-standard text-xs">Orders</h2>
                                 </div> */}
                                 <div className="overflow-y-auto h-64">
                                     {
                                         upcomingReservation.map(upcomingReservation =>
-                                            <Link to={"/reservation/" + upcomingReservation.date} key={upcomingReservation.reservationId} >
+                                            <div key={upcomingReservation.reservationId} >
                                                 <div className="flex">
                                                     <h1 className="pr-8">{upcomingReservation.date}</h1>
                                                     <h1>{upcomingReservation.restaurantId}</h1>
                                                 </div>
-                                            </Link>
+                                            </div>
                                         )
                                     }
                                 </div>
