@@ -32,7 +32,7 @@ const Home = () => {
     }, [controls, inView]);
 
     const fadeInRight = {
-        hidden: { x: "300px" },
+        hidden: { x: "100px" },
 
         visible: {
             x: "0px",
