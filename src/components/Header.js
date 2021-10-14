@@ -8,13 +8,18 @@ const Header = () => {
     const { isAuthenticated, userHasAuthenticated } = useAppContext();
 
     const handleLogout = () => {
-        userHasAuthenticated(false)
-        window.sessionStorage.removeItem("token")
+        userHasAuthenticated(false);
+        window.sessionStorage.removeItem("token");
     }
 
     const getUserName = () => {
         const userInfo = LogInService.getUserDetails();
         return `${userInfo.userFname} ${userInfo.userLname}`;
+    }
+
+    const isUserAdmin = () => {
+        const userInfo = LogInService.getUserDetails();
+        return userInfo.userAuthorities.includes("FP_ADMIN");
     }
 
     return (
@@ -27,11 +32,21 @@ const Header = () => {
                             <Link to='/restaurants' className="inline-block align-middle">Marketplace</Link>
                             </div>
                         <div className="justify-self-end ">
-                            <Link to='/about' className="mx-5">About Us</Link>
+                            <Link to='/about' className="mx-2">About Us</Link>
+                            {isUserAdmin() ? (
+                                <>
+                                    <Link to='/ManageUser' className="mx-2">Management Console</Link>
+                                </>
+                            ) : (
+                                <>
+
+                                </>
+                            )
+                            }
                             {isAuthenticated ? (
                                 <>
-                                    <span>{getUserName()}</span>
-                                    <Link onClick={handleLogout} to="/login" className="mx-5">Logout</Link>
+                                    <Link to='/profile' className="mx-2">{getUserName()}</Link>
+                                    <Link onClick={handleLogout} to="/login" className="mx-2">Logout</Link>
                                 </>
                             ) : (
                                 <>
