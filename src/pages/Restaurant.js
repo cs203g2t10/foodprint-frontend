@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
 import RestaurantService from '../services/RestaurantService'
 import ReservationModal from '../components/ReservationModal'
@@ -14,24 +14,19 @@ const Restaurant = () => {
     const [food, setFood] = useState([]);
     const [lineItems, setLineItems] = useState([]);
     const [modalIsOpen, setModal] = useState(false);
+    const [imageUrl, setImageUrl] = useState("/images/shop.jpg")
 
     const [finalPrice, setFinalPrice] = useState(0);
     const [haveFood, setHaveFood] = useState(false);
     const [totalPrice, setTotalPrice] = useState(0);
 
-    let imageUrl = "/images/shop.jpg";
-
     useEffect(() => {
         RestaurantService.getRestaurant(id.id).then((response) => {
-            console.log(response.data.pictures.length)
             setRestaurantDetails(response.data)
+            if (response.data.pictures.length > 0) {
+                setImageUrl(response.data.pictures[0].url);
+            }
         })
-    }, [id])
-
-    useRef(() => {
-        if (restaurantDetails.pictures.length > 0) {
-            imageUrl = restaurantDetails.pictures[0].url;
-        }
     }, [id])
 
     useEffect(() => {
