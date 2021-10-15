@@ -57,7 +57,7 @@ const Payment = () => {
                         <div className="overflow-y-auto max-h-64">
                             {
                                 reservationDetails.lineItems?.map(reservationOrders =>
-                                    <Link to={"/reservation/" + reservationOrders.foodName} key={reservationOrders.reservationId} >
+                                    <div key={reservationOrders.reservationId} >
                                         <div className="mx-8 grid grid-cols-7 bg-white-standard rounded-xl justify-center items-center py-2 mb-3 ">
                                             <div className="col-span-2 ml-8">
                                                 <img src="/images/sushi.jpg" className=" w-14 h-14 shadow-md rounded-full" alt="food pic" />
@@ -67,7 +67,7 @@ const Payment = () => {
                                             </div>
                                             <h1 className="text-grey-light text-sm">x {reservationOrders.quantity}</h1>
                                         </div>
-                                    </Link>
+                                    </div>
                                 )
                             }
                         </div>

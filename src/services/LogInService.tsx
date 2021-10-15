@@ -7,6 +7,7 @@ type UserDetails = {
     email: String
     userFname: String
     userLname: String
+    userAuthorities: String[]
 };
 
 class LogInService {
@@ -58,7 +59,8 @@ class LogInService {
             return {
                 email: "",
                 userFname: "",
-                userLname: ""
+                userLname: "",
+                userAuthorities: []
             }
         }
 
@@ -67,7 +69,8 @@ class LogInService {
         let userDetails : UserDetails = {
             email: decodedHeader.email,
             userFname: decodedHeader.userFname,
-            userLname: decodedHeader.userLname
+            userLname: decodedHeader.userLname,
+            userAuthorities: decodedHeader.userAuthorities
         }
         return userDetails;
     }
