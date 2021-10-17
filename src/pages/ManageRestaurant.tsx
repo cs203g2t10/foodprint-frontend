@@ -21,6 +21,9 @@ const ManageRestaurant = () => {
     }, [isAuthorized])
 
     useEffect(() => {
+        if (restaurantId===0) {
+            return;
+        }
         RestaurantService.getRestaurant(restaurantId).then((response) => {
             console.log(response.data);
             setRestaurantDetails(response.data)
