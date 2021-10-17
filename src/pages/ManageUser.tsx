@@ -23,19 +23,19 @@ const ManageUser = () => {
 
     return (
         <div>
-            <h1 className="text-center text-2xl pt-10">Manage Users</h1>
-            <div className="pt-1 text-center pb-7">Please only edit those fields that you wish to change</div>
-            <button className="mx-20 mb-3 border px-2 py-1 bg-green-standard rounded text-white-standard"
+            <h1 className="text-center font-bold tracking-wide text-4xl text-green-standard pt-10">Manage Users</h1>
+            <div className="pt-1 text-center pb-7 text-grey-standard">Please only edit those fields that you wish to change</div>
+            <button className="mx-20 mb-3 border px-4 py-1 bg-green-standard rounded-lg text-white-standard"
                 onClick={() => { setCreateUser(true) }}>Create new User</button>
-            <div className="mx-14 border pt-6 pb-8 rounded shadow">
+            <div className="mx-14 bg-white-offWhite pt-6 pb-8 rounded-xxl shadow">
                 <div className="grid grid-cols-1 gap-y-9 items-center">
-                    <div className="grid grid-cols-12 gap-x-6 mx-10">
+                    <div className="grid grid-cols-11 gap-x-6 mx-10">
                         <div className="col-span-1"></div>
-                        <p className="col-span-1">UserID</p>
-                        <p className="col-span-3">Email</p>
-                        <p className="col-span-2">Name</p>
-                        <p className="col-span-2">Role</p>
-                        <p>Edit</p>
+                        <p className="col-span-1 text-lg text-green-standard">UserID</p>
+                        <p className="col-span-3 text-lg text-green-standard">Email</p>
+                        <p className="col-span-2 text-lg text-green-standard">Name</p>
+                        <p className="col-span-2 text-lg text-green-standard">Role</p>
+                        <p className="col-span-2 text-lg text-green-standard">Edit</p>
                     </div>
                     {
                         userDetails?.map(

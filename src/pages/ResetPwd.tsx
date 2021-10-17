@@ -9,15 +9,25 @@ const ResetPwd = (props: any) => {
     console.log("token", emailToken)
 
     const [newPassword, setNewPassword] = useState("");
+    const [confirmNewPassword, setConfirmNewPassword] = useState("");
     const [success, setSuccess] = useState(false);
-    const [invalidToken, setInvalidToken] = useState(false);
+    const [error, setError] = useState("");
+    const [regexp] = useState("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$");
 
-    const validateForm = () => {
-        return newPassword.length > 0;
+    const validateForm = (newPassword: string, confirmNewPassword: string) => {
+        if (newPassword.length === 0 || !newPassword.match(regexp) || !confirmNewPassword.match(regexp)) {
+            setError("Password must have 1 letter, 1 number and at least 8 characters");
+            return false;
+        }
+        if (newPassword !== confirmNewPassword) {
+            setError("Passwords don't match");
+            return false;
+        }
+        return true;
     }
 
     const resetPwd = () => {
-        if (!validateForm) {
+        if (!validateForm(newPassword, confirmNewPassword)) {
             return;
         }
 
@@ -25,12 +35,12 @@ const ResetPwd = (props: any) => {
         response.then(resp => {
             console.log(resp.data.status);
             setSuccess(true);
-            if (invalidToken) {
-                setInvalidToken(false);
-            } 
+            if (error) {
+                console.log(error)
+                setError("");
+            }
         }).catch(error => {
-            console.log(error);
-            setInvalidToken(true);
+            setError("Invalid token");
         })
     }
 
@@ -45,9 +55,13 @@ const ResetPwd = (props: any) => {
                                 placeholder="New password"
                                 type="password"
                                 onChange={e => setNewPassword(e.target.value)} />
+                            <input className="focus:outline-none px-4 py-1 mt-4 h-10 rounded-full border border-grey-lightest md:w-11/12"
+                                placeholder="Confirm new password"
+                                type="password"
+                                onChange={e => setConfirmNewPassword(e.target.value)} />
                         </div>
                         {
-                            (invalidToken ? <div className="text-red-standard pb-4">Your token is invalid. Please try again!</div> : <div className=""></div>)
+                            (error ? <div className="pt-3 pb-2 text-red-standard">{error}</div> : <></>)
                         }
                         {
                             (success ?

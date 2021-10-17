@@ -57,7 +57,7 @@ const ReservationModal = (
         overlay: { zIndex: 1000 }
     };
 
-    return <Modal lineItems={lineItems} isOpen={modalIsOpen} className="mt-20" style={customStyles}>
+    return <Modal lineItems={lineItems} isOpen={modalIsOpen} className="mt-20 focus:outline-none" style={customStyles}>
         <div className="grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-64 pb-10 bg-white-dirtyWhite">
             <h1 className=" flex text-5xl pt-12 text-green-standard mx-20 font-bold">Reservation</h1>
             <h1 className=" flex text-md mx-20 mb-2 text-grey-standard font-light">Please confirm your order below </h1>

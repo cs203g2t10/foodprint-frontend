@@ -32,7 +32,7 @@ const CreateUserModal = (
     }
 
     return (
-        <Modal style={customStyles} isOpen={createUser} className="mt-20">
+        <Modal style={customStyles} isOpen={createUser} className="mt-20 focus:outline-none">
             <div className="grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-64 pb-10 bg-white-dirtyWhite">
                 <h1 className=" flex text-5xl pt-12 text-green-standard font-bold mx-auto">Create User</h1>
                 <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Please fill up all details below </h1>
