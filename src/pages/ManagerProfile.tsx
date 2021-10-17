@@ -6,16 +6,14 @@ import LogInService, { UserDetails } from '../services/LogInService';
 
 const ManagerProfile = () => {
     const { isAuthenticated } = useAppContext() || {}
-    const [userDetails, setUserDetails] = useState<UserDetails>();
     const [isAuthorized, setAuthorized] = useState(false);
 
     useEffect(() => {
         const userInfo: UserDetails = LogInService.getUserDetails();
-        setUserDetails(userDetails);
         if (userInfo.userAuthorities.includes("FP_MANAGER")) {
             setAuthorized(true);
         }
-    }, [userDetails])
+    }, [])
 
     const getUserName = () => {
         const userInfo: UserDetails = LogInService.getUserDetails();

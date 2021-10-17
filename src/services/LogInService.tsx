@@ -8,6 +8,7 @@ type UserDetails = {
     userFname: String
     userLname: String
     userAuthorities: String[]
+    restaurantId: any
 };
 
 class LogInService {
@@ -60,7 +61,8 @@ class LogInService {
                 email: "",
                 userFname: "",
                 userLname: "",
-                userAuthorities: []
+                userAuthorities: [],
+                restaurantId: null
             }
         }
 
@@ -70,7 +72,8 @@ class LogInService {
             email: decodedHeader.email,
             userFname: decodedHeader.userFname,
             userLname: decodedHeader.userLname,
-            userAuthorities: decodedHeader.userAuthorities
+            userAuthorities: decodedHeader.userAuthorities,
+            restaurantId: decodedHeader.restaurantId
         }
         return userDetails;
     }
