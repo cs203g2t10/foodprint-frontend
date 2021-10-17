@@ -14,6 +14,7 @@ import ManageUser from "./pages/ManageUser";
 import RequestResetPwd from "./pages/RequestResetPwd";
 import VerifyAccount from "./pages/VerifyAccount";
 import ResetPwd from "./pages/ResetPwd";
+import ManagerProfile from "./pages/ManagerProfile";
 
 export default function Routes() {
     let location = useLocation();
@@ -58,6 +59,9 @@ export default function Routes() {
                 </Route>
                 <Route exact path="/resetpassword">
                     <ResetPwd />
+                </Route>
+                <Route exact path="/manager">
+                    <ManagerProfile />
                 </Route>
                 <Route>
                     <NotFound />
