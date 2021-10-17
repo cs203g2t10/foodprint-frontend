@@ -3,6 +3,8 @@ import AdminService from '../services/AdminService';
 import UserListing from '../components/UserListing';
 import CreateUserModal from '../components/CreateUserModal';
 import PageLinks from '../components/PageLinks';
+import LogInService, { UserDetails } from '../services/LogInService';
+import Restricted from '../components/errors/Restricted';
 
 const ManageUser = () => {
     const [userDetails, setUserDetails] = useState([]);
@@ -10,6 +12,14 @@ const ManageUser = () => {
     const [numPages, setNumPages] = useState(0);
     const [currPage, setCurrPage] = useState(0);
     const [deleteMessage, setDeleteMessage] = useState("");
+    const [isAuthorized, setAuthorized] = useState(false);
+
+    useEffect(() => {
+        const userInfo: UserDetails = LogInService.getUserDetails();
+        if (userInfo.userAuthorities.includes("FP_ADMIN")){
+            setAuthorized(true);
+        }
+    }, [])
 
     useEffect(() => {
         AdminService.getAllUsers(currPage).then((response) => {
@@ -19,7 +29,9 @@ const ManageUser = () => {
         })
     }, [currPage, createUser, deleteMessage])
 
-
+    if (!isAuthorized) {
+        return (<Restricted/>)
+    }
 
     return (
         <div>

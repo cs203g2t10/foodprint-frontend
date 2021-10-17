@@ -5,7 +5,7 @@ import { useAppContext } from '../lib/contextLib'
 import LogInService from '../services/LogInService'
 import type { UserDetails } from '../services/LogInService';
 import ReservationService from '../services/ReservationService';
-import Unauthorized from '../components/errors/Unauthorized';
+import Restricted from '../components/errors/Restricted';
 
 const Profile = () => {
     const { isAuthenticated } = useAppContext() || {}
@@ -102,7 +102,7 @@ const Profile = () => {
                     </div>
 
                 </>
-            ) : (<Unauthorized/>)}
+            ) : (<Restricted/>)}
         </div>
     )
 }

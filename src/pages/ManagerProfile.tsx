@@ -1,23 +1,35 @@
-import React from 'react'
-import Unauthorized from '../components/errors/Unauthorized';
+import React, { useEffect, useState } from 'react'
+import Restricted from '../components/errors/Restricted';
 import { useAppContext } from '../lib/contextLib';
 import LogInService, { UserDetails } from '../services/LogInService';
 
 const ManagerProfile = () => {
     const { isAuthenticated } = useAppContext() || {}
+    const [userDetails, setUserDetails] = useState<UserDetails>();
+    const [isAuthorized, setAuthorized] = useState(false);
+
+    useEffect(() => {
+        const userInfo: UserDetails = LogInService.getUserDetails();
+        setUserDetails(userDetails);
+        if (userInfo.userAuthorities.includes("FP_MANAGER")){
+            setAuthorized(true);
+        }
+    }, [userDetails])
+
     const getUserName = () => {
         const userInfo: UserDetails = LogInService.getUserDetails();
+        // console.log(userInfo)
         return `${userInfo.userFname} ${userInfo.userLname}`;
     }
 
 
     return (
         <div className="min-h-screen">
-            {isAuthenticated ? (
+            {isAuthenticated && isAuthorized? (
                 <>
                     <div className="">
                         <div className="absolute z-10">
-                            <div className="grid grid-cols-7 gap-x-16 mx-32 my-10">
+                            <div className="grid md:grid-cols-7 gap-x-16 mx-32 my-10">
                                 <div className="col-span-2">
                                     <img className="w-48 h-48 rounded-full" src="/images/shop.jpg" alt="shop" />
                                 </div>
@@ -76,7 +88,7 @@ const ManagerProfile = () => {
                         </div>
                     </div>
                 </>
-            ) : (<Unauthorized/>)}
+            ) : (<Restricted/>)}
         </div>
     )
 }
