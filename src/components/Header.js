@@ -25,17 +25,17 @@ const Header = () => {
     return (
         <header>
             <nav>
-                <div className="flex gap-2 bg-yellow-standard ">
-                    <div className="grid grid-cols-2 mx-20 my-4 w-full h-full">
-                        <div className="flex gap-x-8">
+                <div className="flex gap-2 bg-yellow-standard">
+                    <div className="grid grid-cols-2 mx-4 sm:mx-20 my-4 w-full h-full">
+                        <div className="flex flex-wrap gap-x-8">
                             <Link to='/' className="font-bold tracking-widest">FOODPRINT</Link>
                             <Link to='/restaurants' className="inline-block align-middle">Marketplace</Link>
                             </div>
-                        <div className="justify-self-end ">
+                        <div className="flex flex-wrap justify-self-end">
                             <Link to='/about' className="mx-2">About Us</Link>
                             {isUserAdmin() ? (
                                 <>
-                                    <Link to='/ManageUser' className="mx-2">Management Console</Link>
+                                    <Link to='/ManageUser' className="flex-col mx-2">Management Console</Link>
                                 </>
                             ) : (
                                 <>

@@ -58,18 +58,18 @@ const Restaurant = () => {
         <div>
             <div className>
                 <div className="absolute z-10">
-                    <div className="grid grid-cols-7 gap-x-16 mx-32 my-10">
-                        <div className="col-span-2">
+                    <div className="grid grid-cols-10 gap-x-16 md:mx-32 mx-4 my-10">
+                        <div className="col-span-5">
                             <img className="w-48 h-48 rounded-full" src={imageUrl} alt="shop" />
                         </div>
                         <div className="col-span-5">
-                            <h1 className="text-7xl  pb-4">{restaurantDetails.restaurantName}</h1>
-                            <p className="text-2xl ">{restaurantDetails.restaurantDesc}</p>
-                            <p className="text-1xl pb-4 ">{restaurantDetails.restaurantLocation}</p>
+                            <h1 className="text-4xl md:text-7xl pb-4">{restaurantDetails.restaurantName}</h1>
+                            <p className="text-lg md:text-2xl ">{restaurantDetails.restaurantDesc}</p>
+                            <p className="text-md md:pb-4 ">{restaurantDetails.restaurantLocation}</p>
                         </div>
                     </div>
                 </div>
-                <svg className="h-72 waves w-screen transform -rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="100 20 130 70" preserveAspectRatio="none" shape-rendering="auto">
+                <svg className="waves h-96 w-full transform -rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="100 20 130 70" preserveAspectRatio="none" shape-rendering="auto">
                     <defs>
                         <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
                     </defs>
@@ -79,7 +79,7 @@ const Restaurant = () => {
                 </svg>
             </div>
 
-            <div className="grid items-center justify-items-center lg:grid-cols-5 gap-y-16 mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
+            <div className="grid items-center justify-items-center xl:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-y-16 mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
                 {
                     food?.map(
                         food => <RestaurantFood {...{ food, setLineItems }} key={food.foodId} />

@@ -23,13 +23,12 @@ const Restaurants = () => {
         <div className="min-h-screen">
             <div className="bg-yellow-standard">
                 <img className="h-32 mx-auto pt-7" src="/images/burgers.png" alt="burger" />
-                <h1 className="flex items-center justify-center text-4xl font-bold tracking-wide">Make reservations, reduce food waste</h1>
-                <h1 className="flex items-center justify-center text-4xl font-bold tracking-wide">and save money</h1>
+                <h1 className="flex text-center justify-center text-4xl font-bold tracking-wide">Make reservations, reduce food waste <br /> and save money</h1>
                 <SearchBar changeRestaurants={changeRestaurants} />
                 <div className="pb-8"></div>
             </div>
 
-            <div className="justify-items-center grid lg:grid-cols-4 gap-y-16 mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
+            <div className="justify-items-center grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-y-16 mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
                 {
                 (
                     (restaurants.length > 0) ? (
