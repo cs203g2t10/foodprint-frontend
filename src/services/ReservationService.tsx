@@ -4,7 +4,7 @@ const RESERVATIONS_REST_API_URL = process.env.REACT_APP_CF_PAGES ? "https://api.
 
 class ReservationService {
     headers = () => {
-        const token = window.sessionStorage.getItem("token");
+        const token = window.localStorage.getItem("token");
         return {
             headers: {
                 'Authorization': `Bearer ${token}`

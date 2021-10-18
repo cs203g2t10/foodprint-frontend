@@ -41,7 +41,7 @@ const Register = () => {
     }
 
     if (successfulReg) {
-        window.sessionStorage.setItem("email", email)
+        window.localStorage.setItem("email", email)
     }
 
     return (

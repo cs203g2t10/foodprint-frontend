@@ -40,7 +40,7 @@ class LogInService {
 
     // Requires API call to backend
     userWhoami = () => {
-        const token = window.sessionStorage.getItem("token");
+        const token = window.localStorage.getItem("token");
         const settings = {
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -55,7 +55,7 @@ class LogInService {
 
     // Does not require API call to backend since JWT stores user properties too
     getUserDetails = () => {
-        const token : string | null = window.sessionStorage.getItem("token");
+        const token : string | null = window.localStorage.getItem("token");
         if (typeof token !== "string") {
             return {
                 email: "",

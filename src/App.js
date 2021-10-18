@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 
 
 function App() {
-  const [isAuthenticated, userHasAuthenticated] = useState(window.sessionStorage.getItem("token"));
+  const [isAuthenticated, userHasAuthenticated] = useState(window.localStorage.getItem("token"));
 
   return (
     <div className="App" >

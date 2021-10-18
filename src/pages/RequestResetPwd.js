@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 import ResetPwdService from '../services/ResetPwdService'
 
 const ResetPwd = () => {
-    const [email, setEmail] = useState(window.sessionStorage.getItem("email"))
+    const [email, setEmail] = useState(window.localStorage.getItem("email"))
 
     const [successfulReq, setSuccessfulReq] = useState(false)
 

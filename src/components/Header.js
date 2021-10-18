@@ -9,7 +9,7 @@ const Header = () => {
 
     const handleLogout = () => {
         userHasAuthenticated(false);
-        window.sessionStorage.removeItem("token");
+        window.localStorage.removeItem("token");
     }
 
     const getUserName = () => {

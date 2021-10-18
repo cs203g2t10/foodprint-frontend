@@ -18,7 +18,7 @@ class ResetPwdService {
 
     // Does not require API call to backend since JWT stores user properties too
     getResetPwdDetails = () => {
-        const token : string | null = window.sessionStorage.getItem("token");
+        const token : string | null = window.localStorage.getItem("token");
         if (typeof token !== "string") {
             return {
                 email: "",

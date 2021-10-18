@@ -10,7 +10,7 @@ import { useAppContext } from '../lib/contextLib';
 const Login = () => {
     const { isAuthenticated, userHasAuthenticated } = useAppContext();
 
-    const [email, setEmail] = useState(window.sessionStorage.getItem("email"))
+    const [email, setEmail] = useState(window.localStorage.getItem("email"))
     const [password, setPassword] = useState("")
     const [error, setError] = useState("");
 
@@ -22,7 +22,7 @@ const Login = () => {
         LogInService.userLogIn(email, password).then((response) => {
             if (response.data.status === "SUCCESS") {
                 console.log(response.data.token)
-                window.sessionStorage.setItem("token", response.data.token)
+                window.localStorage.setItem("token", response.data.token)
                 userHasAuthenticated(true);
             } else if (response.data.status === "INCORRECT") {
                 console.log("Incorrect input")
