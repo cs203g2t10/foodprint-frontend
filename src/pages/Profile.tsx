@@ -6,8 +6,11 @@ import LogInService from '../services/LogInService'
 import type { UserDetails } from '../services/LogInService';
 import ReservationService from '../services/ReservationService';
 import Restricted from '../components/errors/Restricted';
+import moment from 'moment'
+import ReservationListing from '../components/ReservationListing';
 
 const Profile = () => {
+
     const { isAuthenticated } = useAppContext() || {}
     const getUserName = () => {
         const userInfo: UserDetails = LogInService.getUserDetails();
@@ -16,6 +19,7 @@ const Profile = () => {
 
     const [upcomingReservation, setUpcomingReservation] = useState<any[]>([])
     const [pastReservation, setPastReservation] = useState<any[]>([])
+
 
     useEffect(() => {
         ReservationService.getUpcomingReservation().then((response) => {
@@ -30,6 +34,8 @@ const Profile = () => {
             setPastReservation(response.data)
         })
     }, [])
+
+
 
     return (
         <div className="min-h-screen">
@@ -63,38 +69,41 @@ const Profile = () => {
 
                         <div className="col-span-6">
                             <div className="bg-white-dirtyWhite rounded-xxl h-96 shadow-md px-10 py-6 mb-8">
-                                <h1 className="text-green-standard text-2xl font-bold tracking-wide pb-5">Upcoming Reservations</h1>
-                                {/* <div className="grid grid-cols-6 mb-2">
-                                    <h2 className="my-auto col-span-3 text-grey-standard text-sm">Restaurant</h2>
-                                    <h2 className="my-auto col-span-1 text-grey-standard text-xs">Date</h2>
-                                    <h2 className="my-auto col-span-1 text-grey-standard text-xs">Orders</h2>
-                                </div> */}
+                                <h1 className="text-green-standard text-2xl font-bold tracking-wide pb-3">Upcoming Reservations</h1>
+                                <div className="grid grid-cols-9 mb-2">
+                                    <h2 className="col-span-1"></h2>
+                                    <h2 className="col-span-2 text-grey-lighter text-md">Restaurant</h2>
+                                    <h2 className="mx-auto col-span-3 text-grey-lighter text-md">Reservation Date Time</h2>
+                                    <h2 className="mx-auto col-span-2 text-grey-lighter text-md">Orders</h2>
+                                </div>
                                 <div className="overflow-y-auto h-64">
                                     {
-                                        upcomingReservation.map(upcomingReservation =>
-                                            <div key={upcomingReservation.reservationId} >
-                                                <div className="flex">
-                                                    <h1 className="pr-8">{upcomingReservation.date}</h1>
-                                                    <h1>{upcomingReservation.restaurantId}</h1>
-                                                </div>
-                                            </div>
-                                        )
+                                        upcomingReservation.map((upcomingReservation) => {
+                                            var dateTime = upcomingReservation.date;
+                                                return (
+                                                    <ReservationListing key={upcomingReservation.reservationId} dateTime={moment(dateTime).format('MMM Do YYYY, h:mm a')} restaurantName={upcomingReservation.restaurantName} imageUrl={upcomingReservation.imageUrl}/>
+                                                )
+                                        })
                                     }
+
                                 </div>
                             </div>
-                            <div className="bg-white-dirtyWhite rounded-xxl h-80 shadow-md px-10 py-6">
-                                <h1 className="text-green-standard text-2xl font-bold tracking-wide ">Past Reservations</h1>
-
-                                <div className="overflow-y-auto h-56">
+                            <div className="bg-white-dirtyWhite rounded-xxl h-96 shadow-md px-10 py-6">
+                                <h1 className="text-green-standard text-2xl font-bold tracking-wide pb-3">Past Reservations</h1>
+                                <div className="grid grid-cols-9 mb-2">
+                                    <h2 className="col-span-1"></h2>
+                                    <h2 className="col-span-2 text-grey-lighter text-md">Restaurant</h2>
+                                    <h2 className="mx-auto col-span-3 text-grey-lighter text-md">Reservation Date Time</h2>
+                                    <h2 className="mx-auto col-span-2 text-grey-lighter text-md">Orders</h2>
+                                </div>
+                                <div className="overflow-y-auto h-64">
                                     {
-                                        pastReservation.map(pastReservation =>
-                                            <Link to={"/reservation/" + pastReservation.date} key={pastReservation.reservationId} >
-                                                <div className="flex">
-                                                    <h1 className="pr-8">{pastReservation.date}</h1>
-                                                    <h1>{pastReservation.restaurantId}</h1>
-                                                </div>
-                                            </Link>
-                                        )
+                                        pastReservation.map(pastReservation => {
+                                            var dateTime = pastReservation.date;
+                                                return (
+                                                    <ReservationListing key={pastReservation.reservationId} dateTime={moment(dateTime).format('MMM Do YYYY, h:mm a')} restaurantName={pastReservation.restaurantName} imageUrl={pastReservation.imageUrl}/>
+                                                )
+                                        })
                                     }
                                 </div>
                             </div>
@@ -102,7 +111,7 @@ const Profile = () => {
                     </div>
 
                 </>
-            ) : (<Restricted/>)}
+            ) : (<Restricted />)}
         </div>
     )
 }

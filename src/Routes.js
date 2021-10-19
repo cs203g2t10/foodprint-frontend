@@ -16,6 +16,7 @@ import VerifyAccount from "./pages/VerifyAccount";
 import ResetPwd from "./pages/ResetPwd";
 import ManagerProfile from "./pages/ManagerProfile";
 import ManageRestaurant from "./pages/ManageRestaurant";
+import ManageIngredients from "./pages/ManageIngredients";
 
 export default function Routes() {
     let location = useLocation();
@@ -66,6 +67,9 @@ export default function Routes() {
                 </Route>
                 <Route exact path="/managerestaurant">
                     <ManageRestaurant />
+                </Route>
+                <Route exact path="/manageingredients">
+                    <ManageIngredients />
                 </Route>
                 <Route>
                     <NotFound />

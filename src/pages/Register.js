@@ -8,9 +8,10 @@ const Register = () => {
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [error, setError] = useState([])
-    const [processing, setProcessing] = useState(false);
+    const [confirmPassword, setConfirmPassword] = useState("")
 
+    const [error, setError] = useState([])
+    const [processing, setProcessing] = useState(false)
     const [successfulReg, setSuccessfulReg] = useState(false)
 
     const validateForm = () => {
@@ -18,18 +19,23 @@ const Register = () => {
     }
 
     const userRegister = () => {
+        if (password !== confirmPassword) {
+            setError("passwords don't match");
+            return;
+        }
+
         setProcessing(true);
         LogInService.userRegister(email, password, firstName, lastName).then((response) => {
             if (response.status === 200) {
                 console.log('Successful registration')
                 setSuccessfulReg(true)
+                setError("")
             }
             else if (response.status === 400) {
                 console.log(response.data.message)
                 response.data.message.forEach((msg) => {
                     setError(msg);
                 })
-
             } else if (response.status === 409) {
                 console.log(response.data.message)
                 setError(response.data.message)
@@ -54,31 +60,39 @@ const Register = () => {
 
                         <div className="mb-4">
                             <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"
-                                placeholder="Your first name"
+                                placeholder="First Name"
                                 value={firstName}
                                 onChange={e => setFirstName(e.target.value)} />
                         </div>
 
                         <div className="mb-4">
                             <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"
-                                placeholder="Your last name"
+                                placeholder="Last Name"
                                 value={lastName}
                                 onChange={e => setLastName(e.target.value)} />
                         </div>
 
                         <div className="mb-4">
-                            <input className="text-sm focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"
-                                placeholder="Your email"
+                            <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"
+                                placeholder="Email"
                                 type="email"
                                 onChange={e => setEmail(e.target.value)} />
                         </div>
 
-                        <div className="">
+                        <div className="mb-4">
                             <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"
-                                placeholder="********"
+                                placeholder="Password"
                                 type="password"
                                 onChange={e => setPassword(e.target.value)} />
                         </div>
+
+                        <div className="">
+                            <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"
+                                placeholder="Confirm Password"
+                                type="password"
+                                onChange={e => setConfirmPassword(e.target.value)} />
+                        </div>
+
 
                         {
                             (error ? <>
@@ -102,7 +116,7 @@ const Register = () => {
                                 </span>
                             </button>
 
-                            <Link to="/login" className="ml-6 py-1 px-5 self-end rounded-full text-green-standard border">Log In to existing Account</Link>
+                            <Link to="/login" className="ml-6 py-1 px-5 self-end rounded-full text-green-standard border">Log in to existing account</Link>
                         </div>
                     </div>
                     <div>
