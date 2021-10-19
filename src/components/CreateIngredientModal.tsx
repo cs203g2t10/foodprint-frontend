@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Modal from 'react-modal';
-import AdminService from '../services/AdminService';
 import RestaurantService from '../services/RestaurantService';
 
 Modal.setAppElement('#root')
