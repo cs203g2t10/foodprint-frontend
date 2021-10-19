@@ -38,9 +38,8 @@ const ResetPwd = () => {
 
                         <div className="pt-5 flex">
                             <button className="rounded-xl px-5 bg-green-standard text-white-standard shadow-sm hover:shadow-md text-justify h-8" disabled={!validateForm}
-                                onClick={requestResetPwd}>Reset Password</button>
+                                onClick={requestResetPwd}>Reset password</button>
                         </div>
-                        
                         {
                             (successfulReq ? <div className="text-green-standard pb-4 mt-4">We have sent you an email!</div> : <div className=""></div>)
                         }

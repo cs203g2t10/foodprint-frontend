@@ -63,7 +63,7 @@ const Login = () => {
                         <div className="flex pt-5">
                             <button className="rounded-xl px-5 mr-5 bg-green-standard shadow-sm hover:shadow-md text-white-standard text-justify h-8" disabled={!validateForm}
                                 onClick={userLogin}>Log in</button>
-                            <Link to="/forgotpassword" className="mx-2 py-1 px-4 self-end border shadow-sm hover:shadow-md rounded-full border-green-standard text-green-standard">Forgot Password?</Link>
+                            <Link to="/forgotpassword" className="mx-2 py-1 px-4 self-end border shadow-sm hover:shadow-md rounded-full border-green-standard text-green-standard">Forgot password?</Link>
                         </div>
 
                         {

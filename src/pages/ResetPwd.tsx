@@ -6,7 +6,6 @@ import queryString from 'query-string'
 const ResetPwd = (props: any) => {
     const value=queryString.parse(window.location.search);
     const emailToken=value.token;
-    console.log("token", emailToken)
 
     const [newPassword, setNewPassword] = useState("");
     const [confirmNewPassword, setConfirmNewPassword] = useState("");
@@ -15,12 +14,16 @@ const ResetPwd = (props: any) => {
     const [regexp] = useState("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$");
 
     const validateForm = (newPassword: string, confirmNewPassword: string) => {
+        if (newPassword.length < 8 || newPassword.length > 60 || confirmNewPassword.length < 8 || confirmNewPassword.length > 60) {
+            setError("password size must be between 8 and 60");
+            return false;
+        }
         if (newPassword.length === 0 || !newPassword.match(regexp) || !confirmNewPassword.match(regexp)) {
-            setError("Password must have 1 letter, 1 number and at least 8 characters");
+            setError("password must have 1 letter, 1 number and at least 8 characters");
             return false;
         }
         if (newPassword !== confirmNewPassword) {
-            setError("Passwords don't match");
+            setError("passwords don't match");
             return false;
         }
         return true;
@@ -40,7 +43,7 @@ const ResetPwd = (props: any) => {
                 setError("");
             }
         }).catch(error => {
-            setError("Invalid token");
+            setError("invalid token");
         })
     }
 
@@ -71,7 +74,7 @@ const ResetPwd = (props: any) => {
                                 </>
                                 : <div className="flex">
                                     <button className="rounded-xl px-5 border hover:shadow text-justify mt-2 h-8"
-                                        onClick={()=>{resetPwd()}}>Reset Password</button>
+                                        onClick={()=>{resetPwd()}}>Reset password</button>
                                 </div>)
                         }
                     </div>
