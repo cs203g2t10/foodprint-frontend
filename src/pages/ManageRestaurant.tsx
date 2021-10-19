@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Restricted from '../components/errors/Restricted';
+import ManageFood from '../components/ManageFood';
 import LogInService, { UserDetails } from '../services/LogInService';
 import RestaurantService from '../services/RestaurantService';
 
@@ -8,6 +9,8 @@ const ManageRestaurant = () => {
     const [isAuthorized, setAuthorized] = useState(false);
     const [restaurantId, setRestaurantId] = useState<number>(0);
     const [restaurantDetails, setRestaurantDetails] = useState<any>([]);
+    const [food, setFood] = useState([]);
+    const [imageUrl, setImageUrl] = useState("/images/shop.jpg");
 
     useEffect(() => {
         const userInfo: UserDetails = LogInService.getUserDetails();
@@ -17,27 +20,62 @@ const ManageRestaurant = () => {
             return;
         }
         setRestaurantId(userInfo.restaurantId);
-        
+
     }, [isAuthorized])
 
     useEffect(() => {
-        if (restaurantId===0) {
+        if (restaurantId === 0) {
             return;
         }
         RestaurantService.getRestaurant(restaurantId).then((response) => {
             console.log(response.data);
             setRestaurantDetails(response.data)
+            if (response.data.pictures.length > 0) {
+                setImageUrl(response.data.pictures[0].url);
+            }
+        })
+    }, [restaurantId])
+
+    useEffect(() => {
+        if (restaurantId === 0) {
+            return;
+        }
+        RestaurantService.getAllFood(restaurantId).then((response) => {
+            console.log(response.data);
+            setFood(response.data);
         })
     }, [restaurantId])
 
     return (
-        isAuthorized ? 
-        <div>
-            <h1>{restaurantDetails.restaurantName}</h1>
-            <h1>{restaurantDetails.restaurantDesc}</h1>
-            <h1>{restaurantDetails.restaurantLocation}</h1>
-        </div>
-        :<Restricted/>
+        isAuthorized ?
+            <div className="pt-8">
+                <div className="flex items-center justify-center gap-x-10">
+                    <img src={imageUrl} alt="shop" className="rounded-full w-48 h-48 " />
+                    <div className="text-left pb-10">
+                        <h1 className="text-5xl">{restaurantDetails.restaurantName}</h1>
+                        <p>{restaurantDetails.restaurantDesc}</p>
+                        <p>{restaurantDetails.restaurantLocation}</p>
+                    </div>
+                </div>
+
+
+                <div className="mx-14 my-10 py-7 px-16 rounded-xxl bg-white-dirtyWhite shadow">
+                    <h1 className="text-4xl text-green-standard font-bold pb-5">Menu</h1>
+                    <div className="grid grid-cols-3 gap-5">
+                        {
+                            food?.map((food: any) =>
+                                <ManageFood key={food.foodId} name={food.foodName} desc={food.foodDesc} price={food.foodPrice} 
+                                    ingredientQty={food.foodIngredientQuantity} pic={food.pictures[0]}/>
+                            )
+                        }
+                    </div>
+
+
+
+                </div>
+
+            </div>
+            : <Restricted />
     )
 }
 
