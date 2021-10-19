@@ -19,6 +19,7 @@ const Profile = () => {
 
     const [upcomingReservation, setUpcomingReservation] = useState<any[]>([])
     const [pastReservation, setPastReservation] = useState<any[]>([])
+    const [deletemessage, setDeleteMessage] = useState<string>("");
 
 
     useEffect(() => {
@@ -62,10 +63,15 @@ const Profile = () => {
                         </svg>
                     </div>
 
+                    {
+                        (deletemessage ? <h1 className="text-red-standard text-right mr-40 mb-3">{deletemessage}</h1>:<></>)
+                    }
+
                     <div className="grid lg:grid-cols-9 gap-x-14 mx-32">
                         <div className="col-span-3 bg-white-dirtyWhite rounded-xxl h-auto shadow-md px-10 py-6">
                             <h1 className="text-green-standard text-2xl font-bold tracking-wide">Favourite Restaurants</h1>
                         </div>
+
 
                         <div className="col-span-6">
                             <div className="bg-white-dirtyWhite rounded-xxl h-96 shadow-md px-10 py-6 mb-8">
@@ -81,7 +87,7 @@ const Profile = () => {
                                         upcomingReservation.map((upcomingReservation) => {
                                             var dateTime = upcomingReservation.date;
                                                 return (
-                                                    <ReservationListing key={upcomingReservation.reservationId} dateTime={moment(dateTime).format('MMM Do YYYY, h:mm a')} restaurantName={upcomingReservation.restaurantName} imageUrl={upcomingReservation.imageUrl}/>
+                                                    <ReservationListing key={upcomingReservation.reservationId} dateTime={moment(dateTime).format('MMM Do YYYY, h:mm a')} reservationId={upcomingReservation.reservationId} restaurantName={upcomingReservation.restaurantName} imageUrl={upcomingReservation.imageUrl} {...{setDeleteMessage}}/>
                                                 )
                                         })
                                     }
@@ -101,7 +107,7 @@ const Profile = () => {
                                         pastReservation.map(pastReservation => {
                                             var dateTime = pastReservation.date;
                                                 return (
-                                                    <ReservationListing key={pastReservation.reservationId} dateTime={moment(dateTime).format('MMM Do YYYY, h:mm a')} restaurantName={pastReservation.restaurantName} imageUrl={pastReservation.imageUrl}/>
+                                                    <ReservationListing key={pastReservation.reservationId} dateTime={moment(dateTime).format('MMM Do YYYY, h:mm a')} restaurantName={pastReservation.restaurantName} imageUrl={pastReservation.imageUrl} />
                                                 )
                                         })
                                     }

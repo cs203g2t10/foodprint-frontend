@@ -48,7 +48,7 @@ class ReservationService {
     }
 
     deleteReservation = (id:number) => {
-        return axios.get(RESERVATIONS_REST_API_URL+"/admin/"+id, this.headers());
+        return axios.delete(RESERVATIONS_REST_API_URL+"/admin/"+id, this.headers());
     }
 }
 
