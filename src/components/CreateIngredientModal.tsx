@@ -1,0 +1,85 @@
+import React, { useState } from 'react'
+import Modal from 'react-modal';
+import AdminService from '../services/AdminService';
+import RestaurantService from '../services/RestaurantService';
+
+Modal.setAppElement('#root')
+
+const CreateIngredientModal = (props: any) => {
+
+    const { createIngredient, setCreateIngredient, restaurantId } = props;
+    const [name, setName] = useState("");
+    const [desc, setDesc] = useState("");
+    const [units, setUnits] = useState("");
+    const [created, setCreated] = useState(false);
+
+    const customStyles = {
+        overlay: { zIndex: 1000 }
+    };
+
+    const createNewIngredient = (name: string, desc: string, units: string) => {
+        const response = RestaurantService.createIngredient(restaurantId, name, desc, units);
+        response.then((res: any) => {
+            console.log(res)
+            if (res.status === 201) {
+                console.log("Successful Creation");
+                console.log(res.data);
+                setCreated(true)
+            }
+        })
+    }
+
+    return (
+        <Modal style={customStyles} isOpen={createIngredient} className="mt-20 focus:outline-none">
+            <div className="grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-64 pb-10 bg-white-dirtyWhite">
+                <h1 className=" flex text-5xl pt-12 text-green-standard font-bold mx-auto">Create Ingredient</h1>
+                <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Please fill up all details below </h1>
+                <div className="grid gap-y-5 grid-cols-1 mt-10 gap-x-10">
+                    <div className="flex gap-x-2 justify-between">
+                        <div>Ingredient Name: </div>
+                        <input type="text" className="focus:outline-none px-2 rounded" value={name} onChange={(e) => { setName(e.target.value) }}></input>
+                    </div>
+                    <div className="flex gap-x-2 justify-between">
+                        <div>Ingredient Description: </div>
+                        <input type="text" className="focus:outline-none px-2 rounded" value={desc} onChange={(e) => { setDesc(e.target.value) }}></input>
+                    </div>
+                    <div className="flex gap-x-2 justify-between">
+                        <div>Unit of Measure: </div>
+                        <input type="text" className="focus:outline-none px-2 rounded" value={units} onChange={(e) => { setUnits(e.target.value) }}></input>
+                    </div>
+                </div>
+
+                {
+                    (created ?
+                        <>
+                            <div className="mx-auto pt-7 pb-2">Ingredient has been successfully created!</div>
+                            <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28">
+                                <button className=" text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
+                                    onClick={() => {
+                                        setCreated(false);
+                                        setName("");
+                                        setDesc("");
+                                        setUnits("");
+                                    }}>Reset</button>
+                                <button className=" text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
+                                    onClick={() => { setCreateIngredient(false) }}>Return</button>
+                            </div>
+                        </> :
+                        <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28 pt-16">
+                            <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
+                                onClick={() => createNewIngredient( name, desc, units)}>
+                                Confirm
+                            </button>
+
+                            <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setCreateIngredient(false)}>
+                                Cancel
+                            </button>
+                        </div>)
+                }
+            </div>
+
+        </Modal>
+    )
+}
+
+export default CreateIngredientModal

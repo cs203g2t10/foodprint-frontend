@@ -22,6 +22,11 @@ const Header = () => {
         return userInfo.userAuthorities.includes("FP_ADMIN");
     }
 
+    const isUserManager = () => {
+        const userInfo = LogInService.getUserDetails();
+        return userInfo.userAuthorities.includes("FP_MANAGER");
+    }
+
     return (
         <header>
             <nav>
@@ -36,6 +41,16 @@ const Header = () => {
                             {isUserAdmin() ? (
                                 <>
                                     <Link to='/ManageUser' className="flex-col mx-2">Management Console</Link>
+                                </>
+                            ) : (
+                                <>
+
+                                </>
+                            )
+                            }
+                            {isUserManager() ? (
+                                <>
+                                    <Link to='/manager' className="flex-col mx-2">Manage Restaurant</Link>
                                 </>
                             ) : (
                                 <>

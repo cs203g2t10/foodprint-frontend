@@ -6,12 +6,14 @@ const ResetPwd = () => {
     const [email, setEmail] = useState(window.localStorage.getItem("email"))
 
     const [successfulReq, setSuccessfulReq] = useState(false)
+    const [processing, setProcessing] = useState(false)
 
     const validateForm = () => {
         return email > 0;
     }
 
     const requestResetPwd = () => {
+        setProcessing(true)
         ResetPwdService.requestResetPwd(email).then((response) => {
             if (response.data === "Email sent, check your inbox!") {
                 console.log(response.data)
@@ -20,6 +22,7 @@ const ResetPwd = () => {
         }).catch((response) => {
             console.log(response)
         })
+        setProcessing(false)
     }
 
     return (
@@ -38,9 +41,16 @@ const ResetPwd = () => {
 
                         <div className="pt-5 flex">
                             <button className="rounded-xl px-5 bg-green-standard text-white-standard shadow-sm hover:shadow-md text-justify h-8" disabled={!validateForm}
-                                onClick={requestResetPwd}>Reset Password</button>
+                                onClick={requestResetPwd}>
+                                    <span id="button-text">
+                                        {processing ? (
+                                            < div className="spinner" id="spinner"></div>
+                                        ) : (
+                                            'Reset password'
+                                        )}
+                                    </span>
+                            </button>
                         </div>
-                        
                         {
                             (successfulReq ? <div className="text-green-standard pb-4 mt-4">We have sent you an email!</div> : <div className=""></div>)
                         }

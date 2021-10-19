@@ -48,7 +48,7 @@ const VerifyAccount = (props: any) => {
                                 </>
                                 : <div className="">
                                     <button className="rounded-xl mt-4 px-5 border hover:shadow text-justify h-8"
-                                        onClick={()=>{confirmToken()}}>Verify Account</button>
+                                        onClick={()=>{confirmToken()}}>Verify account</button>
                                 </div>)
                         }
                     </div>

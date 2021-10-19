@@ -28,6 +28,30 @@ class RestaurantService {
         return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/food`, this.headers());
     }
 
+    getAllIngredients = (restaurantId: number, page: number) => {
+        return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/ingredient?p=${page}`, this.headers());
+    }
+
+    createIngredient = (restaurantId: number, name: string, desc: string, units: string) => {
+        return axios.post(`${RESTAURANTS_REST_API_URL}/${restaurantId}/ingredient`, {
+            ingredientName: name,
+            ingredientDesc: desc,
+            units: units
+        } ,this.headers())
+    }
+
+    updateIngredient = (restaurantId: number, id: number, name: string, desc: string, units:string) => {
+        return axios.patch(`${RESTAURANTS_REST_API_URL}/${restaurantId}/ingredient/${id}`, {
+            ingredientName: name,
+            ingredientDesc: desc,
+            units: units
+        }, this.headers());
+    }
+
+    deleteIngredient = (restaurantId: number, id: number) => {
+        return axios.delete(`${RESTAURANTS_REST_API_URL}/${restaurantId}/ingredient/${id}`, this.headers());
+    }
+
     searchRestaurant = (searchQuery: String, sortBy: String = "restaurantName", sortDesc : Boolean = false) => {
         return axios.get(`${RESTAURANTS_REST_API_URL}/search`, {
             headers:  this.headers().headers,
