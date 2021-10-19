@@ -34,7 +34,7 @@ const ManagerProfile = () => {
                                     <img className="w-48 h-48 rounded-full md:m-auto border border-grey-lightest" src="/images/shop.jpg" alt="shop" />
                                     <h1 className="text-center pt-10">Manage Restaurant</h1>
                                 </Link>
-                                <Link to="/ingredients" className="bg-white-standard rounded-xl shadow hover:shadow-md py-8">
+                                <Link to="/manageingredients" className="bg-white-standard rounded-xl shadow hover:shadow-md py-8">
                                     <img className="w-48 h-48 rounded-full m-auto border border-grey-lightest" src="/images/ingredient.jpeg" alt="ingredient" />
                                     <h1 className="text-center pt-10">View Ingredients</h1>
                                 </Link>
