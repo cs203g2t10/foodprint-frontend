@@ -46,6 +46,10 @@ class ReservationService {
     getPastReservation = () => {
         return axios.get(`${RESERVATIONS_REST_API_URL}/past`, this.headers());
     }
+
+    deleteReservation = (id:number) => {
+        return axios.get(RESERVATIONS_REST_API_URL+"/admin/"+id, this.headers());
+    }
 }
 
 export default new ReservationService();
