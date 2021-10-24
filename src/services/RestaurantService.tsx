@@ -32,6 +32,20 @@ class RestaurantService {
         return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/ingredient?p=${page}`, this.headers());
     }
 
+    createFood = (restaurantId: number, name:any, desc:any, price:any, ingredientQty:any) => {
+        const requestBody = {
+            foodName : name,
+            foodDesc: desc,
+            foodPrice: price,
+            ingredientQuantityList: ingredientQty
+        }
+        return axios.post(`${RESTAURANTS_REST_API_URL}/${restaurantId}/food`,requestBody, this.headers());
+    }
+
+    managerGetAllIngredients = (restaurantId: number) => {
+        return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/ingredient/all`, this.headers());
+    }
+
     createIngredient = (restaurantId: number, name: string, desc: string, units: string) => {
         return axios.post(`${RESTAURANTS_REST_API_URL}/${restaurantId}/ingredient`, {
             ingredientName: name,

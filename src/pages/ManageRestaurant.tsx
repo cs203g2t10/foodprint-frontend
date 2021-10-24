@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import CreateFoodModal from '../components/CreateFoodModal';
 import Restricted from '../components/errors/Restricted';
 import ManageFood from '../components/ManageFood';
 import LogInService, { UserDetails } from '../services/LogInService';
@@ -10,6 +11,8 @@ const ManageRestaurant = () => {
     const [restaurantId, setRestaurantId] = useState<number>(0);
     const [restaurantDetails, setRestaurantDetails] = useState<any>([]);
     const [food, setFood] = useState([]);
+    const [showCreateFood, setShowCreateFood] = useState(false);
+    const [ingredients, setIngredients] = useState([]);
     const [imageUrl, setImageUrl] = useState("/images/shop.jpg");
 
     useEffect(() => {
@@ -33,6 +36,9 @@ const ManageRestaurant = () => {
             if (response.data.pictures.length > 0) {
                 setImageUrl(response.data.pictures[0].url);
             }
+        });
+        RestaurantService.managerGetAllIngredients(restaurantId).then((response) => {
+            setIngredients(response.data);
         })
     }, [restaurantId])
 
@@ -60,21 +66,23 @@ const ManageRestaurant = () => {
 
 
                 <div className="mx-14 my-10 py-7 px-16 rounded-xxl bg-white-dirtyWhite shadow">
-                    <h1 className="text-4xl text-green-standard font-bold pb-5">Menu</h1>
+                    <div className="flex justify-between">
+                        <h1 className="text-4xl text-green-standard font-bold pb-5">Menu</h1>
+                        <button className="bg-green-standard text-1xl text-white-standard font-bold px-4 max-h-10 rounded-xxl shadow hover:shadow-md"
+                        onClick={()=>{setShowCreateFood(true)}}>Create new food</button>
+                    </div>
+
                     <div className="grid grid-cols-3 gap-5">
                         {
                             food?.map((food: any) =>
-                                <ManageFood key={food.foodId} name={food.foodName} desc={food.foodDesc} price={food.foodPrice} 
+                                <ManageFood key={food.foodId} name={food.foodName} desc={food.foodDesc} price={food.foodPrice}
                                     ingredientQty={food.foodIngredientQuantity} pic={food.pictures[0]}
                                     restaurantId={restaurantId} foodId={food.foodId}/>
                             )
                         }
                     </div>
-
-
-
                 </div>
-
+                <CreateFoodModal {...{ showCreateFood, setShowCreateFood, ingredients }} restaurantId={restaurantId}/>
             </div>
             : <Restricted />
     )
