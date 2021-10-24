@@ -5,6 +5,7 @@ const LOGIN_REST_API_URL = process.env.REACT_APP_CF_PAGES ? "https://api.foodpri
 
 type UserDetails = {
     email: String
+    userId: number
     userFname: String
     userLname: String
     userAuthorities: String[]
@@ -38,6 +39,7 @@ class LogInService {
         });
     }
 
+
     // Requires API call to backend
     userWhoami = () => {
         const token = window.localStorage.getItem("token");
@@ -59,6 +61,7 @@ class LogInService {
         if (typeof token !== "string") {
             return {
                 email: "",
+                userId: 0,
                 userFname: "",
                 userLname: "",
                 userAuthorities: [],
@@ -70,6 +73,7 @@ class LogInService {
         console.log(decodedHeader);
         let userDetails : UserDetails = {
             email: decodedHeader.email,
+            userId: decodedHeader.userId,
             userFname: decodedHeader.userFname,
             userLname: decodedHeader.userLname,
             userAuthorities: decodedHeader.userAuthorities,

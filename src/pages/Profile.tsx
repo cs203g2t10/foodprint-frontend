@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-import { Link } from 'react-router-dom'
 import { useAppContext } from '../lib/contextLib'
 import LogInService from '../services/LogInService'
 import type { UserDetails } from '../services/LogInService';
@@ -77,7 +76,7 @@ const Profile = () => {
                             <div className="bg-white-dirtyWhite rounded-xxl h-96 shadow-md px-10 py-6 mb-8">
                                 <h1 className="text-green-standard text-2xl font-bold tracking-wide pb-3">Upcoming Reservations</h1>
                                 <div className="grid grid-cols-9 mb-2">
-                                    <h2 className="col-span-1"></h2>
+                                    <h2 className="col-span-1">&nbsp;</h2>
                                     <h2 className="col-span-2 text-grey-lighter text-md">Restaurant</h2>
                                     <h2 className="mx-auto col-span-3 text-grey-lighter text-md">Reservation Date Time</h2>
                                     <h2 className="mx-auto col-span-2 text-grey-lighter text-md">Orders</h2>
@@ -97,7 +96,7 @@ const Profile = () => {
                             <div className="bg-white-dirtyWhite rounded-xxl h-96 shadow-md px-10 py-6">
                                 <h1 className="text-green-standard text-2xl font-bold tracking-wide pb-3">Past Reservations</h1>
                                 <div className="grid grid-cols-9 mb-2">
-                                    <h2 className="col-span-1"></h2>
+                                    <h2 className="col-span-1">&nbsp;</h2>
                                     <h2 className="col-span-2 text-grey-lighter text-md">Restaurant</h2>
                                     <h2 className="mx-auto col-span-3 text-grey-lighter text-md">Reservation Date Time</h2>
                                     <h2 className="mx-auto col-span-2 text-grey-lighter text-md">Orders</h2>
