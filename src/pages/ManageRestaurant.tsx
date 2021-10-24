@@ -37,6 +37,12 @@ const ManageRestaurant = () => {
                 setImageUrl(response.data.pictures[0].url);
             }
         });
+    }, [restaurantId, showCreateFood])
+
+    useEffect(() => {
+        if (restaurantId === 0) {
+            return;
+        }
         RestaurantService.managerGetAllIngredients(restaurantId).then((response) => {
             setIngredients(response.data);
         })
@@ -69,7 +75,7 @@ const ManageRestaurant = () => {
                     <div className="flex justify-between">
                         <h1 className="text-4xl text-green-standard font-bold pb-5">Menu</h1>
                         <button className="bg-green-standard text-1xl text-white-standard font-bold px-4 max-h-10 rounded-xxl shadow hover:shadow-md"
-                        onClick={()=>{setShowCreateFood(true)}}>Create new food</button>
+                        onClick={()=>{setShowCreateFood(true)}}>Add to Menu</button>
                     </div>
 
                     <div className="grid grid-cols-3 gap-5">

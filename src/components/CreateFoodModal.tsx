@@ -25,7 +25,7 @@ const CreateFoodModal = (props: any) => {
     return (
         <ReactModal style={customStyles} isOpen={showCreateFood} className="mt-10 focus:outline-none">
             <div className="grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-64 pb-10 bg-white-dirtyWhite">
-                <h1 className=" flex text-5xl pt-12 text-green-standard font-bold mx-auto">Create Food</h1>
+                <h1 className=" flex text-5xl pt-12 text-green-standard font-bold mx-auto">Add Food</h1>
                 <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Please fill up all details below </h1>
                 <div className="grid gap-y-5 grid-cols-2 gap-x-10">
                     <div className="flex gap-x-2 justify-between">
@@ -53,7 +53,7 @@ const CreateFoodModal = (props: any) => {
 
                             return (
                                 <div className="flex justify-between" key={ingredient.ingredientId}>
-                                    <p>{ingredient.ingredientName}</p>
+                                    <p>{ingredient.ingredientName} ({ingredient.units})</p>
                                     <input type="number" placeholder="0" min="0"
                                     className="focus:outline-none text-right"
                                     onChange={(e)=>{
@@ -80,7 +80,7 @@ const CreateFoodModal = (props: any) => {
                 {
                     (created ?
                         <>
-                            <div className="mx-auto pb-2">User has been successfully created!</div>
+                            <div className="mx-auto pb-2">Item has been added to the menu!</div>
                             <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28">
                                 <button className=" text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
                                     onClick={() => {
