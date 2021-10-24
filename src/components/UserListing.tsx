@@ -38,7 +38,7 @@ const UserListing = (props: any) => {
                         updateUserDetails(props.id, email, firstName, lastName, roles)
                         setEdit(false);
                     }}>Confirm</button>
-                <button className="shadow-sm hover:shadow-md px-2 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-yellow-standard text-green-standard text-center"
+                <button className="shadow-sm hover:shadow-md px-2 rounded-large bg-opacity-60 hover:bg-opacity-100 bg-yellow-standard text-green-standard text-center"
                     onClick={() => {
                         setEmail(props.email);
                         setFirstName(props.firstName);
@@ -46,7 +46,7 @@ const UserListing = (props: any) => {
                         setRoles(props.roles)
                         setEdit(false)
                     }}
-                ><AiOutlineUndo/></button>
+                >Undo</button>
             </>
                 : <>
                     <p className="col-span-3 text-grey-standard text-base">{email}</p>
