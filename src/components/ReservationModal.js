@@ -136,7 +136,7 @@ const ReservationModal = (
                     </div>
                     <div className="grid grid-cols-2 gap-x-10 mr-2 justify-center">
                         <button className=" bg-green-standard text-white-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border" onClick={makeReservation} disabled={reserved}>Confirm</button>
-                        <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setModal(false)}>Edit order</button>
+                        <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border" onClick={() => setModal(false)}>Edit order</button>
                     </div>
                     {
                         (reserved ? <div>

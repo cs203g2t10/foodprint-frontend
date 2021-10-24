@@ -58,8 +58,8 @@ const Restaurant = () => {
         <div>
             <div className>
                 <div className="absolute z-10">
-                    <div className="grid grid-cols-10 gap-x-16 md:mx-32 mx-4 my-10">
-                        <div className="col-span-5">
+                    <div className="grid grid-cols-9 gap-x-16 md:mx-32 mx-4 my-10">
+                        <div className="col-span-4">
                             <img className="w-48 h-48 rounded-full" src={imageUrl} alt="shop" />
                         </div>
                         <div className="col-span-5">
@@ -69,7 +69,7 @@ const Restaurant = () => {
                         </div>
                     </div>
                 </div>
-                <svg className="waves h-96 w-full transform -rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="100 20 130 70" preserveAspectRatio="none" shape-rendering="auto">
+                <svg className="waves h-80 w-full transform -rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="100 20 130 70" preserveAspectRatio="none" shape-rendering="auto">
                     <defs>
                         <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
                     </defs>

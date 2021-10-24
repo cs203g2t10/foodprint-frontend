@@ -14,6 +14,7 @@ module.exports = {
 
   theme: {
     colors: {
+      gray: colors.gray,
       black: colors.black,
       blue: colors.blue,
       yellow: {

@@ -31,9 +31,9 @@ const Footer = () => {
                                 <h1 className = "lg:text-md text-grey-standard tracking-widest">SOCIALS</h1>
                                 <div className="flex flex-cols-3 justify-center md:justify-start w-full">
                                     <div className="col-span-3"></div>
-                                    <AiFillInstagram className = "opacity-50" fontSize="3em"/>
-                                    <AiFillLinkedin className = "opacity-50" fontSize="3em" />
-                                    <AiFillTwitterSquare className = "opacity-50" fontSize="3em" />
+                                    <AiFillInstagram className = "opacity-50" fontSize="2em"/>
+                                    <AiFillLinkedin className = "opacity-50" fontSize="2em" />
+                                    <AiFillTwitterSquare className = "opacity-50" fontSize="2em" />
                                     <div className="col-span-3"></div>
                                     {
                                     /* <img className = "transform scale-50 opacity-50" src="/images/instagram.png" alt="footer" />
