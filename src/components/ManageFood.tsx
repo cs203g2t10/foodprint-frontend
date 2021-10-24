@@ -6,6 +6,7 @@ const ManageFood = (props: any) => {
     const [desc, setDesc] = useState(props.desc);
     const [price, setPrice] = useState(props.price);
     const [ingredientQty, setIngredientQty] = useState(props.ingredientQty);
+    // const [newIngredientQty, setNewIngredientQty] = useState(props.ingredientQty);
     const [edit, setEdit] = useState(false);
 
     useEffect(() => {
@@ -54,6 +55,9 @@ const ManageFood = (props: any) => {
                                                 ingredient,
                                                 quantity: e.target.value
                                             }])
+                                            ingredientQty.sort((a:any,b:any) => {
+                                                return a.ingredient.ingredientId - b.ingredient.ingredientId;
+                                            });
                                         }
                                     }} />
                             </div>
