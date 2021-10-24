@@ -65,7 +65,8 @@ const ManageRestaurant = () => {
                         {
                             food?.map((food: any) =>
                                 <ManageFood key={food.foodId} name={food.foodName} desc={food.foodDesc} price={food.foodPrice} 
-                                    ingredientQty={food.foodIngredientQuantity} pic={food.pictures[0]}/>
+                                    ingredientQty={food.foodIngredientQuantity} pic={food.pictures[0]}
+                                    restaurantId={restaurantId} foodId={food.foodId}/>
                             )
                         }
                     </div>
