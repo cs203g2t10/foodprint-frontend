@@ -49,18 +49,19 @@ const ManageFood = (props: any) => {
                                 <input value={ingredientQ.quantity} className="px-2 focus:outline-none border rounded w-12" type="number" min="0" 
                                     onChange={(e) => {
                                         if (e.target.value === '0') {
-                                            setNewIngredientQty((oldArray: any) => [...oldArray.filter((inQ: any) =>
-                                                inQ.ingredient.ingredientId !== ingredient.ingredientId
-                                            )])
+                                            setNewIngredientQty((oldArray: any) => {
+                                                return [...oldArray.filter((inQ: any) => inQ.ingredient.ingredientId !== ingredient.ingredientId)]
+                                            })
                                         } else {
-                                            setNewIngredientQty((oldArray: any) => [...oldArray.filter((inQ: any) =>
-                                                inQ.ingredient.ingredientId !== ingredient.ingredientId
-                                            ), {
-                                                ingredient,
-                                                quantity: e.target.value
-                                            }])
-                                            ingredientQty.sort((a:any,b:any) => {
-                                                return a.ingredient.ingredientId - b.ingredient.ingredientId;
+                                            setNewIngredientQty((oldArray: any[]) => {
+                                                const newQuantity = e.target.value;
+                                                for (var ingredientQuantity of oldArray) {
+                                                    if (ingredientQuantity.ingredient.ingredientId === ingredient.ingredientId) {
+                                                        ingredientQuantity.quantity = parseInt(newQuantity);
+                                                    }
+                                                }
+                                                oldArray.sort((a: any, b: any) => b.quantity - a.quantity);
+                                                return JSON.parse(JSON.stringify(oldArray));
                                             });
                                         }
                                     }} />
