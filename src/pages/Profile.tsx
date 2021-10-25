@@ -45,10 +45,10 @@ const Profile = () => {
                         <div className="absolute z-10">
                             <div className="grid grid-cols-7 gap-x-16 mx-32 my-10">
                                 <div className="col-span-2">
-                                    <img className="w-48 h-48 rounded-full" src="/images/shop.jpg" alt="shop" />
+                                    <img className="w-48 h-48 rounded-full" src="/images/user.jpg" alt="user" />
                                 </div>
                                 <div className="col-span-5">
-                                    <h1 className="text-7xl  pb-4 pl-10 text-green-standard">Hello, {getUserName()} </h1>
+                                    <h1 className="text-7xl pb-4 text-green-standard">Hello, {getUserName()} </h1>
                                 </div>
                             </div>
                         </div>
