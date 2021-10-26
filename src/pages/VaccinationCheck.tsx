@@ -83,7 +83,7 @@ const VaccinationCheck = () => {
                 </button>
                 <div className="grid grid-cols-2 gap-x-6 mx-8 h-auto py-8">
                     <div>
-                        <img src="/images/confirm.png" />
+                        <img src="/images/confirm.png" alt="confirm"/>
                     </div>
                     <div>
                         <h1 className="text-green-standard text-5xl font-bold">You're <br/>Vaccinated.</h1>

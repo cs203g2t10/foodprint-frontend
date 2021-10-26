@@ -9,7 +9,7 @@ const ManageFood = (props: any) => {
     const [ingredientQty, setIngredientQty] = useState(props.ingredientQty);
     const [newIngredientQty, setNewIngredientQty] = useState(props.ingredientQty);
     const [edit, setEdit] = useState(false);
-    const [changePic, setChangePic] = useState(false);
+    // const [changePic, setChangePic] = useState(false);
 
     useEffect(() => {
         ingredientQty.sort();
