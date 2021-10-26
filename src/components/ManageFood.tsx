@@ -61,6 +61,7 @@ const ManageFood = (props: any) => {
                                             setNewIngredientQty((oldArray: any[]) => {
                                                 const newQuantity = e.target.value;
                                                 for (var ingredientQuantity of oldArray) {
+                                                    // ingredientQuantity.ingredient.picturesPath = []
                                                     if (ingredientQuantity.ingredient.ingredientId === ingredient.ingredientId) {
                                                         ingredientQuantity.quantity = parseInt(newQuantity);
                                                     }
