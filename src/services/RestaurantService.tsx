@@ -32,6 +32,7 @@ class RestaurantService {
         return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/ingredient?p=${page}`, this.headers());
     }
 
+    // Manager: Add new food to his own restaurant
     createFood = (restaurantId: number, name:any, desc:any, price:any, ingredientQty:any) => {
         const requestBody = {
             foodName : name,
@@ -40,6 +41,17 @@ class RestaurantService {
             ingredientQuantityList: ingredientQty
         }
         return axios.post(`${RESTAURANTS_REST_API_URL}/${restaurantId}/food`,requestBody, this.headers());
+    }
+
+    // Manager: Edit food details
+    editFood = (restaurantId: number, foodId: number, name:any, desc:any, price:any, ingredientQty:any) => {
+        const requestBody = {
+            foodName : name,
+            foodDesc: desc,
+            foodPrice: price,
+            ingredientQuantityList: ingredientQty
+        }
+        return axios.patch(`${RESTAURANTS_REST_API_URL}/${restaurantId}/food/${foodId}`, requestBody, this.headers());
     }
 
     managerGetAllIngredients = (restaurantId: number) => {

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import AdminService from '../services/AdminService';
 import { AiOutlineClose } from 'react-icons/ai';
 import { AiOutlineEdit } from 'react-icons/ai';
-import { AiOutlineUndo } from 'react-icons/ai';
 
 const UserListing = (props: any) => {
 

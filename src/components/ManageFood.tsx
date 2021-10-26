@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import RestaurantService from '../services/RestaurantService';
 
 const ManageFood = (props: any) => {
 
@@ -14,7 +15,8 @@ const ManageFood = (props: any) => {
     }, [ingredientQty])
 
     const editFood = (name:any, desc:any, price:any, ingredientQty:any) => {
-
+        RestaurantService.editFood(props.restaurantId, props.foodId, name, desc, price, ingredientQty);
+        setEdit(false);
     }
 
     return (
