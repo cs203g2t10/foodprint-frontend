@@ -8,6 +8,7 @@ const VaccinationCheck = () => {
 
     const [modalIsOpened, setModalIsOpened] = useState(false);
     const [modalMessage, setModalMessage] = useState("");
+    const [error, setError] = useState("");
 
     const onDrop = useCallback((acceptedFiles: any) => {
         if (acceptedFiles == null) {
@@ -27,7 +28,8 @@ const VaccinationCheck = () => {
             console.log(error.response.data);
             if (error.response.status === 500) {
                 console.log('Error:', error.response.data.reason)
-                setModalMessage(`Error while validating certificate - ${error.response.data.reason}`)
+                // setModalMessage(`Error while validating certificate - ${error.response.data.reason}`)
+                setError(`Error while validating certificate - ${error.response.data.reason}`)
                 setModalIsOpened(true)
             };
         });
@@ -79,15 +81,27 @@ const VaccinationCheck = () => {
                     type="button"
                     className="uk-button uk-button-danger uk-button-small ml-5 mt-5 bg-grey-lightest p-3 rounded-full shadow-sm hover:shadow-md"
                     onClick={() => setModalIsOpened(false)}>
-                    <AiOutlineClose/>
+                    <AiOutlineClose />
                 </button>
+
+
                 <div className="grid grid-cols-2 gap-x-6 mx-8 h-auto py-8">
                     <div>
-                        <img src="/images/confirm.png" alt="confirm"/>
+                        <img src="/images/confirm.png" alt="confirm" />
                     </div>
                     <div>
-                        <h1 className="text-green-standard text-5xl font-bold">You're <br/>Vaccinated.</h1>
-                        <h1 className="text-base text-grey-standard text-light mt-4 mb-8">{modalMessage}</h1>
+                        {
+                            (error ?
+                                <div>
+                                    <h1 className="text-red-standard text-5xl font-bold">Check Unsuccessful.</h1>
+                                    <h1 className="text-base text-grey-standard text-light mt-4 mb-16">{error}</h1>
+                                </div>
+                                : <>
+                                    <h1 className="text-green-standard text-5xl font-bold">You're <br />Vaccinated.</h1>
+                                    <h1 className="text-base text-grey-standard text-light mt-4 mb-8">{modalMessage}</h1>
+                                </>
+                            )
+                        }
                     </div>
                 </div>
             </Modal>
