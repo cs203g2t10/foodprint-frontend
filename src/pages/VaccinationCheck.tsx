@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from 'react'
 import Modal from 'react-modal';
+import { AiOutlineClose } from 'react-icons/ai';
 import VaccinationService from '../services/VaccinationService';
-import {useDropzone} from 'react-dropzone';
+import { useDropzone } from 'react-dropzone';
 
 const VaccinationCheck = () => {
 
@@ -20,7 +21,7 @@ const VaccinationCheck = () => {
         const response = VaccinationService.userUploadVaccination(file);
         response.then((response) => {
             console.log("Success: ", response.data.reservationId)
-            setModalMessage(`Successfully verfiied vaccination certificate ${response.data.reason}`);
+            setModalMessage(`Successfully verfied vaccination certificate ${response.data.reason}`);
             setModalIsOpened(true);
         }).catch((error) => {
             console.log(error.response.data);
@@ -30,9 +31,9 @@ const VaccinationCheck = () => {
                 setModalIsOpened(true)
             };
         });
-      }, []);
+    }, []);
 
-    const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
     Modal.setAppElement("#root");
 
@@ -52,19 +53,19 @@ const VaccinationCheck = () => {
                                     <input {...getInputProps()} />
                                     {
                                         isDragActive ?
-                                        <>
-                                            <h1 className="text-light">Drop your certificate (.oa) here.</h1>
-                                            <img src="/images/cloud.png" alt="cloud illustration" className="transform scale-75 grid justify-items-center mx-auto" />
-                                            <h1 className="text-lightest text-sm pb-2">&nbsp;</h1>
-                                            <h1 className="text-light">&nbsp;</h1>
-                                        </>
-                                        :
-                                        <>
-                                            <h1 className="text-light">Drag and drop your certificate here</h1>
-                                            <img src="/images/cloud.png" alt="cloud illustration" className="transform scale-75 grid justify-items-center mx-auto" />
-                                            <h1 className="text-lightest text-sm pb-2">OR</h1>
-                                            <h1 className="text-light">Click to browse for a file</h1>
-                                        </>
+                                            <>
+                                                <h1 className="text-light">Drop your certificate (.oa) here.</h1>
+                                                <img src="/images/cloud.png" alt="cloud illustration" className="transform scale-75 grid justify-items-center mx-auto" />
+                                                <h1 className="text-lightest text-sm pb-2">&nbsp;</h1>
+                                                <h1 className="text-light">&nbsp;</h1>
+                                            </>
+                                            :
+                                            <>
+                                                <h1 className="text-light">Drag and drop your certificate here</h1>
+                                                <img src="/images/cloud.png" alt="cloud illustration" className="transform scale-75 grid justify-items-center mx-auto" />
+                                                <h1 className="text-lightest text-sm pb-2">OR</h1>
+                                                <h1 className="text-light">Click to browse for a file</h1>
+                                            </>
                                     }
                                 </div>
                             </div>
@@ -73,14 +74,21 @@ const VaccinationCheck = () => {
                 </div>
             </div>
 
-            <Modal isOpen={modalIsOpened} className="">
-                <h1 className="text-light">{modalMessage}</h1>
-                    <button
-                        type="button"
-                        className="uk-button uk-button-danger uk-button-small"
-                        onClick={() => setModalIsOpened(false)}>
-                    Close
+            <Modal isOpen={modalIsOpened} className=" mx-auto w-3/5 my-auto bg-white-offWhite">
+                <button
+                    type="button"
+                    className="uk-button uk-button-danger uk-button-small m-5 bg-grey-lightest p-3 rounded-full shadow-sm hover:shadow-md"
+                    onClick={() => setModalIsOpened(false)}>
+                    <AiOutlineClose/>
                 </button>
+                <div className="grid grid-cols-2">
+                    <div>
+                        <img src="/images/confirm.png" />
+                    </div>
+                    <div>
+                        <h1 className="text-light">{modalMessage}</h1>
+                    </div>
+                </div>
             </Modal>
         </div>
     )
