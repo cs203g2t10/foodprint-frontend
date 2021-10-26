@@ -16,7 +16,7 @@ const ManageFood = (props: any) => {
         ingredientQty.sort();
     }, [ingredientQty])
 
-    const editFood = (name:any, desc:any, price:any, ingredientQty:any) => {
+    const editFood = (name: any, desc: any, price: any, ingredientQty: any) => {
         const response = RestaurantService.editFood(props.restaurantId, props.foodId, name, desc, price, ingredientQty);
         console.log(response);
         setIngredientQty(newIngredientQty);
@@ -26,9 +26,12 @@ const ManageFood = (props: any) => {
     return (
         edit ?
             <div className="grid py-4 px-10 rounded-xl bg-white-standard shadow gap-y-2">
-                <img src={props.pic?.url} alt={props.pic?.description} className="rounded-full mb-5 h-48 w-48 flex mx-auto" 
-                onClick={()=>setChangePic(true)}
-                />
+                <div className="h-48 w-48 mx-auto relative overflow-hidden rounded-full hover:shadow-md">
+                    <img src={props.pic?.url} alt={props.pic?.description} className=" mb-5 flex filter opacity-40 object-cover w-full h-full"
+                        onClick={() => setChangePic(true)} />
+                    <h1 className="absolute w-full py-2.5 bottom-0 inset-x-0 bg-green-standard text-white-standard text-xs text-center leading-4 shadow opacity-90">Click to edit</h1>
+                </div>
+
                 <div className="flex gap-x-3 justify-between">
                     <h1>Name: </h1>
                     <input value={name} className="px-2 focus:outline-none border rounded"
@@ -54,7 +57,7 @@ const ManageFood = (props: any) => {
                         return (
                             <div key={idx} className="flex gap-x-2 justify-between mx-5">
                                 <p>{ingredientQ.ingredient.ingredientName} ({ingredientQ.ingredient.units})</p>
-                                <input value={ingredientQ.quantity} className="px-2 focus:outline-none border rounded w-12" type="number" min="0" 
+                                <input value={ingredientQ.quantity} className="px-2 focus:outline-none border rounded w-12" type="number" min="0"
                                     onChange={(e) => {
                                         if (e.target.value === '0') {
                                             setNewIngredientQty((oldArray: any) => {
@@ -82,7 +85,7 @@ const ManageFood = (props: any) => {
                 }
                 <div className="grid grid-cols-2 gap-x-10 mx-5 mt-4">
                     <button className="rounded-xxl bg-green-standard text-white-standard py-1" onClick={() => { editFood(name, desc, price, newIngredientQty) }}>Confirm</button>
-                    <button className="rounded-xxl bg-yellow-standard border-grey-lighter py-1" onClick={() => { 
+                    <button className="rounded-xxl bg-yellow-standard border-grey-lighter py-1" onClick={() => {
                         setName(props.name);
                         setDesc(props.desc);
                         setPrice(props.price);
@@ -90,7 +93,7 @@ const ManageFood = (props: any) => {
                         setEdit(false);
                     }}>Undo</button>
                 </div>
-                <ChangeFoodPicModal className="" {...{changePic, setChangePic, name}} url={props.pic?.url}/>
+                <ChangeFoodPicModal className="" {...{ changePic, setChangePic, name }} url={props.pic?.url} />
             </div>
             :
             <div className="py-4 px-10 rounded-xl bg-white-standard shadow">
