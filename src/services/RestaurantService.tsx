@@ -100,6 +100,13 @@ class RestaurantService {
         })
     }
 
+    getCategories = () => {
+        return axios.get(`${RESTAURANTS_REST_API_URL}/categories`, this.headers());
+    }
+
+    getRestaurantsInCategory = (category: any) => {
+        return axios.get(`${RESTAURANTS_REST_API_URL}/categories/${category}`, this.headers());
+    }
 }
 
 export default new RestaurantService();

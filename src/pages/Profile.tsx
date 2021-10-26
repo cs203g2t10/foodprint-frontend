@@ -63,31 +63,43 @@ const Profile = () => {
                     </div>
 
                     {
-                        (deletemessage ? <h1 className="text-red-standard text-right mr-40 mb-3">{deletemessage}</h1>:<></>)
+                        (deletemessage ? <h1 className="text-red-standard text-right mr-40 mb-3">{deletemessage}</h1> : <></>)
                     }
 
-                    <div className="grid lg:grid-cols-9 gap-x-14 mx-32">
-                        <div className="col-span-3 bg-white-dirtyWhite rounded-xxl h-auto shadow-md px-10 py-6">
+                    <div className="grid lg:grid-cols-11 gap-x-10 mx-20">
+                        <div className="col-span-4 bg-white-dirtyWhite rounded-xxl h-auto shadow-md px-10 py-6">
                             <h1 className="text-green-standard text-2xl font-bold tracking-wide">Favourite Restaurants</h1>
                         </div>
 
 
-                        <div className="col-span-6">
+                        <div className="col-span-7">
                             <div className="bg-white-dirtyWhite rounded-xxl h-96 shadow-md px-10 py-6 mb-8">
                                 <h1 className="text-green-standard text-2xl font-bold tracking-wide pb-3">Upcoming Reservations</h1>
-                                <div className="grid grid-cols-9 mb-2">
-                                    <h2 className="col-span-1">&nbsp;</h2>
-                                    <h2 className="col-span-2 text-grey-lighter text-md">Restaurant</h2>
-                                    <h2 className="mx-auto col-span-3 text-grey-lighter text-md">Reservation Date Time</h2>
-                                    <h2 className="mx-auto col-span-2 text-grey-lighter text-md">Orders</h2>
-                                </div>
+                                {
+                                    (
+                                        (upcomingReservation.length > 0) ?
+                                            <div className="grid grid-cols-12 mb-2 gap-x-3">
+                                                <h2 className="col-span-1">&nbsp;</h2>
+                                                <h2 className="col-span-3 text-grey-lighter text-md">Restaurant</h2>
+                                                <h2 className="col-span-3 text-grey-lighter text-md">Reservation Date Time</h2>
+                                                <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Status</h2>
+                                                <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Orders</h2>
+                                                <h2 className="col-span-1">&nbsp;</h2>
+                                            </div>
+                                            :
+                                            <>
+                                                <img className="h-52 mx-auto" src="/images/noUpcomingReservation.png" alt="No past reservations" />
+                                                <h1 className="text-green-standard text-center">No Upcoming Reservations Book a Table.</h1>
+                                            </>
+                                    )
+                                }
                                 <div className="overflow-y-auto h-64">
                                     {
                                         upcomingReservation.map((upcomingReservation) => {
                                             var dateTime = upcomingReservation.date;
-                                                return (
-                                                    <ReservationListing key={upcomingReservation.reservationId} dateTime={moment(dateTime).format('MMM Do YYYY, h:mm a')} reservationId={upcomingReservation.reservationId} restaurantName={upcomingReservation.restaurantName} imageUrl={upcomingReservation.imageUrl} {...{setDeleteMessage}}/>
-                                                )
+                                            return (
+                                                <ReservationListing key={upcomingReservation.reservationId} dateTime={moment(dateTime).format('MMM Do YYYY, h:mm a')} reservationId={upcomingReservation.reservationId} restaurantName={upcomingReservation.restaurantName} status={upcomingReservation.status} imageUrl={upcomingReservation.imageUrl} {...{ setDeleteMessage }} />
+                                            )
                                         })
                                     }
 
@@ -95,19 +107,32 @@ const Profile = () => {
                             </div>
                             <div className="bg-white-dirtyWhite rounded-xxl h-96 shadow-md px-10 py-6">
                                 <h1 className="text-green-standard text-2xl font-bold tracking-wide pb-3">Past Reservations</h1>
-                                <div className="grid grid-cols-9 mb-2">
-                                    <h2 className="col-span-1">&nbsp;</h2>
-                                    <h2 className="col-span-2 text-grey-lighter text-md">Restaurant</h2>
-                                    <h2 className="mx-auto col-span-3 text-grey-lighter text-md">Reservation Date Time</h2>
-                                    <h2 className="mx-auto col-span-2 text-grey-lighter text-md">Orders</h2>
-                                </div>
+                                {
+                                    (
+                                        (pastReservation.length > 0) ?
+                                            <div className="grid grid-cols-12 mb-2 gap-x-3">
+                                                <h2 className="col-span-1">&nbsp;</h2>
+                                                <h2 className="col-span-3 text-grey-lighter text-md">Restaurant</h2>
+                                                <h2 className="col-span-3 text-grey-lighter text-md">Reservation Date Time</h2>
+                                                <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Status</h2>
+                                                <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Orders</h2>
+                                                <h2 className="col-span-1">&nbsp;</h2>
+                                            </div>
+                                            :
+                                            <>
+                                                <img className="h-52 mx-auto" src="/images/noPastReservation.png" alt="No past reservations" />
+                                                <h1 className="text-green-standard text-center">No Past Reservations</h1>
+                                            </>
+                                    )
+                                }
+
                                 <div className="overflow-y-auto h-64">
                                     {
                                         pastReservation.map(pastReservation => {
                                             var dateTime = pastReservation.date;
-                                                return (
-                                                    <ReservationListing key={pastReservation.reservationId} dateTime={moment(dateTime).format('MMM Do YYYY, h:mm a')} restaurantName={pastReservation.restaurantName} imageUrl={pastReservation.imageUrl} />
-                                                )
+                                            return (
+                                                <ReservationListing key={pastReservation.reservationId} dateTime={moment(dateTime).format('MMM Do YYYY, h:mm a')} reservationId={pastReservation.reservationId} restaurantName={pastReservation.restaurantName} status={pastReservation.status} imageUrl={pastReservation.imageUrl} />
+                                            )
                                         })
                                     }
                                 </div>

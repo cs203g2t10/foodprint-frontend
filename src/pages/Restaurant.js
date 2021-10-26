@@ -58,14 +58,15 @@ const Restaurant = () => {
         <div>
             <div className>
                 <div className="absolute z-10">
-                    <div className="grid grid-cols-9 gap-x-16 md:mx-32 mx-4 my-10">
-                        <div className="col-span-4">
+                    <div className="grid grid-cols-9 gap-x-16 mx-4 my-10">
+                    <h2 className="col-span-1">&nbsp;</h2>
+                        <div className="col-span-2">
                             <img className="w-48 h-48 rounded-full" src={imageUrl} alt="shop" />
                         </div>
-                        <div className="col-span-5">
-                            <h1 className="text-4xl md:text-7xl pb-4">{restaurantDetails.restaurantName}</h1>
-                            <p className="text-lg md:text-2xl ">{restaurantDetails.restaurantDesc}</p>
-                            <p className="text-md md:pb-4 ">{restaurantDetails.restaurantLocation}</p>
+                        <div className="col-span-6 px-0">
+                            <h1 className="text-4xl md:text-7xl font-bold tracking-wide text-green-standard">{restaurantDetails.restaurantName}</h1>
+                            <p className="text-lg md:text-2xl text-green-standard">{restaurantDetails.restaurantDesc}</p>
+                            <p className="text-md md:pb-4 text-grey-standard">{restaurantDetails.restaurantLocation}</p>
                         </div>
                     </div>
                 </div>
@@ -79,7 +80,8 @@ const Restaurant = () => {
                 </svg>
             </div>
 
-            <div className="grid items-center justify-items-center xl:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-y-16 mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
+            <button className="text-white-standard flex ml-auto mr-24 py-2 px-5 bg-green-standard rounded-xl shadow-md hover:shadow-lg" onClick={makeReservationButtonClick}>Make Reservation</button>
+            <div className="gap-x-16  grid items-center justify-items-center xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-y-16 mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
                 {
                     food?.map(
                         food => <RestaurantFood {...{ food, setLineItems }} key={food.foodId} />
@@ -91,7 +93,6 @@ const Restaurant = () => {
                 :
                 <div className="pt-9" />
             )}
-            <button className="text-white-standard flex mx-auto py-3 px-5 bg-green-standard rounded-xl shadow-md hover:shadow-lg" onClick={makeReservationButtonClick}>Make Reservation</button>
             <ReservationModal {...{ id, modalIsOpen, lineItems, finalPrice, totalPrice, setModal }} />
         </div>
     )

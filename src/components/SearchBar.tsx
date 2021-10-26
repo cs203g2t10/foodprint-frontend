@@ -7,13 +7,13 @@ const SearchBar = (props: any) => {
     const restaurantSortRef = useRef<HTMLSelectElement>(null);
     const restaurantSearchBoxRef = useRef<HTMLInputElement>(null);
     const restaurantSortDescRef = useRef<HTMLInputElement>(null);
-    const {changeRestaurants} = props;
+    const { changeRestaurants } = props;
 
     const onChangeFunction = async (event: any) => {
 
         if (restaurantSearchBoxRef.current == null
-             || restaurantSortRef.current == null
-             || restaurantSortDescRef.current == null) {
+            || restaurantSortRef.current == null
+            || restaurantSortDescRef.current == null) {
             return;
         }
 
@@ -24,39 +24,43 @@ const SearchBar = (props: any) => {
         console.log("%s %s", searchQuery, sortBy)
 
         RestaurantService.searchRestaurant(searchQuery, sortBy, sortDesc).then((suggestions) => {
-            const searchResults = suggestions.data.content;          
+            const searchResults = suggestions.data.content;
             changeRestaurants(searchResults);
         });
     }
-    
+
     return <>
-        <div className="bg-white-offWhite h-10 w-1/2 flex items-center rounded-xl shadow-lg mx-auto m-8">
-            <div className="px-5">
-                <FiSearch />
+        <div className="grid grid-cols-12">
+            <h2 className="col-span-2">&nbsp;</h2>
+            <div className="col-span-5 bg-white-offWhite h-10 flex items-center rounded-xl shadow-lg mt-8">
+                <div className="px-5">
+                    <FiSearch />
+                </div>
+
+                <input
+                    className="bg-white-offWhite flex w-full h-10 focus:outline-none rounded-xl pr-5"
+                    placeholder="Find what you are looking for..."
+                    onChange={onChangeFunction}
+                    ref={restaurantSearchBoxRef}
+                />
             </div>
 
-            <input 
-                className="bg-white-offWhite flex w-full h-10 focus:outline-none rounded-xl pr-5"
-                placeholder="Find what you are looking for..."
-                onChange = {onChangeFunction}
-                ref = {restaurantSearchBoxRef}
-            />
-        </div>
+            <div className="col-span-4 items-center rounded-xl flex px-5">
+                <div>
+                    <label htmlFor="restaurantSort" className="text-green-standard">Sort By: </label>
+                    <select name="restaurantSort" className="rounded-large h-10 mt-8 px-3 text-grey-standard shadow-md" id="restaurantSort" ref={restaurantSortRef} onChange={onChangeFunction}>
+                        <option value="restaurantId">Restaurant ID</option>
+                        <option value="restaurantName">Restaurant Name</option>
+                        <option value="restaurantPriceRange">Price Range</option>
+                    </select>
+                </div>
 
-        <div className = "flex flex-col items-center space-y-2 rounded-xl mx-auto m-8 w-1/2">
-            <div>
-                <label htmlFor="restaurantSort">Sort By </label>
-                <select name="restaurantSort" id="restaurantSort" ref={restaurantSortRef} onChange = {onChangeFunction}>
-                    <option value="restaurantId">Restaurant ID</option>
-                    <option value="restaurantName">Restaurant Name</option>
-                    <option value="restaurantPriceRange">Price Range</option>
-                </select>
+                <div className="justify-items-center flex">
+                    <label htmlFor="sortDescending" className=" ml-5 mr-2 text-green-standard mt-8">Descending:</label>
+                    <input type="checkbox" className="form-checkbox mt-10 inline-block" id="sortDescending" onChange={onChangeFunction} ref={restaurantSortDescRef} />
+                </div>
             </div>
-
-        <div>
-            <label htmlFor="sortDescending">Reverse</label>
-                <input type="checkbox" className="form-checkbox" id="sortDescending" onChange={onChangeFunction} ref={restaurantSortDescRef} />
-            </div>
+            <h2 className="col-span-2">&nbsp;</h2>
         </div>
     </>
 

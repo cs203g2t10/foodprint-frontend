@@ -51,7 +51,7 @@ const Payment = () => {
                     <div className="pb-8"></div>
                 </div>
 
-                <div className="grid grid-cols-7 gap-x-12 py-24 px-40">
+                <div className="grid grid-cols-7 gap-x-12 py-16 px-40">
                     <div className="col-span-3 bg-white-dirtyWhite rounded-xxl shadow:md h-auto p-8">
                         <h1 className="flex items-center justify-center text-3xl font-bold tracking-wide text-green-standard pb-2">Your Order</h1>
                         <div className="overflow-y-auto max-h-64">
