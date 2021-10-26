@@ -33,7 +33,7 @@ const Category = () => {
                 <Link to="/restaurants" className="bg-white-creamWhite mt-4 pt-2 pb-3 px-5 text-center text-grey-dark-standard shadow-md hover:shadow-lg rounded-xl">← Back to marketplace</Link>
             </div>
 
-            <h1 className="text-3xl md:pr-64 pl-1 font-extrabold pl-40 pt-10">Restaurants Containing "{cat}"</h1>
+            <h1 className="text-3xl md:pr-64 font-extrabold pl-40 pt-10">Restaurants Containing "{cat}"</h1>
             <div className="justify-items-center grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-y-16 mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
                 {
                 (
