@@ -78,7 +78,7 @@ const ManageRestaurant = () => {
                         onClick={()=>{setShowCreateFood(true)}}>Add to Menu</button>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-5">
+                    <div className="grid md:grid-cols-3 gap-5">
                         {
                             food?.map((food: any) =>
                                 <ManageFood key={food.foodId} name={food.foodName} desc={food.foodDesc} price={food.foodPrice}

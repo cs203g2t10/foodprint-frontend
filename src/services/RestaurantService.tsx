@@ -45,11 +45,12 @@ class RestaurantService {
 
     // Manager: Edit food details
     editFood = (restaurantId: number, foodId: number, name:any, desc:any, price:any, ingredientQty:any) => {
+        console.log(ingredientQty);
         const requestBody = {
             foodName : name,
             foodDesc: desc,
             foodPrice: price,
-            ingredientQuantityList: ingredientQty
+            foodIngredientQuantity: ingredientQty
         }
         return axios.patch(`${RESTAURANTS_REST_API_URL}/${restaurantId}/food/${foodId}`, requestBody, this.headers());
     }

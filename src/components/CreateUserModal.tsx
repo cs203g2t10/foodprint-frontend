@@ -14,12 +14,29 @@ const CreateUserModal = (
     const [lastName, setLastName] = useState("");
     const [roles, setRoles] = useState("");
     const [created, setCreated] = useState(false);
+    const [error, setError] = useState("");
+    const [regexp] = useState("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$");
 
     const customStyles = {
         overlay: { zIndex: 1000 }
     };
 
+    const validateForm = (password: string) => {
+        if (password.length < 8 || password.length > 60) {
+            setError("Password size must be between 8 and 60");
+            return false;
+        }
+        if (password.length === 0 || !password.match(regexp)) {
+            setError("Password must have 1 letter, 1 number and at least 8 characters");
+            return false;
+        }
+        return true;
+    }
+
     const createNewUser = (email: string, firstName: string, lastName: string, password: string, roles: string) => {
+        if (!validateForm(password)) {
+            return;
+        }
         const response = AdminService.adminCreateUser(email, firstName, lastName, password, roles);
         response.then(res => {
             console.log(res)
@@ -27,6 +44,7 @@ const CreateUserModal = (
                 console.log("Successful Creation");
                 console.log(res.data);
                 setCreated(true)
+                setError("")
             }
         })
     }
@@ -60,10 +78,13 @@ const CreateUserModal = (
                 </div>
 
                 {
+                    (error ? <div className="mx-auto pt-3 pb-3 text-red-standard">{error}</div> : <></>)
+                }
+                {
                     (created ?
                         <>
-                            <div className="mx-auto pt-7 pb-2 text-green-standard text-base">User has been successfully created!</div>
-                            <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28">
+                            <div className="mx-auto pt-3 pb-3 text-green-standard text-base">User has been successfully created!</div>
+                            <div className="pt-2 pb-0 grid grid-cols-2 gap-x-10 justify-center mx-28">
                                 <button className=" text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
                                     onClick={() => {
                                         setCreated(false);
@@ -77,7 +98,7 @@ const CreateUserModal = (
                                     onClick={() => { setCreateUser(false) }}>Return</button>
                             </div>
                         </> :
-                        <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28 pt-10">
+                        <div className="pt-2 pb-0 grid grid-cols-2 gap-x-10 justify-center mx-28">
                             <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-sm hover:shadow-md"
                                 onClick={() => createNewUser(email, firstName, lastName, password, roles)}>Confirm</button>
                             <button className="text-green-standard px-3 py-1 rounded-xl shadow-sm hover:shadow-md border" onClick={() => setCreateUser(false)}>Cancel</button>
