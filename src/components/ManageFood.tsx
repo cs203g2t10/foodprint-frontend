@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import RestaurantService from '../services/RestaurantService';
 
 const ManageFood = (props: any) => {
 
@@ -8,13 +9,17 @@ const ManageFood = (props: any) => {
     const [ingredientQty, setIngredientQty] = useState(props.ingredientQty);
     const [newIngredientQty, setNewIngredientQty] = useState(props.ingredientQty);
     const [edit, setEdit] = useState(false);
+    const [changePic, setChangePic] = useState(false);
 
     useEffect(() => {
         ingredientQty.sort();
     }, [ingredientQty])
 
     const editFood = (name:any, desc:any, price:any, ingredientQty:any) => {
-
+        const response = RestaurantService.editFood(props.restaurantId, props.foodId, name, desc, price, ingredientQty);
+        console.log(response);
+        setIngredientQty(newIngredientQty);
+        setEdit(false);
     }
 
     return (
@@ -72,7 +77,7 @@ const ManageFood = (props: any) => {
                     )
                 }
                 <div className="grid grid-cols-2 gap-x-10 mx-5 mt-4">
-                    <button className="rounded-xxl bg-green-standard text-white-standard py-1" onClick={() => { editFood(name, desc, price, ingredientQty) }}>Confirm</button>
+                    <button className="rounded-xxl bg-green-standard text-white-standard py-1" onClick={() => { editFood(name, desc, price, newIngredientQty) }}>Confirm</button>
                     <button className="rounded-xxl bg-yellow-standard border-grey-lighter py-1" onClick={() => { 
                         setName(props.name);
                         setDesc(props.desc);
