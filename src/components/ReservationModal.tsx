@@ -65,15 +65,15 @@ const ReservationModal = (
                     <div className="overflow-y-auto max-h-72">
                         {
                             lineItems?.map(
-                                (lineItem: any) =>
+                                (lineItem: any) => 
                                     <div key={lineItem.food.foodId}>
                                         <div className="grid grid-cols-7 bg-white-standard rounded-xl justify-center items-center gap-x-2 py-2 mb-3 ">
                                             <div className="col-span-2 ml-5">
-                                                <img src="/images/sushi.jpg" className=" w-16 h-16 shadow-md rounded-full object-cover" alt="food pic" />
+                                                <img src={lineItem.food.pictures[0].url} className=" w-16 h-16 shadow-md rounded-full object-cover" alt="food pic" />
                                             </div>
                                             <div className="col-span-4 mx-5">
                                                 <h1 className="text-grey-dark text-xl">{lineItem.food.foodName}</h1>
-                                                <h1 className="text-grey-light text-sm">${lineItem.food.foodPrice * lineItem.quantity} each</h1>
+                                                <h1 className="text-grey-light text-sm">${lineItem.food.foodPrice} each</h1>
                                             </div>
                                             <p className="col-span-1 text-grey-light mr-4">{lineItem.quantity} x</p>
                                         </div>

@@ -56,16 +56,16 @@ const Payment = () => {
                         <h1 className="flex items-center justify-center text-3xl font-bold tracking-wide text-green-standard pb-2">Your Order</h1>
                         <div className="overflow-y-auto max-h-64">
                             {
-                                reservationDetails.lineItems?.map((reservationOrders: any) =>
-                                    <div key={reservationOrders.reservationId} >
+                                reservationDetails.lineItems?.map((lineItem: any) => 
+                                    <div key={lineItem.reservationId} >
                                         <div className="mx-8 grid grid-cols-7 bg-white-standard rounded-xl justify-center items-center py-2 mb-3 ">
                                             <div className="col-span-2 ml-8">
-                                                <img src="/images/sushi.jpg" className=" w-14 h-14 shadow-md rounded-full" alt="food pic" />
+                                                <img src={lineItem.pictures[0].url} className=" w-14 h-14 shadow-md rounded-full" alt="food pic" />
                                             </div>
                                             <div className="col-span-4 mx-5">
-                                                <h1 className="text-grey-dark text-xl">{reservationOrders.foodName}</h1>
+                                                <h1 className="text-grey-dark text-xl">{lineItem.foodName}</h1>
                                             </div>
-                                            <h1 className="text-grey-light text-sm">x {reservationOrders.quantity}</h1>
+                                            <h1 className="text-grey-light text-sm">x {lineItem.quantity}</h1>
                                         </div>
                                     </div>
                                 )
