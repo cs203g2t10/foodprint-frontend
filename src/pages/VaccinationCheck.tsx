@@ -45,7 +45,7 @@ const VaccinationCheck = () => {
                 <div className="grid grid-cols-2 p-8 pr-14">
                     <img src="/images/upload.png" alt="Upload illustration" className="transform scale-95 pt-8" />
                     <div>
-                        <h1 className="text-grey-lighter text-5xl font-bold">Upload File.</h1>
+                        <h1 className="text-grey-standard text-5xl font-bold">Upload File.</h1>
                         <h1 className="text-grey-lighter text-sm pb-4">Dining in is only available for vaccinated individuals. Please upload your certification to help us with this process.</h1>
                         <div {...getRootProps()}>
                             <div className="bg-grey-lightest place-items-stretch rounded-xxl text-center p-6 border-dashed border-2 border-grey-light hover:shadow-md shadow-sm">
@@ -61,10 +61,10 @@ const VaccinationCheck = () => {
                                             </>
                                             :
                                             <>
-                                                <h1 className="text-light">Drag and drop your certificate here</h1>
+                                                <h1 className="text-light text-base text-grey-dark">Drag and drop your certificate here</h1>
                                                 <img src="/images/cloud.png" alt="cloud illustration" className="transform scale-75 grid justify-items-center mx-auto" />
                                                 <h1 className="text-lightest text-sm pb-2">OR</h1>
-                                                <h1 className="text-light">Click to browse for a file</h1>
+                                                <h1 className="text-light bg-green-standard text-white-standard text-sm opacity-70 hover:opacity-80 shadow-sm hover:shadow-md w-4/5 mx-auto py-1 rounded-full px-5">Click to browse for a file</h1>
                                             </>
                                     }
                                 </div>
