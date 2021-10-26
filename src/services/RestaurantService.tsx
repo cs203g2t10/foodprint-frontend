@@ -46,11 +46,21 @@ class RestaurantService {
     // Manager: Edit food details
     editFood = (restaurantId: number, foodId: number, name:any, desc:any, price:any, ingredientQty:any) => {
         console.log(ingredientQty);
+        var foodIngredientQuantity : any = [];
+        ingredientQty.forEach((ing: { ingredient: { ingredientId: any; }; quantity: any; }) => {
+            var ingredientId  = ing.ingredient.ingredientId;
+            var quantity = ing.quantity;
+            foodIngredientQuantity.push({
+                ingredientId,
+                quantity
+            })
+        });
+        console.log(foodIngredientQuantity);
         const requestBody = {
             foodName : name,
             foodDesc: desc,
             foodPrice: price,
-            foodIngredientQuantity: ingredientQty
+            foodIngredientQuantity
         }
         return axios.patch(`${RESTAURANTS_REST_API_URL}/${restaurantId}/food/${foodId}`, requestBody, this.headers());
     }
