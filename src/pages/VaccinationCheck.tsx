@@ -83,7 +83,7 @@ const VaccinationCheck = () => {
                 </button>
                 <div className="grid grid-cols-2">
                     <div>
-                        <img src="/images/confirm.png" />
+                        <img src="/images/confirm.png" alt="confirm"/>
                     </div>
                     <div>
                         <h1 className="text-light">{modalMessage}</h1>

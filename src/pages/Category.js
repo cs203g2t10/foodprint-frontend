@@ -19,7 +19,7 @@ const Category = () => {
             console.log(response)
             changeRestaurants(response.data)
         })
-    }, [])
+    }, [cat])
 
     return (
         <div className="min-h-screen">
