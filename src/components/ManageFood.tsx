@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import RestaurantService from '../services/RestaurantService';
+import ChangeFoodPicModal from './ChangeFoodPicModal';
 
 const ManageFood = (props: any) => {
 
@@ -9,7 +10,7 @@ const ManageFood = (props: any) => {
     const [ingredientQty, setIngredientQty] = useState(props.ingredientQty);
     const [newIngredientQty, setNewIngredientQty] = useState(props.ingredientQty);
     const [edit, setEdit] = useState(false);
-    // const [changePic, setChangePic] = useState(false);
+    const [changePic, setChangePic] = useState(false);
 
     useEffect(() => {
         ingredientQty.sort();
@@ -25,7 +26,9 @@ const ManageFood = (props: any) => {
     return (
         edit ?
             <div className="grid py-4 px-10 rounded-xl bg-white-standard shadow gap-y-2">
-                <img src={props.pic?.url} alt={props.pic?.description} className="rounded-full mb-5 h-48 w-48 flex mx-auto" />
+                <img src={props.pic?.url} alt={props.pic?.description} className="rounded-full mb-5 h-48 w-48 flex mx-auto" 
+                onClick={()=>setChangePic(true)}
+                />
                 <div className="flex gap-x-3 justify-between">
                     <h1>Name: </h1>
                     <input value={name} className="px-2 focus:outline-none border rounded"
@@ -87,6 +90,7 @@ const ManageFood = (props: any) => {
                         setEdit(false);
                     }}>Undo</button>
                 </div>
+                <ChangeFoodPicModal className="" {...{changePic, setChangePic, name}} url={props.pic?.url}/>
             </div>
             :
             <div className="py-4 px-10 rounded-xl bg-white-standard shadow">
