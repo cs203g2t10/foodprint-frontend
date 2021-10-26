@@ -18,7 +18,7 @@ const RestaurantList = () => {
             <div className="justify-center grid grid-cols-1 mx-64">
                 {
                     restaurants?.map(
-                        restaurant =>
+                        (restaurant: any) =>
                             <Link to={"/restaurant/" + restaurant.restaurantId} className="flex gap-x-48 text-center border p-5 my-2 rounded-lg" key={restaurant.restaurantId}>
                                 <div> {restaurant.restaurantId} </div>
                                 <div> {restaurant.restaurantName} </div>

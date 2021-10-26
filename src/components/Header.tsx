@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom'
-import { useAppContext } from '../lib/contextLib';
+import { useAppContext } from '../lib/AppContext';
 import LogInService from "../services/LogInService";
 import { Transition } from "@headlessui/react";
 
 
 const Header = () => {
-    const { isAuthenticated, userHasAuthenticated } = useAppContext();
+    const { isAuthenticated, setIsAuthenticated } = useAppContext();
     const [isOpen, setIsOpen] = useState(false);
 
     const handleLogout = () => {
-        userHasAuthenticated(false);
+        setIsAuthenticated(false);
         window.localStorage.removeItem("token");
     }
 
@@ -35,7 +35,7 @@ const Header = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     
                     <div className="flex items-center justify-between h-16">
-                    <Link to='/' className=" text-black px-3 py-2 rounded-md text-md font-medium">
+                    <Link to='/' className=" text-black px-1 py-2 rounded-md text-md font-medium">
                             foodPrint
                         </Link>
                         <div className="flex items-center justify-between w-full">
@@ -43,18 +43,18 @@ const Header = () => {
                             <div className="hidden md:block">
                                 <div className="ml-10 flex items-baseline space-x-4">
 
-                                    <Link to='/restaurants' className=" text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-md font-medium">
+                                    <Link to='/restaurants' className=" text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
                                         Marketplace
                                     </Link>
 
-                                    <Link to='/about' className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-md font-medium">About Us</Link>
+                                    <Link to='/about' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">About Us</Link>
                                 </div>
                             </div>
                             <div className="hidden md:block self-end">
                                 <div className="flex items-baseline space-x-4">
                                     {isUserAdmin() ? (
                                             <>
-                                                <Link to='/ManageUser' className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-md font-medium">Management Console</Link>
+                                                <Link to='/ManageUser' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Management Console</Link>
                                             </>
                                         ) : (
                                             <>
@@ -64,7 +64,7 @@ const Header = () => {
                                         }
                                         {isUserManager() ? (
                                             <>
-                                                <Link to='/manager' className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-md font-medium">Manage Restaurant</Link>
+                                                <Link to='/manager' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Manage Restaurant</Link>
                                             </>
                                         ) : (
                                             <>
@@ -74,13 +74,13 @@ const Header = () => {
                                         }
                                         {isAuthenticated ? (
                                             <>
-                                                <Link to='/profile' className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-md font-medium">{getUserName()}</Link>
-                                                <Link onClick={handleLogout} to="/login" className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-md font-medium">Logout</Link>
+                                                <Link to='/profile' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">{getUserName()}</Link>
+                                                <Link onClick={handleLogout} to="/login" className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Logout</Link>
                                             </>
                                         ) : (
                                             <>
-                                                <Link to='/login' className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-md font-medium">Log In</Link>
-                                                <Link to='/register' className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-md font-medium">Register</Link>
+                                                <Link to='/login' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Log In</Link>
+                                                <Link to='/register' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Register</Link>
                                             </>
                                         )
                                     }
@@ -147,16 +147,16 @@ const Header = () => {
                     {(ref) => (
                         <>
                             <div className="md:hidden" id="mobile-menu">
-                                <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                                    <Link to="/restaurants" className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-md font-medium">
+                                <div ref={ref} className="px-1 pt-2 pb-3 space-y-1 sm:px-1">
+                                    <Link to="/restaurants" className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
                                         Marketplace
                                     </Link>
-                                    <Link to='/about' className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-md font-medium">
+                                    <Link to='/about' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
                                         About Us
                                     </Link>
                                     {isUserAdmin() ? (
                                             <>
-                                                <Link to='/ManageUser' className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-md font-medium">
+                                                <Link to='/ManageUser' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
                                                     Management Console
                                                 </Link>
                                             </>
@@ -168,7 +168,7 @@ const Header = () => {
                                         }
                                         {isUserManager() ? (
                                             <>
-                                                <Link to='/manager' className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-md font-medium">
+                                                <Link to='/manager' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
                                                     Manage Restaurant
                                                 </Link>
                                             </>
@@ -180,19 +180,19 @@ const Header = () => {
                                         }
                                         {isAuthenticated ? (
                                             <>
-                                                <Link to='/profile' className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-md font-medium">
+                                                <Link to='/profile' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
                                                     {getUserName()}
                                                 </Link>
-                                                <Link onClick={handleLogout} to="/login" className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-md font-medium">
+                                                <Link onClick={handleLogout} to="/login" className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
                                                     Logout
                                                 </Link>
                                             </>
                                         ) : (
                                             <>
-                                                <Link to='/login' className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-md font-medium">
+                                                <Link to='/login' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
                                                     Log In
                                                 </Link>
-                                                <Link to='/register' className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-md font-medium">
+                                                <Link to='/register' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
                                                     Register
                                                 </Link>
                                             </>

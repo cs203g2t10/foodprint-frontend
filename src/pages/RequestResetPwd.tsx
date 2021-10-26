@@ -9,10 +9,13 @@ const ResetPwd = () => {
     const [processing, setProcessing] = useState(false)
 
     const validateForm = () => {
-        return email > 0;
+        return (email) ? email.length > 0 : false;
     }
 
     const requestResetPwd = () => {
+        if (email == null) {
+            return;
+        }
         setProcessing(true)
         ResetPwdService.requestResetPwd(email).then((response) => {
             if (response.data === "Email sent, check your inbox!") {

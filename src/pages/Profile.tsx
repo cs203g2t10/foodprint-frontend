@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { useAppContext } from '../lib/contextLib'
+import { useAppContext } from '../lib/AppContext'
 import LogInService from '../services/LogInService'
 import type { UserDetails } from '../services/LogInService';
 import ReservationService from '../services/ReservationService';

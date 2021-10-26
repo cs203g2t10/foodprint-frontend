@@ -4,7 +4,7 @@ import "animate.css"
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-import { useAppContext } from '../lib/contextLib'
+import { useAppContext } from '../lib/AppContext'
 import LogInService from '../services/LogInService'
 import type { UserDetails } from '../services/LogInService';
 import TrendingRestaurant from '../components/TrendingRestaurant'

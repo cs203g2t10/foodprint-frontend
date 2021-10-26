@@ -4,7 +4,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import PaymentService from '../services/PaymentService'
 import "../css/paymentform.css"
 
-const CARD_OPTIONS = {
+const CARD_OPTIONS: any = {
     iconStyle: "solid",
     style: {
         base: {
@@ -28,10 +28,11 @@ const CARD_OPTIONS = {
     }
 };
 
-const PaymentForm = (props) => {
+const PaymentForm = (props: any) => {
+
     const [success, setSuccess] = useState(false)
-    const [error, setError] = useState(null);
-    const [processing, setProcessing] = useState('');
+    const [error, setError] = useState("");
+    const [processing, setProcessing] = useState(false);
     const [disabled, setDisabled] = useState(true);
 
     const [amount, setAmount] = useState(0)
@@ -43,14 +44,14 @@ const PaymentForm = (props) => {
     const stripe = useStripe()
     const elements = useElements()
 
-    const handleChange = async (event) => {
+    const handleChange = async (event: any) => {
         // Listen for changes in the CardElement
         // and display any errors as the customer types their card details
         setDisabled(event.empty);
         setError(event.error ? event.error.message : "");
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault()
         setProcessing(true)
 
@@ -61,6 +62,13 @@ const PaymentForm = (props) => {
 
         try {
             const card = elements.getElement(CardElement);
+
+            if (card == null) {
+                setProcessing(false);
+                setError("Card is null");
+                return;
+            }
+
             const result = await stripe.createToken(card);
 
             if (result.error) {
@@ -69,7 +77,14 @@ const PaymentForm = (props) => {
                 console.log('token is', result.token.id);
             }
 
+            if (result.token === undefined) {
+                setProcessing(false);
+                setError("Token is undefined");
+                return;
+            }
+
             const response = await PaymentService.makePayment(props.reservationId, amount, result.token.id);
+
             if (response.data.status === "succeeded") {
                 console.log("Successful payment")
                 setSuccess(true)
@@ -80,7 +95,8 @@ const PaymentForm = (props) => {
                 setError(message)
                 setProcessing(false)
             }
-        } catch (error) {
+
+        } catch (error: any) {
             console.log("Error", error)
             setError(error.message)
             setProcessing(false)

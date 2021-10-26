@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { ChangeEvent, SetStateAction, useState } from 'react'
 import Modal from 'react-modal'
 import DatePicker from "react-datepicker";
 import ReservationService from '../services/ReservationService'
@@ -7,13 +7,12 @@ import { Link } from 'react-router-dom';
 Modal.setAppElement('#root')
 
 const ReservationModal = (
-    { id,
-        modalIsOpen, lineItems, finalPrice, totalPrice,
-        setModal }
+    { id, modalIsOpen, lineItems, finalPrice, totalPrice, setModal }:
+    { id: any, modalIsOpen: boolean, lineItems: any[], finalPrice: number, totalPrice: number, setModal: SetStateAction<any> }
 ) => {
 
     const [pax, setPax] = useState(1);
-    const [bookingDate, setBookingDate] = useState();
+    const [bookingDate, setBookingDate] = useState<Date>();
     const [reserved, setReserved] = useState(false);
     const [isVaccinated, setVaccinated] = useState(false);
     const [selectDate, setSelectDate] = useState(false);
@@ -21,7 +20,7 @@ const ReservationModal = (
     const [reservationId, setReservationId] = useState();
     // const [noSlot, setNoSlot] = useState(false);
 
-    const filterAcceptableTimings = (time) => {
+    const filterAcceptableTimings = (time: any) => {
         const currentDate = new Date()
         const selectedDate = new Date(time)
         // const opening = restaurantDetails.restaurantWeekdayOpeningHour * 3600000 + restaurantDetails.restaurantWeekdayOpeningMinutes * 60000;
@@ -57,7 +56,7 @@ const ReservationModal = (
         overlay: { zIndex: 1000 }
     };
 
-    return <Modal lineItems={lineItems} isOpen={modalIsOpen} className="mt-20 focus:outline-none" style={customStyles}>
+    return <Modal /* lineItems={lineItems} */ isOpen={modalIsOpen} className="mt-20 focus:outline-none" style={customStyles}>
         <div className="grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-64 pb-10 bg-white-dirtyWhite">
             <h1 className=" flex text-5xl pt-12 text-green-standard mx-20 font-bold">Reservation</h1>
             <h1 className=" flex text-md mx-20 mb-2 text-grey-standard font-light">Please confirm your order below </h1>
@@ -66,7 +65,7 @@ const ReservationModal = (
                     <div className="overflow-y-auto max-h-72">
                         {
                             lineItems?.map(
-                                lineItem =>
+                                (lineItem: any) =>
                                     <div key={lineItem.food.foodId}>
                                         <div className="grid grid-cols-7 bg-white-standard rounded-xl justify-center items-center gap-x-2 py-2 mb-3 ">
                                             <div className="col-span-2 ml-5">
@@ -103,7 +102,7 @@ const ReservationModal = (
                         <h1 className="text-md text-green-standard mr-5">Pax (5 max): </h1>
                         <input className="flex focus:outline-none rounded-xl w-56 pl-5 py-1 shadow-sm"
                             placeholder="0" type="number" min="1" max="5"
-                            onChange={(e) => setPax(e.target.value)}
+                            onChange={(e) => setPax(parseInt(e.target.value))}
                             value={pax} required></input>
                     </div>
                     {
@@ -111,7 +110,7 @@ const ReservationModal = (
                     }
                     <div className="flex mb-8">
                         <h1 className="flex text-md text-green-standard mr-5">Booking: </h1>
-                        <DatePicker selected={bookingDate} onChange={(date) => { setBookingDate(date); setSelectDate(false) }} showTimeSelect
+                        <DatePicker selected={bookingDate} onChange={(date: Date) => { setBookingDate(date); setSelectDate(false) }} showTimeSelect
                             dateFormat="d/MM/yyyy, h:mm aa" className="flex flex-col focus:outline-none rounded-xl shadow-sm py-1 w-64 pl-5"
                             minDate={new Date()} filterTime={filterAcceptableTimings}
                         />
@@ -127,8 +126,8 @@ const ReservationModal = (
                                 name="isVaccinated"
                                 type="checkbox"
                                 checked={isVaccinated}
-                                onChange={(e) => {
-                                    setVaccinated(e.target.type === 'checkbox' ? e.target.checked : e.target.value);
+                                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                                    setVaccinated(e.target.type === 'checkbox' ? e.target.checked : (e.target.value === 'true'));
                                     setDeclare(false);
                                 }} className="my-auto mr-4" />
                             <h1 className="text-sm text-grey-standard">I hereby declare that all of the guests are vaccinated (compulsory)</h1>

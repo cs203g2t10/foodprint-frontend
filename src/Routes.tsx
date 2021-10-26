@@ -21,7 +21,7 @@ import VaccinationCheck from "./pages/VaccinationCheck";
 import Category from "./pages/Category";
 
 export default function Routes() {
-    let location = useLocation();
+    let location = useLocation<any>();
     let background = location.state && location.state.background;
     
     return (
@@ -57,9 +57,11 @@ export default function Routes() {
                 <Route exact path="/envtest">
                     <EnvTest />
                 </Route>
-                <Route path="/restaurant/:id" children={<Restaurant />}>
+                <Route path="/restaurant/:id">
+                    <Restaurant />
                 </Route>
-                <Route path="/payment/:id" children={<Payment />}>
+                <Route path="/payment/:id">
+                    <Payment />
                 </Route>
                 <Route exact path="/forgotpassword">
                     <RequestResetPwd />

@@ -10,12 +10,12 @@ const Register = () => {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
-    const [error, setError] = useState([])
+    const [error, setError] = useState("")
     const [processing, setProcessing] = useState(false)
     const [successfulReg, setSuccessfulReg] = useState(false)
 
     const validateForm = () => {
-        return email > 0 && password > 0;
+        return email.length > 0 && password.length > 0;
     }
 
     const userRegister = () => {
@@ -33,7 +33,7 @@ const Register = () => {
             }
             else if (response.status === 400) {
                 console.log(response.data.message)
-                response.data.message.forEach((msg) => {
+                response.data.message.forEach((msg: string) => {
                     setError(msg);
                 })
             } else if (response.status === 409) {

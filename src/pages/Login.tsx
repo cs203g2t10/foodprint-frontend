@@ -3,27 +3,30 @@ import { useState } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { Redirect } from "react-router-dom";
 import LogInService from '../services/LogInService'
-import { useAppContext } from '../lib/contextLib';
+import { useAppContext } from '../lib/AppContext';
 
 
 
 const Login = () => {
-    const { isAuthenticated, userHasAuthenticated } = useAppContext();
+    const { isAuthenticated, setIsAuthenticated } = useAppContext();
 
     const [email, setEmail] = useState(window.localStorage.getItem("email"))
     const [password, setPassword] = useState("")
     const [error, setError] = useState("");
 
     const validateForm = () => {
-        return email > 0 && password > 0;
+        return (email) ? email.length > 0 : false && password.length > 0;
     }
 
     const userLogin = () => {
+        if (email === null || email === "" || password === "") {
+            return
+        }
         LogInService.userLogIn(email, password).then((response) => {
             if (response.data.status === "SUCCESS") {
                 console.log(response.data.token)
                 window.localStorage.setItem("token", response.data.token)
-                userHasAuthenticated(true);
+                setIsAuthenticated(true);
             } else if (response.data.status === "INCORRECT") {
                 console.log("Incorrect input")
                 setError("Please enter a valid username and password!")

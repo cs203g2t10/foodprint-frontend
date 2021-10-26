@@ -1,4 +1,6 @@
-const RestaurantFood = ({ food, setLineItems }) => {
+import { ChangeEvent } from "react";
+
+const RestaurantFood = ({ food, setLineItems }: { food: any, setLineItems: any }) => {
 
     let foodUrl = "/images/sushi.jpg"
 
@@ -19,13 +21,13 @@ const RestaurantFood = ({ food, setLineItems }) => {
                 <p className="col-start-1 col-end-2 flex text-xl font-bold text-green-standard text-center mx-2">${food.foodPrice}</p>
                 <div className="col-start-3 col-end-5 flex">
                     <p> Qty: </p>
-                    <input onChange={e => {
+                    <input onChange={(e: ChangeEvent<HTMLInputElement>) => {
                         if (e.target.value === '0') {
-                            setLineItems(oldArray => [...oldArray.filter(lineItem =>
+                            setLineItems((oldArray: any[]) => [...oldArray.filter((lineItem: any) =>
                                 lineItem.food.foodId !== food.foodId
                             )])
                         } else {
-                            setLineItems(oldArray => [...oldArray.filter(lineItem =>
+                            setLineItems((oldArray: any[]) => [...oldArray.filter((lineItem: any) =>
                                 lineItem.food.foodId !== food.foodId
                             ), {
                                 food,

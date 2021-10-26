@@ -8,9 +8,9 @@ import { Link } from 'react-router-dom';
 
 const Payment = () => {
 
-    let params = useParams();
+    let params = useParams<any>();
 
-    const [reservationDetails, setReservationDetails] = useState([]);
+    const [reservationDetails, setReservationDetails] = useState<any>([]);
     // const [reservationOrders, setReservationOrder] = useState([])
     const [paid, setPaid] = useState(false);
 
@@ -56,7 +56,7 @@ const Payment = () => {
                         <h1 className="flex items-center justify-center text-3xl font-bold tracking-wide text-green-standard pb-2">Your Order</h1>
                         <div className="overflow-y-auto max-h-64">
                             {
-                                reservationDetails.lineItems?.map(reservationOrders =>
+                                reservationDetails.lineItems?.map((reservationOrders: any) =>
                                     <div key={reservationOrders.reservationId} >
                                         <div className="mx-8 grid grid-cols-7 bg-white-standard rounded-xl justify-center items-center py-2 mb-3 ">
                                             <div className="col-span-2 ml-8">

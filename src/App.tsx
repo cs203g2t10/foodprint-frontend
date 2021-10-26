@@ -1,17 +1,17 @@
 import Header from './components/Header'
 import { useState } from "react";
-import { AppContext } from "./lib/contextLib";
+import { AppContext } from "./lib/AppContext";
 import Routes from './Routes';
 import Footer from './components/Footer';
 
 
 function App() {
-  const [isAuthenticated, userHasAuthenticated] = useState(window.localStorage.getItem("token"));
+  
+  const [isAuthenticated, setIsAuthenticated ] = useState<any>(window.localStorage.getItem("token"));
 
   return (
     <div className="App" >
-      <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated}}>
-        
+      <AppContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
         <Header />
         <Routes />
         <Footer/>

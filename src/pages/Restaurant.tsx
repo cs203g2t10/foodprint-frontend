@@ -8,10 +8,10 @@ import RestaurantFood from '../components/RestaurantFood';
 
 const Restaurant = () => {
 
-    let id = useParams();
+    let id = useParams<any>();
 
-    const [restaurantDetails, setRestaurantDetails] = useState([]);
-    const [food, setFood] = useState([]);
+    const [restaurantDetails, setRestaurantDetails] = useState<any>([]);
+    const [food, setFood] = useState<any>([]);
     const [lineItems, setLineItems] = useState([]);
     const [modalIsOpen, setModal] = useState(false);
     const [imageUrl, setImageUrl] = useState("/images/shop.jpg")
@@ -37,7 +37,7 @@ const Restaurant = () => {
 
     useEffect(() => {
         setTotalPrice(0);
-        lineItems.map((lineItem) => {
+        lineItems.map((lineItem: any) => {
             return setTotalPrice((old) => old + lineItem.food.foodPrice * lineItem.quantity)
         })
     }, [lineItems])
@@ -56,7 +56,7 @@ const Restaurant = () => {
 
     return (
         <div>
-            <div className>
+            <div>
                 <div className="absolute z-10">
                     <div className="grid grid-cols-9 gap-x-16 mx-4 my-10">
                     <h2 className="col-span-1">&nbsp;</h2>
@@ -84,7 +84,7 @@ const Restaurant = () => {
             <div className="gap-x-16  grid items-center justify-items-center xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-y-16 mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
                 {
                     food?.map(
-                        food => <RestaurantFood {...{ food, setLineItems }} key={food.foodId} />
+                        (food: any) => <RestaurantFood {...{ food, setLineItems }} key={food.foodId} />
                     )
                 }
             </div>

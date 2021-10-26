@@ -9,7 +9,7 @@ const Category = () => {
 
     const [restaurants, setRestaurants] = useState([])
 
-    const changeRestaurants = (restaurantData) => {
+    const changeRestaurants = (restaurantData: any) => {
         setRestaurants(restaurantData)
         console.log(restaurantData)
     }
@@ -39,7 +39,7 @@ const Category = () => {
                 (
                     (restaurants.length > 0) ? (
                         restaurants?.map(
-                            restaurant => {
+                            (restaurant: any) => {
                                 let imageUrl = "/images/shop.jpg";
                                 if (restaurant.pictures.length > 0) {
                                     imageUrl = restaurant.pictures[0].url;

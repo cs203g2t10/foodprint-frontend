@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TrendingRestaurant = (props) => {
+const TrendingRestaurant = (props: any) => {
     return (
         <div className="w-64 flex-none">
             <img className="object-fill w-full h-40 rounded-xl" src={props.src} alt="restaurant" />
