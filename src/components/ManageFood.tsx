@@ -89,7 +89,7 @@ const ManageFood = (props: any) => {
                         setName(props.name);
                         setDesc(props.desc);
                         setPrice(props.price);
-                        setIngredientQty(props.ingredientQty)
+                        setNewIngredientQty(props.ingredientQty)
                         setEdit(false);
                     }}>Undo</button>
                 </div>
