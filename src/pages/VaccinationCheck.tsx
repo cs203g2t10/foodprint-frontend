@@ -21,7 +21,7 @@ const VaccinationCheck = () => {
         const response = VaccinationService.userUploadVaccination(file);
         response.then((response) => {
             console.log("Success: ", response.data.reservationId)
-            setModalMessage(`Successfully verfied vaccination certificate ${response.data.reason}`);
+            setModalMessage(`Thank you! We have successfully verfied ${response.data.reason}`);
             setModalIsOpened(true);
         }).catch((error) => {
             console.log(error.response.data);
@@ -74,19 +74,20 @@ const VaccinationCheck = () => {
                 </div>
             </div>
 
-            <Modal isOpen={modalIsOpened} className=" mx-auto w-3/5 my-auto bg-white-offWhite">
+            <Modal isOpen={modalIsOpened} className="mx-auto w-1/2 my-auto bg-white-offWhite mt-40 rounded-xxl">
                 <button
                     type="button"
-                    className="uk-button uk-button-danger uk-button-small m-5 bg-grey-lightest p-3 rounded-full shadow-sm hover:shadow-md"
+                    className="uk-button uk-button-danger uk-button-small ml-5 mt-5 bg-grey-lightest p-3 rounded-full shadow-sm hover:shadow-md"
                     onClick={() => setModalIsOpened(false)}>
                     <AiOutlineClose/>
                 </button>
-                <div className="grid grid-cols-2">
+                <div className="grid grid-cols-2 gap-x-6 mx-8 h-auto py-8">
                     <div>
                         <img src="/images/confirm.png" />
                     </div>
                     <div>
-                        <h1 className="text-light">{modalMessage}</h1>
+                        <h1 className="text-green-standard text-5xl font-bold">You're <br/>Vaccinated.</h1>
+                        <h1 className="text-base text-grey-standard text-light mt-4 mb-8">{modalMessage}</h1>
                     </div>
                 </div>
             </Modal>
