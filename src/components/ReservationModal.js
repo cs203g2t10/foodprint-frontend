@@ -70,7 +70,7 @@ const ReservationModal = (
                                     <div key={lineItem.food.foodId}>
                                         <div className="grid grid-cols-7 bg-white-standard rounded-xl justify-center items-center gap-x-2 py-2 mb-3 ">
                                             <div className="col-span-2 ml-5">
-                                                <img src="/images/sushi.jpg" className=" w-16 h-16 shadow-md rounded-full" alt="food pic" />
+                                                <img src="/images/sushi.jpg" className=" w-16 h-16 shadow-md rounded-full object-cover" alt="food pic" />
                                             </div>
                                             <div className="col-span-4 mx-5">
                                                 <h1 className="text-grey-dark text-xl">{lineItem.food.foodName}</h1>

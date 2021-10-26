@@ -80,7 +80,7 @@ const Restaurants = () => {
                                 }
                                 return <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId}>
                                     <div className="bg-white-creamWhite h-auto w-64 shadow-md hover:shadow-lg rounded-xl flex-none pb-1">
-                                        <img className="object-fill w-full h-40 rounded-xl " src={imageUrl} alt="food" />
+                                        <img className="object-cover w-full h-40 rounded-xl " src={imageUrl} alt="food" />
                                         <div className="my-4 mx-5">
                                             <h2 className="bg-yellow-standard w-4/12 text-center rounded-xl text-base py-1">-42%</h2>
                                             <h1 className=" mt-2 text-xl text-grey-dark">{restaurant.restaurantName}</h1>

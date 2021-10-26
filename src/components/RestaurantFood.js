@@ -9,7 +9,7 @@ const RestaurantFood = ({ food, setLineItems }) => {
         {/* <img src="/images/{food.picturePath}" className="mx-auto w-32 h-32 shadow-md rounded-full" alt="food pic" /> */}
 
         <div className="flex-col mx-auto h-max ">
-            <img src={foodUrl} className="mx-auto w-32 h-32 shadow-md rounded-full object-fill" alt="food pic" />
+            <img src={foodUrl} className="mx-auto w-32 h-32 shadow-md rounded-full object-cover" alt="food pic" />
             <h1 className="flex justify-center font-semibold tracking-wider text-green-standard mt-2 mb-1">{food.foodName}</h1>
             <div className="ml-2">
             </div>
