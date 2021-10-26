@@ -39,6 +39,7 @@ const ManageUser = () => {
             <div className="pt-1 text-center pb-7 text-grey-standard bg-yellow-standard mb-5">Please only edit those fields that you wish to change</div>
             <button className="mr-16 mb-5 border px-4 py-1 bg-green-standard rounded-large shadow-sm hover:shadow-md text-white-standard flex ml-auto"
                 onClick={() => { setCreateUser(true) }}>Create new User</button>
+            <p className="mx-auto text-green-standard text-center pt-4 pb-4">{deleteMessage}</p>
             <div className="mx-14 bg-white-offWhite pt-6 pb-8 rounded-xxl shadow">
                 <div className="grid grid-cols-1 gap-y-9 items-center">
                     <div className="grid grid-cols-11 gap-x-6 mx-6">
@@ -60,7 +61,6 @@ const ManageUser = () => {
                     }
                 </div>
             </div>
-            <p className="mx-auto text-green-standard text-center pt-4">{deleteMessage}</p>
             <PageLinks {...{ numPages, currPage, setCurrPage}} />
             <div>
             </div>
