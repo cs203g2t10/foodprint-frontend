@@ -58,7 +58,7 @@ const Payment = () => {
                             {
                                 reservationDetails.lineItems?.map((lineItem: any) => {
                                     let imageUrl = "/images/sushi.jpg"
-                                    if (lineItem.pictures.length > 0) {
+                                    if (lineItem.pictures?.length > 0) {
                                         imageUrl = lineItem.pictures[0].url
                                     }
                                     return <div key={lineItem.reservationId} >
