@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import PaymentService from '../services/PaymentService'
 import "../css/paymentform.css"
+import { Link } from 'react-router-dom';
 
 const CARD_OPTIONS: any = {
     iconStyle: "solid",
@@ -128,8 +129,11 @@ const PaymentForm = (props: any) => {
                 {
                     (success) ?
                         <div className="Result">
-                            <h1 className="ResultTitle"> Congratulations!</h1>
-                            <h1 className="ResultMessage"> Your payment is successful!</h1>
+                            <div className="pb-5">
+                                <h1 className="ResultTitle"> Congratulations!</h1>
+                                <h1 className="ResultMessage"> Your payment is successful!</h1>
+                            </div>
+                            <Link to="/profile" className="bg-white-standard mt-4 pt-2 pb-3 px-5 text-center hover:shadow-lg rounded-xl">View all reservations</Link>
                         </div>
                         : <></>
                 }

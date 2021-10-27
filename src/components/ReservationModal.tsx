@@ -65,11 +65,15 @@ const ReservationModal = (
                     <div className="overflow-y-auto max-h-72">
                         {
                             lineItems?.map(
-                                (lineItem: any) => 
-                                    <div key={lineItem.food.foodId}>
+                                (lineItem: any) => {
+                                    let imageUrl = "/images/sushi.jpg"
+                                    if (lineItem.food.pictures.length > 0) {
+                                        imageUrl = lineItem.food.pictures[0].url
+                                    }
+                                    return <div key={lineItem.food.foodId}>
                                         <div className="grid grid-cols-7 bg-white-standard rounded-xl justify-center items-center gap-x-2 py-2 mb-3 ">
                                             <div className="col-span-2 ml-5">
-                                                <img src={lineItem.food.pictures[0].url} className=" w-16 h-16 shadow-md rounded-full object-cover" alt="food pic" />
+                                                <img src={imageUrl} className=" w-16 h-16 shadow-md rounded-full object-cover" alt="food pic" />
                                             </div>
                                             <div className="col-span-4 mx-5">
                                                 <h1 className="text-grey-dark text-xl">{lineItem.food.foodName}</h1>
@@ -79,7 +83,7 @@ const ReservationModal = (
                                         </div>
                                     </div>
 
-                            )
+                                })
                         }
                     </div>
                     <div className="grid grid-cols-4">
@@ -140,7 +144,7 @@ const ReservationModal = (
                     {
                         (reserved ? <div>
                             <div className="pt-5 pb-3 text-green-standard">Your reservation is successful!</div>
-                            <Link to={"/payment/" + reservationId} className="border text-green-standard px-7 py-1 rounded-xl flex shadow-md hover:shadow-lg">Proceed to payment</Link>
+                            <Link to={"/payment/" + reservationId} className="border bg-green-standard px-36 py-1.5 rounded-xl flex shadow-md hover:shadow-lg text-white-standard">Proceed to payment</Link>
                         </div>
                             : <></>)
                     }

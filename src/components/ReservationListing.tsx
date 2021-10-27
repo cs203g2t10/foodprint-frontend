@@ -33,8 +33,11 @@ const ReservationListing = (props: any) => {
             </div>
             
             <button className="text-white-standard text-xs mx-auto col-span-2 w-20 px-1 my-auto py-1 bg-green-standard rounded-large shadow-md hover:shadow-lg">View Order</button>
-           
-            <button className="my-auto col-span-1 mx-auto text-green-standard hover:bg-gray-200 bg-gray-100 shadow-sm hover:shadow-md p-2 rounded-full" onClick={() => { deleteReservation(props.reservationId); setDeleteMessage("Your reservation at " + props.restaurantName +" has been cancelled") }}><AiOutlineClose/></button>
+            <div> {
+                props.past ? (<></>) : (<button className="my-auto col-span-1 mx-auto text-green-standard hover:bg-gray-200 bg-gray-100 shadow-sm hover:shadow-md p-2 rounded-full" onClick={() => { deleteReservation(props.reservationId); setDeleteMessage("Your reservation at " + props.restaurantName +" has been cancelled") }}><AiOutlineClose/></button>)
+
+            }
+            </div>
         </div>
     )
 }
