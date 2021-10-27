@@ -61,16 +61,16 @@ const Restaurant = () => {
                     <div className="grid grid-cols-9 gap-x-16 mx-4 my-10">
                     <h2 className="col-span-1">&nbsp;</h2>
                         <div className="col-span-2">
-                            <img className="w-48 h-48 rounded-full" src={imageUrl} alt="shop" />
+                            <img className="w-40 h-40 rounded-full" src={imageUrl} alt="shop" />
                         </div>
                         <div className="col-span-6 px-0">
-                            <h1 className="text-4xl md:text-7xl font-bold tracking-wide text-green-standard">{restaurantDetails.restaurantName}</h1>
+                            <h1 className="text-4xl md:text-6xl font-bold tracking-wide text-green-standard">{restaurantDetails.restaurantName}</h1>
                             <p className="text-lg md:text-2xl text-green-standard">{restaurantDetails.restaurantDesc}</p>
                             <p className="text-md md:pb-4 text-grey-standard">{restaurantDetails.restaurantLocation}</p>
                         </div>
                     </div>
                 </div>
-                <svg className="waves h-80 w-full transform -rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="100 20 130 70" preserveAspectRatio="none" shape-rendering="auto">
+                <svg className="waves h-72 w-full transform -rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="100 20 130 70" preserveAspectRatio="none" shape-rendering="auto">
                     <defs>
                         <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
                     </defs>

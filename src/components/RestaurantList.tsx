@@ -19,7 +19,7 @@ const RestaurantList = () => {
                 {
                     restaurants?.map(
                         (restaurant: any) =>
-                            <Link to={"/restaurant/" + restaurant.restaurantId} className="flex gap-x-48 text-center border p-5 my-2 rounded-lg" key={restaurant.restaurantId}>
+                            <Link to={"/restaurant/" + restaurant.restaurantId} className="flex gap-x-48 text-center border p-5 my-2 rounded-lg bg-white-offWhite" key={restaurant.restaurantId}>
                                 <div> {restaurant.restaurantId} </div>
                                 <div> {restaurant.restaurantName} </div>
                                 <div> {restaurant.restaurantDesc} </div>
