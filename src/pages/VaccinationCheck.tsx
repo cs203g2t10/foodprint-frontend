@@ -50,7 +50,7 @@ const VaccinationCheck = () => {
                         <h1 className="text-grey-standard text-5xl font-bold">Upload File.</h1>
                         <h1 className="text-grey-lighter text-sm pb-4">Dining in is only available for vaccinated individuals. Please upload your certification to help us with this process.</h1>
                         <div {...getRootProps()}>
-                            <div className="bg-grey-lightest place-items-stretch rounded-xxl text-center p-6 border-dashed border-2 border-grey-light hover:shadow-md shadow-sm">
+                            <div className="bg-grey-lightest place-items-stretch rounded-xxl text-center p-6 border-dashed border-2 border-grey-light hover:shadow-md shadow-sm focus:outline-none">
                                 <div>
                                     <input {...getInputProps()} />
                                     {
