@@ -47,16 +47,14 @@ const ChangeFoodPicModal = (props: any) => {
             <div className="grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-64 pb-10 bg-white-dirtyWhite">
                 <h1 className=" flex text-5xl pt-12 text-green-standard font-bold mx-auto">{name} Display Picture</h1>
                 <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Choose a new photo for your food!</h1>
-                <div className="grid grid-cols-2 justify-between pt-5 gap-x-20">
+                <div className="grid grid-cols-2 justify-between pt-5 gap-x-16">
                     <div>
-                        <h1 className="text-center pb-5">Original Photo</h1>
-                        <img src={props?.url} alt={props?.description} className="rounded-full mb-5 h-48 w-48 flex mx-auto" />
+                        <h1 className="text-center pb-4">Original Photo</h1>
+                        <img src={props?.url} alt={props?.description} className="rounded-full mb-5 h-56 w-56 flex mx-auto" />
                     </div>
                     <div>
-                        {/* <h1 className="text-center pb-5">New Photo</h1> */}
-                        {/* <img src="/images/upload.png" alt="drag and drop" className="rounded-full mb-5 h-48 w-48 flex mx-auto" /> */}
                         <div {...getRootProps()}>
-                            <div className="bg-grey-lightest place-items-stretch rounded-xxl text-center p-6 border-dashed border-2 border-grey-light hover:shadow-md shadow-sm focus:outline-none">
+                            <div className="bg-grey-lightest place-items-stretch rounded-xxl text-center p-10 border-dashed border-2 border-grey-light hover:shadow-md shadow-sm focus:outline-none">
                                 <div>
                                     <input {...getInputProps()} />
                                     {
