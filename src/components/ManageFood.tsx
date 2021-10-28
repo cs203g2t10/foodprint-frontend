@@ -87,23 +87,30 @@ const ManageFood = (props: any) => {
 
                 </div>
                 <div className="grid grid-cols-2 gap-x-10  mt-4">
-                    <button className="rounded-full bg-green-standard py-1 h-8 text-white-standard opacity-60 hover:opacity-70 shadow-sm hover:shadow-md" onClick={() => {
+                    <button className="rounded-full bg-green-standard text-white-standard py-1 h-8 opacity-90 hover:opacity-100 shadow-sm hover:shadow-md" onClick={() => { editFood(name, desc, price, newIngredientQty) }}>Confirm</button>
+                    <button className="rounded-full border border-green-standard py-1 h-8 text-green-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md" onClick={() => {
                         setName(props.name);
                         setDesc(props.desc);
                         setPrice(props.price);
                         setNewIngredientQty(props.ingredientQty)
                         setEdit(false);
                     }}>Undo</button>
-                    <button className="rounded-full bg-green-standard text-white-standard py-1 h-8 opacity-90 hover:opacity-100 shadow-sm hover:shadow-md" onClick={() => { editFood(name, desc, price, newIngredientQty) }}>Confirm</button>
                 </div>
                 <ChangeFoodPicModal className="" {...{ changePic, setChangePic, name }} url={props.pic?.url} />
             </div>
             :
             <div className="py-4 px-8 rounded-xl bg-white-dirtyWhite shadow-sm">
                 <img src={props.pic?.url} alt={props.pic?.description} className="rounded-full mb-5 h-32 w-32 flex mx-auto shadow-sm" />
-                <h1 className="">Name: {name}</h1>
-                <h1 className="">Description: {desc}</h1>
-                <h1 className="">Price: ${price}</h1>
+                <div className="grid grid-cols-2 justify-between gap-y-1">
+                    <h1 className="">Name: </h1>
+                    <h1 className="text-right">{name}</h1>
+                    {/* <div className="col-span-2"> */}
+                        <h1 >Description:</h1>
+                        <h1 className="text-right">{desc}</h1>
+                    {/* </div> */}
+                    <h1 className="">Price:</h1>
+                    <h1 className="text-right">${price}</h1>
+                </div>
                 <h1 className="">Ingredient List</h1>
                 <div className="overflow-y-auto h-36">
                     {
