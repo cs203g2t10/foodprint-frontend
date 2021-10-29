@@ -18,6 +18,7 @@ const ReservationModal = (
     const [selectDate, setSelectDate] = useState(false);
     const [declare, setDeclare] = useState(false);
     const [reservationId, setReservationId] = useState();
+    const [error, setError] = useState("");
     // const [noSlot, setNoSlot] = useState(false);
 
     const filterAcceptableTimings = (time: any) => {
@@ -41,12 +42,14 @@ const ReservationModal = (
 
         const response = ReservationService.makeReservation(bookingDate, pax, true, lineItems, id.id)
         response.then((resp) => {
-            if (resp.status === 404) {
-                console.log('Error:', resp.data.message)
-            } else if (resp.status === 201){
+            console.log(resp);
+            if (resp.status === 201){
                 console.log("Reservation successful, id: ", resp.data.reservationId)
                 setReservationId(resp.data.reservationId);
                 setReserved(true);
+            } else {
+                console.log("Error ", resp.data);
+                setError("Error: " + resp.data.message);
             }
         })
         bookingDate.setHours(bookingDate.getHours() - 8);
@@ -124,7 +127,7 @@ const ReservationModal = (
                             : <h1 className="flex text-base text-green-standard">Please declare the following: </h1>)
                     }
                     {/* <h1 className="text-center mx-auto flex">Please declare the following: </h1> */}
-                    <div className="flex mb-5">
+                    <div className="flex">
                         <div className="flex">
                             <input
                                 name="isVaccinated"
@@ -137,6 +140,7 @@ const ReservationModal = (
                             <h1 className="text-sm text-grey-standard">I hereby declare that all of the guests are vaccinated (compulsory)</h1>
                         </div>
                     </div>
+                    <div className="text-red-standard py-4">{error}</div>
                     <div className="grid grid-cols-2 gap-x-10 mr-2 justify-center">
                         <button className=" bg-green-standard text-white-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border" onClick={makeReservation} disabled={reserved}>Confirm</button>
                         <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border" onClick={() => setModal(false)}>Edit order</button>
@@ -149,6 +153,7 @@ const ReservationModal = (
                         </div>
                             : <></>)
                     }
+                    
                 </div>
             </div>
         </div>
