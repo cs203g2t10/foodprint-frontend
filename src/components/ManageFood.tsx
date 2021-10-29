@@ -11,6 +11,7 @@ const ManageFood = (props: any) => {
     const [newIngredientQty, setNewIngredientQty] = useState(props.ingredientQty);
     const [edit, setEdit] = useState(false);
     const [changePic, setChangePic] = useState(false);
+    const [success, setSuccess] = useState(false);
 
     useEffect(() => {
         ingredientQty.sort();
@@ -19,8 +20,15 @@ const ManageFood = (props: any) => {
     const editFood = (name: any, desc: any, price: any, ingredientQty: any) => {
         const response = RestaurantService.editFood(props.restaurantId, props.foodId, name, desc, price, ingredientQty);
         console.log(response);
-        setIngredientQty(newIngredientQty);
-        setEdit(false);
+        response.then((success) => {
+            console.log(success);
+            setIngredientQty(newIngredientQty);
+            setEdit(false);
+            setSuccess(true);
+        }).catch((error) => {
+            console.log(error);
+        })
+
     }
 
     return (
@@ -46,7 +54,7 @@ const ManageFood = (props: any) => {
 
                 <div className="flex gap-x-3 justify-between h-8">
                     <h1 className="text-green-standard">Price:$ </h1>
-                    <input value={price} className="px-2 focus:outline-none border rounded-large"
+                    <input value={price} className="px-2 focus:outline-none border rounded-large" type="number"
                         onChange={(e) => { setPrice(e.target.value) }} />
                 </div>
 
@@ -105,8 +113,8 @@ const ManageFood = (props: any) => {
                     <h1 className="">Name: </h1>
                     <h1 className="text-right">{name}</h1>
                     {/* <div className="col-span-2"> */}
-                        <h1 >Description:</h1>
-                        <h1 className="text-right">{desc}</h1>
+                    <h1 >Description:</h1>
+                    <h1 className="text-right">{desc}</h1>
                     {/* </div> */}
                     <h1 className="">Price:</h1>
                     <h1 className="text-right">${price}</h1>
@@ -122,6 +130,10 @@ const ManageFood = (props: any) => {
                         )
                     }
                 </div>
+                {
+                    (success &&
+                        <div className="text-center text-green-standard">Your changes have been saved!</div>)
+                }
                 <button className="flex rounded-xxl bg-green-standard text-white-standard py-1 mx-auto px-10 mt-4" onClick={() => { setEdit(true) }}>Edit</button>
             </div>
     )
