@@ -78,13 +78,20 @@ const Restaurants = () => {
                                 if (restaurant.pictures.length > 0) {
                                     imageUrl = restaurant.pictures[0].url;
                                 }
+                                let maxDiscount = 0;
+                                restaurant.discounts.map(discount => {
+                                    if (discount.discountPercentage > maxDiscount) {
+                                        maxDiscount = discount.discountPercentage
+                                    }
+                                    return <></>
+                                })
                                 return <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId}>
                                     <div className="bg-white-creamWhite h-auto w-64 shadow-md hover:shadow-lg rounded-xl flex-none pb-1">
                                         <img className="object-cover w-full h-40 rounded-xl " src={imageUrl} alt="food" />
                                         <div className="my-4 mx-5">
                                             {
-                                                (restaurant.discounts.length > 0) ? (
-                                                    <h2 className="text-green-standard w-4/12 text-center rounded-xl text-2xl font-semibold">-{restaurant.discounts[0].discountPercentage}%</h2>
+                                                (maxDiscount !== 0) ? (
+                                                    <h2 className="text-green-standard w-4/12 text-center rounded-xl text-2xl font-semibold">-{maxDiscount}%</h2>
                                                 ) : (<h2 className="text-white-creamWhite w-4/12 text-center rounded-xl text-2xl font-semibold">-0%</h2>)
                                             }
                                             <h1 className="text-xl text-grey-dark">{restaurant.restaurantName}</h1>
