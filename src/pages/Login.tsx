@@ -1,4 +1,4 @@
-import React from 'react'
+import { useRef } from 'react'
 import { useState } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { Redirect } from "react-router-dom";
@@ -12,17 +12,36 @@ const Login = () => {
 
     const [email, setEmail] = useState(window.localStorage.getItem("email"))
     const [password, setPassword] = useState("")
-    const [error, setError] = useState("");
+    const [token, setToken] = useState("")
+    const [error, setError] = useState("")
+    const [twoFa, setTwoFa] = useState(false);
+    const emailRef = useRef<HTMLInputElement>(null);
 
     const validateForm = () => {
         return (email) ? email.length > 0 : false && password.length > 0;
     }
 
+
+    const user2Fa = () => {
+        if (emailRef.current == null) {
+            return;
+        }
+        const currentEmailInput = emailRef.current.value;
+        LogInService.user2Fa(currentEmailInput).then((response: any) => {
+            if (response.data === true) {
+                setTwoFa(true);
+            } else {
+                setTwoFa(false);
+            }
+        })
+    }
+
+
     const userLogin = () => {
         if (email === null || email === "" || password === "") {
-            return
+            return;
         }
-        LogInService.userLogIn(email, password).then((response) => {
+        LogInService.userLogIn(email, password, token).then((response) => {
             if (response.data.status === "SUCCESS") {
                 console.log(response.data.token)
                 window.localStorage.setItem("token", response.data.token)
@@ -53,7 +72,11 @@ const Login = () => {
                             <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"
                                 placeholder="test@example.com"
                                 type="email"
-                                onChange={e => setEmail(e.target.value)} />
+                                // onInput ={e => {setEmail((e.target as HTMLInputElement).value); user2Fa()}}
+                                // onChange={e => setEmail(e.target.value)}
+                                onChange = {e => {setEmail(e.target.value); user2Fa()}}
+                                ref={emailRef} 
+                                />
                         </div>
 
                         <div className="">
@@ -62,7 +85,16 @@ const Login = () => {
                                 type="password"
                                 onChange={e => setPassword(e.target.value)} />
                         </div>
-                        
+
+                        {twoFa &&
+                            <div className="">
+                                <input className="focus:outline-none px-4 py-1 my-4 h-11 rounded-full border border-grey-lightest md:w-11/12"
+                                    placeholder="OTP"
+                                    type="number"
+                                    onChange={e => setToken(e.target.value)} />
+                            </div>
+                        }
+
                         <div className="flex pt-5">
                             <button className="rounded-xl px-5 mr-5 bg-green-standard shadow-sm hover:shadow-md text-white-standard text-justify h-8" disabled={!validateForm}
                                 onClick={userLogin}>Log in</button>

@@ -120,16 +120,20 @@ const Home = () => {
                             <div className="flex flex-row gap-x-10 w-full overflow-auto">
                                 {
                                     restaurants.map(restaurant =>
-                                        (restaurant.pictures.length > 0) ?
-                                        (
-                                        <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
-                                            <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={restaurant.pictures[0].url} />
-                                        </Link>
-                                        ) : (
-                                        <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
-                                            <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
-                                        </Link>
-                                        )
+                                        (restaurant.discounts.length > 0) ? (
+                                            (restaurant.discounts[0].discountPercentage >= 50) ? (
+                                                (restaurant.pictures.length > 0) ?
+                                                (
+                                                <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
+                                                    <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={restaurant.pictures[0].url} />
+                                                </Link>
+                                                ) : (
+                                                <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
+                                                    <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
+                                                </Link>
+                                                )
+                                            ) : (<></>)
+                                        ) : (<></>)
                                     )
                                 }
                             </div>
