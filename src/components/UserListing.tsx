@@ -19,6 +19,7 @@ const UserListing = (props: any) => {
         console.log(id)
         await AdminService.deleteUser(id);
         setDeleteMessage("User with id: " + id + " has been deleted.")
+        setDeleteModal(false);
     }
 
     const updateUserDetails: any = (id: number, email: any, firstName: any, lastName: any, roles: any) => {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import CreateFoodModal from '../components/CreateFoodModal';
+import EditRestaurantDetails from '../components/EditRestaurantDetails';
 import Restricted from '../components/errors/Restricted';
 import ManageFood from '../components/ManageFood';
 import LogInService, { UserDetails } from '../services/LogInService';
@@ -14,6 +15,7 @@ const ManageRestaurant = () => {
     const [showCreateFood, setShowCreateFood] = useState(false);
     const [ingredients, setIngredients] = useState([]);
     const [imageUrl, setImageUrl] = useState("/images/shop.jpg");
+    const [editDetails, setEditDetails] = useState(false);
 
     useEffect(() => {
         const userInfo: UserDetails = LogInService.getUserDetails();
@@ -72,10 +74,13 @@ const ManageRestaurant = () => {
                                 <h1 className="text-4xl md:text-6xl font-bold tracking-wide text-green-standard">{restaurantDetails.restaurantName}</h1>
                                 <p className="text-lg md:text-2xl text-green-standard">{restaurantDetails.restaurantDesc}</p>
                                 <p className="text-md md:pb-4 text-grey-standard">{restaurantDetails.restaurantLocation}</p>
+                                <button className="bg-green-standard text-white-standard px-4 py-1 rounded-full"
+                                onClick={()=>{setEditDetails(true)}}>Edit Details</button>
                             </div>
                         </div>
+                        
                     </div>
-                    <svg className="waves h-72 w-full transform -rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="100 20 130 70" preserveAspectRatio="none" shape-rendering="auto">
+                    <svg className="waves h-80 w-full transform -rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="100 20 130 70" preserveAspectRatio="none" shape-rendering="auto">
                         <defs>
                             <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
                         </defs>
@@ -105,6 +110,7 @@ const ManageRestaurant = () => {
                     </div>
                 </div>
                 <CreateFoodModal {...{ showCreateFood, setShowCreateFood, ingredients }} restaurantId={restaurantId} />
+                <EditRestaurantDetails {...{editDetails, setEditDetails, restaurantDetails}}/>
             </div>
             : <Restricted />
     )
