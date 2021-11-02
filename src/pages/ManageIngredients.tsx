@@ -45,19 +45,20 @@ const ManageIngredients = () => {
     }
 
     return (
-        <div>
-            <h1 className="text-center font-bold tracking-wide text-4xl text-green-standard pt-10">Manage Ingredients for {restaurantDetails?.restaurantName}</h1>
-            <div className="pt-1 text-center pb-7 text-grey-standard">Please only edit those fields that you wish to change</div>
-            <button className="mx-20 mb-3 border px-4 py-1 bg-green-standard rounded-lg text-white-standard"
+        <div className="min-h-screen">
+            <h1 className="text-center font-bold tracking-wide text-4xl text-green-standard pt-5 bg-yellow-standard">Manage Ingredients for {restaurantDetails?.restaurantName}</h1>
+            <div className="pt-1 text-center pb-7 text-grey-standard bg-yellow-standard mb-5">Please only edit those fields that you wish to change</div>
+            <button className="mr-44 mb-3 border px-4 py-1 bg-green-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md rounded-full ml-auto grid text-white-standard"
                 onClick={() => { setCreateIngredient(true) }}>Create new Ingredient</button>
-            <div className="mx-14 bg-white-offWhite pt-6 pb-8 rounded-xxl shadow">
+            <div className="mx-44 bg-white-offWhite pt-6 pb-8 rounded-xxl shadow">
                 <div className="grid grid-cols-1 gap-y-9 items-center">
-                    <div className="grid grid-cols-12 gap-x-6 mx-10">
+                    <div className="grid grid-cols-10 gap-x-6 mx-10">
                         <div className="col-span-1"></div>
                         {/* <p className="col-span-1 text-lg text-green-standard">ID</p> */}
                         <p className="col-span-3 text-lg text-green-standard">Ingredient Name</p>
                         <p className="col-span-3 text-lg text-green-standard">Description</p>
                         <p className="col-span-2 text-lg text-green-standard">Unit of Measure</p>
+                        <div className="col-span-1"></div>
                     </div>
                     {
                         restaurantIngredients?.content.map(
