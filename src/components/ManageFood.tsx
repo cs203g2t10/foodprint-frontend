@@ -34,6 +34,7 @@ const ManageFood = (props: any) => {
         edit ?
             <div className="grid px-10 bg-white-dirtyWhite rounded-xl shadow-sm py-4 h-auto">
                 <div className="h-32 w-32 mx-auto relative overflow-hidden rounded-full hover:shadow-md mb-5">
+                    
                     <img src={props.pic?.url} alt={props.pic?.description} className=" mb-5 flex filter opacity-40 object-cover w-full h-full"
                         onClick={() => setChangePic(true)} />
                     <h1 className="absolute w-full py-2.5 bottom-0 inset-x-0 bg-green-standard text-white-standard text-xs text-center leading-4 shadow opacity-90">Click to edit</h1>
