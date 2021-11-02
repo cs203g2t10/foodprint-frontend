@@ -119,22 +119,25 @@ const Home = () => {
                         <div className="overflow-hidden h-full w-full">
                             <div className="flex flex-row gap-x-10 w-full overflow-auto">
                                 {
-                                    restaurants.map(restaurant =>
-                                        (restaurant.discounts.length > 0) ? (
-                                            (restaurant.discounts[0].discountPercentage >= 50) ? (
-                                                (restaurant.pictures.length > 0) ?
-                                                (
-                                                <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
-                                                    <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={restaurant.pictures[0].url} />
-                                                </Link>
-                                                ) : (
-                                                <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
-                                                    <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
-                                                </Link>
-                                                )
-                                            ) : (<></>)
-                                        ) : (<></>)
-                                    )
+                                    restaurants.map(restaurant => {
+                                        let upTo50 = false;
+                                        restaurant.discounts.map((discount: any) => {
+                                            if (discount.discountPercentage >= 50) {
+                                                upTo50 = true;
+                                            }
+                                            return <></>
+                                        })
+                                        let imageUrl = "/images/restaurant.jpg";
+                                        if (restaurant.pictures.length > 0) {
+                                            imageUrl = restaurant.pictures[0].url;
+                                        }
+                                        if (upTo50) {
+                                            return <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
+                                                <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={imageUrl} />
+                                            </Link>
+                                        }
+                                        return <></>
+                                    })
                                 }
                             </div>
                         </div>
