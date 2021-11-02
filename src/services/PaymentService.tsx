@@ -12,7 +12,7 @@ class PaymentService {
         }
     }
 
-    makePayment = (reservationId : number, amount: number, token:any) => {
+    makePayment = async (reservationId : number, amount: number, token:any) => {
         return axios.post(`${PAYMENT_REST_API_URL}/`, {
             reservationId,
             description: `${'Deposit payment for Reservation with id: ' + reservationId}`,
