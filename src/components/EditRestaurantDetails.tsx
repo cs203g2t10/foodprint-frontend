@@ -60,7 +60,7 @@ const EditRestaurantDetails = (props: any) => {
     return (
         <ReactModal style={customStyles} isOpen={editDetails} className="mt-6 focus:outline-none">
             <div className="grid justify-center items-center gap-y-2 m-8 rounded-xxl shadow lg:mx-64 pb-10 bg-white-dirtyWhite">
-                <h1 className=" flex text-5xl pt-12 text-green-standard font-bold mx-auto">Edit Restaurant Details</h1>
+                <h1 className=" flex text-5xl pt-5 text-green-standard font-bold mx-auto">Edit Restaurant Details</h1>
                 <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Please edit only those fields you wish to change </h1>
                 <div className="grid gap-y-5 grid-cols-2 gap-x-10">
                     <div className="flex gap-x-2 justify-between">
@@ -85,7 +85,7 @@ const EditRestaurantDetails = (props: any) => {
                     </div>
                 </div>
 
-                <h1 className="text-md mt-4 text-grey-standard font-light text-center">Opening Hours (WEEKDAY)</h1>
+                <h1 className="text-md mt-4 text-green-standard font-light text-center">Opening Hours (WEEKDAY)</h1>
                 <div className="grid gap-y-5 grid-cols-2 gap-x-10">
                     <div className="flex gap-x-2 justify-center">
                         <div>Opening Hour: </div>
@@ -106,7 +106,7 @@ const EditRestaurantDetails = (props: any) => {
                 </div>
 
 
-                <h1 className="text-md mt-4 text-grey-standard font-light text-center">Opening Hours (WEEKEND)</h1>
+                <h1 className="text-md mt-4 text-green-standard font-light text-center">Opening Hours (WEEKEND)</h1>
                 <div className="grid gap-y-5 grid-cols-2 gap-x-10">
                     <div className="flex gap-x-2 justify-center">
                         <div>Opening Hour: </div>
