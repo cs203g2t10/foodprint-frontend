@@ -13,10 +13,19 @@ type UserDetails = {
 };
 
 class LogInService {
-    userLogIn = (email: string, password: string) => {
+    user2Fa = (email: string) => {
+        return axios.get( `${LOGIN_REST_API_URL}/checkUser2FA/${email}`)
+        .catch((error)=>{
+            console.log(error.response);
+            return error.response;
+        });
+    }
+
+    userLogIn = (email: string, password: string, token: string) => {
         const requestBody = {
             "email": email,
-            "password": password
+            "password": password,
+            "token": token
         };
         return axios.post(LOGIN_REST_API_URL+"/login", requestBody)
         .catch((error)=>{

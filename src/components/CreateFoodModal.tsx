@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ReactModal from 'react-modal'
+import ReactModal from 'react-modal' 
 import RestaurantService from '../services/RestaurantService';
 
 const CreateFoodModal = (props: any) => {
