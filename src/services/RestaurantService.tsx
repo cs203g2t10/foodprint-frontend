@@ -38,8 +38,8 @@ class RestaurantService {
         weekdayClosingMinute: any, weekendOpeningHour: any, weekendOpeningMinute: any, weekendClosingHour: any,
         weekendClosingMinute: any) => {
         const requestBody = {
-            restaurantDesc: name,
-            restaurantName: desc,
+            restaurantName: name,
+            restaurantDesc: desc,
             restaurantLocation: location,
             restaurantPriceRange: priceRange,
             restaurantTableCapacity: tableCapacity,

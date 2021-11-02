@@ -77,7 +77,7 @@ const EditRestaurantDetails = (props: any) => {
                     </div>
                     <div className="flex gap-x-2 justify-between">
                         <div>Price Range (1-5):</div>
-                        <input type="number" min="1" max="5" className="focus:outline-none px-2 rounded" value={priceRange} onChange={(e) => { setPriceRange(e.target.value) }}></input>
+                        <input type="number" min="1" max="5" className="focus:outline-none px-2 rounded w-1/2" value={priceRange} onChange={(e) => { setPriceRange(e.target.value) }}></input>
                     </div>
                     <div className="flex gap-x-2 justify-between">
                         <div>Table Capacity:</div>
@@ -85,7 +85,7 @@ const EditRestaurantDetails = (props: any) => {
                     </div>
                 </div>
 
-                <h1 className="text-md mt-4 text-green-standard font-light text-center">Opening Hours (WEEKDAY)</h1>
+                <h1 className="text-lg mt-2 text-green-standard text-center">Opening Hours (WEEKDAY)</h1>
                 <div className="grid gap-y-5 grid-cols-2 gap-x-10">
                     <div className="flex gap-x-2 justify-center">
                         <div>Opening Hour: </div>
@@ -106,7 +106,7 @@ const EditRestaurantDetails = (props: any) => {
                 </div>
 
 
-                <h1 className="text-md mt-4 text-green-standard font-light text-center">Opening Hours (WEEKEND)</h1>
+                <h1 className="text-lg mt-4 text-green-standard text-center ">Opening Hours (WEEKEND)</h1>
                 <div className="grid gap-y-5 grid-cols-2 gap-x-10">
                     <div className="flex gap-x-2 justify-center">
                         <div>Opening Hour: </div>
