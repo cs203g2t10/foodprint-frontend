@@ -41,8 +41,8 @@ const Category = () => {
                         restaurants?.map(
                             (restaurant: any) => {
                                 let imageUrl = "/images/shop.jpg";
-                                if (restaurant.pictures.length > 0) {
-                                    imageUrl = restaurant.pictures[0].url;
+                                if (restaurant.picture) {
+                                    imageUrl = restaurant.picture.url;
                                 }
                                 let maxDiscount = 0;
                                 restaurant.discounts.map((discount: any) => {
