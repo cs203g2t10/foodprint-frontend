@@ -35,8 +35,8 @@ const ManageRestaurant = () => {
         RestaurantService.getRestaurant(restaurantId).then((response) => {
             console.log(response.data);
             setRestaurantDetails(response.data)
-            if (response.data.pictures.length > 0) {
-                setImageUrl(response.data.pictures[0].url);
+            if (response.data.picture) {
+                setImageUrl(response.data.picture.url);
             }
         });
     }, [restaurantId, showCreateFood])

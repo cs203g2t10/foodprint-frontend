@@ -23,8 +23,8 @@ const Restaurant = () => {
     useEffect(() => {
         RestaurantService.getRestaurant(id.id).then((response) => {
             setRestaurantDetails(response.data)
-            if (response.data.pictures.length > 0) {
-                setImageUrl(response.data.pictures[0].url);
+            if (response.data.picture) {
+                setImageUrl(response.data.picture.url);
             }
         })
     }, [id])
