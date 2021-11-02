@@ -76,10 +76,7 @@ const Restaurants = () => {
                             restaurants?.map(
                                 restaurant => {
                                     let priceRange = restaurant.restaurantPriceRange === null ? 0 : restaurant.restaurantPriceRange;
-                                    let imageUrl = "/images/shop.jpg";
-                                    if (restaurant.picture) {
-                                        imageUrl = restaurant.picture.url;
-                                    }
+                                    let imageUrl = restaurant.picture ? restaurant.picture.url : "/images/shop.jpg";
                                     let maxDiscount = 0;
                                     restaurant.discounts.map(discount => {
                                         if (discount.discountPercentage > maxDiscount) {
