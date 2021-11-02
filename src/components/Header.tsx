@@ -33,9 +33,8 @@ const Header = () => {
         <div>
             <nav className="bg-yellow-standard">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    
                     <div className="flex items-center justify-between h-16">
-                    <Link to='/' className=" text-black px-1 py-2 rounded-md text-md font-medium">
+                        <Link to='/' className=" text-black px-1 py-2 rounded-md text-md font-medium">
                             foodPrint
                         </Link>
                         <div className="flex items-center justify-between w-full">
@@ -52,37 +51,23 @@ const Header = () => {
                             </div>
                             <div className="hidden md:block self-end">
                                 <div className="flex items-baseline space-x-4">
-                                    {isUserAdmin() ? (
-                                            <>
-                                                <Link to='/ManageUser' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Management Console</Link>
-                                            </>
-                                        ) : (
-                                            <>
-
-                                            </>
-                                        )
-                                        }
-                                        {isUserManager() ? (
-                                            <>
-                                                <Link to='/manager' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Manage Restaurant</Link>
-                                            </>
-                                        ) : (
-                                            <>
-
-                                            </>
-                                        )
-                                        }
-                                        {isAuthenticated ? (
-                                            <>
-                                                <Link to='/profile' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">{getUserName()}</Link>
-                                                <Link onClick={handleLogout} to="/login" className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Logout</Link>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <Link to='/login' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Log In</Link>
-                                                <Link to='/register' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Register</Link>
-                                            </>
-                                        )
+                                    {isUserAdmin() &&
+                                        <Link to='/ManageUser' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Management Console</Link>
+                                    }
+                                    {isUserManager() &&
+                                        <Link to='/manager' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Manage Restaurant</Link>
+                                    }
+                                    {isAuthenticated ? (
+                                        <>
+                                            <Link to='/profile' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">{getUserName()}</Link>
+                                            <Link onClick={handleLogout} to="/login" className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Logout</Link>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Link to='/login' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Log In</Link>
+                                            <Link to='/register' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Register</Link>
+                                        </>
+                                    )
                                     }
                                 </div>
                             </div>
@@ -155,48 +140,48 @@ const Header = () => {
                                         About Us
                                     </Link>
                                     {isUserAdmin() ? (
-                                            <>
-                                                <Link to='/ManageUser' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                                    Management Console
-                                                </Link>
-                                            </>
-                                        ) : (
-                                            <>
+                                        <>
+                                            <Link to='/ManageUser' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
+                                                Management Console
+                                            </Link>
+                                        </>
+                                    ) : (
+                                        <>
 
-                                            </>
-                                        )
-                                        }
-                                        {isUserManager() ? (
-                                            <>
-                                                <Link to='/manager' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                                    Manage Restaurant
-                                                </Link>
-                                            </>
-                                        ) : (
-                                            <>
+                                        </>
+                                    )
+                                    }
+                                    {isUserManager() ? (
+                                        <>
+                                            <Link to='/manager' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
+                                                Manage Restaurant
+                                            </Link>
+                                        </>
+                                    ) : (
+                                        <>
 
-                                            </>
-                                        )
-                                        }
-                                        {isAuthenticated ? (
-                                            <>
-                                                <Link to='/profile' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                                    {getUserName()}
-                                                </Link>
-                                                <Link onClick={handleLogout} to="/login" className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                                    Logout
-                                                </Link>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <Link to='/login' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                                    Log In
-                                                </Link>
-                                                <Link to='/register' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                                    Register
-                                                </Link>
-                                            </>
-                                        )
+                                        </>
+                                    )
+                                    }
+                                    {isAuthenticated ? (
+                                        <>
+                                            <Link to='/profile' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
+                                                {getUserName()}
+                                            </Link>
+                                            <Link onClick={handleLogout} to="/login" className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
+                                                Logout
+                                            </Link>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Link to='/login' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
+                                                Log In
+                                            </Link>
+                                            <Link to='/register' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
+                                                Register
+                                            </Link>
+                                        </>
+                                    )
                                     }
                                 </div>
                             </div>
