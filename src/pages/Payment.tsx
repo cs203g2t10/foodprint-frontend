@@ -42,9 +42,6 @@ const Payment = () => {
             <div>
                 <div className="bg-yellow-standard">
                     <div className=" place-self-center grid">
-                        {/* <img className=" h-28 pt-7" src="/images/hotdog.png" alt="burger" />
-                        <img className=" h-28 pt-7" src="/images/cheese.png" alt="burger" />
-                        <img className="h-28 pt-7" src="/images/bacon.png" alt="burger" /> */}
                         <img className="h-32 mx-auto pt-7" src="/images/burgers.png" alt="burger" />
                     </div>
                     <h1 className="flex items-center justify-center text-4xl font-bold tracking-wide">Reservation no. {params.id}</h1>
@@ -95,11 +92,11 @@ const Payment = () => {
                         <h1 className="text-center text-base text-grey-standard pb-8">of 20% of your total bill</h1>
                         {
                             (paid ?
-                                <div className=" bg-yellow-standard rounded shadow">
+                                <div className="">
                                     <h1 className="text-center pb-5 ">You have already paid!</h1>
-                                    <div className="flex justify-center items-center ">
-                                        <Link to={"/"} className="text-center bg-green-standard text-white-standard rounded-xl shadow-md hover:shadow-lg">Back to Home</Link>
-                                        <Link to={"/"} className=" text-center bg-green-standard text-white-standard  rounded-xl shadow-md hover:shadow-lg">Refund</Link>
+                                    <div className="flex justify-center items-center gap-x-10">
+                                        <Link to={"/"} className="text-center bg-green-standard text-white-standard rounded-xl shadow-md hover:shadow-lg px-3 py-1">Back to Home</Link>
+                                        <Link to={"/"} className=" text-center bg-green-standard text-white-standard  rounded-xl shadow-md hover:shadow-lg px-3 py-1">Refund</Link>
                                     </div>
 
                                 </div>
