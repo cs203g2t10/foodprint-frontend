@@ -2,14 +2,9 @@ import { ChangeEvent } from "react";
 
 const RestaurantFood = ({ food, setLineItems }: { food: any, setLineItems: any }) => {
 
-    let foodUrl = "/images/sushi.jpg"
-
-    if (food.picture)
-        foodUrl = food.picture.url;
+    let foodUrl = food.picture ? food.picture.url : "/images/sushi.jpg"
 
     return <div className="relative bg-white-dirtyWhite h-80 w-64 shadow-md rounded-xl flex-none p-5" key={food.foodId}>
-        {/* <img src="/images/{food.picturePath}" className="mx-auto w-32 h-32 shadow-md rounded-full" alt="food pic" /> */}
-
         <div className="flex-col mx-auto h-max ">
             <img src={foodUrl} className="mx-auto w-32 h-32 shadow-md rounded-full object-cover" alt="food pic" />
             <h1 className="flex justify-center font-semibold tracking-wider text-green-standard mt-2 mb-1">{food.foodName}</h1>
@@ -17,7 +12,7 @@ const RestaurantFood = ({ food, setLineItems }: { food: any, setLineItems: any }
             </div>
             <p className="text-grey-standard text-sm text-center overflow-y-auto h-20 pb-2">{food.foodDesc}</p>
 
-            <div className="flex justify-center grid grid-cols-5 gap-4 absolute bottom-0 mb-5">
+            <div className="justify-center grid grid-cols-5 gap-4 absolute bottom-0 mb-5">
                 <p className="col-start-1 col-end-2 flex text-xl font-bold text-green-standard text-center mx-2">${food.foodPrice}</p>
                 <div className="col-start-3 col-end-5 flex">
                     <p> Qty: </p>
