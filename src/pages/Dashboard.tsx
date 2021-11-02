@@ -16,7 +16,7 @@ const Dashboard = () => {
                     </div>
                     <div className="bg-white-standard rounded-large">
                         <img className="h-12 w-12 object-cover rounded-lg" src="/images/shop.jpg" alt="restaurant"/>
-                        <h1></h1>
+                        <h1>Salmon</h1>
                     </div>
 
                 </div>

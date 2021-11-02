@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { AiFillEdit, AiOutlineCheck, AiOutlineUndo } from 'react-icons/ai';
 import RestaurantService from '../services/RestaurantService';
 import { AiOutlineClose } from 'react-icons/ai';
-import { AiOutlineEdit } from 'react-icons/ai';
 
 const IngredientListing = (props: any) => {
 
@@ -39,7 +38,7 @@ const IngredientListing = (props: any) => {
                             updateIngredientDetails(id, name, desc, units)
                             setEdit(false);
                         }}><AiOutlineCheck /></button>
-                    <button className="mx-2 shadow-sm hover:shadow-md px-2 rounded bg-yellow-standard hover:shadow text-center rounded-full w-8 h-8"
+                    <button className="mx-2 shadow-sm px-2 bg-yellow-standard hover:shadow text-center rounded-full w-8 h-8"
                         onClick={() => {
                             setId(props.id);
                             setName(props.name);
