@@ -42,18 +42,16 @@ const Restaurants = () => {
             </div>
 
             <h1 className="text-3xl md:pr-40 font-extrabold pb-4 pl-40 pt-10">Categories</h1>
-            <div className="overflow-hidden h-full w-full pl-24 pr-24 pb-14">
-                <div className="flex flex-row gap-x-14 w-full overflow-auto pl-6 pr-6 pb-6">
+            <div className="overflow-hidden h-full w-full px-24 pb-14">
+                <div className="flex flex-row gap-x-14 w-full overflow-auto px-6 pb-4">
                     {
                         (
                             (categories.length > 0) ? (
                                 categories?.map(
                                     category => {
                                         return <Link to={"/categories?category=" + category} key={category}>
-                                            <div className="bg-white-creamWhite h-24 w-64 shadow-md hover:shadow-lg rounded-xl flex-none pb-4">
-                                                <div className="my-5 mx-5 pt-6">
-                                                    <h1 className="mt-2 text-xl text-grey-dark">{category}</h1>
-                                                </div>
+                                            <div className="bg-white-creamWhite w-64 shadow-md hover:shadow-lg rounded-xl flex-none">
+                                                <h1 className="mt-2 text-xl text-grey-dark py-4 pl-6">{category}</h1>
                                             </div>
                                         </Link>
                                     }
@@ -77,14 +75,8 @@ const Restaurants = () => {
                                 restaurant => {
                                     let priceRange = restaurant.restaurantPriceRange === null ? 0 : restaurant.restaurantPriceRange;
                                     let imageUrl = restaurant.picture ? restaurant.picture.url : "/images/shop.jpg";
-                                    let maxDiscount = 0;
-                                    restaurant.discounts.map(discount => {
-                                        if (discount.discountPercentage > maxDiscount) {
-                                            maxDiscount = discount.discountPercentage
-                                        }
-                                        return <></>
-                                    })
-                                    return <RestaurantListing {...{restaurant, imageUrl, maxDiscount, priceRange}} />
+                                    let maxDiscount = calculateDiscount(restaurant)
+                                    return <RestaurantListing {...{ restaurant, imageUrl, maxDiscount, priceRange }} />
                                 })
                         ) : (
                             <>
@@ -99,3 +91,15 @@ const Restaurants = () => {
 }
 
 export default Restaurants
+
+const calculateDiscount = (restaurant) => {
+    let maxDiscount = 0
+    restaurant.discounts.map(discount => {
+        if (discount.discountPercentage > maxDiscount) {
+            maxDiscount = discount.discountPercentage
+        }
+        return <></>
+    })
+    return maxDiscount
+}
+
