@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import RestaurantService from '../services/RestaurantService'
 import { Link } from 'react-router-dom'
 import { SearchBar } from '../components/SearchBar'
+import RestaurantListing from '../components/RestaurantListing'
 
 const Restaurants = () => {
     const [restaurants, setRestaurants] = useState([])
@@ -86,32 +87,7 @@ const Restaurants = () => {
                                         }
                                         return <></>
                                     })
-                                    console.log('Price rnage is', priceRange)
-                                    return <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId}>
-                                        <div className="bg-white-creamWhite h-full w-64 shadow-md hover:shadow-lg rounded-xl flex-none pb-1">
-                                            <img className="object-cover w-full h-40 rounded-t-xl" src={imageUrl} alt="food" />
-                                            <div className="my-4 mx-5">
-                                                {
-                                                    maxDiscount !== 0 && 
-                                                        <h2 className="text-green-standard text-xl font-semibold">{maxDiscount}% off</h2>
-                                                }
-                                                <div className="flex">
-                                                    {
-                                                        [...Array(5)].map((value, index) => {
-                                                            console.log(index)
-                                                            if (index < priceRange) {
-                                                                return <p className="text-green-standard">$</p>
-                                                            } else {
-                                                                return <p className="text-green-standard opacity-25">$</p>
-                                                            }
-                                                        })
-                                                    }
-                                                </div>
-                                                <h1 className="text-xl text-grey-dark">{restaurant.restaurantName}</h1>
-                                                <h1 className="text-base text-grey-light">{restaurant.restaurantLocation}</h1>
-                                            </div>
-                                        </div>
-                                    </Link>
+                                    return <RestaurantListing {...{restaurant, imageUrl, maxDiscount, priceRange}} />
                                 })
                         ) : (
                             <>
