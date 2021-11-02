@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import AdminService from '../services/AdminService';
 import { AiOutlineClose } from 'react-icons/ai';
 import { AiOutlineEdit } from 'react-icons/ai';
+import DeleteModal from './DeleteModal';
 
 const UserListing = (props: any) => {
 
@@ -12,6 +13,7 @@ const UserListing = (props: any) => {
     const [firstName, setFirstName] = useState(props.firstName);
     const [lastName, setLastName] = useState(props.lastName);
     const [roles, setRoles] = useState(props.roles);
+    const [deleteModal, setDeleteModal] = useState(false);
 
     const deleteUser: any = async (id: number) => {
         console.log(id)
@@ -24,8 +26,9 @@ const UserListing = (props: any) => {
     }
 
     return (
+        <>
         <div className="mx-8 grid grid-cols-11 gap-x-6">
-            <button className="px-2 rounded-full w-8 h-8 bg-opacity-80 hover:bg-opacity-100 bg-red-standard text-white-standard text-center" onClick={() => { deleteUser(props.id) }}><AiOutlineClose/></button>
+            <button className="px-2 rounded-full w-8 h-8 bg-opacity-80 hover:bg-opacity-100 bg-red-standard text-white-standard text-center" onClick={() => { setDeleteModal(true) }}><AiOutlineClose/></button>
             <div className="text-grey-standard">{props.id}</div>
             {(edit ? <>
                 <input className=" border px-2 shadow-sm rounded-large col-span-3 focus:outline-none text-sm text-grey-standard" onChange={(e) => { setEmail(e.target.value) }} value={email} />
@@ -57,6 +60,8 @@ const UserListing = (props: any) => {
                 </>)}
 
         </div>
+        <DeleteModal {...{deleteModal, setDeleteModal, deleteUser}} userId={props.id} email={email}/>
+        </>
     )
 }
 
