@@ -4,8 +4,8 @@ const RestaurantFood = ({ food, setLineItems }: { food: any, setLineItems: any }
 
     let foodUrl = "/images/sushi.jpg"
 
-    if (food.pictures.length > 0)
-        foodUrl = food.pictures[0].url;
+    if (food.picture)
+        foodUrl = food.picture.url;
 
     return <div className="relative bg-white-dirtyWhite h-80 w-64 shadow-md rounded-xl flex-none p-5" key={food.foodId}>
         {/* <img src="/images/{food.picturePath}" className="mx-auto w-32 h-32 shadow-md rounded-full" alt="food pic" /> */}

@@ -55,8 +55,8 @@ const Payment = () => {
                             {
                                 reservationDetails.lineItems?.map((lineItem: any) => {
                                     let imageUrl = "/images/sushi.jpg"
-                                    if (lineItem.pictures?.length > 0) {
-                                        imageUrl = lineItem.pictures[0].url
+                                    if (lineItem.picture) {
+                                        imageUrl = lineItem.picture.url
                                     }
                                     return <div key={lineItem.reservationId} >
                                         <div className="mx-8 grid grid-cols-7 bg-white-standard rounded-xl justify-center items-center py-2 mb-3 ">

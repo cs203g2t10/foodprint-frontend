@@ -70,8 +70,8 @@ const ReservationModal = (
                             lineItems?.map(
                                 (lineItem: any) => {
                                     let imageUrl = "/images/sushi.jpg"
-                                    if (lineItem.food.pictures.length > 0) {
-                                        imageUrl = lineItem.food.pictures[0].url
+                                    if (lineItem.food.picture) {
+                                        imageUrl = lineItem.food.picture.url
                                     }
                                     return <div key={lineItem.food.foodId}>
                                         <div className="grid grid-cols-7 bg-white-standard rounded-xl justify-center items-center gap-x-2 py-2 mb-3 ">

@@ -98,10 +98,10 @@ const Home = () => {
                             <div className="flex flex-row gap-x-10 w-full overflow-auto">
                                 {
                                     restaurants.map(restaurant =>
-                                        (restaurant.pictures.length > 0) ?
+                                        (restaurant.picture) ?
                                         (
                                         <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
-                                            <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={restaurant.pictures[0].url} />
+                                            <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={restaurant.picture.url} />
                                         </Link>
                                         ) : (
                                         <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
@@ -128,8 +128,8 @@ const Home = () => {
                                             return <></>
                                         })
                                         let imageUrl = "/images/restaurant.jpg";
-                                        if (restaurant.pictures.length > 0) {
-                                            imageUrl = restaurant.pictures[0].url;
+                                        if (restaurant.picture) {
+                                            imageUrl = restaurant.picture.url;
                                         }
                                         if (upTo50) {
                                             return <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >

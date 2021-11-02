@@ -35,8 +35,8 @@ const ManageRestaurant = () => {
         RestaurantService.getRestaurant(restaurantId).then((response) => {
             console.log(response.data);
             setRestaurantDetails(response.data)
-            if (response.data.pictures.length > 0) {
-                setImageUrl(response.data.pictures[0].url);
+            if (response.data.picture) {
+                setImageUrl(response.data.picture.url);
             }
         });
     }, [restaurantId, showCreateFood])
@@ -103,7 +103,7 @@ const ManageRestaurant = () => {
                         {
                             food?.map((food: any) =>
                                 <ManageFood className="bg-white-offWhite" key={food.foodId} name={food.foodName} desc={food.foodDesc} price={food.foodPrice}
-                                    ingredientQty={food.foodIngredientQuantity} pic={food.pictures[0]}
+                                    ingredientQty={food.foodIngredientQuantity} pic={food.picture}
                                     restaurantId={restaurantId} foodId={food.foodId} />
                             )
                         }
