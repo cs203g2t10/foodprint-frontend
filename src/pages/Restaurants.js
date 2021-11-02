@@ -74,8 +74,7 @@ const Restaurants = () => {
                         (restaurants.length > 0) ? (
                             restaurants?.map(
                                 restaurant => {
-                                    let priceRange = 0;
-                                    if (restaurant.restaurantPriceRange !== null) priceRange = restaurant.restaurantPriceRange;
+                                    let priceRange = restaurant.restaurantPriceRange === null ? 0 : restaurant.restaurantPriceRange;
                                     let imageUrl = "/images/shop.jpg";
                                     if (restaurant.picture) {
                                         imageUrl = restaurant.picture.url;
@@ -89,13 +88,12 @@ const Restaurants = () => {
                                     })
                                     console.log('Price rnage is', priceRange)
                                     return <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId}>
-                                        <div className="bg-white-creamWhite h-auto w-64 shadow-md hover:shadow-lg rounded-xl flex-none pb-1">
-                                            <img className="object-cover w-full h-40 rounded-xl " src={imageUrl} alt="food" />
+                                        <div className="bg-white-creamWhite h-full w-64 shadow-md hover:shadow-lg rounded-xl flex-none pb-1">
+                                            <img className="object-cover w-full h-40 rounded-t-xl" src={imageUrl} alt="food" />
                                             <div className="my-4 mx-5">
                                                 {
-                                                    (maxDiscount !== 0) ?
+                                                    maxDiscount !== 0 && 
                                                         <h2 className="text-green-standard text-xl font-semibold">{maxDiscount}% off</h2>
-                                                        : <h2 className="text-white-creamWhite w-4/12 text-center rounded-xl text-2xl font-semibold">-0%</h2>
                                                 }
                                                 <div className="flex">
                                                     {
