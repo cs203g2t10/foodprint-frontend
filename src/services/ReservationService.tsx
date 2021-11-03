@@ -12,7 +12,7 @@ class ReservationService {
         }
     }
 
-    makeReservation = (date: Date, pax: Number, isVaccinated: Boolean, lineItems: any, restaurantId: Number) => {
+    makeReservation = async (date: Date, pax: Number, isVaccinated: Boolean, lineItems: any, restaurantId: Number) => {
         var lineItems2: any = [];
         lineItems.forEach((lineItem: any) => {
             var foodId = lineItem.food.foodId;

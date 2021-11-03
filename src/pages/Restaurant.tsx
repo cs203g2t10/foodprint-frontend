@@ -59,7 +59,7 @@ const Restaurant = () => {
             <div>
                 <div className="absolute z-10">
                     <div className="grid grid-cols-9 gap-x-16 mx-4 my-10">
-                    <h2 className="col-span-1">&nbsp;</h2>
+                        <h2 className="col-span-1">&nbsp;</h2>
                         <div className="col-span-2">
                             <img className="w-40 h-40 rounded-full" src={imageUrl} alt="shop" />
                         </div>
@@ -80,7 +80,13 @@ const Restaurant = () => {
                 </svg>
             </div>
 
-            <button className="text-white-standard flex ml-auto mr-24 py-2 px-5 bg-green-standard rounded-xl shadow-md hover:shadow-lg" onClick={makeReservationButtonClick}>Make Reservation</button>
+            <div className="grid items-end justify-end mr-24">
+                <button className=" text-white-standard py-2 px-5 bg-green-standard rounded-xl shadow-md hover:shadow-lg" onClick={makeReservationButtonClick}>Make Reservation</button>
+            </div>
+            {haveFood &&
+                <h1 className="text-right text-red-standard mr-24">Please select some food</h1>
+            }
+            
             <div className="gap-x-16  grid items-center justify-items-center xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-y-16 mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
                 {
                     food?.map(
@@ -88,11 +94,6 @@ const Restaurant = () => {
                     )
                 }
             </div>
-            {(haveFood ?
-                <h1 className="text-center pb-2 text-red-600">Please select some food before continuing</h1>
-                :
-                <div className="pt-9" />
-            )}
             <ReservationModal {...{ id, modalIsOpen, lineItems, finalPrice, totalPrice, setModal }} />
         </div>
     )

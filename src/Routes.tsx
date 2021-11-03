@@ -18,6 +18,7 @@ import ManagerProfile from "./pages/ManagerProfile";
 import ManageRestaurant from "./pages/ManageRestaurant";
 import ManageIngredients from "./pages/ManageIngredients";
 import VaccinationCheck from "./pages/VaccinationCheck";
+import Dashboard from "./pages/Dashboard";
 import Category from "./pages/Category";
 
 export default function Routes() {
@@ -77,6 +78,9 @@ export default function Routes() {
                 </Route>
                 <Route exact path="/manageingredients">
                     <ManageIngredients />
+                </Route>
+                <Route exact path="/dashboard">
+                    <Dashboard />
                 </Route>
                 <Route exact path="/categories">
                     <Category />
