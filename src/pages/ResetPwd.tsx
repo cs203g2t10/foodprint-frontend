@@ -11,7 +11,7 @@ const ResetPwd = (props: any) => {
     const [confirmNewPassword, setConfirmNewPassword] = useState("");
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState("");
-    const [regexp] = useState("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$");
+    const [regexp] = useState("(?=^.{8,}$)(?=.*\\d)(?=.*[a-zA-Z])(?!.*\\s)[0-9a-zA-Z*$-+?_&=!%{}/'.]*$");
     const [processing, setProcessing] = useState(false)
 
     const validateForm = (newPassword: string, confirmNewPassword: string) => {

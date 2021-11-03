@@ -15,7 +15,7 @@ const CreateUserModal = (
     const [roles, setRoles] = useState("");
     const [created, setCreated] = useState(false);
     const [error, setError] = useState("");
-    const [regexp] = useState("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$");
+    const [regexp] = useState("(?=^.{8,}$)(?=.*\\d)(?=.*[a-zA-Z])(?!.*\\s)[0-9a-zA-Z*$-+?_&=!%{}/'.]*$");
 
     const customStyles = {
         overlay: { zIndex: 1000 }
