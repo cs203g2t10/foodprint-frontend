@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import ChangeRestaurantPicModal from '../components/ChangeRestaurantPicModal';
 import CreateFoodModal from '../components/CreateFoodModal';
 import EditRestaurantDetails from '../components/EditRestaurantDetails';
 import Restricted from '../components/errors/Restricted';
@@ -16,6 +17,7 @@ const ManageRestaurant = () => {
     const [ingredients, setIngredients] = useState([]);
     const [imageUrl, setImageUrl] = useState("/images/shop.jpg");
     const [editDetails, setEditDetails] = useState(false);
+    const [changePic, setChangePic] = useState(false);
 
     useEffect(() => {
         const userInfo: UserDetails = LogInService.getUserDetails();
@@ -69,6 +71,8 @@ const ManageRestaurant = () => {
                             <h2 className="col-span-1">&nbsp;</h2>
                             <div className="col-span-2">
                                 <img className="w-40 h-40 rounded-full" src={imageUrl} alt="shop" />
+                                <button className="bg-green-standard text-white-standard px-4 py-1 rounded-full mt-3 ml-5"
+                                 onClick={()=>{setChangePic(true)}} >Change pic</button>
                             </div>
                             <div className="col-span-6 px-0">
                                 <h1 className="text-4xl md:text-6xl font-bold tracking-wide text-green-standard">{restaurantDetails.restaurantName}</h1>
@@ -109,6 +113,7 @@ const ManageRestaurant = () => {
                         }
                     </div>
                 </div>
+                <ChangeRestaurantPicModal {...{changePic, setChangePic, imageUrl}} name={restaurantDetails.restaurantName} />
                 <CreateFoodModal {...{ showCreateFood, setShowCreateFood, ingredients }} restaurantId={restaurantId} />
                 <EditRestaurantDetails {...{editDetails, setEditDetails, restaurantDetails}}/>
             </div>
