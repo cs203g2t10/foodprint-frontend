@@ -138,6 +138,8 @@ class RestaurantService {
     getFoodBetween = (restaurantId: number, startDate: String, endDate: String) => {
         return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/calculateFoodBetween?start=${startDate}&&end=${endDate}`,this.headers());
     }
+
+    
 }
 
 export default new RestaurantService();

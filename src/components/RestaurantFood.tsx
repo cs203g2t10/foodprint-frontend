@@ -7,7 +7,7 @@ const RestaurantFood = ({ food, setLineItems }: { food: any, setLineItems: any }
     return <div className="relative bg-white-dirtyWhite h-80 w-64 shadow-md rounded-xl flex-none p-5" key={food.foodId}>
         <div className="flex-col mx-auto h-max ">
             <img src={foodUrl} className="mx-auto w-32 h-32 shadow-md rounded-full object-cover" alt="food pic" />
-            <h1 className="flex justify-center font-semibold tracking-wider text-green-standard mt-2 mb-1">{food.foodName}</h1>
+            <h1 className="flex justify-center font-semibold tracking-wider text-green-standard mt-2 mb-1 text-center">{food.foodName}</h1>
             <div className="ml-2">
             </div>
             <p className="text-grey-standard text-sm text-center overflow-y-auto h-20 pb-2">{food.foodDesc}</p>

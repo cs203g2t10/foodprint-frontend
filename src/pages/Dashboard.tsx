@@ -52,8 +52,10 @@ const Dashboard = () => {
                 <div className="bg-white-dirtyWhite rounded-xxl p-7">
                     <h1 className="text-green-standard text-xl font-semibold tracking-wide pb-5">Ingredients required</h1>
                     <div className="grid grid-cols-6">
-                        <h1 className="text-grey-standard text-base col-span-4">Ingredient</h1>
-                        <h1 className="text-grey-standard text-base col-span-2 mb-3">Quantity</h1>
+                        <div className="col-span-1"></div>
+                        <h1 className="text-grey-standard text-base col-span-3">Ingredient</h1>
+                        <h1 className="text-grey-standard text-base col-span-1 mb-3">Quantity</h1>
+                        <h1 className="text-grey-standard text-base col-span-1 mb-3">Units</h1>
                     </div>
                     <div className="">
                         <div className="overflow-y-auto h-64">
@@ -75,12 +77,12 @@ const Dashboard = () => {
                 <div className="bg-white-dirtyWhite rounded-xxl p-7">
                     <h1 className="text-green-standard text-xl font-semibold tracking-wide pb-5">Food required</h1>
                     <div className="grid grid-cols-6">
-                        <h1 className="text-grey-standard text-base col-span-4">Food</h1>
+                        <div className="col-span-1"></div>
+                        <h1 className="text-grey-standard text-base col-span-3">Food</h1>
                         <h1 className="text-grey-standard text-base col-span-2 mb-3">Quantity</h1>
                     </div>
-                    <div className="">
+                    <div>
                         <div className="overflow-y-auto h-64">
-                            <h1></h1>
                             {Object.keys(foodBetween).map((ingredient, quantity) => (
                                 <IngredientBreakdownListing ingredient={ingredient} quantity={"x " + foodBetween[ingredient]} />
                             ))}
