@@ -53,6 +53,9 @@ class RestaurantService {
             restaurantWeekendClosingMinutes: weekendClosingMinute,
         }
         return axios.patch(`${RESTAURANTS_REST_API_URL}/${restaurantId}`, requestBody, this.headers())
+        .catch((error) => {
+            return error.response;
+        })
     }
 
     // Manager: Add new food to his own restaurant

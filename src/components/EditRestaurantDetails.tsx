@@ -6,6 +6,8 @@ const EditRestaurantDetails = (props: any) => {
 
     const { editDetails, setEditDetails, restaurantDetails } = props;
 
+    const [error, setError] = useState("");
+
     const [name, setName] = useState("");
     const [desc, setDesc] = useState("");
     const [location, setLocation] = useState("");
@@ -49,12 +51,15 @@ const EditRestaurantDetails = (props: any) => {
             weekdayClosingHour, weekdayClosingMinute, weekendOpeningHour, weekdayOpeningMinute,
             weekendClosingHour, weekendClosingMinute);
         response.then((res) => {
-            console.log(res.data);
-            setEdited(true);
-        }).catch((error) => {
-            console.log("Unsuccessful Edit")
-            console.log(error);
+            console.log(res);
+            if (res.status === 200) {
+                setError("")
+                setEdited(true);
+            } else {
+                setError(res.data.message[0])
+            }
         })
+        console.log(response);
     }
 
     return (
@@ -129,17 +134,20 @@ const EditRestaurantDetails = (props: any) => {
                 {
                     (edited ?
                         <>
-                            <div className="mx-auto py-2">Restaurant Details have been updated!</div>
+                            <div className="mx-auto py-2 text-green-standard">Restaurant Details have been updated!</div>
                             <div className=" grid gap-x-10 justify-center mx-28">
-                                <button className=" text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
+                                <button className=" text-green-standard px-10 py-1 rounded-xl shadow-md hover:shadow-lg"
                                     onClick={() => { setEditDetails(false); setEdited(false); }}>Return</button>
                             </div>
                         </> :
-                        <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28 pt-4">
-                            <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
-                            onClick={()=>{editRestaurantDetails()}} >Confirm</button>
-                            <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setEditDetails(false)}>Cancel</button>
-                        </div>)
+                        <>
+                            <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28 pt-4 gap-y-3">
+                                <div className="text-red-standard text-center col-span-2">{error}</div>
+                                <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
+                                    onClick={() => { editRestaurantDetails() }} >Confirm</button>
+                                <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setEditDetails(false)}>Cancel</button>
+                            </div>
+                        </>)
                 }
             </div>
 
