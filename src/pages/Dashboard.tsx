@@ -9,7 +9,7 @@ const Dashboard = () => {
     const [restaurantId, setRestaurantId] = useState(0);
 
     const [isAuthorized, setAuthorized] = useState(false);
-    const [ingredientsBetween, setIngredientsBetween] = useState<any>({})
+    const [ingredientsBetween, setIngredientsBetween] = useState<any[]>([])
     const [foodBetween, setFoodBetween] = useState<any>({})
 
     useEffect(() => {
@@ -57,9 +57,16 @@ const Dashboard = () => {
                     </div>
                     <div className="">
                         <div className="overflow-y-auto h-64">
-                            {Object.keys(ingredientsBetween).map((ingredient, quantity) => (
+                            {
+                                ingredientsBetween.map((ingredientsBetween) => {
+                                    return (
+                                        <IngredientBreakdownListing ingredient={ingredientsBetween.ingredient} quantity={ingredientsBetween.quantity} units={ingredientsBetween.units}/>
+                                    )
+                                })
+                            }
+                            {/* {Object.keys(ingredientsBetween).map((ingredient, quantity) => (
                                 <IngredientBreakdownListing ingredient={ingredient} quantity={ingredientsBetween[ingredient]} />
-                            ))}
+                            ))} */}
                         </div>
                     </div>
 
