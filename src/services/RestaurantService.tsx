@@ -130,6 +130,14 @@ class RestaurantService {
     getRestaurantsInCategory = (category: any) => {
         return axios.get(`${RESTAURANTS_REST_API_URL}/categories/${category}`, this.headers());
     }
+
+    getIngredientsBetween = (restaurantId: number, startDate: String, endDate: String) => {
+        return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/calculateIngredientsBetween?start=${startDate}&&end=${endDate}`,this.headers());
+    }
+
+    getFoodBetween = (restaurantId: number, startDate: String, endDate: String) => {
+        return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/calculateFoodBetween?start=${startDate}&&end=${endDate}`,this.headers());
+    }
 }
 
 export default new RestaurantService();
