@@ -87,20 +87,16 @@ const Restaurant = () => {
             {haveFood &&
                 <h1 className="text-right text-red-standard mr-24">Please select some food</h1>
             }
-
             <div className="gap-x-16  grid items-center justify-items-center xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-y-16 mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
                 {
                     (food.length === 0) ?
                         <Loading />
                         : (
-
                             food?.map(
                                 (food: any) => <RestaurantFood {...{ food, setLineItems }} key={food.foodId} />
                             )
-
                         )
                 }
-
             </div>
             <ReservationModal {...{ id, modalIsOpen, lineItems, finalPrice, totalPrice, setModal }} />
         </div>
