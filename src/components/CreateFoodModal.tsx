@@ -26,7 +26,7 @@ const CreateFoodModal = (props: any) => {
         if (response.status === 200) {
             setCreated(true);
         } else {
-            setError(response.data.message[0]);
+            setError(response.data.message);
         }
         setLoading(false);
     }
