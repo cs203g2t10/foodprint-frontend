@@ -20,6 +20,7 @@ import ManageIngredients from "./pages/ManageIngredients";
 import VaccinationCheck from "./pages/VaccinationCheck";
 import Dashboard from "./pages/Dashboard";
 import Category from "./pages/Category";
+import Settings from "./pages/Settings";
 
 export default function Routes() {
     let location = useLocation<any>();
@@ -87,6 +88,9 @@ export default function Routes() {
                 </Route>
                 <Route exact path="/categories">
                     <Category />
+                </Route>
+                <Route exact path="/settings">
+                    <Settings />
                 </Route>
                 <Route>
                     <NotFound />
