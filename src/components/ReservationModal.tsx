@@ -153,7 +153,7 @@ const ReservationModal = (
                             <span>
                                 {
                                     loading ?
-                                        <div className="spinner" id="spinner"></div> :
+                                        <div className="spinner" id="spinner" /> :
                                         'Confirm'
                                 }
                             </span>
