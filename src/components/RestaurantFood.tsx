@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 
 const RestaurantFood = ({ food, setLineItems }: { food: any, setLineItems: any }) => {
 
-    let foodUrl = food.picture ? food.picture.url : "/images/sushi.jpg"
+    let foodUrl = food.picture ? food.picture.url : "/images/forkspoon.jpg"
 
     return <div className="relative bg-white-dirtyWhite h-80 w-64 shadow-md rounded-xl flex-none p-5" key={food.foodId}>
         <div className="flex-col mx-auto h-max ">
