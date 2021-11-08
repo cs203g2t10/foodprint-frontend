@@ -36,23 +36,23 @@ const Restaurants = () => {
     return (
         <div className="min-h-screen">
             <div className="bg-yellow-standard">
-                <img className="h-32 mx-auto pt-7" src="/images/burgers.png" alt="burger" />
-                <h1 className="flex text-center justify-center text-4xl font-bold tracking-wide">Make reservations, reduce food waste <br /> and save money</h1>
+                <img className="h-28 mx-auto pt-3" src="/images/burgers.png" alt="burger" />
+                <h1 className="flex text-center justify-center text-3xl font-bold tracking-wide text-grey-dark">Make reservations, reduce food waste and save money</h1>
                 <SearchBar changeRestaurants={changeRestaurants} />
-                <div className="pb-8"></div>
+                <div className="pb-3"></div>
             </div>
 
-            <h1 className="text-3xl md:pr-40 font-extrabold pb-4 pl-40 pt-10">Categories</h1>
-            <div className="overflow-hidden h-full w-full px-24 pb-14">
-                <div className="flex flex-row gap-x-14 w-full overflow-auto px-6 pb-4">
+            <h1 className="text-xl md:pr-40 font-semibold text-grey-dark pl-32 pt-10 text-grey">Categories</h1>
+            <div className="overflow-hidden h-full w-full px-24 pt-4">
+                <div className="flex flex-row gap-x-6 w-full overflow-x-auto px-12 pb-4">
                     {
                         (
                             (categories.length > 0) ? (
                                 categories?.map(
                                     category => {
                                         return <Link to={"/categories?category=" + category} key={category}>
-                                            <div className="bg-white-creamWhite w-64 shadow-md hover:shadow-lg rounded-xl flex-none">
-                                                <h1 className="mt-2 text-xl text-grey-dark py-4 pl-6">{category}</h1>
+                                            <div className="bg-white-offWhite hover:bg-white-dirtyWhite text-green-standard shadow-md hover:shadow-lg rounded-xl w-28 text-center">
+                                                <h1 className="px-2 py-2 text-base text-grey-dark">{category}</h1>
                                             </div>
                                         </Link>
                                     }
@@ -65,8 +65,8 @@ const Restaurants = () => {
                 </div>
             </div>
 
-            <h1 className="text-3xl md:pr-64 font-extrabold pl-40">Restaurants</h1>
-            <div className="justify-items-center grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-y-16 mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
+            {/* <h1 className="text-3xl md:pr-64 font-extrabold pl-40">Restaurants</h1> */}
+            <div className="justify-items-center grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-y-16 px-24 mt-10 pb-8 animate__animated animate__fadeIn">
                 {
                     (
                         (restaurants.length > 0) ? (
