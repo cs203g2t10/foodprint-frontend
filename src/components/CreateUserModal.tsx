@@ -15,6 +15,7 @@ const CreateUserModal = (
     const [roles, setRoles] = useState("");
     const [created, setCreated] = useState(false);
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
     const [regexp] = useState("(?=^.{8,}$)(?=.*\\d)(?=.*[a-zA-Z])(?!.*\\s)[0-9a-zA-Z*$-+?_&=!%{}/'.]*$");
 
     const customStyles = {
@@ -34,7 +35,9 @@ const CreateUserModal = (
     }
 
     const createNewUser = (email: string, firstName: string, lastName: string, password: string, roles: string) => {
+        setLoading(true);
         if (!validateForm(password)) {
+            setLoading(false);
             return;
         }
         const response = AdminService.adminCreateUser(email, firstName, lastName, password, roles);
@@ -45,6 +48,7 @@ const CreateUserModal = (
                 console.log(res.data);
                 setCreated(true)
                 setError("")
+                setLoading(false);
             }
         })
     }
@@ -100,7 +104,15 @@ const CreateUserModal = (
                         </> :
                         <div className="pt-2 pb-0 grid grid-cols-2 gap-x-10 justify-center mx-28">
                             <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-sm hover:shadow-md"
-                                onClick={() => createNewUser(email, firstName, lastName, password, roles)}>Confirm</button>
+                                onClick={() => createNewUser(email, firstName, lastName, password, roles)}>
+                                    <span>
+                                        {
+                                            loading ? 
+                                            <div className="spinner" id="spinner" />
+                                            : 'Confirm'
+                                        }
+                                    </span>
+                            </button>
                             <button className="text-green-standard px-3 py-1 rounded-xl shadow-sm hover:shadow-md border" onClick={() => setCreateUser(false)}>Cancel</button>
                         </div>)
                 }

@@ -53,9 +53,17 @@ class RestaurantService {
             restaurantWeekendClosingMinutes: weekendClosingMinute,
         }
         return axios.patch(`${RESTAURANTS_REST_API_URL}/${restaurantId}`, requestBody, this.headers())
-        .catch((error) => {
-            return error.response;
-        })
+            .catch((error) => {
+                return error.response;
+            })
+    }
+
+    // Manager: Update Restaurant picture
+    changeRestaurantPicture = (restaurantId: number, pictureFile: File) => {
+        const url = `${RESTAURANTS_REST_API_URL}/${restaurantId}/picture`;
+        const formData = new FormData();
+        formData.append("pictureFile", pictureFile);
+        return axios.patch(url, formData, this.headers())
     }
 
     // Manager: Add new food to his own restaurant
@@ -66,7 +74,10 @@ class RestaurantService {
             foodPrice: price,
             ingredientQuantityList: ingredientQty
         }
-        return axios.post(`${RESTAURANTS_REST_API_URL}/${restaurantId}/food`, requestBody, this.headers());
+        return axios.post(`${RESTAURANTS_REST_API_URL}/${restaurantId}/food`, requestBody, this.headers())
+            .catch((err) => {
+                return err.response;
+            });
     }
 
     // Manager: Edit food details
@@ -135,14 +146,14 @@ class RestaurantService {
     }
 
     getIngredientsBetween = (restaurantId: number, startDate: String, endDate: String) => {
-        return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/calculateIngredientsBetween?start=${startDate}&&end=${endDate}`,this.headers());
+        return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/calculateIngredientsBetween?start=${startDate}&end=${endDate}`, this.headers());
     }
 
     getFoodBetween = (restaurantId: number, startDate: String, endDate: String) => {
-        return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/calculateFoodBetween?start=${startDate}&&end=${endDate}`,this.headers());
+        return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/calculateFoodBetween?start=${startDate}&end=${endDate}`, this.headers());
     }
 
-    
+
 }
 
 export default new RestaurantService();

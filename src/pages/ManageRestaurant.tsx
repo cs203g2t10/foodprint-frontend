@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router';
 import ChangeRestaurantPicModal from '../components/ChangeRestaurantPicModal';
 import CreateFoodModal from '../components/CreateFoodModal';
 import EditRestaurantDetails from '../components/EditRestaurantDetails';
 import Restricted from '../components/errors/Restricted';
+import Loading from '../components/Loading';
 import ManageFood from '../components/ManageFood';
 import LogInService, { UserDetails } from '../services/LogInService';
 import RestaurantService from '../services/RestaurantService';
 
 const ManageRestaurant = () => {
+
+    let params = useParams<any>();
+    const [loading, setLoading] = useState(true);
 
     const [isAuthorized, setAuthorized] = useState(false);
     const [restaurantId, setRestaurantId] = useState<number>(0);
@@ -15,20 +20,27 @@ const ManageRestaurant = () => {
     const [food, setFood] = useState([]);
     const [showCreateFood, setShowCreateFood] = useState(false);
     const [ingredients, setIngredients] = useState([]);
-    const [imageUrl, setImageUrl] = useState("/images/shop.jpg");
+    const [imageUrl, setImageUrl] = useState("");
     const [editDetails, setEditDetails] = useState(false);
     const [changePic, setChangePic] = useState(false);
 
     useEffect(() => {
+        console.log('params are',params);
         const userInfo: UserDetails = LogInService.getUserDetails();
-        if (userInfo.userAuthorities.includes("FP_MANAGER")) {
+        if (userInfo.userAuthorities.includes("FP_MANAGER") && Object.keys(params).length === 0 ) {
+            if (userInfo.restaurantId == null) {
+                console.log("User has no restaurant ID");
+                return;
+            }
+            setRestaurantId(userInfo.restaurantId);
+            setAuthorized(true);
+        } else if (userInfo.userAuthorities.includes("FP_ADMIN")){
+            setRestaurantId(params.id);
             setAuthorized(true);
         } else {
             return;
         }
-        setRestaurantId(userInfo.restaurantId);
-
-    }, [isAuthorized])
+    }, [isAuthorized, params])
 
     useEffect(() => {
         if (restaurantId === 0) {
@@ -36,9 +48,12 @@ const ManageRestaurant = () => {
         }
         RestaurantService.getRestaurant(restaurantId).then((response) => {
             console.log(response.data);
-            setRestaurantDetails(response.data)
+            setRestaurantDetails(response.data);
+            setLoading(false);
             if (response.data.picture) {
                 setImageUrl(response.data.picture.url);
+            } else {
+                setImageUrl("/images/shop.jpg");
             }
         });
     }, [restaurantId, showCreateFood])
@@ -105,15 +120,17 @@ const ManageRestaurant = () => {
 
                     <div className="grid md:grid-cols-3 gap-12">
                         {
-                            food?.map((food: any) =>
-                                <ManageFood className="bg-white-offWhite" key={food.foodId} name={food.foodName} desc={food.foodDesc} price={food.foodPrice}
+                            loading ? <Loading /> :
+                            food?.map((food: any) => {
+                                return <ManageFood className="bg-white-offWhite" key={food.foodId} name={food.foodName} desc={food.foodDesc} price={food.foodPrice}
                                     ingredientQty={food.foodIngredientQuantity} pic={food.picture}
                                     restaurantId={restaurantId} foodId={food.foodId} />
+                                }
                             )
                         }
                     </div>
                 </div>
-                <ChangeRestaurantPicModal {...{changePic, setChangePic, imageUrl}} name={restaurantDetails.restaurantName} />
+                <ChangeRestaurantPicModal {...{changePic, setChangePic, imageUrl}} name={restaurantDetails.restaurantName} restaurantId={restaurantDetails.restaurantId} />
                 <CreateFoodModal {...{ showCreateFood, setShowCreateFood, ingredients }} restaurantId={restaurantId} />
                 <EditRestaurantDetails {...{editDetails, setEditDetails, restaurantDetails}}/>
             </div>

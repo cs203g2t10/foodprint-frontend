@@ -7,6 +7,7 @@ const EditRestaurantDetails = (props: any) => {
     const { editDetails, setEditDetails, restaurantDetails } = props;
 
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const [name, setName] = useState("");
     const [desc, setDesc] = useState("");
@@ -46,6 +47,7 @@ const EditRestaurantDetails = (props: any) => {
     }, [restaurantDetails])
 
     const editRestaurantDetails = () => {
+        setLoading(true);
         const response = RestaurantService.editRestaurantDetails(restaurantDetails.restaurantId,
             name, desc, location, priceRange, tableCapacity, weekdayOpeningHour, weekdayOpeningMinute,
             weekdayClosingHour, weekdayClosingMinute, weekendOpeningHour, weekdayOpeningMinute,
@@ -58,6 +60,7 @@ const EditRestaurantDetails = (props: any) => {
             } else {
                 setError(res.data.message[0])
             }
+            setLoading(false);
         })
         console.log(response);
     }
@@ -144,7 +147,15 @@ const EditRestaurantDetails = (props: any) => {
                             <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28 pt-4 gap-y-3">
                                 <div className="text-red-standard text-center col-span-2">{error}</div>
                                 <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
-                                    onClick={() => { editRestaurantDetails() }} >Confirm</button>
+                                    onClick={() => { editRestaurantDetails() }} >
+                                    <span>
+                                        {
+                                            loading ? 
+                                            <div className="spinner" id="spinner" />
+                                            : 'Confirm'
+                                        }
+                                    </span>
+                                </button>
                                 <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setEditDetails(false)}>Cancel</button>
                             </div>
                         </>)

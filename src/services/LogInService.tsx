@@ -9,7 +9,9 @@ type UserDetails = {
     userFname: String
     userLname: String
     userAuthorities: String[]
-    restaurantId: any
+    restaurantId: number | null
+    vaccinationName: String | null
+    vaccinationDob: String | null
 };
 
 class LogInService {
@@ -65,7 +67,7 @@ class LogInService {
     }
 
     // Does not require API call to backend since JWT stores user properties too
-    getUserDetails = () => {
+    getUserDetails = () : UserDetails => {
         const token: string | null = window.localStorage.getItem("token");
         if (typeof token !== "string") {
             return {
@@ -74,19 +76,43 @@ class LogInService {
                 userFname: "",
                 userLname: "",
                 userAuthorities: [],
-                restaurantId: null
+                restaurantId: null,
+                vaccinationName: null,
+                vaccinationDob: null
             }
         }
 
-        let decodedHeader: any = jwt_decode(token, { header: true });
-        console.log(decodedHeader);
+
+        let decodedHeader: UserDetails | null = null;
+
+        try {
+            decodedHeader = jwt_decode(token, { header: true });
+        } catch {
+            console.log("Problem.")
+        }
+
+        if (decodedHeader === null) {
+            return {
+                email: "",
+                userId: 0,
+                userFname: "",
+                userLname: "",
+                userAuthorities: [] as String[],
+                restaurantId: null,
+                vaccinationName: null,
+                vaccinationDob: null
+            }
+        }
+
         let userDetails: UserDetails = {
             email: decodedHeader.email,
             userId: decodedHeader.userId,
             userFname: decodedHeader.userFname,
             userLname: decodedHeader.userLname,
             userAuthorities: decodedHeader.userAuthorities,
-            restaurantId: decodedHeader.restaurantId
+            restaurantId: decodedHeader.restaurantId,
+            vaccinationName: decodedHeader.vaccinationName,
+            vaccinationDob: decodedHeader.vaccinationDob
         }
         return userDetails;
     }
