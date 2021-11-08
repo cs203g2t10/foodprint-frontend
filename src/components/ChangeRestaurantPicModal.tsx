@@ -43,11 +43,9 @@ const ChangeRestaurantPicModal = (props: any) => {
             console.log(error.response.data);
             setLoading(false);
             if (error.response.status === 500) {
-                console.log('Error:', error.response.data.message)
                 setError(error.response.data.message);
-                // setModalMessage(`Error while validating certificate - ${error.response.data.reason}`)
-                // setError(`Error while validating certificate - ${error.response.data.reason}`)
-                // setModalIsOpened(true)
+            } else {
+                setError(error.response.data.message);
             };
         });
     }, [restaurantId]);
