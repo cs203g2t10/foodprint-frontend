@@ -105,10 +105,11 @@ const ManageRestaurant = () => {
 
                     <div className="grid md:grid-cols-3 gap-12">
                         {
-                            food?.map((food: any) =>
-                                <ManageFood className="bg-white-offWhite" key={food.foodId} name={food.foodName} desc={food.foodDesc} price={food.foodPrice}
+                            food?.map((food: any) => {
+                                return <ManageFood className="bg-white-offWhite" key={food.foodId} name={food.foodName} desc={food.foodDesc} price={food.foodPrice}
                                     ingredientQty={food.foodIngredientQuantity} pic={food.picture}
                                     restaurantId={restaurantId} foodId={food.foodId} />
+                                }
                             )
                         }
                     </div>

@@ -75,7 +75,7 @@ const ReservationModal = (
                         {
                             lineItems?.map(
                                 (lineItem: any) => {
-                                    let imageUrl = "/images/sushi.jpg"
+                                    let imageUrl = "/images/forkspoon.jpg"
                                     if (lineItem.food.picture) {
                                         imageUrl = lineItem.food.picture.url
                                     }

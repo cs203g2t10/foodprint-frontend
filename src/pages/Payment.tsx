@@ -54,7 +54,7 @@ const Payment = () => {
                         <div className="overflow-y-auto max-h-64">
                             {
                                 reservationDetails.lineItems?.map((lineItem: any) => {
-                                    let imageUrl = "/images/sushi.jpg"
+                                    let imageUrl = "/images/forkspoon.jpg"
                                     if (lineItem.picture) {
                                         imageUrl = lineItem.picture.url
                                     }

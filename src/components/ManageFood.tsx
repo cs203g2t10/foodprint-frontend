@@ -13,6 +13,8 @@ const ManageFood = (props: any) => {
     const [changePic, setChangePic] = useState(false);
     const [success, setSuccess] = useState(false);
 
+    const pictureUrl = (props.pic === null) ? "/images/forkspoon.jpg" : props.pic;
+
     useEffect(() => {
         ingredientQty.sort();
     }, [ingredientQty])
@@ -35,7 +37,7 @@ const ManageFood = (props: any) => {
             <div className="grid px-10 bg-white-dirtyWhite rounded-xl shadow-sm py-4 h-auto">
                 <div className="h-32 w-32 mx-auto relative overflow-hidden rounded-full hover:shadow-md mb-5">
                     
-                    <img src={props.pic?.url} alt={props.pic?.description} className=" mb-5 flex filter opacity-40 object-cover w-full h-full"
+                    <img src={pictureUrl} alt={props.pic?.description} className=" mb-5 flex filter opacity-40 object-cover w-full h-full"
                         onClick={() => setChangePic(true)} />
                     <h1 className="absolute w-full py-2.5 bottom-0 inset-x-0 bg-green-standard text-white-standard text-xs text-center leading-4 shadow opacity-90">Click to edit</h1>
                 </div>
@@ -115,11 +117,11 @@ const ManageFood = (props: any) => {
                         setEdit(false);
                     }}>Undo</button>
                 </div>
-                <ChangeFoodPicModal className="" {...{ changePic, setChangePic, name }} url={props.pic?.url} />
+                <ChangeFoodPicModal className="" {...{ changePic, setChangePic, name }} url={pictureUrl} />
             </div>
             :
             <div className="py-4 px-8 rounded-xl bg-white-dirtyWhite shadow-sm">
-                <img src={props.pic?.url} alt={props.pic?.description} className="rounded-full mb-5 h-32 w-32 flex mx-auto shadow-sm" />
+                <img src={pictureUrl} alt={props.pic?.description} className="rounded-full mb-5 h-32 w-32 flex mx-auto shadow-sm" />
                 <div className="grid grid-cols-5 justify-between gap-y-1">
                     <h1 className="col-span-2 text-green-standard">Name: </h1>
                     <h1 className="col-span-3 text-grey-dark text-base">{name}</h1>

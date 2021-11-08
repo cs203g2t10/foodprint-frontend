@@ -101,11 +101,11 @@ const Home = () => {
                                         (restaurant.picture) ?
                                         (
                                         <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
-                                            <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={restaurant.picture.url} />
+                                            <TrendingRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={restaurant.picture.url} />
                                         </Link>
                                         ) : (
                                         <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
-                                            <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
+                                            <TrendingRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
                                         </Link>
                                         )
                                     )
@@ -133,7 +133,7 @@ const Home = () => {
                                         }
                                         if (upTo50) {
                                             return <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
-                                                <TrendingRestaurant name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={imageUrl} />
+                                                <TrendingRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={imageUrl} />
                                             </Link>
                                         }
                                         return <></>

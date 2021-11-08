@@ -3,6 +3,7 @@ import RestaurantService from '../services/RestaurantService';
 import LogInService, { UserDetails } from '../services/LogInService';
 import IngredientBreakdownListing from '../components/IngredientBreakdownListing';
 import Restricted from '../components/errors/Restricted';
+import moment from 'moment';
 
 
 const Dashboard = () => {
@@ -25,17 +26,22 @@ const Dashboard = () => {
         if (restaurantId === 0) {
             return;
         }
-        RestaurantService.getIngredientsBetween(restaurantId, "2021-11-06", "2021-12-30").then((response) => {
+
+        const start = moment().format("YYYY-MM-DD");
+        const end = moment().add(7, 'days').format("YYYY-MM-DD");
+
+        RestaurantService.getIngredientsBetween(restaurantId, start, end).then((response) => {
             console.log(response)
             setIngredientsBetween(response.data)
             console.log(response.data)
         })
 
-        RestaurantService.getFoodBetween(restaurantId, "2021-11-06", "2021-12-30").then((response) => {
+        RestaurantService.getFoodBetween(restaurantId, start, end).then((response) => {
             console.log(response)
             setFoodBetween(response.data)
             console.log(response.data)
         })
+
     }, [restaurantId])
 
     if (!isAuthorized) {

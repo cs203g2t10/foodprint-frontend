@@ -43,7 +43,6 @@ const Login = () => {
         }
         LogInService.userLogIn(email, password, token).then((response) => {
             if (response.data.status === "SUCCESS") {
-                console.log(response.data.token)
                 window.localStorage.setItem("token", response.data.token)
                 setIsAuthenticated(true);
             } else if (response.data.status === "INCORRECT") {
