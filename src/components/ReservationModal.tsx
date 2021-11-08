@@ -8,7 +8,7 @@ Modal.setAppElement('#root')
 
 const ReservationModal = (
     { id, modalIsOpen, lineItems, finalPrice, totalPrice, setModal }:
-    { id: any, modalIsOpen: boolean, lineItems: any[], finalPrice: number, totalPrice: number, setModal: SetStateAction<any> }
+        { id: any, modalIsOpen: boolean, lineItems: any[], finalPrice: number, totalPrice: number, setModal: SetStateAction<any> }
 ) => {
 
     const [pax, setPax] = useState(1);
@@ -19,6 +19,7 @@ const ReservationModal = (
     const [declare, setDeclare] = useState(false);
     const [reservationId, setReservationId] = useState();
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
     // const [noSlot, setNoSlot] = useState(false);
 
     const filterAcceptableTimings = (time: any) => {
@@ -31,11 +32,14 @@ const ReservationModal = (
     };
 
     const makeReservation = () => {
+        setLoading(true);
         if (bookingDate === undefined) {
             setSelectDate(true);
+            setLoading(false);
             return;
         } else if (isVaccinated === false) {
             setDeclare(true);
+            setLoading(false);
             return;
         }
         bookingDate.setHours(bookingDate.getHours() + 8);
@@ -43,13 +47,15 @@ const ReservationModal = (
         const response = ReservationService.makeReservation(bookingDate, pax, true, lineItems, id.id)
         response.then((resp) => {
             console.log(resp);
-            if (resp.status === 201){
+            if (resp.status === 201) {
                 console.log("Reservation successful, id: ", resp.data.reservationId)
                 setReservationId(resp.data.reservationId);
                 setReserved(true);
+                setLoading(false);
             } else {
                 console.log("Error ", resp.data);
                 setError("Error: " + resp.data.message);
+                setLoading(false);
             }
         })
         bookingDate.setHours(bookingDate.getHours() - 8);
@@ -142,18 +148,28 @@ const ReservationModal = (
                     </div>
                     <div className="text-red-standard py-4">{error}</div>
                     <div className="grid grid-cols-2 gap-x-10 mr-2 justify-center">
-                        <button className=" bg-green-standard text-white-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border" onClick={makeReservation} disabled={reserved}>Confirm</button>
+                        <button className=" bg-green-standard text-white-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border"
+                            onClick={makeReservation} disabled={reserved || loading}>
+                            <span>
+                                {
+                                    loading ?
+                                        <div className="spinner" id="spinner"></div> :
+                                        'Confirm'
+                                }
+                            </span>
+                        </button>
                         <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border border-green-standard" onClick={() => setModal(false)}>Edit order</button>
+
                     </div>
                     {
-                        (reserved ? 
-                        <div className="grid">
-                            <div className="pt-5 pb-3 text-green-standard text-center">Your reservation is successful!</div>
-                            <Link to={"/payment/" + reservationId} className="border bg-green-standard text-center mx-auto py-1.5 rounded-xl shadow-md hover:shadow-lg text-white-standard px-10">Proceed to payment</Link>
-                        </div>
+                        (reserved ?
+                            <div className="grid">
+                                <div className="pt-5 pb-3 text-green-standard text-center">Your reservation is successful!</div>
+                                <Link to={"/payment/" + reservationId} className="border bg-green-standard text-center mx-auto py-1.5 rounded-xl shadow-md hover:shadow-lg text-white-standard px-10">Proceed to payment</Link>
+                            </div>
                             : <></>)
                     }
-                    
+
                 </div>
             </div>
         </div>
