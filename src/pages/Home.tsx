@@ -120,13 +120,8 @@ const Home = () => {
                             <div className="flex flex-row gap-x-10 w-full overflow-auto">
                                 {
                                     restaurants.map(restaurant => {
-                                        let upTo50 = false;
-                                        restaurant.discounts.map((discount: any) => {
-                                            if (discount.discountPercentage >= 50) {
-                                                upTo50 = true;
-                                            }
-                                            return <></>
-                                        })
+                                        let discount = restaurant.discount ? restaurant.discount.discountPercentage : 0;
+                                        let upTo50 = (discount >= 50);
                                         let imageUrl = "/images/restaurant.jpg";
                                         if (restaurant.picture) {
                                             imageUrl = restaurant.picture.url;

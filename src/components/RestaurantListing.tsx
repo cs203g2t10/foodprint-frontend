@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const RestaurantListing = (props: any) => {
 
-    const { restaurant, imageUrl, maxDiscount, priceRange } = props;
+    const { restaurant, imageUrl, discount, priceRange } = props;
 
     return (
         <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId}>
@@ -24,8 +24,8 @@ const RestaurantListing = (props: any) => {
                             }
                         </div>
                         {
-                            maxDiscount !== 0 &&
-                            <h2 className="text-green-standard text-lg font-semibold">{maxDiscount}% off!</h2>
+                            discount !== 0 &&
+                            <h2 className="text-green-standard text-lg font-semibold">{discount}% off!</h2>
                         }
                     </div>
                     <h1 className="text-xl text-grey-dark">{restaurant.restaurantName}</h1>
