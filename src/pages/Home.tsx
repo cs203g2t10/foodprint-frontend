@@ -72,7 +72,7 @@ const Home = () => {
                                 </div>
                             </div>
                             <div className="md:col-span-3 md:my-24 relative">
-                                <img className="absolute top-0 bottom-0 m-auto"src="/images/landingPage.webp" alt="cooking illustration" />
+                                <img className="absolute top-0 bottom-0 m-auto" src="/images/landingPage.webp" alt="cooking illustration" />
                             </div>
                         </div>
                     </div>
@@ -95,19 +95,19 @@ const Home = () => {
                     <div className="md:pl-24 md:pt-10 bg-white-standard md:pb-24 px-5">
                         <h1 className="text-4xl md:pr-64 pl-1 font-extrabold pb-7">What's Trending</h1>
                         <div className="overflow-hidden h-full w-full">
-                            <div className="flex flex-row gap-x-10 w-full overflow-auto">
+                            <div className="flex flex-row gap-x-10 w-full overflow-auto h-auto py-5">
                                 {
                                     restaurants.map(restaurant =>
                                         (restaurant.picture) ?
-                                        (
-                                        <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
-                                            <TrendingRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={restaurant.picture.url} />
-                                        </Link>
-                                        ) : (
-                                        <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
-                                            <TrendingRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
-                                        </Link>
-                                        )
+                                            (
+                                                <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
+                                                    <TrendingRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={restaurant.picture.url} />
+                                                </Link>
+                                            ) : (
+                                                <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
+                                                    <TrendingRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
+                                                </Link>
+                                            )
                                     )
                                 }
                             </div>
@@ -117,7 +117,7 @@ const Home = () => {
                     <div className="md:pl-24 bg-white-standard md:pb-32  px-5">
                         <h1 className="text-4xl md:pr-64 pl-1 font-extrabold pb-7">Up to 50% off deals</h1>
                         <div className="overflow-hidden h-full w-full">
-                            <div className="flex flex-row gap-x-10 w-full overflow-auto">
+                            <div className="flex flex-row gap-x-10 w-full overflow-auto  h-auto py-5">
                                 {
                                     restaurants.map(restaurant => {
                                         let discount = restaurant.discount ? restaurant.discount.discountPercentage : 0;
@@ -159,6 +159,6 @@ const Home = () => {
         </div>
     )
 }
-  
+
 
 export default Home
