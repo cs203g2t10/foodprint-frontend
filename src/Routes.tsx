@@ -21,6 +21,7 @@ import VaccinationCheck from "./pages/VaccinationCheck";
 import Dashboard from "./pages/Dashboard";
 import Category from "./pages/Category";
 import Settings from "./pages/Settings";
+import TwoFa from "./pages/TwoFa";
 
 export default function Routes() {
     let location = useLocation<any>();
@@ -91,6 +92,9 @@ export default function Routes() {
                 </Route>
                 <Route exact path="/settings">
                     <Settings />
+                </Route>
+                <Route exact path="/twofasetup">
+                    <TwoFa />
                 </Route>
                 <Route>
                     <NotFound />
