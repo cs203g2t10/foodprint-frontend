@@ -17,6 +17,7 @@ const ChangeFoodPicModal = (props: any) => {
     };
 
     const onDrop = useCallback((acceptedFiles: any) => {
+        setError("");
         setLoading(true);
         if (acceptedFiles == null) {
             alert("No file selected");
@@ -25,7 +26,9 @@ const ChangeFoodPicModal = (props: any) => {
         var file = acceptedFiles[0];
         console.log(file);
         console.log("Uploading");
-        const response = RestaurantService.uploadFoodPic(props.restaurantId, props.foodId, name, name, file);
+        const response = props?.url === "/images/forkspoon.jpg" ? 
+        RestaurantService.uploadFoodPic(props.restaurantId, props.foodId, name, name, file) :
+        RestaurantService.editFoodPic(props.restaurantId, props.foodId, file);
         response.then((response) => {
             console.log(response);
             setLoading(false);

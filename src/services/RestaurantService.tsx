@@ -110,6 +110,14 @@ class RestaurantService {
         return axios.post(url, formData, this.headers());
     }
 
+    // Manager: Edit food pic PATCH
+    editFoodPic = (restaurantId: number, foodId: number, picFile: File) => {
+        const url = `${RESTAURANTS_REST_API_URL}/${restaurantId}/food/${foodId}/picture`;
+        const formData = new FormData();
+        formData.append("pictureFile", picFile);
+        return axios.patch(url, formData, this.headers());
+    }
+
     managerGetAllIngredients = (restaurantId: number) => {
         return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/ingredient/all`, this.headers());
     }
