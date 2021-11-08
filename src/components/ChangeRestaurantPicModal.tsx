@@ -1,22 +1,30 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDropzone } from 'react-dropzone';
 import ReactModal from 'react-modal';
+import RestaurantService from '../services/RestaurantService';
 
 const ChangeRestaurantPicModal = (props: any) => {
     const { changePic, setChangePic, imageUrl } = props;
     const [changed, setChanged] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+
     const [name, setName] = useState("");
+    const [restaurantId, setRestaurantId] = useState(0);
     // const [modalMessage, setModalMessage] = useState("");
     // const [error, setError] = useState("");
     useEffect(() => {
-        setName(props.name)
-    },[props])
+        setName(props.name);
+        setRestaurantId(props.restaurantId);
+    }, [props])
 
     const customStyles = {
         overlay: { zIndex: 1000 }
     };
 
     const onDrop = useCallback((acceptedFiles: any) => {
+        setLoading(true);
+        setError("")
         if (acceptedFiles == null) {
             alert("No file selected");
             return;
@@ -26,20 +34,23 @@ const ChangeRestaurantPicModal = (props: any) => {
 
         console.log("Uploading");
         // const response = VaccinationService.userUploadVaccination(file);
-        // response.then((response) => {
-        //     console.log("Success: ", response.data.reservationId)
-        //     setModalMessage(`Thank you! We have successfully verfied ${response.data.reason}`);
-        //     setModalIsOpened(true);
-        // }).catch((error) => {
-        //     console.log(error.response.data);
-        //     if (error.response.status === 500) {
-        //         console.log('Error:', error.response.data.reason)
-        //         // setModalMessage(`Error while validating certificate - ${error.response.data.reason}`)
-        //         setError(`Error while validating certificate - ${error.response.data.reason}`)
-        //         setModalIsOpened(true)
-        //     };
-        // });
-    }, []);
+        const response = RestaurantService.changeRestaurantPicture(restaurantId, file);
+        response.then((response) => {
+            console.log("Success: ", response.data.reservationId)
+            setLoading(false);
+            setChanged(true);
+        }).catch((error) => {
+            console.log(error.response.data);
+            setLoading(false);
+            if (error.response.status === 500) {
+                console.log('Error:', error.response.data.message)
+                setError(error.response.data.message);
+                // setModalMessage(`Error while validating certificate - ${error.response.data.reason}`)
+                // setError(`Error while validating certificate - ${error.response.data.reason}`)
+                // setModalIsOpened(true)
+            };
+        });
+    }, [restaurantId]);
 
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
@@ -85,7 +96,7 @@ const ChangeRestaurantPicModal = (props: any) => {
                 {
                     (changed ?
                         <>
-                            <div className="mx-auto pb-2">Item has been added to the menu!</div>
+                            <div className="mx-auto pb-2">Picture has been successfully changed!</div>
                             <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28">
                                 <button className=" text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
                                     onClick={() => {
@@ -96,8 +107,16 @@ const ChangeRestaurantPicModal = (props: any) => {
                             </div>
                         </> :
                         <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28 pt-4">
-                            <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
-                            >Confirm</button>
+                            <div className="col-span-2 text-red-standard text-center pb-4" >{error}</div>
+                            <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg">
+                                <span>
+                                    {
+                                        loading ?
+                                            <div className="spinner" id="spinner" />
+                                            : 'Confirm'
+                                    }
+                                </span>
+                            </button>
                             <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setChangePic(false)}>Cancel</button>
                         </div>)
                 }

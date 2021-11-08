@@ -130,7 +130,7 @@ const ManageRestaurant = () => {
                         }
                     </div>
                 </div>
-                <ChangeRestaurantPicModal {...{changePic, setChangePic, imageUrl}} name={restaurantDetails.restaurantName} />
+                <ChangeRestaurantPicModal {...{changePic, setChangePic, imageUrl}} name={restaurantDetails.restaurantName} restaurantId={restaurantDetails.restaurantId} />
                 <CreateFoodModal {...{ showCreateFood, setShowCreateFood, ingredients }} restaurantId={restaurantId} />
                 <EditRestaurantDetails {...{editDetails, setEditDetails, restaurantDetails}}/>
             </div>
