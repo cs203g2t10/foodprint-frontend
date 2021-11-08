@@ -68,7 +68,7 @@ const UserListing = (props: any) => {
                         <p className="col-span-1 text-grey-standard text-base"> {lastName}</p>
                         <p className="col-span-3 text-grey-standard text-base">
                             {
-                                roles.replace("FP_MANAGER", "Manager").replace("FP_ADMIN", "Admin").replace("FP_USER", "User").replace(/[,]/g, ", ")
+                                roles.replace("FP_MANAGER", "Manager").replace("FP_ADMIN", "Admin").replace("FP_USER", "User").replace("FP_UNVERIFIED", "Unverified User").replace(/[,]/g, ", ")
                             }
                         </p>
                         <button className="shadow-sm hover:shadow-md px-2 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center"
