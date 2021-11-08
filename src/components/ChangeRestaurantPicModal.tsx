@@ -71,7 +71,7 @@ const ChangeRestaurantPicModal = (props: any) => {
                                     {
                                         isDragActive ?
                                             <>
-                                                <h1 className="text-light">Drop your certificate (.oa) here.</h1>
+                                                <h1 className="text-light">Drop your new image here.</h1>
                                                 <img src="/images/cloud.png" alt="cloud illustration" className="transform scale-75 grid justify-items-center mx-auto" />
                                                 <h1 className="text-lightest text-sm pb-2">&nbsp;</h1>
                                                 <h1 className="text-light">&nbsp;</h1>
