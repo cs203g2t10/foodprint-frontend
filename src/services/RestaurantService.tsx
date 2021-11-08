@@ -66,7 +66,10 @@ class RestaurantService {
             foodPrice: price,
             ingredientQuantityList: ingredientQty
         }
-        return axios.post(`${RESTAURANTS_REST_API_URL}/${restaurantId}/food`, requestBody, this.headers());
+        return axios.post(`${RESTAURANTS_REST_API_URL}/${restaurantId}/food`, requestBody, this.headers())
+        .catch((err) => {
+            return err.response;
+        });
     }
 
     // Manager: Edit food details

@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
-import ReactModal from 'react-modal' 
+import ReactModal from 'react-modal'
 import RestaurantService from '../services/RestaurantService';
 
 const CreateFoodModal = (props: any) => {
 
     const { showCreateFood, setShowCreateFood, ingredients } = props;
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+
     const [created, setCreated] = useState(false);
     const [name, setName] = useState("");
     const [desc, setDesc] = useState("");
@@ -16,10 +19,16 @@ const CreateFoodModal = (props: any) => {
         overlay: { zIndex: 1000 }
     };
 
-    const createNewFood = (name: any, desc: any, price: any, ingredientQty: any) => {
-        const response = RestaurantService.createFood(restaurantId, name, desc, price, ingredientQty);
+    const createNewFood = async (name: any, desc: any, price: any, ingredientQty: any) => {
+        setLoading(true);
+        const response = await RestaurantService.createFood(restaurantId, name, desc, price, ingredientQty);
         console.log(response);
-        setCreated(true);
+        if (response.status === 200) {
+            setCreated(true);
+        } else {
+            setError(response.data.message[0]);
+        }
+        setLoading(false);
     }
 
     return (
@@ -55,21 +64,21 @@ const CreateFoodModal = (props: any) => {
                                 <div className="flex justify-between" key={ingredient.ingredientId}>
                                     <p>{ingredient.ingredientName} ({ingredient.units})</p>
                                     <input type="number" placeholder="0" min="0"
-                                    className="focus:outline-none text-right"
-                                    onChange={(e)=>{
-                                        if (e.target.value === '0') {
-                                            setIngredientQty((oldArray: any) => [...oldArray.filter((inQ: any) =>
-                                                inQ.ingredientId !== ingredient.ingredientId
-                                            )])
-                                        } else {
-                                            setIngredientQty((oldArray: any) => [...oldArray.filter((inQ: any) =>
-                                                inQ.ingredientId !== ingredient.ingredientId
-                                            ), {
-                                                ingredientId: ingredient.ingredientId,
-                                                quantity: e.target.value
-                                            }])
-                                        }
-                                    }}/>
+                                        className="focus:outline-none text-right"
+                                        onChange={(e) => {
+                                            if (e.target.value === '0') {
+                                                setIngredientQty((oldArray: any) => [...oldArray.filter((inQ: any) =>
+                                                    inQ.ingredientId !== ingredient.ingredientId
+                                                )])
+                                            } else {
+                                                setIngredientQty((oldArray: any) => [...oldArray.filter((inQ: any) =>
+                                                    inQ.ingredientId !== ingredient.ingredientId
+                                                ), {
+                                                    ingredientId: ingredient.ingredientId,
+                                                    quantity: e.target.value
+                                                }])
+                                            }
+                                        }} />
                                 </div>
                             )
                         })
@@ -95,8 +104,17 @@ const CreateFoodModal = (props: any) => {
                             </div>
                         </> :
                         <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28 pt-4">
+                            <div className="col-span-2 text-red-standard text-center text-sm pb-2">{error}</div>
                             <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
-                                onClick={() => createNewFood(name, desc, price, ingredientQty)}>Confirm</button>
+                                onClick={() => createNewFood(name, desc, price, ingredientQty)} disabled={loading}>
+                                <span>
+                                    {
+                                        loading ?
+                                            <div className="spinner" id="spinner" />
+                                            : 'Confirm'
+                                    }
+                                </span>
+                            </button>
                             <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setShowCreateFood(false)}>Cancel</button>
                         </div>)
                 }
