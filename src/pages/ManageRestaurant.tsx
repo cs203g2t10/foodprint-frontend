@@ -86,14 +86,14 @@ const ManageRestaurant = () => {
                             <h2 className="col-span-1">&nbsp;</h2>
                             <div className="col-span-2">
                                 <img className="w-40 h-40 rounded-full" src={imageUrl} alt="shop" />
-                                <button className="bg-green-standard text-white-standard px-4 py-1 rounded-full mt-3 ml-5"
+                                <button className="border border-green-standard text-green-standard shadow-sm hover:shadow-md px-4 py-1 rounded-full mt-3 ml-5"
                                  onClick={()=>{setChangePic(true)}} >Change pic</button>
                             </div>
                             <div className="col-span-6 px-0">
                                 <h1 className="text-4xl md:text-6xl font-bold tracking-wide text-green-standard">{restaurantDetails.restaurantName}</h1>
                                 <p className="text-lg md:text-2xl text-green-standard">{restaurantDetails.restaurantDesc}</p>
                                 <p className="text-md md:pb-4 text-grey-standard">{restaurantDetails.restaurantLocation}</p>
-                                <button className="bg-green-standard text-white-standard px-4 py-1 rounded-full"
+                                <button className="border border-green-standard text-green-standard shadow-sm hover:shadow-md px-4 py-1 rounded-full"
                                 onClick={()=>{setEditDetails(true)}}>Edit Details</button>
                             </div>
                         </div>
