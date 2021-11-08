@@ -18,6 +18,10 @@ const Dashboard = () => {
         if (userInfo.userAuthorities.includes("FP_MANAGER")) {
             setAuthorized(true);
         }
+        if (userInfo.restaurantId == null) {
+            console.log("User has no restaurant ID");
+            return;
+        }
         setRestaurantId(userInfo.restaurantId);
         console.log("Restaurant ID %d", userInfo.restaurantId);
     }, [])

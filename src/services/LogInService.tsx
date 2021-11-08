@@ -9,7 +9,9 @@ type UserDetails = {
     userFname: String
     userLname: String
     userAuthorities: String[]
-    restaurantId: any
+    restaurantId: number | null
+    vaccinationName: String | null
+    vaccinationDob: String | null
 };
 
 class LogInService {
@@ -65,7 +67,7 @@ class LogInService {
     }
 
     // Does not require API call to backend since JWT stores user properties too
-    getUserDetails = () => {
+    getUserDetails = () : UserDetails => {
         const token: string | null = window.localStorage.getItem("token");
         if (typeof token !== "string") {
             return {
@@ -74,7 +76,9 @@ class LogInService {
                 userFname: "",
                 userLname: "",
                 userAuthorities: [],
-                restaurantId: null
+                restaurantId: null,
+                vaccinationName: null,
+                vaccinationDob: null
             }
         }
 
@@ -93,8 +97,10 @@ class LogInService {
                 userId: 0,
                 userFname: "",
                 userLname: "",
-                userAuthorities: [],
-                restaurantId: null
+                userAuthorities: [] as String[],
+                restaurantId: null,
+                vaccinationName: null,
+                vaccinationDob: null
             }
         }
 
@@ -104,7 +110,9 @@ class LogInService {
             userFname: decodedHeader.userFname,
             userLname: decodedHeader.userLname,
             userAuthorities: decodedHeader.userAuthorities,
-            restaurantId: decodedHeader.restaurantId
+            restaurantId: decodedHeader.restaurantId,
+            vaccinationName: decodedHeader.vaccinationName,
+            vaccinationDob: decodedHeader.vaccinationDob
         }
         return userDetails;
     }
