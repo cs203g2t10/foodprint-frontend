@@ -29,22 +29,22 @@ const CreateIngredientModal = (props: any) => {
     }
 
     return (
-        <Modal style={customStyles} isOpen={createIngredient} className="mt-20 focus:outline-none">
+        <Modal style={customStyles} isOpen={createIngredient} className="mt-28 focus:outline-none">
             <div className="grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-64 pb-10 bg-white-dirtyWhite">
                 <h1 className=" flex text-5xl pt-12 text-green-standard font-bold mx-auto">Create Ingredient</h1>
                 <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Please fill up all details below </h1>
                 <div className="grid gap-y-5 grid-cols-1 mt-10 gap-x-10">
                     <div className="flex gap-x-2 justify-between">
                         <div>Ingredient Name: </div>
-                        <input type="text" className="focus:outline-none px-2 rounded" value={name} onChange={(e) => { setName(e.target.value) }}></input>
+                        <input type="text" className="focus:outline-none px-4 h-8 rounded-xl " value={name} onChange={(e) => { setName(e.target.value) }}></input>
                     </div>
                     <div className="flex gap-x-2 justify-between">
                         <div>Ingredient Description: </div>
-                        <input type="text" className="focus:outline-none px-2 rounded" value={desc} onChange={(e) => { setDesc(e.target.value) }}></input>
+                        <input type="text" className="focus:outline-none px-4 h-8 rounded-xl " value={desc} onChange={(e) => { setDesc(e.target.value) }}></input>
                     </div>
                     <div className="flex gap-x-2 justify-between">
                         <div>Unit of Measure: </div>
-                        <input type="text" className="focus:outline-none px-2 rounded" value={units} onChange={(e) => { setUnits(e.target.value) }}></input>
+                        <input type="text" className="focus:outline-none px-4 h-8 rounded-xl " value={units} onChange={(e) => { setUnits(e.target.value) }}></input>
                     </div>
                 </div>
 
@@ -64,13 +64,13 @@ const CreateIngredientModal = (props: any) => {
                                     onClick={() => { setCreateIngredient(false) }}>Return</button>
                             </div>
                         </> :
-                        <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28 pt-16">
-                            <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
+                        <div className=" grid grid-cols-2 gap-x-10 justify-center pt-10">
+                            <button className="text-white-standard bg-green-standard px-4 py-1 rounded-xl shadow-md hover:shadow-lg"
                                 onClick={() => createNewIngredient( name, desc, units)}>
                                 Confirm
                             </button>
 
-                            <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setCreateIngredient(false)}>
+                            <button className="border border-green-standard text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setCreateIngredient(false)}>
                                 Cancel
                             </button>
                         </div>)

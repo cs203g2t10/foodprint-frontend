@@ -26,43 +26,45 @@ const CreateFoodModal = (props: any) => {
         if (response.status === 200) {
             setCreated(true);
         } else {
-            setError(response.data.message[0]);
+            setError(response.data.message);
         }
         setLoading(false);
     }
 
     return (
-        <ReactModal style={customStyles} isOpen={showCreateFood} className="mt-10 focus:outline-none">
-            <div className="grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-64 pb-10 bg-white-dirtyWhite">
+        <ReactModal style={customStyles} isOpen={showCreateFood} className="mt-14 focus:outline-none">
+            <div className="grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-72 pb-10 bg-white-dirtyWhite">
                 <h1 className=" flex text-5xl pt-12 text-green-standard font-bold mx-auto">Add Food</h1>
                 <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Please fill up all details below </h1>
-                <div className="grid gap-y-5 grid-cols-2 gap-x-10">
+                <div className="grid gap-y-5 grid-cols-2 gap-x-10 mx-24">
                     <div className="flex gap-x-2 justify-between">
                         <div>Name: </div>
-                        <input className="focus:outline-none px-2 rounded" value={name} onChange={(e) => { setName(e.target.value) }}></input>
+                        <input className="focus:outline-none px-4 rounded-xl h-8" value={name} onChange={(e) => { setName(e.target.value) }}></input>
+                    </div>
+                    <div className="flex gap-x-2 justify-between">
+                        <div>Price (SGD):</div>
+                        <input type="number" className="focus:outline-none px-4 rounded-xl h-8" value={price} onChange={(e) => { setPrice(e.target.value) }}></input>
                     </div>
                     <div className="flex gap-x-2 justify-between">
                         <div>Description: </div>
-                        <input className="focus:outline-none px-2 rounded" value={desc} onChange={(e) => { setDesc(e.target.value) }}></input>
-                    </div>
-                    <div className="flex gap-x-2 justify-between">
-                        <div>Price(SGD):</div>
-                        <input type="number" className="focus:outline-none px-2 rounded" value={price} onChange={(e) => { setPrice(e.target.value) }}></input>
+                        <input className="focus:outline-none px-4 rounded-xl h-8" value={desc} onChange={(e) => { setDesc(e.target.value) }}></input>
                     </div>
                 </div>
 
                 <h1 className="flex text-md my-2 font-light mx-auto">Ingredients: </h1>
-                <div className="grid overflow-y-scroll h-40 px-10 py-2 gap-y-2 bg-white-standard rounded-xl ">
-                    <div className="flex justify-between">
-                        <h1>Ingredient Name</h1>
-                        <h1>Quantity</h1>
-                    </div>
+                <div className="grid grid-cols-7 mx-32">
+                    <h1 className="text-base text-grey-standard col-span-5">Ingredient Name</h1>
+                    <h1 className="text-base text-grey-standard col-span-1">Units</h1>
+                    <h1 className="text-base text-grey-standard col-span-1">Quantity</h1>
+                </div>
+                <div className="grid overflow-y-scroll h-44 px-10 mx-24 py-2 gap-y-2 bg-white-standard rounded-xl ">
                     {
                         ingredients?.map((ingredient: any) => {
 
                             return (
-                                <div className="flex justify-between" key={ingredient.ingredientId}>
-                                    <p>{ingredient.ingredientName} ({ingredient.units})</p>
+                                <div className="grid grid-cols-7" key={ingredient.ingredientId}>
+                                    <p className="text-base text-grey-standard col-span-5">{ingredient.ingredientName}</p>
+                                    <p className="text-base text-grey-standard col-span-1">{ingredient.units}</p>
                                     <input type="number" placeholder="0" min="0"
                                         className="focus:outline-none text-right"
                                         onChange={(e) => {
@@ -115,7 +117,7 @@ const CreateFoodModal = (props: any) => {
                                     }
                                 </span>
                             </button>
-                            <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setShowCreateFood(false)}>Cancel</button>
+                            <button className="border border-green-standard text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setShowCreateFood(false)}>Cancel</button>
                         </div>)
                 }
             </div>

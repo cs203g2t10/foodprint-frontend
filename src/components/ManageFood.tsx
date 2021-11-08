@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import RestaurantService from '../services/RestaurantService';
 import ChangeFoodPicModal from './ChangeFoodPicModal';
+import DeleteFoodModal from './DeleteFoodModal';
 
 const ManageFood = (props: any) => {
 
@@ -14,6 +15,7 @@ const ManageFood = (props: any) => {
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const [deleteModalOpen, setDeleteModal] = useState(false);
 
     const pictureUrl = (props.pic === null) ? "/images/forkspoon.jpg" : props.pic.url;
 
@@ -43,7 +45,7 @@ const ManageFood = (props: any) => {
         edit ?
             <div className="grid px-10 bg-white-dirtyWhite rounded-xl shadow-sm py-4 h-auto">
                 <div className="h-32 w-32 mx-auto relative overflow-hidden rounded-full hover:shadow-md mb-5" onClick={() => setChangePic(true)}>
-                    <img src={pictureUrl} alt={props.pic?.description} className=" mb-5 flex filter opacity-40 object-cover w-full h-full"/>
+                    <img src={pictureUrl} alt={props.pic?.description} className=" mb-5 flex filter opacity-40 object-cover w-full h-full" />
                     <h1 className="absolute w-full py-2.5 bottom-0 inset-x-0 bg-green-standard text-white-standard text-xs text-center leading-4 shadow opacity-90">Click to edit</h1>
                 </div>
 
@@ -112,13 +114,13 @@ const ManageFood = (props: any) => {
                 </div>
                 <div className="grid grid-cols-2 gap-x-10 mt-4">
                     <div className="col-span-2 text-red-standard text-center">{error}</div>
-                    <button className="rounded-full bg-green-standard text-white-standard py-1 h-8 opacity-90 hover:opacity-100 shadow-sm hover:shadow-md" 
-                    onClick={() => { editFood(name, desc, price, newIngredientQty) }}>
+                    <button className="rounded-full bg-green-standard text-white-standard py-1 h-8 opacity-90 hover:opacity-100 shadow-sm hover:shadow-md"
+                        onClick={() => { editFood(name, desc, price, newIngredientQty) }}>
                         {
                             loading ? <div className="spinner" id="spinner" /> :
-                            'Confirm'
+                                'Confirm'
                         }
-                        </button>
+                    </button>
                     <button className="rounded-full border border-green-standard py-1 h-8 text-green-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md" onClick={() => {
                         setName(props.name);
                         setDesc(props.desc);
@@ -127,8 +129,8 @@ const ManageFood = (props: any) => {
                         setEdit(false);
                     }}>Undo</button>
                 </div>
-                <ChangeFoodPicModal className="" {...{ changePic, setChangePic, name, setEdit, setSuccess }} url={pictureUrl} 
-                restaurantId={props.restaurantId} foodId={props.foodId} />
+                <ChangeFoodPicModal className="" {...{ changePic, setChangePic, name, setEdit, setSuccess }} url={pictureUrl}
+                    restaurantId={props.restaurantId} foodId={props.foodId} />
             </div>
             :
             <div className="py-4 px-8 rounded-xl bg-white-dirtyWhite shadow-sm">
@@ -168,7 +170,13 @@ const ManageFood = (props: any) => {
                     (success &&
                         <div className="text-center text-green-standard">Your changes have been saved!</div>)
                 }
-                <button className="flex rounded-xxl bg-green-standard text-white-standard py-1 mx-auto px-10 mt-4" onClick={() => { setEdit(true); setSuccess(false) }}>Edit</button>
+                <div className="grid grid-cols-2 gap-x-10 mt-4">
+                    <button className="rounded-full border bg-green-standard py-1 h-8 text-white-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md" 
+                    onClick={() => { setEdit(true); setSuccess(false) }}>Edit</button>
+                    <button className="rounded-full border bg-red-standard py-1 h-8 text-white-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md"
+                    onClick={() => {setDeleteModal(true)}}>Delete</button>
+                </div>
+                <DeleteFoodModal {...{deleteModalOpen, setDeleteModal, name}} restaurantId={props.restaurantId} foodId={props.foodId}/>
             </div>
     )
 }
