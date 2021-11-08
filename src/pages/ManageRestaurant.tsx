@@ -26,7 +26,10 @@ const ManageRestaurant = () => {
         console.log('params are',params);
         const userInfo: UserDetails = LogInService.getUserDetails();
         if (userInfo.userAuthorities.includes("FP_MANAGER") && Object.keys(params).length === 0 ) {
-            setRestaurantId(userInfo.restaurantId);
+            if (userInfo.restaurantId == null) {
+                console.log("User has no restaurant ID");
+                return;
+            }
             setAuthorized(true);
         } else if (userInfo.userAuthorities.includes("FP_ADMIN")){
             setRestaurantId(params.id);
