@@ -129,7 +129,7 @@ const ManageFood = (props: any) => {
                         setEdit(false);
                     }}>Undo</button>
                 </div>
-                <ChangeFoodPicModal className="" {...{ changePic, setChangePic, name }} url={pictureUrl} 
+                <ChangeFoodPicModal className="" {...{ changePic, setChangePic, name, setEdit, setSuccess }} url={pictureUrl} 
                 restaurantId={props.restaurantId} foodId={props.foodId} />
             </div>
             :

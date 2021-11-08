@@ -5,11 +5,12 @@ import RestaurantService from '../services/RestaurantService';
 
 const ChangeFoodPicModal = (props: any) => {
 
-    const { changePic, setChangePic, name } = props;
+    const { changePic, setChangePic, name, setEdit, setSuccess } = props;
     const [changed, setChanged] = useState(false);
     const [loading, setLoading] = useState(false);
     // const [modalMessage, setModalMessage] = useState("");
     const [error, setError] = useState("");
+    const [newUrl, setNewUrl] = useState("");
 
 
     const customStyles = {
@@ -26,32 +27,19 @@ const ChangeFoodPicModal = (props: any) => {
         var file = acceptedFiles[0];
         console.log(file);
         console.log("Uploading");
-        const response = props?.url === "/images/forkspoon.jpg" ? 
-        RestaurantService.uploadFoodPic(props.restaurantId, props.foodId, name, name, file) :
-        RestaurantService.editFoodPic(props.restaurantId, props.foodId, file);
+        const response = props?.url === "/images/forkspoon.jpg" ?
+            RestaurantService.uploadFoodPic(props.restaurantId, props.foodId, name, name, file) :
+            RestaurantService.editFoodPic(props.restaurantId, props.foodId, file);
         response.then((response) => {
             console.log(response);
             setLoading(false);
             setChanged(true);
+            setNewUrl(response.data.url);
         }).catch((error) => {
             console.log(error.response);
             setError(error.response.data.message);
             setLoading(false);
         })
-        // const response = VaccinationService.userUploadVaccination(file);
-        // response.then((response) => {
-        //     console.log("Success: ", response.data.reservationId)
-        //     setModalMessage(`Thank you! We have successfully verfied ${response.data.reason}`);
-        //     setModalIsOpened(true);
-        // }).catch((error) => {
-        //     console.log(error.response.data);
-        //     if (error.response.status === 500) {
-        //         console.log('Error:', error.response.data.reason)
-        //         // setModalMessage(`Error while validating certificate - ${error.response.data.reason}`)
-        //         setError(`Error while validating certificate - ${error.response.data.reason}`)
-        //         setModalIsOpened(true)
-        //     };
-        // });
     }, [name, props]);
 
 
@@ -63,10 +51,17 @@ const ChangeFoodPicModal = (props: any) => {
                 <h1 className=" flex text-5xl pt-12 text-green-standard font-bold mx-auto">{name} Display Picture</h1>
                 <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Choose a new photo for your food!</h1>
                 <div className="grid grid-cols-2 justify-between pt-5 gap-x-16">
-                    <div>
-                        <h1 className="text-center pb-4">Original Photo</h1>
-                        <img src={props?.url} alt={props?.description} className="rounded-full mb-5 h-56 w-56 flex mx-auto" />
-                    </div>
+                    {
+                        changed ?
+                            <div>
+                                <h1 className="text-center pb-4">Updated Photo</h1>
+                                <img src={newUrl} alt={props?.description} className="rounded-full mb-5 h-56 w-56 flex mx-auto" />
+                            </div> :
+                            <div>
+                                <h1 className="text-center pb-4">Original Photo</h1>
+                                <img src={props?.url} alt={props?.description} className="rounded-full mb-5 h-56 w-56 flex mx-auto" />
+                            </div>
+                    }
                     <div>
                         <div {...getRootProps()}>
                             <div className="bg-grey-lightest place-items-stretch rounded-xxl text-center p-10 border-dashed border-2 border-grey-light hover:shadow-md shadow-sm focus:outline-none">
@@ -75,7 +70,7 @@ const ChangeFoodPicModal = (props: any) => {
                                     {
                                         isDragActive ?
                                             <>
-                                                <h1 className="text-light">Drop your certificate (.oa) here.</h1>
+                                                <h1 className="text-light">Drop your image here.</h1>
                                                 <img src="/images/cloud.png" alt="cloud illustration" className="transform scale-75 grid justify-items-center mx-auto" />
                                                 <h1 className="text-lightest text-sm pb-2">&nbsp;</h1>
                                                 <h1 className="text-light">&nbsp;</h1>
@@ -105,21 +100,21 @@ const ChangeFoodPicModal = (props: any) => {
                                         setChanged(false);
                                     }}>Reset</button>
                                 <button className=" text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
-                                    onClick={() => { setChangePic(false) }}>Return</button>
+                                    onClick={() => { setChangePic(false); setEdit(false); setSuccess(true) }}>Return</button>
                             </div>
                         </> : <>
-                        <div className="text-red-standard text-center">{error}</div>
-                        <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg w-1/3 mx-auto"
-                            onClick={() => setChangePic(false)}
-                        >
-                            <span>
-                                {
-                                    loading ?
-                                        <div className="spinner" id="spinner" /> :
-                                        'Go Back'
-                                }
-                            </span>
-                        </button> </>
+                            <div className="text-red-standard text-center">{error}</div>
+                            <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg w-1/3 mx-auto"
+                                onClick={() => setChangePic(false)}
+                            >
+                                <span>
+                                    {
+                                        loading ?
+                                            <div className="spinner" id="spinner" /> :
+                                            'Go Back'
+                                    }
+                                </span>
+                            </button> </>
                     )}
             </div>
         </ReactModal>
