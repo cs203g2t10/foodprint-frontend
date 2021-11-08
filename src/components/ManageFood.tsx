@@ -12,6 +12,8 @@ const ManageFood = (props: any) => {
     const [edit, setEdit] = useState(false);
     const [changePic, setChangePic] = useState(false);
     const [success, setSuccess] = useState(false);
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const pictureUrl = (props.pic === null) ? "/images/forkspoon.jpg" : props.pic.url;
 
@@ -20,6 +22,8 @@ const ManageFood = (props: any) => {
     }, [ingredientQty])
 
     const editFood = (name: any, desc: any, price: any, ingredientQty: any) => {
+        setLoading(true);
+        setError("");
         const response = RestaurantService.editFood(props.restaurantId, props.foodId, name, desc, price, ingredientQty);
         console.log(response);
         response.then((success) => {
@@ -27,8 +31,11 @@ const ManageFood = (props: any) => {
             setIngredientQty(newIngredientQty);
             setEdit(false);
             setSuccess(true);
+            setLoading(false);
         }).catch((error) => {
-            console.log(error);
+            console.log(error.response);
+            setError(error.response.data.message);
+            setLoading(false);
         })
     }
 
@@ -106,7 +113,14 @@ const ManageFood = (props: any) => {
                     </div>
                 </div>
                 <div className="grid grid-cols-2 gap-x-10 mt-4">
-                    <button className="rounded-full bg-green-standard text-white-standard py-1 h-8 opacity-90 hover:opacity-100 shadow-sm hover:shadow-md" onClick={() => { editFood(name, desc, price, newIngredientQty) }}>Confirm</button>
+                    <div className="col-span-2 text-red-standard text-center">{error}</div>
+                    <button className="rounded-full bg-green-standard text-white-standard py-1 h-8 opacity-90 hover:opacity-100 shadow-sm hover:shadow-md" 
+                    onClick={() => { editFood(name, desc, price, newIngredientQty) }}>
+                        {
+                            loading ? <div className="spinner" id="spinner" /> :
+                            'Confirm'
+                        }
+                        </button>
                     <button className="rounded-full border border-green-standard py-1 h-8 text-green-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md" onClick={() => {
                         setName(props.name);
                         setDesc(props.desc);
