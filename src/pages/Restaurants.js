@@ -3,6 +3,7 @@ import RestaurantService from '../services/RestaurantService'
 import { Link } from 'react-router-dom'
 import { SearchBar } from '../components/SearchBar'
 import RestaurantListing from '../components/RestaurantListing'
+import Loading from '../components/Loading'
 
 const Restaurants = () => {
     const [restaurants, setRestaurants] = useState([])
@@ -57,9 +58,7 @@ const Restaurants = () => {
                                     }
                                 )
                             ) : (
-                                <div className="md:pr-40 pb-4 pl-14 pt-8">
-                                    No categories found
-                                </div>
+                                <Loading />
                             )
                         )
                     }
@@ -79,9 +78,7 @@ const Restaurants = () => {
                                     return <RestaurantListing {...{ restaurant, imageUrl, maxDiscount, priceRange }} />
                                 })
                         ) : (
-                            <>
-                                No restaurants found
-                            </>
+                            <Loading />
                         )
                     )
                 }
