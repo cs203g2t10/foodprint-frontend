@@ -13,7 +13,7 @@ const ManageFood = (props: any) => {
     const [changePic, setChangePic] = useState(false);
     const [success, setSuccess] = useState(false);
 
-    const pictureUrl = (props.pic === null) ? "/images/forkspoon.jpg" : props.pic;
+    const pictureUrl = (props.pic === null) ? "/images/forkspoon.jpg" : props.pic.url;
 
     useEffect(() => {
         ingredientQty.sort();
@@ -103,9 +103,7 @@ const ManageFood = (props: any) => {
 
                             )
                         }
-
                     </div>
-
                 </div>
                 <div className="grid grid-cols-2 gap-x-10 mt-4">
                     <button className="rounded-full bg-green-standard text-white-standard py-1 h-8 opacity-90 hover:opacity-100 shadow-sm hover:shadow-md" onClick={() => { editFood(name, desc, price, newIngredientQty) }}>Confirm</button>
@@ -117,7 +115,8 @@ const ManageFood = (props: any) => {
                         setEdit(false);
                     }}>Undo</button>
                 </div>
-                <ChangeFoodPicModal className="" {...{ changePic, setChangePic, name }} url={pictureUrl} />
+                <ChangeFoodPicModal className="" {...{ changePic, setChangePic, name }} url={pictureUrl} 
+                restaurantId={props.restaurantId} foodId={props.foodId} />
             </div>
             :
             <div className="py-4 px-8 rounded-xl bg-white-dirtyWhite shadow-sm">

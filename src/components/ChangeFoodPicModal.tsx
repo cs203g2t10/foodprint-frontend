@@ -1,13 +1,15 @@
 import React, { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone';
 import ReactModal from 'react-modal'
+import RestaurantService from '../services/RestaurantService';
 
 const ChangeFoodPicModal = (props: any) => {
 
     const { changePic, setChangePic, name } = props;
     const [changed, setChanged] = useState(false);
+    const [loading, setLoading] = useState(false);
     // const [modalMessage, setModalMessage] = useState("");
-    // const [error, setError] = useState("");
+    const [error, setError] = useState("");
 
 
     const customStyles = {
@@ -15,14 +17,24 @@ const ChangeFoodPicModal = (props: any) => {
     };
 
     const onDrop = useCallback((acceptedFiles: any) => {
+        setLoading(true);
         if (acceptedFiles == null) {
             alert("No file selected");
             return;
         }
         var file = acceptedFiles[0];
         console.log(file);
-
         console.log("Uploading");
+        const response = RestaurantService.uploadFoodPic(props.restaurantId, props.foodId, name, name, file);
+        response.then((response) => {
+            console.log(response);
+            setLoading(false);
+            setChanged(true);
+        }).catch((error) => {
+            console.log(error.response);
+            setError(error.response.data.message);
+            setLoading(false);
+        })
         // const response = VaccinationService.userUploadVaccination(file);
         // response.then((response) => {
         //     console.log("Success: ", response.data.reservationId)
@@ -37,7 +49,7 @@ const ChangeFoodPicModal = (props: any) => {
         //         setModalIsOpened(true)
         //     };
         // });
-    }, []);
+    }, [name, props]);
 
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
@@ -83,7 +95,7 @@ const ChangeFoodPicModal = (props: any) => {
                 {
                     (changed ?
                         <>
-                            <div className="mx-auto pb-2">Item has been added to the menu!</div>
+                            <div className="mx-auto pb-2">Picture has been updated!</div>
                             <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28">
                                 <button className=" text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
                                     onClick={() => {
@@ -92,13 +104,20 @@ const ChangeFoodPicModal = (props: any) => {
                                 <button className=" text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
                                     onClick={() => { setChangePic(false) }}>Return</button>
                             </div>
-                        </> :
-                        <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28 pt-4">
-                            <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
-                            >Confirm</button>
-                            <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setChangePic(false)}>Cancel</button>
-                        </div>)
-                }
+                        </> : <>
+                        <div className="text-red-standard text-center">{error}</div>
+                        <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg w-1/3 mx-auto"
+                            onClick={() => setChangePic(false)}
+                        >
+                            <span>
+                                {
+                                    loading ?
+                                        <div className="spinner" id="spinner" /> :
+                                        'Go Back'
+                                }
+                            </span>
+                        </button> </>
+                    )}
             </div>
         </ReactModal>
     )

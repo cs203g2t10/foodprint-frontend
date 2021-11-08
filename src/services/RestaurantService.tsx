@@ -102,6 +102,14 @@ class RestaurantService {
         return axios.patch(`${RESTAURANTS_REST_API_URL}/${restaurantId}/food/${foodId}`, requestBody, this.headers());
     }
 
+    // Manager: Upload food pic POST
+    uploadFoodPic = (restaurantId: number, foodId: number, title: any, description:any, picFile: File) => {
+        const url = `${RESTAURANTS_REST_API_URL}/${restaurantId}/food/${foodId}/uploadPicture?title=${title}&description=${description}`;
+        const formData = new FormData();
+        formData.append("file", picFile);
+        return axios.post(url, formData, this.headers());
+    }
+
     managerGetAllIngredients = (restaurantId: number) => {
         return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/ingredient/all`, this.headers());
     }
