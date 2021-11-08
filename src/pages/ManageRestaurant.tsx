@@ -4,6 +4,7 @@ import ChangeRestaurantPicModal from '../components/ChangeRestaurantPicModal';
 import CreateFoodModal from '../components/CreateFoodModal';
 import EditRestaurantDetails from '../components/EditRestaurantDetails';
 import Restricted from '../components/errors/Restricted';
+import Loading from '../components/Loading';
 import ManageFood from '../components/ManageFood';
 import LogInService, { UserDetails } from '../services/LogInService';
 import RestaurantService from '../services/RestaurantService';
@@ -11,6 +12,7 @@ import RestaurantService from '../services/RestaurantService';
 const ManageRestaurant = () => {
 
     let params = useParams<any>();
+    const [loading, setLoading] = useState(true);
 
     const [isAuthorized, setAuthorized] = useState(false);
     const [restaurantId, setRestaurantId] = useState<number>(0);
@@ -30,6 +32,7 @@ const ManageRestaurant = () => {
                 console.log("User has no restaurant ID");
                 return;
             }
+            setRestaurantId(userInfo.restaurantId);
             setAuthorized(true);
         } else if (userInfo.userAuthorities.includes("FP_ADMIN")){
             setRestaurantId(params.id);
@@ -37,7 +40,6 @@ const ManageRestaurant = () => {
         } else {
             return;
         }
-
     }, [isAuthorized, params])
 
     useEffect(() => {
@@ -46,7 +48,8 @@ const ManageRestaurant = () => {
         }
         RestaurantService.getRestaurant(restaurantId).then((response) => {
             console.log(response.data);
-            setRestaurantDetails(response.data)
+            setRestaurantDetails(response.data);
+            setLoading(false);
             if (response.data.picture) {
                 setImageUrl(response.data.picture.url);
             } else {
@@ -117,6 +120,7 @@ const ManageRestaurant = () => {
 
                     <div className="grid md:grid-cols-3 gap-12">
                         {
+                            loading ? <Loading /> :
                             food?.map((food: any) => {
                                 return <ManageFood className="bg-white-offWhite" key={food.foodId} name={food.foodName} desc={food.foodDesc} price={food.foodPrice}
                                     ingredientQty={food.foodIngredientQuantity} pic={food.picture}
