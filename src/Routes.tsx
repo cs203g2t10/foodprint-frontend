@@ -76,6 +76,9 @@ export default function Routes() {
                 <Route exact path="/managerestaurant">
                     <ManageRestaurant />
                 </Route>
+                <Route exact path="/managerestaurant/:id">
+                    <ManageRestaurant />
+                </Route>
                 <Route exact path="/manageingredients">
                     <ManageIngredients />
                 </Route>

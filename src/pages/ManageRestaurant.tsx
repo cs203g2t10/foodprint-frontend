@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router';
 import ChangeRestaurantPicModal from '../components/ChangeRestaurantPicModal';
 import CreateFoodModal from '../components/CreateFoodModal';
 import EditRestaurantDetails from '../components/EditRestaurantDetails';
@@ -8,6 +9,8 @@ import LogInService, { UserDetails } from '../services/LogInService';
 import RestaurantService from '../services/RestaurantService';
 
 const ManageRestaurant = () => {
+
+    let params = useParams<any>();
 
     const [isAuthorized, setAuthorized] = useState(false);
     const [restaurantId, setRestaurantId] = useState<number>(0);
@@ -20,13 +23,17 @@ const ManageRestaurant = () => {
     const [changePic, setChangePic] = useState(false);
 
     useEffect(() => {
+        console.log(params);
         const userInfo: UserDetails = LogInService.getUserDetails();
         if (userInfo.userAuthorities.includes("FP_MANAGER")) {
+            setRestaurantId(userInfo.restaurantId);
+            setAuthorized(true);
+        } else if (userInfo.userAuthorities.includes("FP_ADMIN")){
+            setRestaurantId(params.id);
             setAuthorized(true);
         } else {
             return;
         }
-        setRestaurantId(userInfo.restaurantId);
 
     }, [isAuthorized])
 
