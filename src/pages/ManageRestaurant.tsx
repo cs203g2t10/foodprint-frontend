@@ -18,14 +18,14 @@ const ManageRestaurant = () => {
     const [food, setFood] = useState([]);
     const [showCreateFood, setShowCreateFood] = useState(false);
     const [ingredients, setIngredients] = useState([]);
-    const [imageUrl, setImageUrl] = useState("/images/shop.jpg");
+    const [imageUrl, setImageUrl] = useState("");
     const [editDetails, setEditDetails] = useState(false);
     const [changePic, setChangePic] = useState(false);
 
     useEffect(() => {
-        console.log(params);
+        console.log('params are',params);
         const userInfo: UserDetails = LogInService.getUserDetails();
-        if (userInfo.userAuthorities.includes("FP_MANAGER")) {
+        if (userInfo.userAuthorities.includes("FP_MANAGER") && Object.keys(params).length === 0 ) {
             setRestaurantId(userInfo.restaurantId);
             setAuthorized(true);
         } else if (userInfo.userAuthorities.includes("FP_ADMIN")){
@@ -35,7 +35,7 @@ const ManageRestaurant = () => {
             return;
         }
 
-    }, [isAuthorized])
+    }, [isAuthorized, params])
 
     useEffect(() => {
         if (restaurantId === 0) {
@@ -46,6 +46,8 @@ const ManageRestaurant = () => {
             setRestaurantDetails(response.data)
             if (response.data.picture) {
                 setImageUrl(response.data.picture.url);
+            } else {
+                setImageUrl("/images/shop.jpg");
             }
         });
     }, [restaurantId, showCreateFood])
