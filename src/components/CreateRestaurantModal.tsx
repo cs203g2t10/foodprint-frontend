@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import ReactModal from 'react-modal';
 import RestaurantService from '../services/RestaurantService';
 
-const EditRestaurantDetails = (props: any) => {
+const CreateRestaurantModal = (props: any) => {
 
-    const { editDetails, setEditDetails, restaurantDetails } = props;
+    const { createRestaurant, setCreateRestaurant } = props;
 
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
@@ -23,40 +23,23 @@ const EditRestaurantDetails = (props: any) => {
     const [weekendClosingHour, setWeekendClosingHour] = useState("");
     const [weekendClosingMinute, setWeekendClosingMinute] = useState("");
 
-
-    const [edited, setEdited] = useState(false);
+    const [created, setCreated] = useState(false);
 
     const customStyles = {
         overlay: { zIndex: 1000 }
     };
 
-    useEffect(() => {
-        setName(restaurantDetails?.restaurantName);
-        setDesc(restaurantDetails?.restaurantDesc);
-        setLocation(restaurantDetails?.restaurantLocation);
-        setPriceRange(restaurantDetails?.restaurantPriceRange);
-        setTableCapacity(restaurantDetails?.restaurantTableCapacity);
-        setWeekdayOpeningHour(restaurantDetails?.restaurantWeekdayOpeningHour);
-        setWeekdayOpeningMinute(restaurantDetails?.restaurantWeekdayOpeningMinutes);
-        setWeekdayClosingHour(restaurantDetails?.restaurantWeekdayClosingHour);
-        setWeekdayClosingMinute(restaurantDetails?.restaurantWeekdayClosingMinutes);
-        setWeekendOpeningHour(restaurantDetails?.restaurantWeekendOpeningHour);
-        setWeekendOpeningMinute(restaurantDetails?.restaurantWeekendOpeningMinutes);
-        setWeekendClosingHour(restaurantDetails?.restaurantWeekendClosingHour);
-        setWeekendClosingMinute(restaurantDetails?.restaurantWeekendClosingMinutes);
-    }, [restaurantDetails])
-
     const editRestaurantDetails = () => {
         setLoading(true);
-        const response = RestaurantService.editRestaurantDetails(restaurantDetails.restaurantId,
+        const response = RestaurantService.createRestaurant(
             name, desc, location, priceRange, tableCapacity, weekdayOpeningHour, weekdayOpeningMinute,
             weekdayClosingHour, weekdayClosingMinute, weekendOpeningHour, weekdayOpeningMinute,
             weekendClosingHour, weekendClosingMinute);
         response.then((res) => {
             console.log(res);
-            if (res.status === 200) {
+            if (res.status === 201) {
                 setError("")
-                setEdited(true);
+                setCreated(true);
             } else {
                 setError(res.data.message[0])
             }
@@ -66,10 +49,10 @@ const EditRestaurantDetails = (props: any) => {
     }
 
     return (
-        <ReactModal style={customStyles} isOpen={editDetails} className="mt-6 focus:outline-none">
+        <ReactModal style={customStyles} isOpen={createRestaurant} className="mt-6 focus:outline-none">
             <div className="grid justify-center items-center gap-y-2 m-8 rounded-xxl shadow lg:mx-64 pb-10 bg-white-dirtyWhite">
-                <h1 className=" flex text-5xl pt-5 text-green-standard font-bold mx-auto">Edit Restaurant Details</h1>
-                <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Please edit only those fields you wish to change </h1>
+                <h1 className=" flex text-5xl pt-5 text-green-standard font-bold mx-auto">New Restaurant Details</h1>
+                <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">All fields are compulsory.</h1>
                 <div className="grid gap-y-5 grid-cols-2 gap-x-10">
                     <div className="flex gap-x-2 justify-between">
                         <div>Name: </div>
@@ -128,12 +111,12 @@ const EditRestaurantDetails = (props: any) => {
                 </div>
 
                 {
-                    (edited ?
+                    (created ?
                         <>
-                            <div className="mx-auto py-2 text-green-standard">Restaurant Details have been updated!</div>
+                            <div className="mx-auto py-2 text-green-standard">Restaurant has been created!</div>
                             <div className=" grid gap-x-10 justify-center mx-28">
                                 <button className=" text-green-standard px-10 py-1 rounded-xl shadow-md hover:shadow-lg"
-                                    onClick={() => { setEditDetails(false); setEdited(false); }}>Return</button>
+                                    onClick={() => { setCreateRestaurant(false); setCreateRestaurant(false); }}>Return</button>
                             </div>
                         </> :
                         <>
@@ -149,7 +132,7 @@ const EditRestaurantDetails = (props: any) => {
                                         }
                                     </span>
                                 </button>
-                                <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setEditDetails(false)}>Cancel</button>
+                                <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setCreateRestaurant(false)}>Cancel</button>
                             </div>
                         </>)
                 }
@@ -159,4 +142,4 @@ const EditRestaurantDetails = (props: any) => {
     )
 }
 
-export default EditRestaurantDetails
+export default CreateRestaurantModal
