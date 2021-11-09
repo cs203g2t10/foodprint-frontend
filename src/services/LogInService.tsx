@@ -82,11 +82,12 @@ class LogInService {
             }
         }
 
-
         let decodedHeader: UserDetails | null = null;
-
+        let email: string = "";
         try {
             decodedHeader = jwt_decode(token, { header: true });
+            var decoded : any = jwt_decode(token);
+            email = decoded.sub;
         } catch {
             console.log("Problem.")
         }
@@ -105,7 +106,7 @@ class LogInService {
         }
 
         let userDetails: UserDetails = {
-            email: decodedHeader.email,
+            email: email,
             userId: decodedHeader.userId,
             userFname: decodedHeader.userFname,
             userLname: decodedHeader.userLname,
