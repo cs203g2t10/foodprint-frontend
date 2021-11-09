@@ -42,7 +42,7 @@ const ManageUser = () => {
         <div className="min-h-screen">
             <h1 className="text-center font-bold tracking-wide text-5xl text-green-standard  bg-yellow-standard">Manage Users</h1>
             <div className="pt-1 text-center pb-7 text-grey-standard bg-yellow-standard mb-5">Please only edit those fields that you wish to change</div>
-            <button className="mr-16 mb-5 border px-4 py-1 bg-green-standard rounded-large shadow-sm hover:shadow-md text-white-standard flex ml-auto opacity-90 hover:opacity-100"
+            <button className="mr-16 mb-5 border px-4 py-1 bg-green-standard rounded-full shadow-sm hover:shadow-md text-white-standard flex ml-auto opacity-90 hover:opacity-100"
                 onClick={() => { setCreateUser(true) }}>Create new User</button>
             <p className="mx-auto text-green-standard text-center pt-4 pb-4">{deleteMessage}</p>
             <div className="mx-14 bg-white-offWhite pt-6 pb-8 rounded-xxl shadow">
