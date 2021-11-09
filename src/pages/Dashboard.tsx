@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import RestaurantService from '../services/RestaurantService';
+import ReservationService from '../services/ReservationService';
 import LogInService, { UserDetails } from '../services/LogInService';
 import IngredientBreakdownListing from '../components/IngredientBreakdownListing';
 import Restricted from '../components/errors/Restricted';
@@ -12,6 +13,7 @@ const Dashboard = () => {
     const [isAuthorized, setAuthorized] = useState(false);
     const [ingredientsBetween, setIngredientsBetween] = useState<any[]>([])
     const [foodBetween, setFoodBetween] = useState<any>({})
+    const [upcomingReservation, setUpcomingReservation] = useState([])
 
     useEffect(() => {
         const userInfo: UserDetails = LogInService.getUserDetails();
@@ -35,15 +37,21 @@ const Dashboard = () => {
         const end = moment().add(7, 'days').format("YYYY-MM-DD");
 
         RestaurantService.getIngredientsBetween(restaurantId, start, end).then((response) => {
-            console.log(response)
+            // console.log(response)
             setIngredientsBetween(response.data)
-            console.log(response.data)
+            // console.log(response.data)
         })
 
         RestaurantService.getFoodBetween(restaurantId, start, end).then((response) => {
-            console.log(response)
+            // console.log(response)
             setFoodBetween(response.data)
-            console.log(response.data)
+            // console.log(response.data)
+        })
+
+        ReservationService.getRestaurantReservations(restaurantId, start, end).then((response) => {
+            // console.log(response)
+            setUpcomingReservation(response.data.content)
+            console.log('hi:', response.data.content)
         })
 
     }, [restaurantId])
@@ -72,7 +80,7 @@ const Dashboard = () => {
                             {
                                 ingredientsBetween.map((ingredientsBetween) => {
                                     return (
-                                        <IngredientBreakdownListing ingredient={ingredientsBetween.ingredient} quantity={ingredientsBetween.quantity} units={ingredientsBetween.units}/>
+                                        <IngredientBreakdownListing ingredient={ingredientsBetween.ingredient} quantity={ingredientsBetween.quantity} units={ingredientsBetween.units} />
                                     )
                                 })
                             }
@@ -93,11 +101,50 @@ const Dashboard = () => {
                     </div>
                     <div>
                         <div className="overflow-y-auto h-64">
-                            {Object.keys(foodBetween).map((ingredient, quantity) => (
+                            {Object.keys(foodBetween).map((ingredient) => (
                                 <IngredientBreakdownListing ingredient={ingredient} quantity={"x " + foodBetween[ingredient]} />
                             ))}
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div className="bg-white-dirtyWhite rounded-xxl p-7 mx-20">
+                <h1 className="text-green-standard text-xl font-semibold tracking-wide pb-5 mx-10">Upcoming reservation</h1>
+                <div className="grid grid-cols-6 mx-10 px-14 mb-4">
+                    <h1 className="flex col-span-1 text-base text-grey-standard">Reservation Id</h1>
+                    <h1 className="flex col-span-1 text-base text-grey-standard">Booker</h1>
+                    <h1 className="flex col-span-2 text-base text-grey-standard">Reservation Date</h1>
+                    <h1 className="flex col-span-1 text-base text-grey-standard">Status</h1>
+                </div>
+                <div className="overflow-auto h-80">
+                    {
+                        upcomingReservation?.map((upcomingReservation: any) => {
+                            console.log(upcomingReservation);
+                            var dateTime = upcomingReservation.date;
+                            return (
+                                <div className="grid grid-cols-6 mb-3 bg-white-standard p-4 rounded-large gap-x-3 mx-10 px-14">
+                                    <>
+                                        <h1 className="flex col-span-1 text-base text-green-standard">{upcomingReservation.reservationId}</h1>
+                                        <h1 className="flex col-span-1 text-base text-grey-dark">{upcomingReservation.userFirstName} {upcomingReservation.userLastName}</h1>
+                                        <h1 className="flex col-span-2 text-base text-grey-dark">{moment(dateTime).format('MMM Do YYYY, h:mm a')}</h1>
+                                        {/* <h1 className="flex col-span-1 text-base text-grey-dark">{upcomingReservation.status}</h1> */}
+                                        {
+                                            upcomingReservation.status === 'PAID' && <h1 className="flex col-span-1 text-base text-green-standard">{upcomingReservation.status}</h1>
+                                        }
+                                        {
+                                            upcomingReservation.status === 'CANCELLED' && <h1 className="flex col-span-1 text-base text-red-standard">{upcomingReservation.status}</h1>
+                                        }
+                                        {
+                                            upcomingReservation.status === 'ONGOING' && <h1 className="flex col-span-1 text-base text-yellow-dark">{upcomingReservation.status}</h1>
+                                        }
+                                        <button className="text-base text-center grid col-span-1 bg-green-standard text-white-standard w-32 px-4 py-1 rounded-full shadow-md hover:shadow-lg">View orders</button>
+                                    </>
+                                </div>
+                            )
+                        })
+                    }
+
                 </div>
             </div>
 
