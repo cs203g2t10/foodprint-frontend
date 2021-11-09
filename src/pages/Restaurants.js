@@ -42,24 +42,18 @@ const Restaurants = () => {
                 <div className="pb-3"></div>
             </div>
 
-            <h1 className="text-xl md:pr-40 font-semibold text-grey-dark pl-32 pt-10 text-grey">Categories</h1>
+            {/* <h1 className="text-xl md:pr-40 font-semibold text-grey-dark pl-32 pt-10 text-grey">Categories</h1> */}
             <div className="overflow-hidden h-full w-full px-24 pt-4">
                 <div className="flex flex-row gap-x-6 w-full overflow-x-auto px-12 pb-6">
                     {
-                        (
-                            (categories.length > 0) ? (
-                                categories?.map(
-                                    category => {
-                                        return <Link to={"/categories?category=" + category} key={category}>
-                                            <div className="bg-white-offWhite hover:bg-white-dirtyWhite text-green-standard shadow-md hover:shadow-lg rounded-xl w-28 text-center">
-                                                <h1 className="px-2 py-2 text-base text-grey-dark">{category}</h1>
-                                            </div>
-                                        </Link>
-                                    }
-                                )
-                            ) : (
-                                <Loading />
-                            )
+                        categories?.map(
+                            category => {
+                                return <Link to={"/categories?category=" + category} key={category}>
+                                    <div className="bg-white-offWhite hover:bg-white-dirtyWhite text-green-standard shadow-md hover:shadow-lg rounded-xl w-28 text-center">
+                                        <h1 className="px-2 py-2 text-base text-grey-dark">{category}</h1>
+                                    </div>
+                                </Link>
+                            }
                         )
                     }
                 </div>
@@ -68,21 +62,21 @@ const Restaurants = () => {
             {/* <h1 className="text-3xl md:pr-64 font-extrabold pl-40">Restaurants</h1> */}
             <div className="justify-items-center grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-y-16 px-24 mt-10 pb-8 animate__animated animate__fadeIn">
                 {
-                    (
-                        (restaurants.length > 0) ? (
-                            restaurants?.map(
-                                restaurant => {
-                                    let priceRange = restaurant.restaurantPriceRange === null ? 0 : restaurant.restaurantPriceRange;
-                                    let imageUrl = restaurant.picture ? restaurant.picture.url : "/images/shop.jpg";
-                                    let discount = restaurant.discount ? restaurant.discount.discountPercentage : 0;
-                                    return <RestaurantListing {...{ restaurant, imageUrl, discount, priceRange }} />
-                                })
-                        ) : (
-                            <Loading />
-                        )
-                    )
+                    restaurants?.map(
+                        restaurant => {
+                            let priceRange = restaurant.restaurantPriceRange === null ? 0 : restaurant.restaurantPriceRange;
+                            let imageUrl = restaurant.picture ? restaurant.picture.url : "/images/shop.jpg";
+                            let discount = restaurant.discount ? restaurant.discount.discountPercentage : 0;
+                            return <RestaurantListing {...{ restaurant, imageUrl, discount, priceRange }} />
+                        })
                 }
             </div>
+            {
+                restaurants.length === 0 &&
+                <div className="flex justify-center">
+                    <Loading />
+                </div>
+            }
         </div>
     )
 }
