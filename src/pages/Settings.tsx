@@ -28,7 +28,7 @@ const Settings = () => {
                                 <Link to="/twofasetup" className="bg-white-dirtyWhite rounded-xxl shadow hover:shadow-md py-8">
                                     <img className=" md:m-auto h-44" src="/images/2FA.png" alt="shop" />
                                     <h1 className="text-center text-md pt-10 text-green-standard">2FA Configuration</h1>
-                                    <h1 className="text-center text-base text-grey-standard px-8">Update Two-Factor Authentication settings</h1>
+                                    <h1 className="text-center text-base text-grey-standard px-8">Update 2FA settings</h1>
                                 </Link>
                                 <Link to="/changepassword" className="bg-white-dirtyWhite rounded-xxl shadow hover:shadow-md py-8">
                                     <img className=" md:m-auto h-44" src="/images/ChangePwd.png" alt="shop" />
