@@ -58,6 +58,32 @@ class RestaurantService {
             })
     }
 
+    // Admin: Create new restaurant
+    createRestaurant = (name: any, desc: any, location: any, priceRange: any,
+        tableCapacity: any, weekdayOpeningHour: any, weekdayOpeningMinute: any, weekdayClosingHour: any,
+        weekdayClosingMinute: any, weekendOpeningHour: any, weekendOpeningMinute: any, weekendClosingHour: any,
+        weekendClosingMinute: any) => {
+        const requestBody = {
+            restaurantName: name,
+            restaurantDesc: desc,
+            restaurantLocation: location,
+            restaurantPriceRange: priceRange,
+            restaurantTableCapacity: tableCapacity,
+            restaurantWeekdayOpeningHour: weekdayOpeningHour,
+            restaurantWeekdayOpeningMinutes: weekdayOpeningMinute,
+            restaurantWeekdayClosingHour: weekdayClosingHour,
+            restaurantWeekdayClosingMinutes: weekdayClosingMinute,
+            restaurantWeekendOpeningHour: weekendOpeningHour,
+            restaurantWeekendOpeningMinutes: weekendOpeningMinute,
+            restaurantWeekendClosingHour: weekendClosingHour,
+            restaurantWeekendClosingMinutes: weekendClosingMinute,
+        }
+        return axios.post(`${RESTAURANTS_REST_API_URL}`, requestBody, this.headers())
+            .catch((error) => {
+                return error.response;
+        });
+    }
+
     // Manager: Upload Restaurant picture POST
     uploadRestaurantPicture = (restaurantId: number, title:any, description:any, file: File) => {
         const url = `${RESTAURANTS_REST_API_URL}/${restaurantId}/uploadPicture/?title=${title}&description=${description}`;

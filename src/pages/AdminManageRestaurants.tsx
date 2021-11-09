@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AdminRestaurantListing from '../components/AdminRestaurantListing'
+import CreateRestaurantModal from '../components/CreateRestaurantModal'
 import Restricted from '../components/errors/Restricted'
 import Loading from '../components/Loading'
 import { useAppContext } from '../lib/AppContext'
@@ -12,6 +13,9 @@ const AdminManageRestaurants = () => {
 
     const { isAuthenticated } = useAppContext() || {}
     const [isAuthorized, setAuthorized] = useState(false);
+
+    const [createRestaurant, setCreateRestaurant] = useState(false);
+
 
     useEffect(() => {
         const userInfo: UserDetails = LogInService.getUserDetails();
@@ -39,8 +43,14 @@ const AdminManageRestaurants = () => {
                     <div className="">
                         <h1 className="text-5xl font-bold pt-4 text-center text-green-standard bg-yellow-standard">Admin Restaurants Menu</h1>
                         <h1 className="text-lg text text-center text-grey-standard pb-8 bg-yellow-standard">Hello {getUserName()}, which restaurants / ingredients would you like to edit?</h1>
+
+                        <button className="border border-green-standard text-green-standard shadow-sm hover:shadow-md px-4 py-1 mx-14 my-3 rounded-full"
+                                onClick={()=>{setCreateRestaurant(true)}}>Create New Restaurant</button>
+
                         <div className="mx-14 bg-white-offWhite pt-6 pb-8 rounded-xxl shadow mb-2">
+
                             <div className="grid grid-cols-1 gap-y-9 items-center">
+                                
                                 <div className="grid grid-cols-11 gap-x-6 mx-6">
                                     <div className="col-span-1"></div>
                                     <p className="col-span-1 text-lg text-grey-dark">ID</p>
@@ -62,6 +72,7 @@ const AdminManageRestaurants = () => {
                             {restaurants.length === 0 && <Loading />}
                         </div>
                     </div>
+                    <CreateRestaurantModal {...{createRestaurant, setCreateRestaurant}}/>
                 </>
             ) : (<Restricted />)}
         </div>

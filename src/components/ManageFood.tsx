@@ -173,7 +173,7 @@ const ManageFood = (props: any) => {
                 <div className="grid grid-cols-2 gap-x-10 mt-4">
                     <button className="rounded-full border bg-green-standard py-1 h-8 text-white-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md" 
                     onClick={() => { setEdit(true); setSuccess(false) }}>Edit</button>
-                    <button className="rounded-full border bg-red-standard py-1 h-8 text-white-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md"
+                    <button className="rounded-full border bg-red-standard py-1 h-8 text-white-standard opacity-70 hover:opacity-90 shadow-sm hover:shadow-md"
                     onClick={() => {setDeleteModal(true)}}>Delete</button>
                 </div>
                 <DeleteFoodModal {...{deleteModalOpen, setDeleteModal, name}} restaurantId={props.restaurantId} foodId={props.foodId}/>
