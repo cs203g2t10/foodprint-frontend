@@ -8,7 +8,7 @@ import Restricted from '../components/errors/Restricted';
 
 const ManageIngredients = () => {
 
-    const [restaurantId] = useState(0);
+    const [restaurantId, setRestaurantId] = useState(0);
     const [restaurantDetails, setRestaurantDetails] = useState<any>();
     const [restaurantIngredients, setRestaurantIngredients] = useState<any>();
     const [createIngredient, setCreateIngredient] = useState(false);
@@ -26,6 +26,8 @@ const ManageIngredients = () => {
         if (userInfo.restaurantId == null) {
             console.log("User has no restaurant ID");
             return;
+        } else {
+            setRestaurantId(userInfo.restaurantId);
         }
         console.log("Restaurant ID %d", userInfo.restaurantId);
     }, [])
