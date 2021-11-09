@@ -25,14 +25,18 @@ const IngredientListing = (props: any) => {
         }).catch(err => {
             setLoading(false);
             console.log(err.response);
-            setError(err.response.data.message[0]);
+            if ( typeof(err.response.data.message) ===  "string") {
+                setError(err.response.data.message);
+            } else {
+                setError(err.response.data.message[0]);
+            }
         })
     }
 
     return (
         <div className="mx-8 grid grid-cols-10 gap-x-6">
             {error.length !== 0 &&
-            <div className="col-span-10 text-red-standard text-center pb-1">{error}</div>}
+                <div className="col-span-10 text-red-standard text-center pb-1">{error}</div>}
             <button className="px-2 rounded-full w-8 h-8 bg-opacity-80 hover:bg-opacity-100 bg-red-standard text-white-standard text-center" onClick={() => { setDeleteModal(true) }}><AiOutlineClose /></button>
             {(edit ? <>
                 <input className=" border pl-2 rounded col-span-3 focus:outline-none" onChange={(e) => { setName(e.target.value) }} value={name} />
@@ -63,8 +67,8 @@ const IngredientListing = (props: any) => {
                     <button className="shadow-sm hover:shadow-md px-2 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center"
                         onClick={() => setEdit(true)}><AiFillEdit /></button>
                 </>)}
-            <DeleteIngredientModal {...{deleteModalOpen, setDeleteModal, name, id}} 
-            restaurantId={restaurantId}
+            <DeleteIngredientModal {...{ deleteModalOpen, setDeleteModal, name, id }}
+                restaurantId={restaurantId}
             />
         </div>
     )
