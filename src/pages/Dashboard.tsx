@@ -25,8 +25,11 @@ const Dashboard = () => {
     const [foodBetween, setFoodBetween] = useState<any>({})
     const [upcomingReservation, setUpcomingReservation] = useState([])
     const [ingredientsLoading, setIngredientsLoading] = useState(false);
+    const [ingError, setIngError] = useState("");
     const [foodLoading, setFoodLoading] = useState(false);
+    const [foodError, setFoodError] = useState("")
     const [reservationLoading, setReservationLoading] = useState(false);
+    const [resError, setResError] = useState("")
 
     useEffect(() => {
         const userInfo: UserDetails = LogInService.getUserDetails();
@@ -54,6 +57,10 @@ const Dashboard = () => {
         setFoodLoading(true);
         setReservationLoading(true);
 
+        setIngError("");
+        setFoodError("");
+        setResError("");
+
         setIngredientsBetween([]);
         setFoodBetween({});
         setUpcomingReservation([])
@@ -64,10 +71,16 @@ const Dashboard = () => {
         RestaurantService.getIngredientsBetween(restaurantId, start, end).then((response) => {
             setIngredientsBetween(response.data)
             setIngredientsLoading(false);
+        }).catch(err => {
+            setIngError(err.response.data.message);
+            setIngredientsLoading(false);
         })
 
         RestaurantService.getFoodBetween(restaurantId, start, end).then((response) => {
             setFoodBetween(response.data)
+            setFoodLoading(false);
+        }).catch(err => {
+            setFoodError(err.response.data.message);
             setFoodLoading(false);
         })
 
@@ -75,6 +88,9 @@ const Dashboard = () => {
             console.log('num pages:' + response.data.totalPages)
             setNumPages(response.data.totalPages)
             setUpcomingReservation(response.data.content)
+            setReservationLoading(false);
+        }).catch(err => {
+            setResError(err.response.data.message);
             setReservationLoading(false);
         })
 
@@ -101,7 +117,7 @@ const Dashboard = () => {
                 </h1>
             </div>
 
-            
+
             <div className="flex justify-evenly my-4">
                 <div className="">
                     <div className="text-center">Start Date</div>
@@ -136,6 +152,7 @@ const Dashboard = () => {
                         {
                             ingredientsLoading && <div className="flex justify-center bg-white-standard rounded-xxl"><Loading /></div>
                         }
+                        <div className="text-red-standard text-center">{ingError}</div>
                         {
                             ingredientsBetween.map((ingredientsBetween, index) => {
                                 return (
@@ -165,8 +182,9 @@ const Dashboard = () => {
                         {
                             foodLoading && <div className="flex justify-center bg-white-standard rounded-xxl"><Loading /></div>
                         }
+                        <div className="text-red-standard text-center">{foodError}</div>
                         {Object.keys(foodBetween).map((ingredient) => (
-                            <IngredientBreakdownListing ingredient={ingredient} quantity={"x " + foodBetween[ingredient]} />
+                            <IngredientBreakdownListing ingredient={ingredient} quantity={"x " + foodBetween[ingredient]} key={ingredient} />
                         ))}
                     </div>
 
@@ -187,17 +205,15 @@ const Dashboard = () => {
                 {
                     reservationLoading && <div className="flex justify-center bg-white-standard rounded-xxl"><Loading /></div>
                 }
-                <div className="">
-                    {
-                        upcomingReservation?.map((upcomingReservation: any) => {
-                            var dateTime = upcomingReservation.date;
-                            return (
-                                <RestaurantReservationList key={upcomingReservation.reservationId} reservationId={upcomingReservation.reservationId} userFirstName={upcomingReservation.userFirstName} userLastName={upcomingReservation.userLastName} date={moment(dateTime).format('MMM Do YYYY, h:mm a')} status={upcomingReservation.status} />
-                            )
-                        })
-                    }
-
-                </div>
+                <div className="text-red-standard text-center">{resError}</div>
+                {
+                    upcomingReservation?.map((upcomingReservation: any) => {
+                        var dateTime = upcomingReservation.date;
+                        return (
+                            <RestaurantReservationList key={upcomingReservation.reservationId} reservationId={upcomingReservation.reservationId} userFirstName={upcomingReservation.userFirstName} userLastName={upcomingReservation.userLastName} date={moment(dateTime).format('MMM Do YYYY, h:mm a')} status={upcomingReservation.status} />
+                        )
+                    })
+                }
                 <PageLinks {...{ numPages, currPage, setCurrPage }} />
             </div>
 
