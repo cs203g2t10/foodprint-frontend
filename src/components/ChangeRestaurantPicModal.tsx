@@ -8,11 +8,11 @@ const ChangeRestaurantPicModal = (props: any) => {
     const [changed, setChanged] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const [newUrl, setNewUrl] = useState("");
 
     const [name, setName] = useState("");
     const [restaurantId, setRestaurantId] = useState(0);
-    // const [modalMessage, setModalMessage] = useState("");
-    // const [error, setError] = useState("");
+
     useEffect(() => {
         setName(props.name);
         setRestaurantId(props.restaurantId);
@@ -33,22 +33,21 @@ const ChangeRestaurantPicModal = (props: any) => {
         console.log(file);
 
         console.log("Uploading");
-        // const response = VaccinationService.userUploadVaccination(file);
-        const response = RestaurantService.changeRestaurantPicture(restaurantId, file);
+        // const response = RestaurantService.changeRestaurantPicture(restaurantId, file);
+        const response = imageUrl === "/images/shop.jpg" ?
+            RestaurantService.uploadRestaurantPicture(restaurantId, name, name, file) :
+            RestaurantService.changeRestaurantPicture(restaurantId, file);
         response.then((response) => {
             console.log("Success: ", response.data.reservationId)
             setLoading(false);
             setChanged(true);
+            setNewUrl(response.data.url);
         }).catch((error) => {
             console.log(error.response.data);
             setLoading(false);
-            if (error.response.status === 500) {
-                setError(error.response.data.message);
-            } else {
-                setError(error.response.data.message);
-            };
+            setError(error.response.data.message);
         });
-    }, [restaurantId]);
+    }, [restaurantId, imageUrl, name]);
 
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
@@ -59,10 +58,17 @@ const ChangeRestaurantPicModal = (props: any) => {
                 <h1 className=" flex text-5xl pt-12 text-green-standard font-bold mx-auto">{name} Display Picture</h1>
                 <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Choose a new photo for your Restaurant!</h1>
                 <div className="grid grid-cols-2 justify-between pt-5 gap-x-16">
-                    <div>
-                        <h1 className="text-center pb-4">Original Photo</h1>
-                        <img src={imageUrl} alt="RestaurantPic" className="rounded-full mb-5 h-56 w-56 flex mx-auto" />
-                    </div>
+                    {
+                        changed ?
+                            <div>
+                                <h1 className="text-center pb-4">Updated Photo</h1>
+                                <img src={newUrl} alt={props?.description} className="rounded-full mb-5 h-56 w-56 flex mx-auto" />
+                            </div> :
+                            <div>
+                                <h1 className="text-center pb-4">Original Photo</h1>
+                                <img src={imageUrl} alt={name + ' pic'} className="rounded-full mb-5 h-56 w-56 flex mx-auto" />
+                            </div>
+                    }
                     <div>
                         <div {...getRootProps()}>
                             <div className="bg-grey-lightest place-items-stretch rounded-xxl text-center p-10 border-dashed border-2 border-grey-light hover:shadow-md shadow-sm focus:outline-none">
@@ -90,34 +96,22 @@ const ChangeRestaurantPicModal = (props: any) => {
                     </div>
                 </div>
 
-
                 {
-                    (changed ?
-                        <>
-                            <div className="mx-auto pb-2">Picture has been successfully changed!</div>
-                            <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28">
-                                <button className=" text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
-                                    onClick={() => {
-                                        setChanged(false);
-                                    }}>Reset</button>
-                                <button className=" text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
-                                    onClick={() => { setChangePic(false) }}>Return</button>
-                            </div>
-                        </> :
-                        <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28 pt-4">
-                            <div className="col-span-2 text-red-standard text-center pb-4" >{error}</div>
-                            <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg">
-                                <span>
-                                    {
-                                        loading ?
-                                            <div className="spinner" id="spinner" />
-                                            : 'Confirm'
-                                    }
-                                </span>
-                            </button>
-                            <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setChangePic(false)}>Cancel</button>
-                        </div>)
+                    changed && <div className="mx-auto text-green-standard">Picture has been successfully changed!</div>
                 }
+                <div className="text-red-standard text-center">{error}</div>
+                <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg w-1/3 mx-auto"
+                    onClick={() => setChangePic(false)}
+                >
+                    <span>
+                        {
+                            loading ?
+                                <div className="spinner" id="spinner" /> :
+                                'Go Back'
+                        }
+                    </span>
+                </button>
+
             </div>
         </ReactModal>
     )

@@ -58,7 +58,15 @@ class RestaurantService {
             })
     }
 
-    // Manager: Update Restaurant picture
+    // Manager: Upload Restaurant picture POST
+    uploadRestaurantPicture = (restaurantId: number, title:any, description:any, file: File) => {
+        const url = `${RESTAURANTS_REST_API_URL}/${restaurantId}/uploadPicture/?title=${title}&description=${description}`;
+        const formData = new FormData();
+        formData.append("file", file);
+        return axios.post(url, formData, this.headers())
+    }
+
+    // Manager: Update Restaurant picture PATCH
     changeRestaurantPicture = (restaurantId: number, pictureFile: File) => {
         const url = `${RESTAURANTS_REST_API_URL}/${restaurantId}/picture`;
         const formData = new FormData();

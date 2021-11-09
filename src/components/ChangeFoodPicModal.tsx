@@ -8,7 +8,7 @@ const ChangeFoodPicModal = (props: any) => {
     const { changePic, setChangePic, name, setEdit, setSuccess } = props;
     const [changed, setChanged] = useState(false);
     const [loading, setLoading] = useState(false);
-    // const [modalMessage, setModalMessage] = useState("");
+
     const [error, setError] = useState("");
     const [newUrl, setNewUrl] = useState("");
 
