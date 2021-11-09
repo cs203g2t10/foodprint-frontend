@@ -113,7 +113,7 @@ const CreateUserModal = (
                                         }
                                     </span>
                             </button>
-                            <button className="text-green-standard px-3 py-1 rounded-xl shadow-sm hover:shadow-md border" onClick={() => setCreateUser(false)}>Cancel</button>
+                            <button className="text-green-standard px-3 py-1 rounded-xl shadow-sm hover:shadow-md border border-green-standard" onClick={() => setCreateUser(false)}>Cancel</button>
                         </div>)
                 }
             </div>

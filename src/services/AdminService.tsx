@@ -54,12 +54,7 @@ class AdminService {
             password,
             roles,
             lastLogin: new Date(),
-            registeredOn: new Date(),
-            reservations: [],
-            vaccinationName: "",
-            vaccinationDob: "",
-            token: [],
-            vaccinated: false
+            registeredOn: new Date()
         }
         return axios.post(url, requestBody, this.headers());
     }

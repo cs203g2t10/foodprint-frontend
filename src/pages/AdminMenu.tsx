@@ -32,13 +32,13 @@ const AdminMenu = () => {
                             <div className="grid lg:grid-cols-2 justify-center items-center gap-x-20 mx-10 pt-10 gap-y-7">
                                 <Link to="/adminRestaurant" className="bg-white-dirtyWhite rounded-xxl shadow hover:shadow-md py-8">
                                     <img className=" md:m-auto h-44" src="/images/ManageRestaurant.png" alt="shop" />
-                                    <h1 className="text-center text-md pt-10 text-green-standard">Manage Restaurants</h1>
-                                    <h1 className="text-center text-base text-grey-standard px-8">Edit restaurant details, photo, and menu here.</h1>
+                                    <h1 className="text-center text-md pt-10 text-green-standard">Manage Restaurants / Ingredients</h1>
+                                    <h1 className="text-center text-base text-grey-standard px-8">Edit restaurant details, photo, menu and ingredients here.</h1>
                                 </Link>
                                 <Link to="/manageuser" className="bg-white-dirtyWhite rounded-xxl shadow hover:shadow-md py-8">
                                     <img className=" md:m-auto h-44" src="/images/ManageIngredients.png" alt="shop" />
                                     <h1 className="text-center text-md pt-10 text-green-standard">Manage Users</h1>
-                                    <h1 className="text-center text-base text-grey-standard px-8">Edit restaurant ingredients detail here.</h1>
+                                    <h1 className="text-center text-base text-grey-standard px-8">Manage FoodPrint Users' details and authorizations here.</h1>
                                 </Link>
                             </div>
                         </div>

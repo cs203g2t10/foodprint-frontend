@@ -2,11 +2,9 @@ import React, { useState } from 'react'
 import AdminService from '../services/AdminService';
 import { AiOutlineClose } from 'react-icons/ai';
 import { AiOutlineEdit } from 'react-icons/ai';
-import DeleteModal from './DeleteModal';
+import DeleteUserModal from './DeleteModal';
 
 const UserListing = (props: any) => {
-
-    const { setDeleteMessage } = props;
 
     const [edit, setEdit] = useState(false);
     const [email, setEmail] = useState(props.email);
@@ -16,12 +14,7 @@ const UserListing = (props: any) => {
     const [deleteModal, setDeleteModal] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const deleteUser: any = async (id: number) => {
-        console.log(id)
-        await AdminService.deleteUser(id);
-        setDeleteMessage("User with id: " + id + " has been deleted.")
-        setDeleteModal(false);
-    }
+    
 
     const updateUserDetails: any = async (id: number, email: any, firstName: any, lastName: any, roles: any) => {
         setLoading(true);
@@ -75,7 +68,7 @@ const UserListing = (props: any) => {
                             onClick={() => setEdit(true)}><AiOutlineEdit /></button>
                     </>)}
             </div>
-            <DeleteModal {...{ deleteModal, setDeleteModal, deleteUser }} userId={props.id} email={email} />
+            <DeleteUserModal {...{ deleteModal, setDeleteModal }} userId={props.id} email={email} />
         </>
     )
 }

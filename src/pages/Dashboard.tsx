@@ -5,6 +5,7 @@ import LogInService, { UserDetails } from '../services/LogInService';
 import IngredientBreakdownListing from '../components/IngredientBreakdownListing';
 import Restricted from '../components/errors/Restricted';
 import moment from 'moment';
+import PageLinks from '../components/PageLinks';
 import { MdFastfood, MdFoodBank } from 'react-icons/md';
 import { AiFillSchedule } from 'react-icons/ai';
 import RestaurantReservationList from '../components/RestaurantReservationList';
@@ -12,6 +13,8 @@ import RestaurantReservationList from '../components/RestaurantReservationList';
 
 const Dashboard = () => {
     const [restaurantId, setRestaurantId] = useState(0);
+    const [numPages, setNumPages] = useState(0);
+    const [currPage, setCurrPage] = useState(0);
 
     const [isAuthorized, setAuthorized] = useState(false);
     const [ingredientsBetween, setIngredientsBetween] = useState<any[]>([])
@@ -36,23 +39,25 @@ const Dashboard = () => {
             return;
         }
 
+        
         const start = moment().format("YYYY-MM-DD");
         const end = moment().add(7, 'days').format("YYYY-MM-DD");
-
+        
         RestaurantService.getIngredientsBetween(restaurantId, start, end).then((response) => {
             setIngredientsBetween(response.data)
         })
-
+        
         RestaurantService.getFoodBetween(restaurantId, start, end).then((response) => {
             setFoodBetween(response.data)
         })
-
-        ReservationService.getRestaurantReservations(restaurantId, start, end).then((response) => {
+        
+        ReservationService.getRestaurantReservations(restaurantId, start, end, currPage).then((response) => {
+            console.log('num pages:' + response.data.totalPages)
+            setNumPages(response.data.totalPages)
             setUpcomingReservation(response.data.content)
-            console.log('hi:', response.data.content)
         })
 
-    }, [restaurantId])
+    }, [currPage, restaurantId])
 
     if (!isAuthorized) {
         return (<Restricted />)
@@ -121,18 +126,19 @@ const Dashboard = () => {
                     <h1 className="flex col-span-2 text-base text-grey-standard">Reservation Date</h1>
                     <h1 className="flex col-span-1 text-base text-grey-standard">Status</h1>
                 </div>
-                <div className="overflow-auto h-80">
+                <div className="">
                     {
                         upcomingReservation?.map((upcomingReservation: any) => {
                             console.log(upcomingReservation);
                             var dateTime = upcomingReservation.date;
                             return (
-                                <RestaurantReservationList reservationId={upcomingReservation.reservationId} userFirstName={upcomingReservation.userFirstName} userLastName={upcomingReservation.userLastName} date={moment(dateTime).format('MMM Do YYYY, h:mm a')} status={upcomingReservation.status} />
+                                <RestaurantReservationList key={upcomingReservation.reservationId} reservationId={upcomingReservation.reservationId} userFirstName={upcomingReservation.userFirstName} userLastName={upcomingReservation.userLastName} date={moment(dateTime).format('MMM Do YYYY, h:mm a')} status={upcomingReservation.status} />
                             )
                         })
                     }
 
                 </div>
+                <PageLinks {...{ numPages, currPage, setCurrPage}} />
             </div>
 
         </div>
