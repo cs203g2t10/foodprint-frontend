@@ -18,7 +18,7 @@ const ReservationListing = (props: any) => {
             <h1 className="flex items-center col-span-3 text-sm text-grey-dark">{props.dateTime}</h1>
             <div className="flex items-center col-span-2 mx-auto text-sm text-grey-dark">
                 {
-                    (props.status === "ONGOING" &&
+                    (props.status === "UNPAID" &&
                         <Link to={"/payment/" + props.reservationId}>
                             <div>
                                 <button className="bg-red-standard opacity-70 text-white-standard text-xs mx-auto col-span-2 w-20 px-1 my-auto py-1 rounded-large shadow-md hover:shadow-lg">Not paid</button>
