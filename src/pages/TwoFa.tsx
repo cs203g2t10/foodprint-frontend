@@ -66,9 +66,9 @@ const TwoFa = () => {
                             <div>
                                 {(
                                     twoFaEnabled ?
-                                    <div className="">
-                                            <p>
-                                                Steps:<br></br>
+                                        <div className="">
+                                            <h1 className="text-green-standard font-semibold tracking-wide">Steps:</h1>
+                                            <p className="text-base text-grey-standard">
                                                 <b>1.</b>  Launch Google Authenticator<br></br>
                                                 <b>2.</b>  Enter OTP shown and hit "Disable 2FA"
                                             </p>
@@ -82,26 +82,30 @@ const TwoFa = () => {
                                             </p>
                                         </div>
                                 )}
-                                {
-                                    (error ? <div className="pt-5 pb-2 text-red-standard">{error}</div> : <></>)
-                                }
-                                {
-                                    (enableSuccess ? <div className="pt-5 pb-2 text-green-standard">2FA enabled, try it in your next login!</div> : <></>)
-                                }
-                                {
-                                    (disableSuccess ? <div className="pt-5 pb-2 text-green-standard">2FA disabled!</div> : <></>)
-                                }
                             </div>
-
-                            <img className={(!twoFaEnabled) ? "h-32 pl-8" : "mt-16 my-7 transform scale-90"} src={(!twoFaEnabled) ? QRUrl : "/images/login.png"} alt="QR code" />
+                            {
+                                !twoFaEnabled && <img className="h-32 pl-8" src={QRUrl} alt="QR code" />
+                            }
+                            {/* <img className={(!twoFaEnabled) ? "h-32 pl-8" : "h-20 display-none"} src={(!twoFaEnabled) ? QRUrl : "/images/login.png"} alt="QR code" /> */}
                         </div>
 
+
                         <div className="pr-20">
-                            <input className="focus:outline-none px-4 py-1 my-4 h-11 rounded-full border border-grey-lightest w-full"
+                            <input className="focus:outline-none px-4 py-1 my-2 h-11 rounded-full border border-grey-lightest w-full"
                                 placeholder="OTP"
                                 type="number"
                                 onChange={e => setToken(e.target.value)} />
                         </div>
+
+                        {
+                            (error ? <div className="pb-2 text-red-standard">{error}</div> : <></>)
+                        }
+                        {
+                            (enableSuccess ? <div className="pb-2 text-green-standard">2FA enabled, try it in your next login!</div> : <></>)
+                        }
+                        {
+                            (disableSuccess ? <div className="pb-2 text-green-standard">2FA disabled!</div> : <></>)
+                        }
                         {(
                             twoFaEnabled ?
                                 <button className="rounded-xl px-5 border hover:shadow text-justify text-white-standard mt-2 h-8 bg-green-standard"
