@@ -55,15 +55,12 @@ const Dashboard = () => {
         }
         setIngredientsLoading(true);
         setFoodLoading(true);
-        setReservationLoading(true);
 
         setIngError("");
         setFoodError("");
-        setResError("");
 
         setIngredientsBetween([]);
         setFoodBetween({});
-        setUpcomingReservation([])
 
         const start = moment(startDate).format("YYYY-MM-DD");
         const end = moment(endDate).format("YYYY-MM-DD");
@@ -84,6 +81,22 @@ const Dashboard = () => {
             setFoodLoading(false);
         })
 
+
+
+    }, [restaurantId, startDate, endDate])
+
+    useEffect(() => {
+        if (restaurantId === 0) {
+            return;
+        }
+
+        setReservationLoading(true);
+        setUpcomingReservation([])
+        setResError("");
+
+        const start = moment(startDate).format("YYYY-MM-DD");
+        const end = moment(endDate).format("YYYY-MM-DD");
+
         ReservationService.getRestaurantReservations(restaurantId, start, end, currPage).then((response) => {
             console.log('num pages:' + response.data.totalPages)
             setNumPages(response.data.totalPages)
@@ -93,7 +106,6 @@ const Dashboard = () => {
             setResError(err.response.data.message);
             setReservationLoading(false);
         })
-
     }, [currPage, restaurantId, startDate, endDate])
 
     useEffect(() => {
@@ -210,9 +222,9 @@ const Dashboard = () => {
                     upcomingReservation?.map((upcomingReservation: any) => {
                         var dateTime = upcomingReservation.date;
                         return (
-                            <RestaurantReservationList key={upcomingReservation.reservationId} reservationId={upcomingReservation.reservationId} 
-                            userFirstName={upcomingReservation.userFirstName} userLastName={upcomingReservation.userLastName} 
-                            date={moment(dateTime).format('MMM Do YYYY, h:mm a')} status={upcomingReservation.status} />
+                            <RestaurantReservationList key={upcomingReservation.reservationId} reservationId={upcomingReservation.reservationId}
+                                userFirstName={upcomingReservation.userFirstName} userLastName={upcomingReservation.userLastName}
+                                date={moment(dateTime).format('MMM Do YYYY, h:mm a')} status={upcomingReservation.status} />
                         )
                     })
                 }
