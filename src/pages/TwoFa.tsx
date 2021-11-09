@@ -60,7 +60,7 @@ const TwoFa = () => {
                 <div className="mt-32 p-10 bg-white-standard w-10/12 md:w-7/12 grid md:grid-cols-5 shadow-xxl shadow rounded-xxl">
                     <img className="transform scale-90 col-span-2 my-auto grid" src="/images/twoFactorAuthentication.png" alt="2fa" />
                     <div className="col-span-3 py-5">
-                        <h1 className="text-4xl font-semibold mb-4 text-green-standard">{twoFaEnabled ? "Disable" : "Enable"} Two-Factor Authentication</h1>
+                        <h1 className="text-4xl font-semibold mb-4 text-green-standard">{twoFaEnabled ? "Disable" : "Enable"} 2FA</h1>
 
                         <div className="grid grid-cols-2">
                             <div>
@@ -90,7 +90,7 @@ const TwoFa = () => {
                         </div>
 
 
-                        <div className="pr-20">
+                        <div className="pr-20 pt-3">
                             <input className="focus:outline-none px-4 py-1 my-2 h-11 rounded-full border border-grey-lightest w-full"
                                 placeholder="OTP"
                                 type="number"
