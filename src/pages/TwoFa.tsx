@@ -108,11 +108,11 @@ const TwoFa = () => {
                         }
                         {(
                             twoFaEnabled ?
-                                <button className="rounded-xl px-5 border hover:shadow text-justify text-white-standard mt-2 h-8 bg-green-standard"
+                                <button className="opacity-90 hover:opacity-100 rounded-full px-5 border hover:shadow text-justify text-white-standard mt-2 h-8 bg-green-standard"
                                     onClick={disable}>Disable 2FA
                                 </button>
                                 :
-                                <button className="rounded-xl px-5 border hover:shadow text-justify text-white-standard mt-2 h-8 bg-green-standard"
+                                <button className=" opacity-90 hover:opacity-100 rounded-full px-5 border hover:shadow text-justify text-white-standard mt-2 h-8 bg-green-standard"
                                     onClick={confirmTwoFaToken}>Enable 2FA
                                 </button>
                         )}

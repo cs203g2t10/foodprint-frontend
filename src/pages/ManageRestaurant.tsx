@@ -113,8 +113,8 @@ const ManageRestaurant = () => {
                 <div className="mx-10 px-16">
 
                     <div className="flex justify-between">
-                        <h1 className="text-5xl text-grey-standard font-bold pb-3">Menu</h1>
-                        <button className="bg-green-standard text-1xl text-white-standard opacity-90 hover:opacity-199 px-4 max-h-10 rounded-full shadow-md hover:shadow-lg"
+                        <h1 className="pl-4 text-5xl text-grey-standard font-semibold pb-3">Menu</h1>
+                        <button className="bg-green-standard text-1xl text-white-standard opacity-90 hover:opacity-100 px-4 h-8 my-auto rounded-full shadow-md hover:shadow-lg"
                         onClick={()=>{setShowCreateFood(true)}}>Add to Menu</button>
                     </div>
 

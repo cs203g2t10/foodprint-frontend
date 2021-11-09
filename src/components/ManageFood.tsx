@@ -138,10 +138,8 @@ const ManageFood = (props: any) => {
                 <div className="grid grid-cols-5 justify-between gap-y-1">
                     <h1 className="col-span-2 text-green-standard">Name: </h1>
                     <h1 className="col-span-3 text-grey-dark text-base">{name}</h1>
-                    {/* <div className="col-span-2"> */}
                     <h1 className="col-span-2 text-green-standard">Description:</h1>
                     <h1 className="col-span-3 text-grey-dark text-base">{desc}</h1>
-                    {/* </div> */}
                     <h1 className="col-span-2 text-green-standard">Price: $</h1>
                     <h1 className="col-span-3 pb-3 text-grey-dark text-base">{price}</h1>
                 </div>
@@ -171,9 +169,9 @@ const ManageFood = (props: any) => {
                         <div className="text-center text-green-standard">Your changes have been saved!</div>)
                 }
                 <div className="grid grid-cols-2 gap-x-10 mt-4">
-                    <button className="rounded-full border bg-green-standard py-1 h-8 text-white-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md" 
+                    <button className="my-auto grid rounded-full border bg-green-standard h-8 text-white-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md" 
                     onClick={() => { setEdit(true); setSuccess(false) }}>Edit</button>
-                    <button className="rounded-full border bg-red-standard py-1 h-8 text-white-standard opacity-70 hover:opacity-90 shadow-sm hover:shadow-md"
+                    <button className="my-auto grid rounded-full border bg-red-standard h-8 text-white-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md"
                     onClick={() => {setDeleteModal(true)}}>Delete</button>
                 </div>
                 <DeleteFoodModal {...{deleteModalOpen, setDeleteModal, name}} restaurantId={props.restaurantId} foodId={props.foodId}/>
