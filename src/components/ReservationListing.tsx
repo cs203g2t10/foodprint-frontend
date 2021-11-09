@@ -21,7 +21,7 @@ const ReservationListing = (props: any) => {
                     (props.status === "UNPAID" &&
                         <Link to={"/payment/" + props.reservationId}>
                             <div>
-                                <button className="bg-red-standard opacity-70 text-white-standard text-xs mx-auto col-span-2 w-20 px-1 my-auto py-1 rounded-large shadow-md hover:shadow-lg">Not paid</button>
+                                <button className="bg-red-standard opacity-90 hover:opacity-100 text-white-standard text-xs mx-auto col-span-2 w-20 px-1 my-auto py-1 rounded-large shadow-md hover:shadow-lg">Not paid</button>
                             </div>
                         </Link>)
                 }
