@@ -7,7 +7,7 @@ import { AiFillInstagram, AiFillTwitterSquare, AiFillLinkedin } from "react-icon
 const Footer = () => {
     return (
         <div className = "mt-8 h-48">
-            <div className = "object-contain object-scale-down w-full">
+            <div className = "w-full">
                 <div className="flex absolute mt-6 w-full content-center">
                     <div className = "px-12 md:mt-14">
                         <h1 className = "text-green-standard font-bold lg:text-4xl tracking-wide text-center md:text-left">foodPrint</h1>
@@ -46,7 +46,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="hidden lg:block">
-                    <svg className="waves w-full h-72" xmlns="http://www.w3.org/2000/svg" viewBox="0 20 120 35" preserveAspectRatio="none" shape-rendering="auto">
+                    <svg className="waves w-full h-72" xmlns="http://www.w3.org/2000/svg" viewBox="0 20 120 35" preserveAspectRatio="none" shapeRendering="auto">
                         <defs>
                         <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
                         </defs>

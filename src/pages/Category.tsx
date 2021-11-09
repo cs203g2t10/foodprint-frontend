@@ -44,7 +44,7 @@ const Category = () => {
                                 let priceRange = restaurant.restaurantPriceRange === null ? 0 : restaurant.restaurantPriceRange;
                                 let imageUrl = restaurant.picture ? restaurant.picture.url : "/images/shop.jpg";
                                 let discount = restaurant.discount ? restaurant.discount.discountPercentage : 0;
-                                return <RestaurantListing {...{restaurant, imageUrl, discount, priceRange}} />
+                                return <RestaurantListing key={restaurant.restaurantId} {...{restaurant, imageUrl, discount, priceRange}} />
                             })
                     ) : (
                         <>

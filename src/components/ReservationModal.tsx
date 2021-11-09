@@ -160,7 +160,7 @@ const ReservationModal = (
                                 onChange={(e: ChangeEvent<HTMLInputElement>) => {
                                     setVaccinated(e.target.type === 'checkbox' ? e.target.checked : (e.target.value === 'true'));
                                     setDeclare(false);
-                                }} className="my-auto mr-4" />
+                                }} className="my-auto mr-4 checkbox checkbox-md" />
                             <h1 className="text-sm text-grey-standard">I hereby declare that all of the guests are vaccinated (compulsory)</h1>
                         </div>
                     </div>

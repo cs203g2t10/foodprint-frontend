@@ -26,21 +26,18 @@ const Profile = () => {
 
     useEffect(() => {
         ReservationService.getUpcomingReservation().then((response) => {
-            console.log(response)
             setUpcomingReservation(response.data)
         })
     }, [])
 
     useEffect(() => {
         ReservationService.getPastReservation().then((response) => {
-            console.log(response)
             setPastReservation(response.data)
         })
     }, [])
 
     useEffect(() => {
         UserService.getFavRestaurant().then((response) => {
-            console.log(response)
             setFavouriteRestaurants(response.data)
         })
     }, [])
@@ -60,7 +57,7 @@ const Profile = () => {
                                 </div>
                             </div>
                         </div>
-                        <svg className="h-72 waves w-full transform -rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="100 20 130 70" preserveAspectRatio="none" shape-rendering="auto">
+                        <svg className="h-72 waves w-full transform -rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="100 20 130 70" preserveAspectRatio="none" shapeRendering="auto">
                             <defs>
                                 <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
                             </defs>
@@ -90,7 +87,10 @@ const Profile = () => {
                                 {
                                     favouriteRestaurants.map((favouriteRestaurant: any) => {
                                         return (
-                                            <FavouriteRestaurant name={favouriteRestaurant.restaurantName} url={favouriteRestaurant.picture?.url}/>
+                                            <FavouriteRestaurant
+                                                key={favouriteRestaurant.restaurantId}
+                                                name={favouriteRestaurant.restaurantName}
+                                                url={favouriteRestaurant.picture?.url}/>
                                         )
                                     })
                                 }
@@ -107,7 +107,7 @@ const Profile = () => {
                                             <div className="grid grid-cols-12 mb-2 gap-x-3">
                                                 <h2 className="col-span-1">&nbsp;</h2>
                                                 <h2 className="col-span-3 text-grey-lighter text-md">Restaurant</h2>
-                                                <h2 className="col-span-3 text-grey-lighter text-md">Reservation Date Time</h2>
+                                                <h2 className="col-span-3 text-grey-lighter text-md">Date / Time</h2>
                                                 <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Status</h2>
                                                 <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Orders</h2>
                                                 <h2 className="col-span-1">&nbsp;</h2>
@@ -119,7 +119,7 @@ const Profile = () => {
                                             </>
                                     )
                                 }
-                                <div className="overflow-y-auto h-64">
+                                <div className="overflow-y-auto h-60 mb-4">
                                     {
                                         upcomingReservation.map((upcomingReservation) => {
                                             var dateTime = upcomingReservation.date;
@@ -139,7 +139,7 @@ const Profile = () => {
                                             <div className="grid grid-cols-12 mb-2 gap-x-3">
                                                 <h2 className="col-span-1">&nbsp;</h2>
                                                 <h2 className="col-span-3 text-grey-lighter text-md">Restaurant</h2>
-                                                <h2 className="col-span-3 text-grey-lighter text-md">Reservation Date Time</h2>
+                                                <h2 className="col-span-3 text-grey-lighter text-md">Date / Time</h2>
                                                 <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Status</h2>
                                                 <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Orders</h2>
                                                 <h2 className="col-span-1">&nbsp;</h2>
@@ -152,7 +152,7 @@ const Profile = () => {
                                     )
                                 }
 
-                                <div className="overflow-y-auto h-64">
+                                <div className="overflow-y-auto h-60 mb-4">
                                     {
                                         pastReservation.map(pastReservation => {
                                             var dateTime = pastReservation.date;

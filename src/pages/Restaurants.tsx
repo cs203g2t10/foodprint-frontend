@@ -11,24 +11,20 @@ const Restaurants = () => {
 
     const changeRestaurants = (restaurantData: any) => {
         setRestaurants(restaurantData)
-        console.log(restaurantData)
     }
 
     const changeCategories = (categoryData: any) => {
         setCategories(categoryData)
-        console.log(categoryData)
     }
 
     useEffect(() => {
         RestaurantService.getRestaurants().then((response) => {
-            console.log(response)
             changeRestaurants(response.data)
         })
     }, [])
 
     useEffect(() => {
         RestaurantService.getCategories().then((response) => {
-            console.log(response)
             changeCategories(response.data)
         })
     }, [])
@@ -67,7 +63,7 @@ const Restaurants = () => {
                             let priceRange = restaurant.restaurantPriceRange === null ? 0 : restaurant.restaurantPriceRange;
                             let imageUrl = restaurant.picture ? restaurant.picture.url : "/images/shop.jpg";
                             let discount = restaurant.discount ? restaurant.discount.discountPercentage : 0;
-                            return <RestaurantListing {...{ restaurant, imageUrl, discount, priceRange }} />
+                            return <RestaurantListing key={restaurant.restaurantId} {...{ restaurant, imageUrl, discount, priceRange }} />
                         })
                 }
             </div>

@@ -16,7 +16,7 @@ const About = () => {
                     <h1 className="text-center text-grey-standard text-base mt-5">Here at FoodPrint, we support to F&B establishments in their journey towards food wastage reduction. We provide an innovative solution to help better manage food inventories, which would be especially helpful during this challenging time.</h1>
                 </div>
             </div>
-            <svg className="waves w-full transform -rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="145 0 120 89" preserveAspectRatio="none" shape-rendering="auto">
+            <svg className="waves w-full transform -rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="145 0 120 89" preserveAspectRatio="none" shapeRendering="auto">
                 <defs>
                     <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
                 </defs>

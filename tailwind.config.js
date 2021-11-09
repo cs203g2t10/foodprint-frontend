@@ -9,7 +9,9 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+  ],
   enabled: process.env.NODE_ENV === "production",
 
   theme: {

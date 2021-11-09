@@ -80,15 +80,15 @@ const CreateRestaurantModal = (props: any) => {
                 <div className="grid gap-y-5 grid-cols-2">
                     <div className="flex gap-x-2 justify-center">
                         <div>From</div>
-                        <input type="number" min="0" max="23" className="focus:outline-none px-2 rounded" value={weekdayOpeningHour} onChange={(e) => { setWeekdayOpeningHour(e.target.value) }}></input>
+                        <input type="number" min="0" max="23" className="focus:outline-none px-2 rounded" value={weekdayOpeningHour} onChange={(e) => { setWeekdayOpeningHour(('00'+e.target.value).slice(-2)) }}></input>
                         :
-                        <input type="number" min="0" max="59" className="focus:outline-none px-2 rounded" value={weekdayOpeningMinute} onChange={(e) => { setWeekdayOpeningMinute(e.target.value) }}></input>
+                        <input type="number" min="0" max="59" className="focus:outline-none px-2 rounded" value={weekdayOpeningMinute} onChange={(e) => { setWeekdayOpeningMinute(('00'+e.target.value).slice(-2)) }}></input>
                     </div>
                     <div className="flex gap-x-2 justify-center">
                         <div>To</div>
-                        <input type="number" min="0" max="23" className="focus:outline-none px-2 rounded" value={weekdayClosingHour} onChange={(e) => { setWeekdayClosingHour(e.target.value) }}></input>
+                        <input type="number" min="0" max="23" className="focus:outline-none px-2 rounded" value={weekdayClosingHour} onChange={(e) => { setWeekdayClosingHour(('00'+e.target.value).slice(-2)) }}></input>
                         :
-                        <input type="number" min="0" max="59" className="focus:outline-none px-2 rounded" value={weekdayClosingMinute} onChange={(e) => { setWeekdayClosingMinute(e.target.value) }}></input>
+                        <input type="number" min="0" max="59" className="focus:outline-none px-2 rounded" value={weekdayClosingMinute} onChange={(e) => { setWeekdayClosingMinute(('00'+e.target.value).slice(-2)) }}></input>
 
                     </div>
                 </div>
@@ -98,15 +98,15 @@ const CreateRestaurantModal = (props: any) => {
                 <div className="grid gap-y-5 grid-cols-2">
                     <div className="flex gap-x-2 justify-center">
                         <div>From</div>
-                        <input type="number" min="0" max="23" className="focus:outline-none px-2 rounded" value={weekendOpeningHour} onChange={(e) => { setWeekendOpeningHour(e.target.value) }}></input>
+                        <input type="number" min="0" max="23" className="focus:outline-none px-2 rounded" value={weekendOpeningHour} onChange={(e) => { setWeekendOpeningHour(('00'+e.target.value).slice(-2)) }}></input>
                         :
-                        <input type="number" min="0" max="59" className="focus:outline-none px-2 rounded" value={weekendOpeningMinute} onChange={(e) => { setWeekendOpeningMinute(e.target.value) }}></input>
+                        <input type="number" min="0" max="59" className="focus:outline-none px-2 rounded" value={weekendOpeningMinute} onChange={(e) => { setWeekendOpeningMinute(('00'+e.target.value).slice(-2)) }}></input>
                     </div>
                     <div className="flex gap-x-2 justify-center">
                         <div>To</div>
-                        <input type="number" min="0" max="23" className="focus:outline-none px-2 rounded" value={weekendClosingHour} onChange={(e) => { setWeekendClosingHour(e.target.value) }}></input>
+                        <input type="number" min="0" max="23" className="focus:outline-none px-2 rounded" value={weekendClosingHour} onChange={(e) => { setWeekendClosingHour(('00'+e.target.value).slice(-2)) }}></input>
                         :
-                        <input type="number" min="0" max="59" className="focus:outline-none px-2 rounded" value={weekendClosingMinute} onChange={(e) => { setWeekendClosingMinute(e.target.value) }}></input>
+                        <input type="number" min="0" max="59" className="focus:outline-none px-2 rounded" value={weekendClosingMinute} onChange={(e) => { setWeekendClosingMinute(('00'+e.target.value).slice(-2)) }}></input>
                     </div>
                 </div>
 

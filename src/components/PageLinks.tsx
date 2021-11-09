@@ -15,8 +15,6 @@ const PageLinks = (props: any) => {
                         >{i + 1}</button>
                     }
                 }
-
-
                 )
             }
         </div>

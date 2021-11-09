@@ -14,11 +14,10 @@ const RestaurantListing = (props: any) => {
                         <div className="flex text-center">
                             {
                                 [...Array(5)].map((value, index) => {
-                                    console.log(index)
                                     if (index < priceRange) {
-                                        return <p className="text-green-standard ">$</p>
+                                        return <p key={index} className="text-green-standard ">$</p>
                                     } else {
-                                        return <p className="text-green-standard opacity-25 ">$</p>
+                                        return <p key={index} className="text-green-standard opacity-25 ">$</p>
                                     }
                                 })
                             }

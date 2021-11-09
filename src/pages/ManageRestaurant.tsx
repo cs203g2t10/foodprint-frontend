@@ -99,7 +99,7 @@ const ManageRestaurant = () => {
                         </div>
                         
                     </div>
-                    <svg className="waves h-80 w-full transform -rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="100 20 130 70" preserveAspectRatio="none" shape-rendering="auto">
+                    <svg className="waves h-80 w-full transform -rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="100 20 130 70" preserveAspectRatio="none" shapeRendering="auto">
                         <defs>
                             <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
                         </defs>
@@ -118,7 +118,7 @@ const ManageRestaurant = () => {
                         onClick={()=>{setShowCreateFood(true)}}>Add to Menu</button>
                     </div>
 
-                    <div className="grid xl:grid-cols-4 md:grid-cols-3 gap-12">
+                    <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-12">
                         {
                             loading ? <Loading /> :
                             food?.map((food: any) => {

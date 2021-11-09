@@ -53,7 +53,6 @@ const Home = () => {
 
     useEffect(() => {
         RestaurantService.getRestaurants().then((response) => {
-            console.log(response)
             setRestaurants(response.data)
         })
     }, [])
@@ -98,16 +97,16 @@ const Home = () => {
                             <div className="flex flex-row gap-x-10 w-full overflow-auto h-auto py-5">
                                 {
                                     restaurants.map(restaurant =>
-                                        (restaurant.picture) ?
-                                            (
-                                                <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
-                                                    <TrendingRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={restaurant.picture.url} />
-                                                </Link>
-                                            ) : (
-                                                <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
-                                                    <TrendingRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
-                                                </Link>
-                                            )
+                                        <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId}>
+                                            {
+                                                (restaurant.picture !== null) ?
+                                                    (
+                                                        <TrendingRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={restaurant.picture.url} />
+                                                    ) : (
+                                                        <TrendingRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
+                                                    )
+                                            }
+                                        </Link>
                                     )
                                 }
                             </div>
