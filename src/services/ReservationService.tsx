@@ -51,8 +51,8 @@ class ReservationService {
         return axios.delete(RESERVATIONS_REST_API_URL+"/admin/"+id, this.headers());
     }
     
-    getRestaurantReservations = (restaurantId: number, startDate: String, endDate: String) => {
-        return axios.get(`${RESERVATIONS_REST_API_URL}/restaurant/${restaurantId}?after=${startDate}&before=${endDate}&p=0`, this.headers());
+    getRestaurantReservations = (restaurantId: number, startDate: String, endDate: String, page: number) => {
+        return axios.get(`${RESERVATIONS_REST_API_URL}/restaurant/${restaurantId}?after=${startDate}&before=${endDate}&p=${page}`, this.headers());
     }
 
 
