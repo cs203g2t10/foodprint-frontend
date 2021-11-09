@@ -6,6 +6,7 @@ import PageLinks from '../components/PageLinks';
 import LogInService, { UserDetails } from '../services/LogInService';
 import Restricted from '../components/errors/Restricted';
 import { useParams } from 'react-router';
+import Loading from '../components/Loading';
 
 const ManageIngredients = () => {
 
@@ -20,6 +21,7 @@ const ManageIngredients = () => {
     const [currPage, setCurrPage] = useState(0);
     const [deleteMessage, setDeleteMessage] = useState("");
     const [isAuthorized, setAuthorized] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const userInfo: UserDetails = LogInService.getUserDetails();
@@ -40,6 +42,8 @@ const ManageIngredients = () => {
     }, [params])
 
     useEffect(() => {
+        setRestaurantIngredients({});
+        setLoading(true);
         if (restaurantId === 0) {
             return;
         }
@@ -49,6 +53,7 @@ const ManageIngredients = () => {
         RestaurantService.getAllIngredients(restaurantId, currPage).then((response) => {
             setRestaurantIngredients(response.data);
             setNumPages(response.data.totalPages)
+            setLoading(false);
         })
     }, [restaurantId, currPage, createIngredient, deleteMessage])
     
@@ -72,7 +77,7 @@ const ManageIngredients = () => {
                         <div className="col-span-1"></div>
                     </div>
                     {
-                        restaurantIngredients?.content.map(
+                        restaurantIngredients?.content?.map(
                             (ingredient: any) => {
                                 return (
                                     <IngredientListing 
@@ -88,6 +93,7 @@ const ManageIngredients = () => {
                     }
                 </div>
             </div>
+            {loading && <div className="flex justify-center py-1"><Loading /></div> }
             <p className="mx-auto text-green-standard text-center pt-4">{deleteMessage}</p>
             <PageLinks {...{ numPages, currPage, setCurrPage}} />
             <div>
