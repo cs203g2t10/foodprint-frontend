@@ -9,7 +9,7 @@ import Loading from '../components/Loading';
 
 const Restaurant = () => {
 
-    let id = useParams<any>();
+    let params = useParams<any>();
 
     const [restaurantDetails, setRestaurantDetails] = useState<any>([]);
     const [food, setFood] = useState<any>([]);
@@ -20,9 +20,11 @@ const Restaurant = () => {
     const [haveFood, setHaveFood] = useState(false);
     const [totalPrice, setTotalPrice] = useState(0);
     const [discount, setDiscount] = useState(0);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        RestaurantService.getRestaurant(id.id).then((response) => {
+        setLoading(true);
+        RestaurantService.getRestaurant(params.id).then((response) => {
             console.log(response.data)
             setRestaurantDetails(response.data)
             if (response.data.picture) {
@@ -32,13 +34,14 @@ const Restaurant = () => {
                 setDiscount(response.data.discount.discountPercentage);
             }
         })
-    }, [id])
+    }, [params])
 
     useEffect(() => {
-        RestaurantService.getAllFood(id.id).then((response) => {
+        RestaurantService.getAllFood(params.id).then((response) => {
             setFood(response.data)
+            setLoading(false);
         })
-    }, [id])
+    }, [params])
 
     useEffect(() => {
         setTotalPrice(0);
@@ -90,16 +93,18 @@ const Restaurant = () => {
             }
             <div className="gap-x-16  grid items-center justify-items-center xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-y-16 mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
                 {
-                    (food.length === 0) ?
-                        <Loading />
-                        : (
-                            food?.map(
-                                (food: any) => <RestaurantFood {...{ food, setLineItems }} key={food.foodId} />
-                            )
-                        )
+                    food?.map(
+                        (food: any) => <RestaurantFood {...{ food, setLineItems }} key={food.foodId} />
+                    )
                 }
             </div>
-            <ReservationModal {...{ id, modalIsOpen, lineItems, totalPrice, setModal, discount }} />
+            {
+                loading && 
+                <div className="flex justify-center">
+                    <Loading />
+                </div>
+            }
+            <ReservationModal {...{ id: params, modalIsOpen, lineItems, totalPrice, setModal, discount }} />
         </div>
     )
 }
