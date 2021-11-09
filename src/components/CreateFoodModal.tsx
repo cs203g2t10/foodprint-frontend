@@ -23,7 +23,7 @@ const CreateFoodModal = (props: any) => {
         setLoading(true);
         const response = await RestaurantService.createFood(restaurantId, name, desc, price, ingredientQty);
         console.log(response);
-        if (response.status === 200) {
+        if (response.status === 201) {
             setCreated(true);
         } else {
             setError(response.data.message);
@@ -32,9 +32,9 @@ const CreateFoodModal = (props: any) => {
     }
 
     return (
-        <ReactModal style={customStyles} isOpen={showCreateFood} className="mt-14 focus:outline-none">
+        <ReactModal style={customStyles} isOpen={showCreateFood} className="mt-10 focus:outline-none">
             <div className="grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-72 pb-10 bg-white-dirtyWhite">
-                <h1 className=" flex text-5xl pt-12 text-green-standard font-bold mx-auto">Add Food</h1>
+                <h1 className=" flex text-5xl pt-8 text-green-standard font-bold mx-auto">Add Food</h1>
                 <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Please fill up all details below </h1>
                 <div className="grid gap-y-5 grid-cols-2 gap-x-10 mx-24">
                     <div className="flex gap-x-2 justify-between">
