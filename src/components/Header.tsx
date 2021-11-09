@@ -52,7 +52,7 @@ const Header = () => {
                             <div className="hidden md:block self-end">
                                 <div className="flex items-baseline space-x-4">
                                     {isUserAdmin() &&
-                                        <Link to='/ManageUser' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Management Console</Link>
+                                        <Link to='/admin' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Management Console</Link>
                                     }
                                     {isUserManager() &&
                                         <Link to='/manager' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Manager</Link>
