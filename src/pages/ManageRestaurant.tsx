@@ -118,7 +118,7 @@ const ManageRestaurant = () => {
                         onClick={()=>{setShowCreateFood(true)}}>Add to Menu</button>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-12">
+                    <div className="grid xl:grid-cols-4 md:grid-cols-3 gap-12">
                         {
                             loading ? <Loading /> :
                             food?.map((food: any) => {
