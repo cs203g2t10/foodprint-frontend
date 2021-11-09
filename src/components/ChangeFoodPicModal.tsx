@@ -34,13 +34,14 @@ const ChangeFoodPicModal = (props: any) => {
             console.log(response);
             setLoading(false);
             setChanged(true);
+            setSuccess(true);
             setNewUrl(response.data.url);
         }).catch((error) => {
             console.log(error.response);
             setError(error.response.data.message);
             setLoading(false);
         })
-    }, [name, props]);
+    }, [name, props, setSuccess]);
 
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
@@ -55,11 +56,11 @@ const ChangeFoodPicModal = (props: any) => {
                         changed ?
                             <div>
                                 <h1 className="text-center pb-4">Updated Photo</h1>
-                                <img src={newUrl} alt={props?.description} className="rounded-full mb-5 h-56 w-56 flex mx-auto" />
+                                <img src={newUrl} alt={props?.description} className="rounded-full mb-5 h-56 w-56 flex mx-auto object-cover" />
                             </div> :
                             <div>
                                 <h1 className="text-center pb-4">Original Photo</h1>
-                                <img src={props?.url} alt={props?.description} className="rounded-full mb-5 h-56 w-56 flex mx-auto" />
+                                <img src={props?.url} alt={props?.description} className="rounded-full mb-5 h-56 w-56 flex mx-auto object-cover" />
                             </div>
                     }
                     <div>
@@ -93,7 +94,7 @@ const ChangeFoodPicModal = (props: any) => {
                 }
                 <div className="text-red-standard text-center">{error}</div>
                 <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg w-1/3 mx-auto"
-                    onClick={() => setChangePic(false)}
+                    onClick={() => {setChangePic(false); setEdit(false)}}
                 >
                     <span>
                         {
