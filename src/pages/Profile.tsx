@@ -8,7 +8,6 @@ import UserService from '../services/UserService';
 import Restricted from '../components/errors/Restricted';
 import moment from 'moment'
 import ReservationListing from '../components/ReservationListing';
-import { AiFillHeart } from 'react-icons/ai';
 import FavouriteRestaurant from '../components/FavouriteRestaurant';
 
 const Profile = () => {

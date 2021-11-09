@@ -10,11 +10,14 @@ import Loading from '../components/Loading';
 const ManageUser = () => {
     const [userDetails, setUserDetails] = useState([]);
     const [createUser, setCreateUser] = useState(false);
-    const [numPages, setNumPages] = useState(0);
-    const [currPage, setCurrPage] = useState(0);
     const [deleteMessage, setDeleteMessage] = useState("");
     const [isAuthorized, setAuthorized] = useState(false);
     const [loading, setLoading] = useState(false);
+
+    const [numPages, setNumPages] = useState(0);
+    const [currPage, setCurrPage] = useState(0);
+    const [emailContains, setEmailContains] = useState("");
+    const [sortField, setSortField] = useState("id");
 
     useEffect(() => {
         const userInfo: UserDetails = LogInService.getUserDetails();
@@ -26,13 +29,13 @@ const ManageUser = () => {
     useEffect(() => {
         setUserDetails([]);
         setLoading(true);
-        AdminService.getAllUsers(currPage).then((response) => {
+        AdminService.getAllUsers(emailContains, currPage, sortField).then((response) => {
             console.log(response)
             setUserDetails(response.data.content)
             setNumPages(response.data.totalPages)
             setLoading(false);
         })
-    }, [currPage, createUser, deleteMessage])
+    }, [currPage, createUser, deleteMessage, emailContains, sortField])
 
     if (!isAuthorized) {
         return (<Restricted />)
@@ -42,17 +45,24 @@ const ManageUser = () => {
         <div className="min-h-screen">
             <h1 className="text-center font-bold tracking-wide text-5xl text-green-standard  bg-yellow-standard">Manage Users</h1>
             <div className="pt-1 text-center pb-7 text-grey-standard bg-yellow-standard mb-5">Please only edit those fields that you wish to change</div>
-            <button className="mr-16 mb-5 border px-4 py-1 bg-green-standard rounded-full shadow-sm hover:shadow-md text-white-standard flex ml-auto opacity-90 hover:opacity-100"
-                onClick={() => { setCreateUser(true) }}>Create new User</button>
+
             <p className="mx-auto text-green-standard text-center pt-4 pb-4">{deleteMessage}</p>
+            <div className="flex gap-x-2 justify-between mr-16 mb-5 ml-16">
+                <div className="flex gap-x-2 ">
+                    <span className="">Filter Email: </span>
+                    <input className="bg-white-offWhite focus:outline-none px-4 py-1 rounded-large shadow-sm" value={emailContains} onChange={(e) => { setEmailContains(e.target.value) }}></input>
+                </div>
+                <button className="border px-4 py-1 bg-green-standard rounded-full shadow-sm hover:shadow-md text-white-standard flexopacity-90 hover:opacity-100"
+                onClick={() => { setCreateUser(true) }}>Create new User</button>
+            </div>
             <div className="mx-14 bg-white-offWhite pt-6 pb-8 rounded-xxl shadow">
                 <div className="grid grid-cols-1 gap-y-9 items-center">
                     <div className="grid grid-cols-11 gap-x-6 mx-6">
                         <div className="col-span-1"></div>
-                        <p className="col-span-1 text-lg text-grey-dark">UserID</p>
-                        <p className="col-span-3 text-lg text-grey-dark">Email</p>
-                        <p className="col-span-2 text-lg text-grey-dark">Name</p>
-                        <p className="col-span-3 text-lg text-grey-dark">Role</p>
+                        <p className="col-span-1 text-lg text-grey-dark cursor-pointer" onClick={() => { setSortField("id") }} >User ID</p>
+                        <p className="col-span-3 text-lg text-grey-dark cursor-pointer" onClick={() => { setSortField("email") }}>Email</p>
+                        <p className="col-span-2 text-lg text-grey-dark cursor-pointer" onClick={()  => { setSortField("firstName") }}>Name</p>
+                        <p className="col-span-3 text-lg text-grey-dark cursor-pointer" onClick={() => { setSortField("roles") }}>Role</p>
                         <p className="col-span-1 text-lg text-grey-dark">Edit</p>
                     </div>
                     {

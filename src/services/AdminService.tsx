@@ -12,8 +12,8 @@ class AdminService {
         }
     }
 
-    getAllUsers = async (page:number) => {
-        const url = ADMIN_REST_API_URL+"?page="+page;
+    getAllUsers = async (emailContains:string, page:number, sortField:string) => {
+        const url = `${ADMIN_REST_API_URL}?page=${page}&emailContains=${emailContains}&sortBy=${sortField}`
         return await axios.get(url, this.headers());
     }
 
