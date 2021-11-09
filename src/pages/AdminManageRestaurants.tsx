@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AdminRestaurantListing from '../components/AdminRestaurantListing'
 import Restricted from '../components/errors/Restricted'
+import Loading from '../components/Loading'
 import { useAppContext } from '../lib/AppContext'
 import LogInService, { UserDetails } from '../services/LogInService'
 import RestaurantService from '../services/RestaurantService'
@@ -47,14 +48,16 @@ const AdminManageRestaurants = () => {
                                     <p className="col-span-6 text-lg text-grey-dark text-center">Manage options</p>
                                 </div>
                                 {
-                                    restaurants?.map(
-                                        (restaurant: any) => {
-                                            return (
-                                                <AdminRestaurantListing {...{restaurant}} />
-                                            )
-                                        }
-                                    )
+                                    restaurants.length === 0 ? <Loading /> :
+                                        restaurants?.map(
+                                            (restaurant: any) => {
+                                                return (
+                                                    <AdminRestaurantListing {...{ restaurant }} />
+                                                )
+                                            }
+                                        )
                                 }
+
                             </div>
                         </div>
                     </div>
