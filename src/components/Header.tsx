@@ -14,10 +14,10 @@ const Header = () => {
         window.localStorage.removeItem("token");
     }
 
-    const getUserName = () => {
-        const userInfo = LogInService.getUserDetails();
-        return `${userInfo.userFname} ${userInfo.userLname}`;
-    }
+    // const getUserName = () => {
+    //     const userInfo = LogInService.getUserDetails();
+    //     return `${userInfo.userFname} ${userInfo.userLname}`;
+    // }
 
     const isUserAdmin = () => {
         const userInfo = LogInService.getUserDetails();
@@ -52,14 +52,14 @@ const Header = () => {
                             <div className="hidden md:block self-end">
                                 <div className="flex items-baseline space-x-4">
                                     {isUserAdmin() &&
-                                        <Link to='/ManageUser' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Management Console</Link>
+                                        <Link to='/admin' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Admin</Link>
                                     }
                                     {isUserManager() &&
-                                        <Link to='/manager' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Manage Restaurant</Link>
+                                        <Link to='/manager' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Manager</Link>
                                     }
                                     {isAuthenticated ? (
                                         <>
-                                            <Link to='/profile' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">{getUserName()}</Link>
+                                            <Link to='/profile' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">{/*getUserName()*/}Profile</Link>
                                             <Link to='/settings' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Settings</Link>
                                             <Link onClick={handleLogout} to="/login" className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Logout</Link>
                                         </>
@@ -167,7 +167,8 @@ const Header = () => {
                                     {isAuthenticated ? (
                                         <>
                                             <Link to='/profile' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                                {getUserName()}
+                                                {/* {getUserName()} */}
+                                                Profile
                                             </Link>
                                             <Link to='/settings' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
                                                 Settings

@@ -43,7 +43,7 @@ const ResetPwd = () => {
                         </div>
 
                         <div className="pt-5 flex">
-                            <button className="rounded-xl px-5 bg-green-standard text-white-standard shadow-sm hover:shadow-md text-justify h-8" disabled={!validateForm}
+                            <button className="rounded-xl px-5 bg-green-standard text-white-standard shadow-sm hover:shadow-md text-justify h-8 opacity-90 hover:opacity-100" disabled={!validateForm}
                                 onClick={requestResetPwd}>
                                     <span id="button-text">
                                         {processing ? (

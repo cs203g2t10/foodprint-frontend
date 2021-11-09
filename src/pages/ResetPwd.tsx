@@ -56,7 +56,8 @@ const ResetPwd = (props: any) => {
             <div className="flex justify-center">
                 <div className="mt-32 bg-white-standard w-10/12 md:w-7/12 grid md:grid-cols-2 shadow-xxl shadow rounded-xxl pb-10">
                     <div className="ml-16 mt-16">
-                        <h1 className="text-3xl font-bold mb-2">Reset password</h1>
+                        <h1 className="text-3xl font-semibold mb-2 text-green-standard mt-8">Reset password</h1>
+                        <h1 className = "text-grey-lighter mb-5 text-sm">Please choose a new password.</h1>
                         <div className="mb-4">
                             <input className="focus:outline-none px-4 py-1 mt-4 h-10 rounded-full border border-grey-lightest md:w-11/12"
                                 placeholder="New password"
@@ -77,7 +78,7 @@ const ResetPwd = (props: any) => {
                                     <Link to="/login" className="bg-green-standard mt-4 pt-2 pb-3 px-5 text-center text-white-standard hover:shadow-lg rounded-xl">Proceed to log in!</Link>
                                 </>
                                 : <div className="flex">
-                                    <button className="rounded-xl px-5 border hover:shadow text-justify mt-2 h-8"
+                                    <button className="rounded-full px-4 text-white-standard bg-green-standard hover:shadow text-justify mt-2 h-8"
                                         onClick={()=>{resetPwd()}}>
                                         <span id="button-text">
                                             {processing ? (
@@ -91,7 +92,7 @@ const ResetPwd = (props: any) => {
                         }
                     </div>
                     <div>
-                        <img className="mt-16 my-7 w-85 transform scale-90" src="/images/login.png" alt="log in illustration" />
+                        <img className="w-85 transform scale-75" src="/images/resetPassword.png" alt="Reset Password illustration" />
                     </div>
                 </div>
             </div>

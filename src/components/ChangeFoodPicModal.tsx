@@ -8,7 +8,7 @@ const ChangeFoodPicModal = (props: any) => {
     const { changePic, setChangePic, name, setEdit, setSuccess } = props;
     const [changed, setChanged] = useState(false);
     const [loading, setLoading] = useState(false);
-    // const [modalMessage, setModalMessage] = useState("");
+
     const [error, setError] = useState("");
     const [newUrl, setNewUrl] = useState("");
 
@@ -34,13 +34,14 @@ const ChangeFoodPicModal = (props: any) => {
             console.log(response);
             setLoading(false);
             setChanged(true);
+            setSuccess(true);
             setNewUrl(response.data.url);
         }).catch((error) => {
             console.log(error.response);
             setError(error.response.data.message);
             setLoading(false);
         })
-    }, [name, props]);
+    }, [name, props, setSuccess]);
 
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
@@ -55,11 +56,11 @@ const ChangeFoodPicModal = (props: any) => {
                         changed ?
                             <div>
                                 <h1 className="text-center pb-4">Updated Photo</h1>
-                                <img src={newUrl} alt={props?.description} className="rounded-full mb-5 h-56 w-56 flex mx-auto" />
+                                <img src={newUrl} alt={props?.description} className="rounded-full mb-5 h-56 w-56 flex mx-auto object-cover" />
                             </div> :
                             <div>
                                 <h1 className="text-center pb-4">Original Photo</h1>
-                                <img src={props?.url} alt={props?.description} className="rounded-full mb-5 h-56 w-56 flex mx-auto" />
+                                <img src={props?.url} alt={props?.description} className="rounded-full mb-5 h-56 w-56 flex mx-auto object-cover" />
                             </div>
                     }
                     <div>
@@ -88,34 +89,21 @@ const ChangeFoodPicModal = (props: any) => {
                         </div>
                     </div>
                 </div>
-
-
                 {
-                    (changed ?
-                        <>
-                            <div className="mx-auto pb-2">Picture has been updated!</div>
-                            <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28">
-                                <button className=" text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
-                                    onClick={() => {
-                                        setChanged(false);
-                                    }}>Reset</button>
-                                <button className=" text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
-                                    onClick={() => { setChangePic(false); setEdit(false); setSuccess(true) }}>Return</button>
-                            </div>
-                        </> : <>
-                            <div className="text-red-standard text-center">{error}</div>
-                            <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg w-1/3 mx-auto"
-                                onClick={() => setChangePic(false)}
-                            >
-                                <span>
-                                    {
-                                        loading ?
-                                            <div className="spinner" id="spinner" /> :
-                                            'Go Back'
-                                    }
-                                </span>
-                            </button> </>
-                    )}
+                    changed && <div className="mx-auto text-green-standard">Picture has been successfully changed!</div>
+                }
+                <div className="text-red-standard text-center">{error}</div>
+                <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg w-1/3 mx-auto"
+                    onClick={() => {setChangePic(false); setEdit(false)}}
+                >
+                    <span>
+                        {
+                            loading ?
+                                <div className="spinner" id="spinner" /> :
+                                'Go Back'
+                        }
+                    </span>
+                </button>
             </div>
         </ReactModal>
     )

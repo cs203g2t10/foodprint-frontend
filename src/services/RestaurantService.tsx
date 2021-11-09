@@ -16,6 +16,10 @@ class RestaurantService {
         return axios.get(`${RESTAURANTS_REST_API_URL}`, this.headers());
     }
 
+    getRestaurantsPaged = (page:number) => {
+        return axios.get(`${RESTAURANTS_REST_API_URL}/page?p=${page}`, this.headers());
+    }
+
     getRestaurant = (restaurantId: number) => {
         return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}`, this.headers());
     }
@@ -58,7 +62,41 @@ class RestaurantService {
             })
     }
 
-    // Manager: Update Restaurant picture
+    // Admin: Create new restaurant
+    createRestaurant = (name: any, desc: any, location: any, priceRange: any,
+        tableCapacity: any, weekdayOpeningHour: any, weekdayOpeningMinute: any, weekdayClosingHour: any,
+        weekdayClosingMinute: any, weekendOpeningHour: any, weekendOpeningMinute: any, weekendClosingHour: any,
+        weekendClosingMinute: any) => {
+        const requestBody = {
+            restaurantName: name,
+            restaurantDesc: desc,
+            restaurantLocation: location,
+            restaurantPriceRange: priceRange,
+            restaurantTableCapacity: tableCapacity,
+            restaurantWeekdayOpeningHour: weekdayOpeningHour,
+            restaurantWeekdayOpeningMinutes: weekdayOpeningMinute,
+            restaurantWeekdayClosingHour: weekdayClosingHour,
+            restaurantWeekdayClosingMinutes: weekdayClosingMinute,
+            restaurantWeekendOpeningHour: weekendOpeningHour,
+            restaurantWeekendOpeningMinutes: weekendOpeningMinute,
+            restaurantWeekendClosingHour: weekendClosingHour,
+            restaurantWeekendClosingMinutes: weekendClosingMinute,
+        }
+        return axios.post(`${RESTAURANTS_REST_API_URL}`, requestBody, this.headers())
+            .catch((error) => {
+                return error.response;
+        });
+    }
+
+    // Manager: Upload Restaurant picture POST
+    uploadRestaurantPicture = (restaurantId: number, title:any, description:any, file: File) => {
+        const url = `${RESTAURANTS_REST_API_URL}/${restaurantId}/uploadPicture/?title=${title}&description=${description}`;
+        const formData = new FormData();
+        formData.append("file", file);
+        return axios.post(url, formData, this.headers())
+    }
+
+    // Manager: Update Restaurant picture PATCH
     changeRestaurantPicture = (restaurantId: number, pictureFile: File) => {
         const url = `${RESTAURANTS_REST_API_URL}/${restaurantId}/picture`;
         const formData = new FormData();

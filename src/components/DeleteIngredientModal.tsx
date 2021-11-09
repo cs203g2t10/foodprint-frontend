@@ -2,11 +2,9 @@ import React, { useState } from 'react'
 import ReactModal from 'react-modal';
 import RestaurantService from '../services/RestaurantService';
 
+const DeleteIngredientModal = (props: any) => {
 
-
-const DeleteFoodModal = (props: any) => {
-
-    const { deleteModalOpen, setDeleteModal, name } = props;
+    const { deleteModalOpen, setDeleteModal, name, id } = props;
     const [deleted, setDeleted] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
@@ -15,17 +13,16 @@ const DeleteFoodModal = (props: any) => {
         overlay: { zIndex: 1000 }
     };
 
-    const deleteFood = () => {
+    const deleteIngredient: any = async () => {
+        setError("");
         setLoading(true);
-        setError("")
-        const response = RestaurantService.deleteFood(props.restaurantId, props.foodId);
-        response.then((res) => {
-            console.log(res);           
+        const response =  RestaurantService.deleteIngredient(props.restaurantId, id);
+        response.then(res => {
             setDeleted(true);
             setLoading(false);
-        }).catch((error) => {
-            console.log(error.response);
-            setError(error.response.data.message);
+        }).catch(err => {
+            console.log(err.response);
+            setError(err.response.data.message);
             setLoading(false);
         })
     }
@@ -33,7 +30,7 @@ const DeleteFoodModal = (props: any) => {
     return (
         <ReactModal style={customStyles} isOpen={deleteModalOpen} className="focus:outline-none">
             <div className="grid justify-center items-center gap-y-2 rounded-xxl shadow w-1/3 mx-auto pb-10 pt-12 mt-24 bg-white-dirtyWhite">
-                <h1 className=" flex text-5xl text-green-standard font-bold mx-auto">Delete Food</h1>
+                <h1 className=" flex text-5xl text-green-standard font-bold mx-auto">Delete Ingredient</h1>
                 <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Are you sure you want to delete {name}?</h1>
                 {
                     (deleted ?
@@ -47,7 +44,7 @@ const DeleteFoodModal = (props: any) => {
                         <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28 pt-4">
                             <div className="col-span-2 text-red-standard text-center pb-4" >{error}</div>
                             <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
-                            onClick={()=>{deleteFood()}}>
+                            onClick={()=>{deleteIngredient()}}>
                                 <span>
                                     {
                                         loading ?
@@ -64,4 +61,4 @@ const DeleteFoodModal = (props: any) => {
     )
 }
 
-export default DeleteFoodModal
+export default DeleteIngredientModal

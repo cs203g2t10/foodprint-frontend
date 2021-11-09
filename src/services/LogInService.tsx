@@ -4,14 +4,14 @@ import jwt_decode from 'jwt-decode'
 const LOGIN_REST_API_URL = process.env.REACT_APP_CF_PAGES ? "https://api.foodprint.works/api/v1/auth" : "http://localhost:8080/api/v1/auth";
 
 type UserDetails = {
-    email: String
+    email: string
     userId: number
-    userFname: String
-    userLname: String
+    userFname: string
+    userLname: string
     userAuthorities: String[]
     restaurantId: number | null
-    vaccinationName: String | null
-    vaccinationDob: String | null
+    vaccinationName: string | null
+    vaccinationDob: string | null
 };
 
 class LogInService {
@@ -82,11 +82,12 @@ class LogInService {
             }
         }
 
-
         let decodedHeader: UserDetails | null = null;
-
+        let email: string = "";
         try {
             decodedHeader = jwt_decode(token, { header: true });
+            var decoded : any = jwt_decode(token);
+            email = decoded.sub;
         } catch {
             console.log("Problem.")
         }
@@ -105,7 +106,7 @@ class LogInService {
         }
 
         let userDetails: UserDetails = {
-            email: decodedHeader.email,
+            email: email,
             userId: decodedHeader.userId,
             userFname: decodedHeader.userFname,
             userLname: decodedHeader.userLname,

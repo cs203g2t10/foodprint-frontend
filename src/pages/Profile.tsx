@@ -4,9 +4,12 @@ import { useAppContext } from '../lib/AppContext'
 import LogInService from '../services/LogInService'
 import type { UserDetails } from '../services/LogInService';
 import ReservationService from '../services/ReservationService';
+import UserService from '../services/UserService';
 import Restricted from '../components/errors/Restricted';
 import moment from 'moment'
 import ReservationListing from '../components/ReservationListing';
+import { AiFillHeart } from 'react-icons/ai';
+import FavouriteRestaurant from '../components/FavouriteRestaurant';
 
 const Profile = () => {
 
@@ -16,6 +19,7 @@ const Profile = () => {
         return `${userInfo.userFname} ${userInfo.userLname}`;
     }
 
+    const [favouriteRestaurants, setFavouriteRestaurants] = useState<any[]>([])
     const [upcomingReservation, setUpcomingReservation] = useState<any[]>([])
     const [pastReservation, setPastReservation] = useState<any[]>([])
     const [deletemessage, setDeleteMessage] = useState<string>("");
@@ -35,7 +39,12 @@ const Profile = () => {
         })
     }, [])
 
-
+    useEffect(() => {
+        UserService.getFavRestaurant().then((response) => {
+            console.log(response)
+            setFavouriteRestaurants(response.data)
+        })
+    }, [])
 
     return (
         <div className="min-h-screen">
@@ -45,10 +54,10 @@ const Profile = () => {
                         <div className="absolute z-10">
                             <div className="grid grid-cols-7 gap-x-16 mx-32 my-10">
                                 <div className="col-span-2">
-                                    <img className="w-48 h-48" src="/images/user.png" alt="user" />
+                                    <img className="h-48" src="/images/user.png" alt="user" />
                                 </div>
                                 <div className="col-span-5">
-                                    <h1 className="text-6xl pb-4 text-green-standard">Hello, {getUserName()} </h1>
+                                    <h1 className="text-6xl pb-4 text-green-standard">Hello {getUserName()}!</h1>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +77,25 @@ const Profile = () => {
 
                     <div className="grid lg:grid-cols-11 gap-x-10 mx-20">
                         <div className="col-span-4 bg-white-dirtyWhite rounded-xxl h-auto shadow-md px-10 py-6">
-                            <h1 className="text-green-standard text-2xl font-bold tracking-wide">Favourite Restaurants</h1>
+                            <h1 className="text-green-standard text-2xl font-bold tracking-wide ml-3 mb-4">Favourite Restaurants</h1>
+                            {
+                                    (
+                                        (favouriteRestaurants.length === 0) && 
+                                           <div className="">
+                                               <img className="h-48 mx-auto mt-10" src="/images/noFavRestaurant.png" alt="No fav restaurant" />
+                                                <h1 className="text-green-standard text-center">No saved restaurants.</h1>
+                                            </div>
+                                    )
+                                }
+                            <div className="mx-3">
+                                {
+                                    favouriteRestaurants.map((favouriteRestaurant: any) => {
+                                        return (
+                                            <FavouriteRestaurant name={favouriteRestaurant.restaurantName} url={favouriteRestaurant.picture?.url}/>
+                                        )
+                                    })
+                                }
+                            </div>
                         </div>
 
 
@@ -98,7 +125,7 @@ const Profile = () => {
                                         upcomingReservation.map((upcomingReservation) => {
                                             var dateTime = upcomingReservation.date;
                                             return (
-                                                <ReservationListing key={upcomingReservation.reservationId} dateTime={moment(dateTime).format('MMM Do YYYY, h:mm a')} reservationId={upcomingReservation.reservationId} restaurantName={upcomingReservation.restaurantName} status={upcomingReservation.status} imageUrl={upcomingReservation.imageUrl} {...{ setDeleteMessage }} past={false}/>
+                                                <ReservationListing key={upcomingReservation.reservationId} dateTime={moment(dateTime).format('MMM Do YYYY, h:mm a')} reservationId={upcomingReservation.reservationId} restaurantName={upcomingReservation.restaurantName} status={upcomingReservation.status} imageUrl={upcomingReservation.imageUrl} {...{ setDeleteMessage }} past={false} />
                                             )
                                         })
                                     }
@@ -131,7 +158,7 @@ const Profile = () => {
                                         pastReservation.map(pastReservation => {
                                             var dateTime = pastReservation.date;
                                             return (
-                                                <ReservationListing key={pastReservation.reservationId} dateTime={moment(dateTime).format('MMM Do YYYY, h:mm a')} reservationId={pastReservation.reservationId} restaurantName={pastReservation.restaurantName} status={pastReservation.status} imageUrl={pastReservation.imageUrl} past={true}/>
+                                                <ReservationListing key={pastReservation.reservationId} dateTime={moment(dateTime).format('MMM Do YYYY, h:mm a')} reservationId={pastReservation.reservationId} restaurantName={pastReservation.restaurantName} status={pastReservation.status} imageUrl={pastReservation.imageUrl} past={true} />
                                             )
                                         })
                                     }

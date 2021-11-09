@@ -8,7 +8,7 @@ const Restricted = () => {
                 <img className = "my-0 flex mx-auto"style = {{height:300}}src="/images/restricted.png" alt="403" />
                 <h1 className="text-5xl pt-12 text-green-standard font-bold text-center">Restricted access</h1>
                 <h1 className="text-md mb-2 text-grey-standard font-light text-center">You are not authenticated or not authorized to access this resource</h1>
-                <Link className="mt-3 text-center text-white-standard bg-green-standard py-1 px-5 flex mx-auto rounded-large shadow-sm hover:shadow-md w-max bg-opacity-80 hover:bg-opacity-100" to="/">Return to Home</Link>
+                <Link className="mt-3 text-center text-white-standard bg-green-standard py-1 px-5 flex mx-auto rounded-full shadow-sm hover:shadow-md w-max bg-opacity-90 hover:bg-opacity-100" to="/">Return to Home</Link>
             </div>
         </div>
     )

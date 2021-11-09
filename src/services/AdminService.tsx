@@ -34,6 +34,17 @@ class AdminService {
         return axios.patch(url, requestBody, this.headers());
     }
 
+    updateUserDetails = (id:number, email:any, firstName:any, lastName:any) => {
+        console.log(id, email, firstName, lastName);
+        const url = ADMIN_REST_API_URL+"/"+id;
+        const requestBody = {
+            email,
+            firstName,
+            lastName
+        };
+        return axios.patch(url, requestBody, this.headers());
+    }
+
     adminCreateUser = (email: string, firstName: string, lastName: string, password: string, roles: string) => {
         const url = ADMIN_REST_API_URL+"/";
         const requestBody = {
@@ -43,12 +54,7 @@ class AdminService {
             password,
             roles,
             lastLogin: new Date(),
-            registeredOn: new Date(),
-            reservations: [],
-            vaccinationName: "",
-            vaccinationDob: "",
-            token: [],
-            vaccinated: false
+            registeredOn: new Date()
         }
         return axios.post(url, requestBody, this.headers());
     }
