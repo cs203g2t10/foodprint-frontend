@@ -11,7 +11,6 @@ const Payment = () => {
     let params = useParams<any>();
 
     const [reservationDetails, setReservationDetails] = useState<any>([]);
-    // const [reservationOrders, setReservationOrder] = useState([])
     const [paid, setPaid] = useState(false);
 
     useEffect(() => {
@@ -24,13 +23,6 @@ const Payment = () => {
             console.log('Response: ', response.data);
         })
     }, [params])
-
-    // useEffect(() => {
-    //     ReservationService.getReservationOrder(params.id).then((response) => {
-    //         console.log('Response: ', response.data);
-    //         setReservationOrder(response.data)
-    //     })
-    // }, [params])
 
     const STRIPE_PUBLIC_KEY = "pk_test_51JWxIgJomapQlvkOKjy27IVPV75f4t6LyEU6NxqtjawVAJTwS5s3ghrQevyGrUXI3vs5RHGGkEfyHbGU0aazJyik00TbOClJ64";
 
@@ -78,10 +70,11 @@ const Payment = () => {
                                 <div className="gap-x-2 text-md text-green-standard">Total bill:</div>
                                 <div className="gap-x-2 text-md text-green-standard">Deposit (20% total):</div>
                             </div>
-                            <div className="col-span-2 mx-3">
+                            <div className="col-span-2 mx-3 text-right">
                                 <h1 className="gap-x-2 text-base text-grey-standard">${(reservationDetails.price / 100).toFixed(2)}</h1>
                                 <h1 className="gap-x-2 text-base text-grey-standard">${(reservationDetails.price / 100 / 5).toFixed(2)}</h1>
                             </div>
+                            <div className="col-span-4 pt-3 text-center text-gray-400">*Prices exclusive of GST and Service Charge</div>
                         </div>
 
                     </div>
