@@ -55,15 +55,12 @@ const Dashboard = () => {
         }
         setIngredientsLoading(true);
         setFoodLoading(true);
-        setReservationLoading(true);
 
         setIngError("");
         setFoodError("");
-        setResError("");
 
         setIngredientsBetween([]);
         setFoodBetween({});
-        setUpcomingReservation([])
 
         const start = moment(startDate).format("YYYY-MM-DD");
         const end = moment(endDate).format("YYYY-MM-DD");
@@ -84,6 +81,22 @@ const Dashboard = () => {
             setFoodLoading(false);
         })
 
+
+
+    }, [restaurantId, startDate, endDate])
+
+    useEffect(() => {
+        if (restaurantId === 0) {
+            return;
+        }
+
+        setReservationLoading(true);
+        setUpcomingReservation([])
+        setResError("");
+
+        const start = moment(startDate).format("YYYY-MM-DD");
+        const end = moment(endDate).format("YYYY-MM-DD");
+
         ReservationService.getRestaurantReservations(restaurantId, start, end, currPage).then((response) => {
             console.log('num pages:' + response.data.totalPages)
             setNumPages(response.data.totalPages)
@@ -93,7 +106,6 @@ const Dashboard = () => {
             setResError(err.response.data.message);
             setReservationLoading(false);
         })
-
     }, [currPage, restaurantId, startDate, endDate])
 
     useEffect(() => {
@@ -183,8 +195,8 @@ const Dashboard = () => {
                             foodLoading && <div className="flex justify-center bg-white-standard rounded-xxl"><Loading /></div>
                         }
                         <div className="text-red-standard text-center">{foodError}</div>
-                        {Object.keys(foodBetween).map((ingredient) => (
-                            <IngredientBreakdownListing ingredient={ingredient} quantity={"x " + foodBetween[ingredient]} key={ingredient} />
+                        {Object.keys(foodBetween).map((food) => (
+                            <IngredientBreakdownListing ingredient={food} quantity={"x " + foodBetween[food]} key={food} />
                         ))}
                     </div>
 
@@ -210,9 +222,9 @@ const Dashboard = () => {
                     upcomingReservation?.map((upcomingReservation: any) => {
                         var dateTime = upcomingReservation.date;
                         return (
-                            <RestaurantReservationList key={upcomingReservation.reservationId} reservationId={upcomingReservation.reservationId} 
-                            userFirstName={upcomingReservation.userFirstName} userLastName={upcomingReservation.userLastName} 
-                            date={moment(dateTime).format('MMM Do YYYY, h:mm a')} status={upcomingReservation.status} />
+                            <RestaurantReservationList key={upcomingReservation.reservationId} reservationId={upcomingReservation.reservationId}
+                                userFirstName={upcomingReservation.userFirstName} userLastName={upcomingReservation.userLastName}
+                                date={moment(dateTime).format('MMM Do YYYY, h:mm a')} status={upcomingReservation.status} />
                         )
                     })
                 }
