@@ -62,11 +62,11 @@ const ChangeRestaurantPicModal = (props: any) => {
                         changed ?
                             <div>
                                 <h1 className="text-center pb-4">Updated Photo</h1>
-                                <img src={newUrl} alt={props?.description} className="rounded-full mb-5 h-56 w-56 flex mx-auto" />
+                                <img src={newUrl} alt={props?.description} className="rounded-full mb-5 h-56 w-56 flex mx-auto object-cover" />
                             </div> :
                             <div>
                                 <h1 className="text-center pb-4">Original Photo</h1>
-                                <img src={imageUrl} alt={name + ' pic'} className="rounded-full mb-5 h-56 w-56 flex mx-auto" />
+                                <img src={imageUrl} alt={name + ' pic'} className="rounded-full mb-5 h-56 w-56 flex mx-auto object-cover" />
                             </div>
                     }
                     <div>
