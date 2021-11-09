@@ -6,10 +6,13 @@ import Loading from '../components/Loading'
 import { useAppContext } from '../lib/AppContext'
 import LogInService, { UserDetails } from '../services/LogInService'
 import RestaurantService from '../services/RestaurantService'
+import PageLinks from '../components/PageLinks'
 
 const AdminManageRestaurants = () => {
 
     const [restaurants, setRestaurants] = useState([])
+    const [numPages, setNumPages] = useState(0);
+    const [currPage, setCurrPage] = useState(0);
 
     const { isAuthenticated } = useAppContext() || {}
     const [isAuthorized, setAuthorized] = useState(false);
@@ -30,11 +33,12 @@ const AdminManageRestaurants = () => {
     }
 
     useEffect(() => {
-        RestaurantService.getRestaurants().then((response) => {
+        RestaurantService.getRestaurantsPaged(currPage).then((response) => {
             console.log(response)
-            setRestaurants(response.data)
+            setNumPages(response.data.totalPages)
+            setRestaurants(response.data.content)
         })
-    }, [])
+    }, [currPage])
 
     return (
         <div className="min-h-screen">
@@ -57,10 +61,10 @@ const AdminManageRestaurants = () => {
                         <div className="mx-56 px-8 overflow-auto bg-white-offWhite pt-6 pb-8 rounded-xxl shadow mb-2">
 
                             <div className="grid grid-cols-1 gap-y-3 items-center">
-
                                 {
                                     restaurants?.map(
                                         (restaurant: any) => {
+                                            console.log(restaurant);
                                             return (
                                                 <AdminRestaurantListing {...{ restaurant }} />
                                             )
@@ -69,6 +73,7 @@ const AdminManageRestaurants = () => {
                                 }
                             </div>
                         </div>
+                        <PageLinks {...{ numPages, currPage, setCurrPage}} />
                         <div className="flex justify-center">
                             {restaurants.length === 0 && <Loading />}
                         </div>
