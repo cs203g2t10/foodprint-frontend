@@ -4,9 +4,11 @@ import { useAppContext } from '../lib/AppContext'
 import LogInService from '../services/LogInService'
 import type { UserDetails } from '../services/LogInService';
 import ReservationService from '../services/ReservationService';
+import UserService from '../services/UserService';
 import Restricted from '../components/errors/Restricted';
 import moment from 'moment'
 import ReservationListing from '../components/ReservationListing';
+import { AiFillHeart } from 'react-icons/ai';
 
 const Profile = () => {
 
@@ -16,6 +18,7 @@ const Profile = () => {
         return `${userInfo.userFname} ${userInfo.userLname}`;
     }
 
+    const [favouriteRestaurants, setFavouriteRestaurants] = useState<any[]>([])
     const [upcomingReservation, setUpcomingReservation] = useState<any[]>([])
     const [pastReservation, setPastReservation] = useState<any[]>([])
     const [deletemessage, setDeleteMessage] = useState<string>("");
@@ -35,7 +38,12 @@ const Profile = () => {
         })
     }, [])
 
-
+    useEffect(() => {
+        UserService.getFavRestaurant().then((response) => {
+            console.log(response)
+            setFavouriteRestaurants(response.data)
+        })
+    }, [])
 
     return (
         <div className="min-h-screen">
@@ -68,7 +76,29 @@ const Profile = () => {
 
                     <div className="grid lg:grid-cols-11 gap-x-10 mx-20">
                         <div className="col-span-4 bg-white-dirtyWhite rounded-xxl h-auto shadow-md px-10 py-6">
-                            <h1 className="text-green-standard text-2xl font-bold tracking-wide">Favourite Restaurants</h1>
+                            <h1 className="text-green-standard text-2xl font-bold tracking-wide ml-3 mb-4">Favourite Restaurants</h1>
+                            {
+                                    (
+                                        (favouriteRestaurants.length === 0) && 
+                                           <div className="">
+                                               <img className="h-48 mx-auto mt-10" src="/images/noFavRestaurant.png" alt="No fav restaurant" />
+                                                <h1 className="text-green-standard text-center">No saved restaurants.</h1>
+                                            </div>
+                                    )
+                                }
+                            <div className="mx-3">
+                                {
+                                    favouriteRestaurants.map((favouriteRestaurant: any) => {
+                                        return (
+                                            <div className="bg-white-offWhite mb-3 grid grid-cols-5 py-2 px-4 rounded-large">
+                                                <img className="shadow-sm h-12 w-12 object-fill rounded-lg col-span-1 ml-2" src={favouriteRestaurant.picture?.url} alt="restaurant"/>
+                                                <h1 className="text-base col-span-3 my-auto grid pl-5">{favouriteRestaurant.restaurantName}</h1>
+                                                <AiFillHeart className="text-lg my-auto grid text-red-standard"/>
+                                            </div> 
+                                        )
+                                    })
+                                }
+                            </div>
                         </div>
 
 
@@ -98,7 +128,7 @@ const Profile = () => {
                                         upcomingReservation.map((upcomingReservation) => {
                                             var dateTime = upcomingReservation.date;
                                             return (
-                                                <ReservationListing key={upcomingReservation.reservationId} dateTime={moment(dateTime).format('MMM Do YYYY, h:mm a')} reservationId={upcomingReservation.reservationId} restaurantName={upcomingReservation.restaurantName} status={upcomingReservation.status} imageUrl={upcomingReservation.imageUrl} {...{ setDeleteMessage }} past={false}/>
+                                                <ReservationListing key={upcomingReservation.reservationId} dateTime={moment(dateTime).format('MMM Do YYYY, h:mm a')} reservationId={upcomingReservation.reservationId} restaurantName={upcomingReservation.restaurantName} status={upcomingReservation.status} imageUrl={upcomingReservation.imageUrl} {...{ setDeleteMessage }} past={false} />
                                             )
                                         })
                                     }
@@ -131,7 +161,7 @@ const Profile = () => {
                                         pastReservation.map(pastReservation => {
                                             var dateTime = pastReservation.date;
                                             return (
-                                                <ReservationListing key={pastReservation.reservationId} dateTime={moment(dateTime).format('MMM Do YYYY, h:mm a')} reservationId={pastReservation.reservationId} restaurantName={pastReservation.restaurantName} status={pastReservation.status} imageUrl={pastReservation.imageUrl} past={true}/>
+                                                <ReservationListing key={pastReservation.reservationId} dateTime={moment(dateTime).format('MMM Do YYYY, h:mm a')} reservationId={pastReservation.reservationId} restaurantName={pastReservation.restaurantName} status={pastReservation.status} imageUrl={pastReservation.imageUrl} past={true} />
                                             )
                                         })
                                     }
