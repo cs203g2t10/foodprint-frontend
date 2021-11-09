@@ -48,7 +48,7 @@ const TwoFa = () => {
             console.log(response)
             setTwoFaEnabled(response.data)
         })
-        
+
         if (!twoFaEnabled) {
             twoFaSet()
         }
@@ -57,62 +57,68 @@ const TwoFa = () => {
     return (
         <div className="bg-yellow-standard h-screen">
             <div className="flex justify-center">
-                <div className="mt-32 bg-white-standard w-10/12 md:w-7/12 grid md:grid-cols-2 shadow-xxl shadow rounded-xxl">
-                    <div className="ml-16 mt-16 mb-16">
-                    <h1 className="text-3xl font-bold mb-2 text-green-standard">{twoFaEnabled ? "Disable" : "Enable"} Two-Factor Authentication</h1>
-                        
-                        {(
-                            twoFaEnabled ? 
-                            <div className="">
-                                <p>
-                                    <b>Steps:</b><br></br>
-                                    <b>1.</b> Launch Google Authenticator<br></br>
-                                    <b>2.</b> Enter OTP shown and hit "Disable 2FA"
-                                </p>
+                <div className="mt-32 p-10 bg-white-standard w-10/12 md:w-7/12 grid md:grid-cols-5 shadow-xxl shadow rounded-xxl">
+                    <img className="transform scale-90 col-span-2 my-auto grid" src="/images/twoFactorAuthentication.png" alt="2fa" />
+                    <div className="col-span-3 py-5">
+                        <h1 className="text-4xl font-semibold mb-4 text-green-standard">{twoFaEnabled ? "Disable" : "Enable"} Two-Factor Authentication</h1>
+
+                        <div className="grid grid-cols-2">
+                            <div>
+                                {(
+                                    twoFaEnabled ?
+                                    <div className="">
+                                            <p>
+                                                Steps:<br></br>
+                                                <b>1.</b>  Launch Google Authenticator<br></br>
+                                                <b>2.</b>  Enter OTP shown and hit "Disable 2FA"
+                                            </p>
+                                        </div>
+                                        :
+                                        <div className="">
+                                            <h1 className="text-green-standard font-semibold tracking-wide">Steps:</h1>
+                                            <p className="text-base text-grey-standard">
+                                                <b>1.</b>  Launch Google Authenticator and scan QR code on the right<br></br>
+                                                <b>2.</b>  Enter OTP shown and hit "Enable 2FA"
+                                            </p>
+                                        </div>
+                                )}
+                                {
+                                    (error ? <div className="pt-5 pb-2 text-red-standard">{error}</div> : <></>)
+                                }
+                                {
+                                    (enableSuccess ? <div className="pt-5 pb-2 text-green-standard">2FA enabled, try it in your next login!</div> : <></>)
+                                }
+                                {
+                                    (disableSuccess ? <div className="pt-5 pb-2 text-green-standard">2FA disabled!</div> : <></>)
+                                }
                             </div>
-                            :
-                            <div className="">
-                                <p>
-                                    <b>Steps:</b><br></br>
-                                    <b>1.</b> Launch Google Authenticator and scan QR code on the right<br></br>
-                                    <b>2.</b> Enter OTP shown and hit "Enable 2FA"
-                                </p>
-                            </div>
-                        )}
-                        <div className="">
-                            <input className="focus:outline-none px-4 py-1 my-4 h-11 rounded-full border border-grey-lightest md:w-11/12"
+
+                            <img className={(!twoFaEnabled) ? "h-32 pl-8" : "mt-16 my-7 transform scale-90"} src={(!twoFaEnabled) ? QRUrl : "/images/login.png"} alt="QR code" />
+                        </div>
+
+                        <div className="pr-20">
+                            <input className="focus:outline-none px-4 py-1 my-4 h-11 rounded-full border border-grey-lightest w-full"
                                 placeholder="OTP"
                                 type="number"
                                 onChange={e => setToken(e.target.value)} />
                         </div>
                         {(
-                            twoFaEnabled ? 
-                            <button className="rounded-xl px-5 border hover:shadow text-justify text-white-standard mt-2 h-8 bg-green-standard"
-                                onClick={disable}>Disable 2FA
-                            </button> 
-                            :
-                            <button className="rounded-xl px-5 border hover:shadow text-justify text-white-standard mt-2 h-8 bg-green-standard"
-                                onClick={confirmTwoFaToken}>Enable 2FA
-                            </button>
+                            twoFaEnabled ?
+                                <button className="rounded-xl px-5 border hover:shadow text-justify text-white-standard mt-2 h-8 bg-green-standard"
+                                    onClick={disable}>Disable 2FA
+                                </button>
+                                :
+                                <button className="rounded-xl px-5 border hover:shadow text-justify text-white-standard mt-2 h-8 bg-green-standard"
+                                    onClick={confirmTwoFaToken}>Enable 2FA
+                                </button>
                         )}
 
-                        {
-                            (error ? <div className="pt-5 pb-2 text-red-standard">{error}</div> : <></>)
-                        }
-                        {
-                            (enableSuccess ? <div className="pt-5 pb-2 text-green-standard">2FA enabled, try it in your next login!</div> : <></>)
-                        }
-                        {
-                            (disableSuccess ? <div className="pt-5 pb-2 text-green-standard">2FA disabled!</div> : <></>)
-                        }
 
-                    </div>
 
-                    <div>
-                        <img className={(!twoFaEnabled) ? "mt-24 my-7 mx-24 transform scale-110" : "mt-16 my-7 transform scale-90"} src={(!twoFaEnabled) ? QRUrl : "/images/login.png"} alt="QR code" />
                     </div>
 
                 </div>
+
             </div>
         </div>
     )
