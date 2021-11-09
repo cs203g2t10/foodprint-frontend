@@ -59,7 +59,7 @@ const Header = () => {
                                     }
                                     {isAuthenticated ? (
                                         <>
-                                            <Link to='/profile' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">{getUserName()}</Link>
+                                            <Link to='/profile' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">{/*getUserName()*/}Profile</Link>
                                             <Link to='/settings' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Settings</Link>
                                             <Link onClick={handleLogout} to="/login" className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Logout</Link>
                                         </>
@@ -167,7 +167,8 @@ const Header = () => {
                                     {isAuthenticated ? (
                                         <>
                                             <Link to='/profile' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                                {getUserName()}
+                                                {/* {getUserName()} */}
+                                                Profile
                                             </Link>
                                             <Link to='/settings' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
                                                 Settings

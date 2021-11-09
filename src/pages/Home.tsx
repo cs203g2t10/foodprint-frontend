@@ -65,7 +65,7 @@ const Home = () => {
                     <div className="bg-yellow-standard px-3 overflow-hidden">
                         <div className="grid md:grid-cols-7 gap-4 h-screen px-10 py-20 md:py-0">
                             <div className="border-1 md:col-span-4 md:pl-36">
-                                <h1 className="text-2xl md:pt-52 text-green-standard pl-1 pb-1 animate__animated animate__fadeIn">Hello, {getUserName()}!</h1>
+                                <h1 className="text-2xl md:pt-52 text-green-standard pl-1 pb-1 animate__animated animate__fadeIn">Hello {getUserName()}!</h1>
                                 <h1 className="text-left text-6xl pb-2 animate__animated animate__fadeIn">Discover and book the best restaurants.</h1>
                                 <div className="flex justify-left">
                                     <Link to="/restaurants" className="bg-green-standard mt-4 pt-2 pb-3 px-5 text-center text-white-standard hover:shadow-lg rounded-xl">Start browsing now!</Link>

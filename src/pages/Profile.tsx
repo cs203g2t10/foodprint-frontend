@@ -48,7 +48,7 @@ const Profile = () => {
                                     <img className="h-48" src="/images/user.png" alt="user" />
                                 </div>
                                 <div className="col-span-5">
-                                    <h1 className="text-6xl pb-4 text-green-standard">Hello, {getUserName()} </h1>
+                                    <h1 className="text-6xl pb-4 text-green-standard">Hello {getUserName()}!</h1>
                                 </div>
                             </div>
                         </div>
