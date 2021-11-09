@@ -6,8 +6,6 @@ import DeleteIngredientModal from './DeleteIngredientModal';
 
 const IngredientListing = (props: any) => {
 
-    const { setDeleteMessage } = props;
-
     const [edit, setEdit] = useState(false);
     const [restaurantId] = useState(props.restaurantId);
     const [id, setId] = useState(props.id);
@@ -17,12 +15,6 @@ const IngredientListing = (props: any) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [deleteModalOpen, setDeleteModal] = useState(false);
-
-    const deleteIngredient: any = async (id: number) => {
-        console.log(id)
-        await RestaurantService.deleteIngredient(restaurantId, id);
-        setDeleteMessage("Ingredient with id: " + id + " has been deleted.")
-    }
 
     const updateIngredientDetails: any = (id: number, name: string, desc: string, units: string) => {
         setLoading(true);

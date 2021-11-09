@@ -19,7 +19,6 @@ const ManageIngredients = () => {
 
     const [numPages, setNumPages] = useState(0);
     const [currPage, setCurrPage] = useState(0);
-    const [deleteMessage, setDeleteMessage] = useState("");
     const [isAuthorized, setAuthorized] = useState(false);
     const [loading, setLoading] = useState(false);
 
@@ -55,7 +54,7 @@ const ManageIngredients = () => {
             setNumPages(response.data.totalPages)
             setLoading(false);
         })
-    }, [restaurantId, currPage, createIngredient, deleteMessage])
+    }, [restaurantId, currPage, createIngredient])
     
     if (!isAuthorized) {
         return (<Restricted/>)
@@ -86,7 +85,7 @@ const ManageIngredients = () => {
                                         name={ingredient.ingredientName}
                                         desc={ingredient.ingredientDesc}
                                         units={ingredient.units}
-                                        key={ingredient.ingredientId} {...{setDeleteMessage}}/>
+                                        key={ingredient.ingredientId}/>
                                 )
                             }
                         )
@@ -94,7 +93,6 @@ const ManageIngredients = () => {
                 </div>
             </div>
             {loading && <div className="flex justify-center py-1"><Loading /></div> }
-            <p className="mx-auto text-green-standard text-center pt-4">{deleteMessage}</p>
             <PageLinks {...{ numPages, currPage, setCurrPage}} />
             <div>
             </div>
