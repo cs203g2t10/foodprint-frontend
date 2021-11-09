@@ -210,7 +210,9 @@ const Dashboard = () => {
                     upcomingReservation?.map((upcomingReservation: any) => {
                         var dateTime = upcomingReservation.date;
                         return (
-                            <RestaurantReservationList key={upcomingReservation.reservationId} reservationId={upcomingReservation.reservationId} userFirstName={upcomingReservation.userFirstName} userLastName={upcomingReservation.userLastName} date={moment(dateTime).format('MMM Do YYYY, h:mm a')} status={upcomingReservation.status} />
+                            <RestaurantReservationList key={upcomingReservation.reservationId} reservationId={upcomingReservation.reservationId} 
+                            userFirstName={upcomingReservation.userFirstName} userLastName={upcomingReservation.userLastName} 
+                            date={moment(dateTime).format('MMM Do YYYY, h:mm a')} status={upcomingReservation.status} />
                         )
                     })
                 }
