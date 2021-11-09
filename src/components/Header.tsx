@@ -14,10 +14,10 @@ const Header = () => {
         window.localStorage.removeItem("token");
     }
 
-    const getUserName = () => {
-        const userInfo = LogInService.getUserDetails();
-        return `${userInfo.userFname} ${userInfo.userLname}`;
-    }
+    // const getUserName = () => {
+    //     const userInfo = LogInService.getUserDetails();
+    //     return `${userInfo.userFname} ${userInfo.userLname}`;
+    // }
 
     const isUserAdmin = () => {
         const userInfo = LogInService.getUserDetails();
