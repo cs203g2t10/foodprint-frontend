@@ -195,8 +195,8 @@ const Dashboard = () => {
                             foodLoading && <div className="flex justify-center bg-white-standard rounded-xxl"><Loading /></div>
                         }
                         <div className="text-red-standard text-center">{foodError}</div>
-                        {Object.keys(foodBetween).map((ingredient) => (
-                            <IngredientBreakdownListing ingredient={ingredient} quantity={"x " + foodBetween[ingredient]} key={ingredient} />
+                        {Object.keys(foodBetween).map((food) => (
+                            <IngredientBreakdownListing ingredient={food} quantity={"x " + foodBetween[food]} key={food} />
                         ))}
                     </div>
 
