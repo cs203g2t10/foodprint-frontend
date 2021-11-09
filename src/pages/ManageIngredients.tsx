@@ -38,7 +38,7 @@ const ManageIngredients = () => {
             return;
         }
         console.log("Restaurant ID %d", userInfo.restaurantId);
-    }, [])
+    }, [params])
 
     useEffect(() => {
         if (restaurantId === 0) {
