@@ -9,10 +9,9 @@ const PageLinks = (props: any) => {
             {
                 [...Array(numPages)].map((x, i) => {
                     if (i !== currPage) {
-                        return <button key={i} className="hover:text-blue-600"
-                            onClick={() => setCurrPage(i)}>{i + 1}</button>
+                        return <button key={i} className="hover:text-blue-600 text-gray-400" onClick={() => setCurrPage(i)}>{i + 1}</button>
                     } else {
-                        return <button key={i} className="text-blue-600"
+                        return <button key={i} className="text-black"
                         >{i + 1}</button>
                     }
                 }
