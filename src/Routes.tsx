@@ -22,6 +22,8 @@ import Dashboard from "./pages/Dashboard";
 import Category from "./pages/Category";
 import Settings from "./pages/Settings";
 import TwoFa from "./pages/TwoFa";
+import AdminMenu from "./pages/AdminMenu";
+import AdminManageRestaurants from "./pages/AdminManageRestaurants";
 
 export default function Routes() {
     let location = useLocation<any>();
@@ -75,6 +77,12 @@ export default function Routes() {
                 <Route exact path="/manager">
                     <ManagerProfile />
                 </Route>
+                <Route exact path="/admin">
+                    <AdminMenu />
+                </Route>
+                <Route exact path="/adminRestaurant">
+                    <AdminManageRestaurants />
+                </Route>
                 <Route exact path="/managerestaurant">
                     <ManageRestaurant />
                 </Route>
@@ -82,6 +90,9 @@ export default function Routes() {
                     <ManageRestaurant />
                 </Route>
                 <Route exact path="/manageingredients">
+                    <ManageIngredients />
+                </Route>
+                <Route exact path="/manageingredients/:id">
                     <ManageIngredients />
                 </Route>
                 <Route exact path="/dashboard">

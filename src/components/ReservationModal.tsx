@@ -1,4 +1,4 @@
-import { ChangeEvent, SetStateAction, useState } from 'react'
+import { ChangeEvent, SetStateAction, useEffect, useState } from 'react'
 import Modal from 'react-modal'
 import DatePicker from "react-datepicker";
 import ReservationService from '../services/ReservationService'
@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom';
 Modal.setAppElement('#root')
 
 const ReservationModal = (
-    { id, modalIsOpen, lineItems, finalPrice, totalPrice, setModal }:
-        { id: any, modalIsOpen: boolean, lineItems: any[], finalPrice: number, totalPrice: number, setModal: SetStateAction<any> }
+    { id, modalIsOpen, lineItems, totalPrice, setModal, discount }:
+        { id: any, modalIsOpen: boolean, lineItems: any[], totalPrice: number, setModal: SetStateAction<any>, discount:number }
 ) => {
 
     const [pax, setPax] = useState(1);
@@ -20,7 +20,12 @@ const ReservationModal = (
     const [reservationId, setReservationId] = useState();
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const [afterDiscount, setAfterDiscount] = useState(0);
     // const [noSlot, setNoSlot] = useState(false);
+
+    useEffect(() => {
+        setAfterDiscount(totalPrice - (totalPrice * discount / 100));
+    }, [totalPrice, discount]);
 
     const filterAcceptableTimings = (time: any) => {
         const currentDate = new Date()
@@ -98,15 +103,28 @@ const ReservationModal = (
                     <div className="grid grid-cols-4">
                         <div className="col-span-2">
                             <div className="gap-x-2 text-md text-green-standard">Total:</div>
+                            {
+                                discount !== 0 && <>
+                                <div className="gap-x-2 text-md text-green-standard">Discount ({discount}% off):</div>
+                                <div className="gap-x-2 text-md text-green-standard">After discount:</div>
+                                </>
+                            }
                             <div className="gap-x-2 text-md text-green-standard">GST:</div>
                             <div className="gap-x-2 text-md text-green-standard">Service Charge:</div>
                             <div className="gap-x-2 text-md text-green-standard">Final price :</div>
                         </div>
                         <div>
-                            <div className="gap-x-2 text-md text-grey-standard">${totalPrice}</div>
-                            <div className="gap-x-2 text-md text-grey-standard">${(totalPrice * 0.07).toFixed(2)}</div>
-                            <div className="gap-x-2 text-md text-grey-standard">${(totalPrice * 1.07 * 0.1).toFixed(2)}</div>
-                            <div className="gap-x-2 text-md text-grey-standard">${(finalPrice).toFixed(2)}</div>
+                            <div className="gap-x-2 text-md text-grey-standard">${totalPrice.toFixed(2)}</div>
+                            {
+                                discount !== 0 && <>
+                                <div className="gap-x-2 text-md text-grey-standard">-${(totalPrice * discount / 100).toFixed(2)}</div>
+                                {/* <div className="gap-x-2 text-md text-grey-standard">${(totalPrice - totalPrice * discount / 100).toFixed(2)}</div> */}
+                                <div className="gap-x-2 text-md text-grey-standard">${afterDiscount.toFixed(2)}</div>
+                                </>
+                            }
+                            <div className="gap-x-2 text-md text-grey-standard">${(afterDiscount * 0.07).toFixed(2)}</div>
+                            <div className="gap-x-2 text-md text-grey-standard">${(afterDiscount * 1.07 * 0.1).toFixed(2)}</div>
+                            <div className="gap-x-2 text-md text-grey-standard">${(afterDiscount * 1.17).toFixed(2)}</div>
                         </div>
                     </div>
                 </div>

@@ -5,10 +5,13 @@ import CreateIngredientModal from '../components/CreateIngredientModal';
 import PageLinks from '../components/PageLinks';
 import LogInService, { UserDetails } from '../services/LogInService';
 import Restricted from '../components/errors/Restricted';
+import { useParams } from 'react-router';
 
 const ManageIngredients = () => {
 
-    const [restaurantId] = useState(0);
+    let params = useParams<any>();
+
+    const [restaurantId, setRestaurantId] = useState(0);
     const [restaurantDetails, setRestaurantDetails] = useState<any>();
     const [restaurantIngredients, setRestaurantIngredients] = useState<any>();
     const [createIngredient, setCreateIngredient] = useState(false);
@@ -20,15 +23,21 @@ const ManageIngredients = () => {
 
     useEffect(() => {
         const userInfo: UserDetails = LogInService.getUserDetails();
-        if (userInfo.userAuthorities.includes("FP_MANAGER")){
+        if (userInfo.userAuthorities.includes("FP_MANAGER") && Object.keys(params).length === 0){
+            if (userInfo.restaurantId == null) {
+                console.log("User has no restaurant ID");
+                return;
+            }
             setAuthorized(true);
-        }
-        if (userInfo.restaurantId == null) {
-            console.log("User has no restaurant ID");
+            setRestaurantId(userInfo.restaurantId);
+        } else if (userInfo.userAuthorities.includes("FP_ADMIN")){
+            setRestaurantId(params.id);
+            setAuthorized(true);
+        } else {
             return;
         }
         console.log("Restaurant ID %d", userInfo.restaurantId);
-    }, [])
+    }, [params])
 
     useEffect(() => {
         if (restaurantId === 0) {
@@ -57,7 +66,6 @@ const ManageIngredients = () => {
                 <div className="grid grid-cols-1 gap-y-9 items-center">
                     <div className="grid grid-cols-10 gap-x-6 mx-10">
                         <div className="col-span-1"></div>
-                        {/* <p className="col-span-1 text-lg text-green-standard">ID</p> */}
                         <p className="col-span-3 text-lg text-green-standard">Ingredient Name</p>
                         <p className="col-span-3 text-lg text-green-standard">Description</p>
                         <p className="col-span-2 text-lg text-green-standard">Unit of Measure</p>
