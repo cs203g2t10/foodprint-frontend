@@ -135,13 +135,13 @@ const Dashboard = () => {
                     <div className="text-center">Start Date</div>
                     <ReactDatePicker className="focus:outline-none w-40 text-center py-1 rounded-full border mt-1"
                         selected={startDate} onChange={(date: any) => setStartDate(date)} selectsStart
-                        dateFormat="yyyy-MM-dd" startDate={startDate} endDate={endDate} />
+                        dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
                 </div>
                 <div className="">
                     <div className="text-center">End Date</div>
                     <ReactDatePicker className="focus:outline-none w-40 text-center py-1 rounded-full border mt-1"
                         selected={endDate} onChange={(date: any) => setEndDate(date)} selectsEnd
-                        dateFormat="yyyy-MM-dd" startDate={startDate} endDate={endDate} />
+                        dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
                 </div>
             </div>
             <h1 className="text-sm text-center text-grey-light">*Select the start and end dates to view the breakdowns in periods of time</h1>
