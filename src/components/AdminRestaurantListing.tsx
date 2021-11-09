@@ -13,7 +13,7 @@ const AdminRestaurantListing = (props:any) => {
             <p className="col-span-1 text-base text-grey-dark my-auto grid">{restaurant?.restaurantId}</p>
             <p className="col-span-2 text-base text-grey-dark my-auto grid">{restaurant?.restaurantName}</p>
             <Link to={'/managerestaurant/' + restaurant.restaurantId} className="my-auto grid col-span-2 text-base border border-green-standard text-green-standard text-center h-8 rounded-full opacity-90 shadow-sm hover:shadow-md hover:opacity-100">Manage Restaurant</Link>
-            <Link to={'/manageingredient/' + restaurant.restaurantId} className="my-auto grid col-span-2 text-base border border-green-standard text-green-standard text-center h-8 rounded-full opacity-90 shadow-sm hover:shadow-md hover:opacity-100">Manage Ingredients</Link>
+            <Link to={'/manageingredients/' + restaurant.restaurantId} className="my-auto grid col-span-2 text-base border border-green-standard text-green-standard text-center h-8 rounded-full opacity-90 shadow-sm hover:shadow-md hover:opacity-100">Manage Ingredients</Link>
         </div>
     )
 }
