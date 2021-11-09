@@ -1,13 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactModal from 'react-modal'
+import AdminService from '../services/AdminService';
 
-const DeleteModal = (props: any) => {
+const DeleteUserModal = (props: any) => {
 
-    const { deleteModal, setDeleteModal, deleteUser } = props;
+    const { deleteModal, setDeleteModal } = props;
+    const [deleted, setDeleted] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
 
     const customStyles = {
         overlay: { zIndex: 1000 }
     };
+
+    const deleteUser: any = (id: number) => {
+        setLoading(true);
+        console.log(id)
+        const response = AdminService.deleteUser(id);
+        response.then(res => {
+            console.log(res);
+            setLoading(false);
+            setDeleted(true);
+        })
+        .catch(err => {
+            console.log(err.response);
+            setError(err.response.data.message);
+            setLoading(false);
+        })
+    }
 
     return (
         <ReactModal style={customStyles} isOpen={deleteModal} className="mt-10 focus:outline-none">
@@ -18,15 +38,33 @@ const DeleteModal = (props: any) => {
                     <h1 className="text-md mb-2 text-grey-standard font-light">User ID: {props.userId}</h1>
                     <h1 className="text-md mb-2 text-grey-standard font-light">Email: {props.email}</h1>
                 </div>
-                <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28 pt-4">
+                {
+                    deleted ?
+                        <>
+                            <div className="text-center text-green-standard">User with ID {props.userId} has been deleted!</div>
+                            <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg w-1/3 mx-auto" onClick={() => setDeleteModal(false)}>Return</button>
+                        </> :
+                        <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28 pt-4">
+                            <div className="col-span-2 text-red-standard text-center pb-2">{error}</div>
+                            <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
+                                onClick={() => deleteUser(props.userId)}>
+                                {
+                                    loading ? <div className="spinner" id="spinner" />
+                                        : 'Confirm'
+                                }
+                            </button>
+                            <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setDeleteModal(false)}>Cancel</button>
+                        </div>
+                }
+                {/* <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28 pt-4">
                     <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
                         onClick={() => deleteUser(props.userId)}>Confirm</button>
                     <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setDeleteModal(false)}>Cancel</button>
-                </div>
+                </div> */}
             </div>
 
         </ReactModal>
     )
 }
 
-export default DeleteModal
+export default DeleteUserModal
