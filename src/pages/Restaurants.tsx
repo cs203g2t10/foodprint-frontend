@@ -6,15 +6,15 @@ import RestaurantListing from '../components/RestaurantListing'
 import Loading from '../components/Loading'
 
 const Restaurants = () => {
-    const [restaurants, setRestaurants] = useState([])
-    const [categories, setCategories] = useState([])
+    const [restaurants, setRestaurants] = useState<any[]>([])
+    const [categories, setCategories] = useState<any[]>([])
 
-    const changeRestaurants = (restaurantData) => {
+    const changeRestaurants = (restaurantData: any) => {
         setRestaurants(restaurantData)
         console.log(restaurantData)
     }
 
-    const changeCategories = (categoryData) => {
+    const changeCategories = (categoryData: any) => {
         setCategories(categoryData)
         console.log(categoryData)
     }
