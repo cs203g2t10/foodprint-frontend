@@ -28,8 +28,8 @@ h1 {
 
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 9px;
-  height: 4px;
+  width: 2px;
+  height: 2px;
 }
 
 *::-webkit-scrollbar-track {
@@ -37,7 +37,7 @@ h1 {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.582);
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   border: 3px solid rgba(71, 71, 71, 0.192);
 }
