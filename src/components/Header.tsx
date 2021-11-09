@@ -55,7 +55,7 @@ const Header = () => {
                                         <Link to='/ManageUser' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Management Console</Link>
                                     }
                                     {isUserManager() &&
-                                        <Link to='/manager' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Manage Restaurant</Link>
+                                        <Link to='/manager' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Manager</Link>
                                     }
                                     {isAuthenticated ? (
                                         <>
