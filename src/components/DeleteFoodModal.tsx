@@ -31,14 +31,14 @@ const DeleteFoodModal = (props: any) => {
     }
 
     return (
-        <ReactModal style={customStyles} isOpen={deleteModalOpen} className="mt-10 focus:outline-none">
-            <div className="grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-64 pb-10 bg-white-dirtyWhite">
-                <h1 className=" flex text-5xl pt-12 text-green-standard font-bold mx-auto">Delete Food</h1>
+        <ReactModal style={customStyles} isOpen={deleteModalOpen} className="focus:outline-none">
+            <div className="grid justify-center items-center gap-y-2 rounded-xxl shadow w-1/3 mx-auto pb-10 pt-12 mt-24 bg-white-dirtyWhite">
+                <h1 className=" flex text-5xl text-green-standard font-bold mx-auto">Delete Food</h1>
                 <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Are you sure you want to delete {name}?</h1>
                 {
                     (deleted ?
                         <>
-                            <div className="mx-auto pb-2">{name} has been successfully deleted!</div>
+                            <div className="mx-auto pb-2 text-green-standard">{name} has been successfully deleted!</div>
                             <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28">
                                 <button className="col-span-2 text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border border-green-standard"
                                     onClick={() => { setDeleteModal(false) }}>Return</button>
