@@ -66,7 +66,7 @@ const AdminManageRestaurants = () => {
                                         (restaurant: any) => {
                                             console.log(restaurant);
                                             return (
-                                                <AdminRestaurantListing {...{ restaurant }} />
+                                                <AdminRestaurantListing key={restaurant.restaurantId} {...{ restaurant }} />
                                             )
                                         }
                                     )
