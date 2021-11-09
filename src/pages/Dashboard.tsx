@@ -5,6 +5,9 @@ import LogInService, { UserDetails } from '../services/LogInService';
 import IngredientBreakdownListing from '../components/IngredientBreakdownListing';
 import Restricted from '../components/errors/Restricted';
 import moment from 'moment';
+import { MdFastfood, MdFoodBank } from 'react-icons/md';
+import { AiFillSchedule } from 'react-icons/ai';
+import RestaurantReservationList from '../components/RestaurantReservationList';
 
 
 const Dashboard = () => {
@@ -37,19 +40,14 @@ const Dashboard = () => {
         const end = moment().add(7, 'days').format("YYYY-MM-DD");
 
         RestaurantService.getIngredientsBetween(restaurantId, start, end).then((response) => {
-            // console.log(response)
             setIngredientsBetween(response.data)
-            // console.log(response.data)
         })
 
         RestaurantService.getFoodBetween(restaurantId, start, end).then((response) => {
-            // console.log(response)
             setFoodBetween(response.data)
-            // console.log(response.data)
         })
 
         ReservationService.getRestaurantReservations(restaurantId, start, end).then((response) => {
-            // console.log(response)
             setUpcomingReservation(response.data.content)
             console.log('hi:', response.data.content)
         })
@@ -68,7 +66,10 @@ const Dashboard = () => {
 
             <div className="grid md:grid-cols-2 mx-20 my-8 gap-x-10">
                 <div className="bg-white-dirtyWhite rounded-xxl p-7">
-                    <h1 className="text-green-standard text-xl font-semibold tracking-wide pb-5">Ingredients required</h1>
+                    <div className="flex pb-5">
+                        <MdFoodBank className="text-green-standard text-3xl my-auto " />
+                        <h1 className="text-green-standard text-xl font-semibold tracking-wide pl-4">Ingredients required</h1>
+                    </div>
                     <div className="grid grid-cols-6">
                         <div className="col-span-1"></div>
                         <h1 className="text-grey-standard text-base col-span-3">Ingredient</h1>
@@ -84,16 +85,16 @@ const Dashboard = () => {
                                     )
                                 })
                             }
-                            {/* {Object.keys(ingredientsBetween).map((ingredient, quantity) => (
-                                <IngredientBreakdownListing ingredient={ingredient} quantity={ingredientsBetween[ingredient]} />
-                            ))} */}
                         </div>
                     </div>
 
                 </div>
 
                 <div className="bg-white-dirtyWhite rounded-xxl p-7">
-                    <h1 className="text-green-standard text-xl font-semibold tracking-wide pb-5">Food required</h1>
+                    <div className="flex pb-5">
+                        <MdFastfood className="text-green-standard text-2xl my-auto " />
+                        <h1 className="text-green-standard text-xl font-semibold tracking-wide pl-4">Food required</h1>
+                    </div>
                     <div className="grid grid-cols-6">
                         <div className="col-span-1"></div>
                         <h1 className="text-grey-standard text-base col-span-3">Food</h1>
@@ -110,7 +111,10 @@ const Dashboard = () => {
             </div>
 
             <div className="bg-white-dirtyWhite rounded-xxl p-7 mx-20">
-                <h1 className="text-green-standard text-xl font-semibold tracking-wide pb-5 mx-10">Upcoming reservation</h1>
+                <div className="flex pb-5 px-14">
+                    <AiFillSchedule className="text-green-standard text-3xl my-auto " />
+                    <h1 className="text-green-standard text-xl font-semibold tracking-wide pl-4">Upcoming reservation</h1>
+                </div>
                 <div className="grid grid-cols-6 mx-10 px-14 mb-4">
                     <h1 className="flex col-span-1 text-base text-grey-standard">Reservation Id</h1>
                     <h1 className="flex col-span-1 text-base text-grey-standard">Booker</h1>
@@ -123,24 +127,7 @@ const Dashboard = () => {
                             console.log(upcomingReservation);
                             var dateTime = upcomingReservation.date;
                             return (
-                                <div className="grid grid-cols-6 mb-3 bg-white-standard p-4 rounded-large gap-x-3 mx-10 px-14">
-                                    <>
-                                        <h1 className="flex col-span-1 text-base text-green-standard">{upcomingReservation.reservationId}</h1>
-                                        <h1 className="flex col-span-1 text-base text-grey-dark">{upcomingReservation.userFirstName} {upcomingReservation.userLastName}</h1>
-                                        <h1 className="flex col-span-2 text-base text-grey-dark">{moment(dateTime).format('MMM Do YYYY, h:mm a')}</h1>
-                                        {/* <h1 className="flex col-span-1 text-base text-grey-dark">{upcomingReservation.status}</h1> */}
-                                        {
-                                            upcomingReservation.status === 'PAID' && <h1 className="flex col-span-1 text-base text-green-standard">{upcomingReservation.status}</h1>
-                                        }
-                                        {
-                                            upcomingReservation.status === 'CANCELLED' && <h1 className="flex col-span-1 text-base text-red-standard">{upcomingReservation.status}</h1>
-                                        }
-                                        {
-                                            upcomingReservation.status === 'ONGOING' && <h1 className="flex col-span-1 text-base text-yellow-dark">{upcomingReservation.status}</h1>
-                                        }
-                                        <button className="text-base text-center grid col-span-1 bg-green-standard text-white-standard w-32 px-4 py-1 rounded-full shadow-md hover:shadow-lg">View orders</button>
-                                    </>
-                                </div>
+                                <RestaurantReservationList reservationId={upcomingReservation.reservationId} userFirstName={upcomingReservation.userFirstName} userLastName={upcomingReservation.userLastName} date={moment(dateTime).format('MMM Do YYYY, h:mm a')} status={upcomingReservation.status} />
                             )
                         })
                     }
