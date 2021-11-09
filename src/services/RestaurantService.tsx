@@ -16,6 +16,10 @@ class RestaurantService {
         return axios.get(`${RESTAURANTS_REST_API_URL}`, this.headers());
     }
 
+    getRestaurantsPaged = (page:number) => {
+        return axios.get(`${RESTAURANTS_REST_API_URL}/page?p=${page}`, this.headers());
+    }
+
     getRestaurant = (restaurantId: number) => {
         return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}`, this.headers());
     }
