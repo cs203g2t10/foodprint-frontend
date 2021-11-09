@@ -45,7 +45,7 @@ const Profile = () => {
                         <div className="absolute z-10">
                             <div className="grid grid-cols-7 gap-x-16 mx-32 my-10">
                                 <div className="col-span-2">
-                                    <img className="w-48 h-48" src="/images/user.png" alt="user" />
+                                    <img className="h-48" src="/images/user.png" alt="user" />
                                 </div>
                                 <div className="col-span-5">
                                     <h1 className="text-6xl pb-4 text-green-standard">Hello, {getUserName()} </h1>
