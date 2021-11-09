@@ -13,7 +13,7 @@ const About = () => {
                 <div className="col-span-2"></div>
                 <div className="col-span-3 mx-5">
                     <h1 className="text-7xl text-green-standard leading-12 text-center mt-52 font-semibold tracking-wide">Reducing Food Wastage</h1>
-                    <h1 className="text-center text-grey-standard text-base mt-5">Here at FoodPrint, we support to F&B establishments in their journey towards food wastage reduction. We provide an innovative solution to help better manage food inventories, which would be especially helping during this challenging times.</h1>
+                    <h1 className="text-center text-grey-standard text-base mt-5">Here at FoodPrint, we support to F&B establishments in their journey towards food wastage reduction. We provide an innovative solution to help better manage food inventories, which would be especially helpful during this challenging time.</h1>
                 </div>
             </div>
             <svg className="waves w-full transform -rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="145 0 120 89" preserveAspectRatio="none" shape-rendering="auto">
