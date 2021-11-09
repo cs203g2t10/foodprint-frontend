@@ -41,6 +41,11 @@ const Dashboard = () => {
         console.log("Restaurant ID %d", userInfo.restaurantId);
     }, [])
 
+    const getUserName = () => {
+        const userInfo: UserDetails = LogInService.getUserDetails();
+        return `${userInfo.userFname}`;
+    }
+
     useEffect(() => {
         if (restaurantId === 0) {
             return;
@@ -91,9 +96,13 @@ const Dashboard = () => {
         <div className="min-h-screen">
             <div className="bg-yellow-standard">
                 <h1 className="text-5xl text-center font-bold text-green-standard tracking-wide pb-5">Dashboard</h1>
+                <h1 className="text-lg text text-center text-grey-standard pb-8 bg-yellow-standard">
+                    Hello {getUserName()}, observe the breakdown of food and ingredients below!
+                </h1>
             </div>
 
-            <div className="flex justify-evenly mt-8">
+            
+            <div className="flex justify-evenly my-4">
                 <div className="">
                     <div className="text-center">Start Date</div>
                     <ReactDatePicker className="focus:outline-none w-40 text-center py-1 rounded-full border mt-1"
@@ -107,6 +116,7 @@ const Dashboard = () => {
                         dateFormat="yyyy-MM-dd" startDate={startDate} endDate={endDate} />
                 </div>
             </div>
+            <h1 className="text-sm text-center text-grey-light">*Select the start and end dates to view the breakdowns in periods of time</h1>
 
             <div className="grid md:grid-cols-2 mx-20 my-8 gap-x-10">
                 <div className="bg-white-dirtyWhite rounded-xxl p-7">
@@ -130,7 +140,7 @@ const Dashboard = () => {
                             ingredientsBetween.map((ingredientsBetween, index) => {
                                 return (
                                     <IngredientBreakdownListing ingredient={ingredientsBetween.ingredient} key={index}
-                                    quantity={ingredientsBetween.quantity} units={ingredientsBetween.units} />
+                                        quantity={ingredientsBetween.quantity} units={ingredientsBetween.units} />
                                 )
                             })
                         }
