@@ -88,34 +88,21 @@ const ChangeFoodPicModal = (props: any) => {
                         </div>
                     </div>
                 </div>
-
-
                 {
-                    (changed ?
-                        <>
-                            <div className="mx-auto pb-2">Picture has been updated!</div>
-                            <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28">
-                                <button className=" text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
-                                    onClick={() => {
-                                        setChanged(false);
-                                    }}>Reset</button>
-                                <button className=" text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
-                                    onClick={() => { setChangePic(false); setEdit(false); setSuccess(true) }}>Return</button>
-                            </div>
-                        </> : <>
-                            <div className="text-red-standard text-center">{error}</div>
-                            <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg w-1/3 mx-auto"
-                                onClick={() => setChangePic(false)}
-                            >
-                                <span>
-                                    {
-                                        loading ?
-                                            <div className="spinner" id="spinner" /> :
-                                            'Go Back'
-                                    }
-                                </span>
-                            </button> </>
-                    )}
+                    changed && <div className="mx-auto text-green-standard">Picture has been successfully changed!</div>
+                }
+                <div className="text-red-standard text-center">{error}</div>
+                <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg w-1/3 mx-auto"
+                    onClick={() => setChangePic(false)}
+                >
+                    <span>
+                        {
+                            loading ?
+                                <div className="spinner" id="spinner" /> :
+                                'Go Back'
+                        }
+                    </span>
+                </button>
             </div>
         </ReactModal>
     )
