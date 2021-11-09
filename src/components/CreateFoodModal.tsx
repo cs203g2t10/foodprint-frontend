@@ -101,7 +101,7 @@ const CreateFoodModal = (props: any) => {
                                         setPrice("");
                                         setIngredientQty([]);
                                     }}>Reset</button>
-                                <button className=" text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
+                                <button className=" text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border border-green-standard"
                                     onClick={() => { setShowCreateFood(false) }}>Return</button>
                             </div>
                         </> :
