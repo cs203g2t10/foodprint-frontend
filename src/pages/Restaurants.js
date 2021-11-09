@@ -44,7 +44,7 @@ const Restaurants = () => {
 
             <h1 className="text-xl md:pr-40 font-semibold text-grey-dark pl-32 pt-10 text-grey">Categories</h1>
             <div className="overflow-hidden h-full w-full px-24 pt-4">
-                <div className="flex flex-row gap-x-6 w-full overflow-x-auto px-12 pb-4">
+                <div className="flex flex-row gap-x-6 w-full overflow-x-auto px-12 pb-6">
                     {
                         (
                             (categories.length > 0) ? (

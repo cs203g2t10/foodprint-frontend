@@ -5,8 +5,12 @@ import CreateIngredientModal from '../components/CreateIngredientModal';
 import PageLinks from '../components/PageLinks';
 import LogInService, { UserDetails } from '../services/LogInService';
 import Restricted from '../components/errors/Restricted';
+import { useParams } from 'react-router';
 
 const ManageIngredients = () => {
+
+
+    let params = useParams<any>();
 
     const [restaurantId, setRestaurantId] = useState(0);
     const [restaurantDetails, setRestaurantDetails] = useState<any>();
@@ -20,14 +24,18 @@ const ManageIngredients = () => {
 
     useEffect(() => {
         const userInfo: UserDetails = LogInService.getUserDetails();
-        if (userInfo.userAuthorities.includes("FP_MANAGER")){
+        if (userInfo.userAuthorities.includes("FP_MANAGER") && Object.keys(params).length === 0){
+            if (userInfo.restaurantId == null) {
+                console.log("User has no restaurant ID");
+                return;
+            }
             setAuthorized(true);
-        }
-        if (userInfo.restaurantId == null) {
-            console.log("User has no restaurant ID");
-            return;
-        } else {
             setRestaurantId(userInfo.restaurantId);
+        } else if (userInfo.userAuthorities.includes("FP_ADMIN")){
+            setRestaurantId(params.id);
+            setAuthorized(true);
+        } else {
+            return;
         }
         console.log("Restaurant ID %d", userInfo.restaurantId);
     }, [])

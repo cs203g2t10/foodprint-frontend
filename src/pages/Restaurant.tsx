@@ -17,15 +17,19 @@ const Restaurant = () => {
     const [modalIsOpen, setModal] = useState(false);
     const [imageUrl, setImageUrl] = useState("/images/shop.jpg")
 
-    const [finalPrice, setFinalPrice] = useState(0);
     const [haveFood, setHaveFood] = useState(false);
     const [totalPrice, setTotalPrice] = useState(0);
+    const [discount, setDiscount] = useState(0);
 
     useEffect(() => {
         RestaurantService.getRestaurant(id.id).then((response) => {
+            console.log(response.data)
             setRestaurantDetails(response.data)
             if (response.data.picture) {
                 setImageUrl(response.data.picture.url);
+            }
+            if (response.data.discount) {
+                setDiscount(response.data.discount.discountPercentage);
             }
         })
     }, [id])
@@ -43,9 +47,6 @@ const Restaurant = () => {
         })
     }, [lineItems])
 
-    useEffect(() => {
-        setFinalPrice(totalPrice * 1.17)
-    }, [totalPrice])
 
     const makeReservationButtonClick = () => {
         if (lineItems.length === 0) {
@@ -98,7 +99,7 @@ const Restaurant = () => {
                         )
                 }
             </div>
-            <ReservationModal {...{ id, modalIsOpen, lineItems, finalPrice, totalPrice, setModal }} />
+            <ReservationModal {...{ id, modalIsOpen, lineItems, totalPrice, setModal, discount }} />
         </div>
     )
 }

@@ -40,11 +40,7 @@ const DeleteFoodModal = (props: any) => {
                         <>
                             <div className="mx-auto pb-2">{name} has been successfully deleted!</div>
                             <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28">
-                                <button className=" text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
-                                    onClick={() => {
-                                        setDeleted(false);
-                                    }}>Reset</button>
-                                <button className=" text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
+                                <button className="col-span-2 text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border border-green-standard"
                                     onClick={() => { setDeleteModal(false) }}>Return</button>
                             </div>
                         </> :
@@ -60,7 +56,7 @@ const DeleteFoodModal = (props: any) => {
                                     }
                                 </span>
                             </button>
-                            <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setDeleteModal(false)}>Cancel</button>
+                            <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border border-green-standard" onClick={() => setDeleteModal(false)}>Cancel</button>
                         </div>)
                 }
             </div>
