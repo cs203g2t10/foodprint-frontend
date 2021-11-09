@@ -15,7 +15,7 @@ const RestaurantReservationList = (props: any) => {
                     props.status === 'CANCELLED' && <h1 className="flex col-span-1 text-base text-red-standard">{props.status}</h1>
                 }
                 {
-                    props.status === 'ONGOING' && <h1 className="flex col-span-1 text-base text-yellow-dark">{props.status}</h1>
+                    props.status === 'UNPAID' && <h1 className="flex col-span-1 text-base text-yellow-dark">{props.status}</h1>
                 }
                 <button className="text-base text-center grid col-span-1 bg-green-standard text-white-standard w-32 px-4 py-1 rounded-full shadow-md hover:shadow-lg">View orders</button>
             </>

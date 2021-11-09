@@ -28,7 +28,7 @@ class ReservationService {
             isVaccinated,
             lineItems: lineItems2,
             restaurantId,
-            status: "ONGOING"
+            status: "UNPAID"
         }, this.headers())
         .catch((error) => {
             return error.response;
