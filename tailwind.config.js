@@ -69,7 +69,7 @@ module.exports = {
       '7xl': '5rem',
     },
     lineHeight: {
-      'extra-loose': '2.5',
+      'extra-tight': '4rem',
       '12': '5rem',
     },
     rotate: {
