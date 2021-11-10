@@ -3,6 +3,7 @@ import "animate.css"
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom'
+import AboutUsTeam from '../components/AboutUsTeam';
 
 const About = () => {
 
@@ -72,36 +73,12 @@ const About = () => {
             <div className="mb-44">
                 <h1 className="text-green-standard tracking-widest font-semibold text-xl mb-10 text-center">MEET THE TEAM</h1>
                 <div className="grid grid-cols-6 mx-28">
-                    <a target="_blank" href="https://www.linkedin.com/in/cherie-lim-hui-ting/">
-                        <img className="h-40 w-40 object-cover rounded-full mx-auto mb-3 shadow-md hover:shadow-lg" src="/images/cherie.png" alt="cherie" />
-                        <h1 className="text-grey-dark font-semibold tracking-wider text-md text-center">Cherie Lim</h1>
-                        <h1 className="text-grey-standard tracking-wider text-sm text-center">Backend Developer</h1>
-                    </a>
-                    <a target="_blank" href=" https://www.linkedin.com/in/michelle-tan-2a124a1b9/">
-                        <img className="h-40 w-40 object-cover rounded-full mx-auto  mb-3 shadow-md hover:shadow-lg" src="/images/michelle.jpg" alt="michelle" />
-                        <h1 className="text-grey-dark font-semibold tracking-wider text-md text-center">Michelle Tan</h1>
-                        <h1 className="text-grey-standard tracking-wider text-sm text-center">Full Stack Developer</h1>
-                    </a>
-                    <a target="_blank" href="https://www.linkedin.com/in/yvonnelhs/">
-                        <img className="h-40 w-40 object-cover rounded-full mx-auto mb-3 shadow-md hover:shadow-lg" src="/images/von.jpg" alt="yvonne" />
-                        <h1 className="text-grey-dark font-semibold tracking-wider text-md text-center">Yvonne Lim</h1>
-                        <h1 className="text-grey-standard tracking-wider text-sm text-center">Full Stack Developer</h1>
-                    </a>
-                    <a target="_blank" href="https://www.linkedin.com/in/wongrenyidaryl/">
-                        <img className="h-40 w-40 object-cover rounded-full mx-auto mb-3 shadow-md hover:shadow-lg" src="/images/daryl.jpg" alt="daryl" />
-                        <h1 className="text-grey-dark font-semibold tracking-wider text-md text-center">Daryl Wong</h1>
-                        <h1 className="text-grey-standard tracking-wider text-sm text-center">Full Stack Developer</h1>
-                    </a>
-                    <a target="_blank" href=" https://www.linkedin.com/in/wenlianggoh/">
-                        <img className="h-40 w-40 object-cover rounded-full mx-auto mb-3 shadow-md hover:shadow-lg" src="/images/boss.jpg" alt="boss" />
-                        <h1 className="text-grey-dark font-semibold tracking-wider text-md text-center">Goh Wen Liang</h1>
-                        <h1 className="text-grey-standard tracking-wider text-sm text-center">Full Stack Developer</h1>
-                    </a>
-                    <a target="_blank" href="https://www.linkedin.com/in/yixuan-leow/">
-                        <img className="h-40 w-40 object-cover rounded-full mx-auto mb-3 shadow-md hover:shadow-lg" src="/images/yixuan.jpg" alt="yixuan" />
-                        <h1 className="text-grey-dark font-semibold tracking-wider text-md text-center">Leow Yi Xuan</h1>
-                        <h1 className="text-grey-standard tracking-wider text-sm text-center">Backend Developer</h1>
-                    </a>
+                    <AboutUsTeam linkedIn="https://www.linkedin.com/in/cherie-lim-hui-ting/" name="Cherie Lim" role="Developer" imgUrl="/images/cherie.png"/>
+                    <AboutUsTeam linkedIn="https://www.linkedin.com/in/michelle-tan-2a124a1b9/" name="Michelle Tan" role="Developer" imgUrl="/images/michelle.jpg"/>
+                    <AboutUsTeam linkedIn="https://www.linkedin.com/in/yvonnelhs/" name="Yvonne Lim" role="Developer" imgUrl="/images/von.jpg"/>
+                    <AboutUsTeam linkedIn="https://www.linkedin.com/in/wongrenyidaryl/" name="Daryl Wong" role="Developer" imgUrl="/images/daryl.jpg"/>
+                    <AboutUsTeam linkedIn="https://www.linkedin.com/in/wenlianggoh/" name="Goh Wen Liang" role="Developer" imgUrl="/images/boss.jpg"/>
+                    <AboutUsTeam linkedIn="https://www.linkedin.com/in/yixuan-leow/" name="Leow Yi Xuan" role="Developer" imgUrl="/images/yixuan.jpg"/>
                 </div>
             </div>
         </div>
