@@ -17,7 +17,7 @@ const Home = () => {
 
     const getUserName = () => {
         const userInfo: UserDetails = LogInService.getUserDetails();
-        return `${userInfo.userFname} ${userInfo.userLname}`;
+        return `${userInfo.userFname}`;
     }
 
     const controls = useAnimation();
@@ -71,14 +71,21 @@ const Home = () => {
                 <div className="col-span-2"></div>
                 <div className="col-span-4 px-10">
                     <h1 className="sm:text-xs md:text-xl md:mt-24 lg:mt-52 text-center text-grey-standard animate__animated animate__fadeIn">
-                        {
-                            isAuthenticated ? 'Hello' + getUserName() + '!'
-                            : 'Hello!'
-                        }
+                        {isAuthenticated && 'Hello ' + getUserName() + '!'}
                     </h1>
                     <h1 className="lg:text-6xl sm:text-4xl sm:leading-3 text-green-standard lg:leading-extra-tight text-center font-semibold tracking-wide">Discover and book the best restaurants.</h1>
-                    <h1 className="text-center text-grey-standard text-base mt-5">Reserve a table, and save with deals.</h1>
-                    <Link to="/restaurants" className="mx-auto grid w-52 bg-green-standard mt-4 py-1 pb-3 px-5 text-center text-white-standard hover:shadow-lg rounded-xl">Start browsing now!</Link>
+                    <h1 className="text-center text-grey-standard text-base mt-5">Reserve a table, save with deals and reduce food wastage.</h1>
+                    <div className="flex justify-center items-center">
+                        <Link to="/restaurants" className="w-52 bg-green-standard mt-4 py-1 px-4 text-center text-white-standard hover:shadow-lg rounded-xl">Start browsing now!</Link>
+                    </div>
+                    {
+                        !isAuthenticated && <>
+                        <h1 className="text-center text-grey-standard text-base mt-5">Log In to an existing account, or Get Started by Registering!</h1>
+                        <div className="flex justify-center items-center gap-x-4">
+                            <Link to="/restaurants" className="border border-green-standard mt-4 py-1 px-4 text-green-standard text-center hover:shadow-lg rounded-xl">Log In</Link>
+                            <Link to="/restaurants" className="border border-green-standard mt-4 py-1 px-4 text-green-standard text-center hover:shadow-lg rounded-xl">Register</Link>
+                        </div> </>
+                    }
                 </div>
             </div>
             <svg className="waves w-full transform -rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="145 0 120 60" preserveAspectRatio="none" shapeRendering="auto">
