@@ -23,6 +23,9 @@ const ChangePwd = () => {
             console.log(response);
             if (response.status === 200) {
                 setSuccess(true);
+                if (error) {
+                    setError("");
+                }
             }
         }).catch((error) => {
             console.log(error.response);
@@ -30,6 +33,7 @@ const ChangePwd = () => {
             if (error.response.status === 400) {
                 setError("old password is wrong")
             }
+            setSuccess(false);
         })
     }
 
