@@ -65,9 +65,9 @@ const About = () => {
                 </motion.div>
                 <motion.div className="my-auto mr-52" ref={ref} initial="hidden" animate={controls} variants={fadeInRight}>
                     <h1 className="text-green-standard tracking-widest font-semibold text-xl mb-5">OUR STORY</h1>
-                    <h1 className="text-grey-standard text-base">FoodPrint was started in 2021 by a group of SMU undergraduates who are passionate about using technology to solve persisting problems within our community.
-                        Especially using trying times when COVID-19 hit, we saw that F&B establishments face huge difficulty in managing their inventories, worsening the issue of food wastage.
-                        With this, we began our embarked on a journey to solve this problem and gave rise to  is the FoodPrint you see today. </h1>
+                    <h1 className="text-grey-standard text-base">FoodPrint was started in 2021 by a group of SMU undergraduates who are passionate about using technology to solve persisting problems within our community.</h1>
+                    <h1 className="text-grey-standard text-base mt-3">Especially during trying times when COVID-19 hit, we saw that F&B establishments face huge difficulty in managing their inventories, worsening the issue of food wastage.</h1>
+                    <h1 className="text-grey-standard text-base mt-3">    With this, we embarked on a journey to solve this problem and after months of hardwork, we present to you the FoodPrint you see today. </h1>
                 </motion.div>
             </div>
             <div className="mb-44">
