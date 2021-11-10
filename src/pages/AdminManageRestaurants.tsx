@@ -33,6 +33,7 @@ const AdminManageRestaurants = () => {
     }
 
     useEffect(() => {
+        setRestaurants([]);
         RestaurantService.getRestaurantsPaged(currPage).then((response) => {
             console.log(response)
             setNumPages(response.data.totalPages)
