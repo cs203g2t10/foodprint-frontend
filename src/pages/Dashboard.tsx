@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import RestaurantService from '../services/RestaurantService';
 import ReservationService from '../services/ReservationService';
 import LogInService, { UserDetails } from '../services/LogInService';
-import IngredientBreakdownListing from '../components/IngredientBreakdownListing';
 import Restricted from '../components/errors/Restricted';
 import moment from 'moment';
 import PageLinks from '../components/PageLinks';
-import { MdFastfood } from 'react-icons/md';
 import { AiFillSchedule } from 'react-icons/ai';
 import RestaurantReservationList from '../components/RestaurantReservationList';
 import ReactDatePicker from 'react-datepicker';
 import Loading from '../components/Loading';
 import IngredientBreakdownSection from '../components/IngredientBreakdownSection';
+import FoodBreakdownSection from '../components/FoodBreakdownSection';
 
 
 const Dashboard = () => {
@@ -22,13 +20,8 @@ const Dashboard = () => {
     const [endDate, setEndDate] = useState<Date>();
 
     const [isAuthorized, setAuthorized] = useState(false);
-    // const [ingredientsBetween, setIngredientsBetween] = useState<any[]>([])
-    const [foodBetween, setFoodBetween] = useState<any>({})
+
     const [upcomingReservation, setUpcomingReservation] = useState([])
-    // const [ingredientsLoading, setIngredientsLoading] = useState(false);   
-    // const [ingError, setIngError] = useState("");
-    const [foodLoading, setFoodLoading] = useState(false);
-    const [foodError, setFoodError] = useState("")
     const [reservationLoading, setReservationLoading] = useState(false);
     const [resError, setResError] = useState("")
 
@@ -50,26 +43,7 @@ const Dashboard = () => {
         return `${userInfo.userFname}`;
     }
 
-    useEffect(() => {
-        if (restaurantId === 0) {
-            return;
-        }
-        setFoodLoading(true);
-        setFoodError("");
-        setFoodBetween({});
-
-        const start = moment(startDate).format("YYYY-MM-DD");
-        const end = moment(endDate).format("YYYY-MM-DD");
-
-        RestaurantService.getFoodBetween(restaurantId, start, end).then((response) => {
-            setFoodBetween(response.data)
-            setFoodLoading(false);
-        }).catch(err => {
-            setFoodError(err.response.data.message);
-            setFoodLoading(false);
-        })
-
-    }, [restaurantId, startDate, endDate])
+    
 
     useEffect(() => {
         if (restaurantId === 0) {
@@ -132,31 +106,8 @@ const Dashboard = () => {
             <h1 className="text-sm text-center text-grey-light">*Select the start and end dates to view the breakdowns in periods of time</h1>
 
             <div className="grid md:grid-cols-2 mx-20 my-8 gap-x-10">
-                <IngredientBreakdownSection restaurantId={restaurantId}/>
-
-                <div className="bg-white-dirtyWhite rounded-xxl p-7">
-                    <div className="flex pb-5">
-                        <MdFastfood className="text-green-standard text-2xl my-auto " />
-                        <h1 className="text-green-standard text-xl font-semibold tracking-wide pl-4">Food required</h1>
-                    </div>
-                    <div className="grid grid-cols-6">
-                        <div className="col-span-1"></div>
-                        <h1 className="text-grey-standard text-base col-span-3">Food</h1>
-                        <h1 className="text-grey-standard text-base col-span-2 mb-3">Quantity</h1>
-                    </div>
-
-
-                    <div className="overflow-y-auto h-64">
-                        {
-                            foodLoading && <div className="flex justify-center bg-white-standard rounded-xxl"><Loading /></div>
-                        }
-                        <div className="text-red-standard text-center">{foodError}</div>
-                        {Object.keys(foodBetween).map((food) => (
-                            <IngredientBreakdownListing ingredient={food} quantity={"x " + foodBetween[food]} key={food} />
-                        ))}
-                    </div>
-
-                </div>
+                <IngredientBreakdownSection restaurantId={restaurantId} />
+                <FoodBreakdownSection restaurantId={restaurantId} />
             </div>
 
             <div className="bg-white-dirtyWhite rounded-xxl p-7 mx-20">
