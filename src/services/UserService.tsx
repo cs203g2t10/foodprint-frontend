@@ -16,6 +16,12 @@ class UserService {
         const url = ADMIN_REST_API_URL+"/favouriteRestaurants";
         return await axios.get(url, this.headers());
     }
+    //@DeleteMapping({"favourite/{restaurantId}"})
+
+    deleteFavRestaurant= async (restaurantId : number) => {
+        const url = `${ADMIN_REST_API_URL}/favourite/${restaurantId}`;
+        return await axios.delete(url, this.headers());
+    }
 }
 
 export default new UserService();

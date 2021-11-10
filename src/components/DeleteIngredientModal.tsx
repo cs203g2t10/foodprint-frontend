@@ -4,7 +4,7 @@ import RestaurantService from '../services/RestaurantService';
 
 const DeleteIngredientModal = (props: any) => {
 
-    const { deleteModalOpen, setDeleteModal, name, id } = props;
+    const {deleteModalOpen, setDeleteModal, name, id } = props;
     const [deleted, setDeleted] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");

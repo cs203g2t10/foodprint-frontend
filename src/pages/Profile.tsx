@@ -38,6 +38,7 @@ const Profile = () => {
 
     useEffect(() => {
         UserService.getFavRestaurant().then((response) => {
+            console.log(response)
             setFavouriteRestaurants(response.data)
         })
     }, [])
@@ -89,6 +90,7 @@ const Profile = () => {
                                         return (
                                             <FavouriteRestaurant
                                                 key={favouriteRestaurant.restaurantId}
+                                                restaurantId={favouriteRestaurant.restaurantId}
                                                 name={favouriteRestaurant.restaurantName}
                                                 url={favouriteRestaurant.picture?.url}/>
                                         )
