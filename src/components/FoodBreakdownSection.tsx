@@ -54,15 +54,15 @@ const FoodBreakdownSection = (props: any) => {
     return (
         <div className="bg-white-dirtyWhite rounded-xxl p-7">
             <div className="flex gap-x-4 pb-2">
-                <MdFastfood className="text-green-standard text-2xl my-auto " />
-                <h1 className="text-green-standard text-xl font-semibold tracking-wide">Food required</h1>
+                <MdFastfood className="text-green-standard text-2xl my-auto filter drop-shadow" />
+                <h1 className="text-green-standard text-xl font-semibold tracking-wide filter drop-shadow-sm">Food required</h1>
                 <div>
-                    <ReactDatePicker className="focus:outline-none w-32 text-center py-1 rounded-full border"
+                    <ReactDatePicker className="focus:outline-none w-32 text-center py-1 rounded-full border shadow"
                         selected={startDate} onChange={(date: any) => setStartDate(date)} selectsStart
                         dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
                 </div>
                 <div>
-                    <ReactDatePicker className="focus:outline-none w-32 text-center py-1 rounded-full border"
+                    <ReactDatePicker className="focus:outline-none w-32 text-center py-1 rounded-full border shadow"
                         selected={endDate} onChange={(date: any) => setEndDate(date)} selectsEnd
                         dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
                 </div>
