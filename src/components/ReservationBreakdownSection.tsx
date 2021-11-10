@@ -7,7 +7,7 @@ import Loading from './Loading';
 import PageLinks from './PageLinks';
 import RestaurantReservationList from './RestaurantReservationList';
 
-const ReservationBreakdownSection = (props:any) => {
+const ReservationBreakdownSection = (props: any) => {
 
     const [startDate, setStartDate] = useState<Date>();
     const [endDate, setEndDate] = useState<Date>();
@@ -57,24 +57,28 @@ const ReservationBreakdownSection = (props:any) => {
     }, [currPage, restaurantId, startDate, endDate])
 
     return (
-        <div className="bg-white-dirtyWhite rounded-xxl p-7 mx-20 px-14">
-            <div className="flex pb-2 gap-x-4">
-                <AiFillSchedule className="text-green-standard text-3xl my-auto filter drop-shadow" />
-                <h1 className="text-green-standard text-xl font-semibold tracking-wide filter drop-shadow-sm">Upcoming reservation</h1>
-            </div>
-            <div className="grid grid-cols-2 pb-6 gap-x-4 mx-10">
-                <div>
-                    <h1 className="text-sm mb-1 text-gray-500 pl-3">Date From:</h1>
-                    <ReactDatePicker className="focus:outline-none pl-3 py-1 rounded-lg border shadow text-gray-600 w-full hover:shadow-md"
-                        selected={startDate} onChange={(date: any) => setStartDate(date)} selectsStart
-                        dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
+        <div className="bg-white-dirtyWhite rounded-xxl shadow-md p-7 mx-20 px-14">
+            <div className="grid grid-cols-5 pb-6 gap-x-4 mx-10">
+                <div className="flex pb-2 gap-x-4 col-span-2">
+                    <AiFillSchedule className="text-green-standard text-3xl my-auto filter drop-shadow" />
+                    <h1 className="my-auto text-green-standard text-xl font-semibold tracking-wide filter drop-shadow-sm">Upcoming reservation</h1>
                 </div>
-                <div>
-                    <h1 className="text-sm mb-1 text-gray-500 pl-3">Date To:</h1>
-                    <ReactDatePicker className="focus:outline-none pl-3 py-1 rounded-lg border shadow text-gray-600 w-full hover:shadow-md"
-                        selected={endDate} onChange={(date: any) => setEndDate(date)} selectsEnd
-                        dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
+                <div className="grid grid-cols-2 col-span-3 gap-x-8">
+                    <div className="flex">
+                        <h1 className="text-sm mb-1 text-gray-500 pl-3 w-32 pt-1">Date From:</h1>
+                        <ReactDatePicker className="focus:outline-none pl-3 py-1 rounded-full w-full shadow text-gray-600 hover:shadow-md"
+                            selected={startDate} onChange={(date: any) => setStartDate(date)} selectsStart
+                            dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
+                    </div>
+                    <div className="flex">
+                        <h1 className="text-sm mb-1 text-gray-500 pl-3 w-28 pt-1">Date To:</h1>
+                        <ReactDatePicker className="focus:outline-none pl-3 py-1 rounded-full w-full shadow text-gray-600 hover:shadow-md"
+                            selected={endDate} onChange={(date: any) => setEndDate(date)} selectsEnd
+                            dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
+                    </div>
+
                 </div>
+
             </div>
             <div className="grid grid-cols-6 mx-10 mb-4">
                 <h1 className="flex col-span-1 text-base text-grey-standard">Reservation Id</h1>

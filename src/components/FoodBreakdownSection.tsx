@@ -52,7 +52,7 @@ const FoodBreakdownSection = (props: any) => {
     }, [restaurantId, startDate, endDate])
 
     return (
-        <div className="bg-white-dirtyWhite rounded-xxl p-7">
+        <div className="bg-white-dirtyWhite rounded-xxl shadow-md p-7">
             <div className="flex gap-x-4 pb-2">
                 <MdFastfood className="text-green-standard text-2xl my-auto filter drop-shadow" />
                 <h1 className="text-green-standard text-xl font-semibold tracking-wide filter drop-shadow-sm">Food required</h1>
@@ -60,13 +60,13 @@ const FoodBreakdownSection = (props: any) => {
             <div className="grid grid-cols-2 pb-6 gap-x-4">
                 <div>
                     <h1 className="text-sm mb-1 text-gray-500 pl-3">Date From:</h1>
-                    <ReactDatePicker className="focus:outline-none pl-3 py-1 rounded-lg border shadow text-gray-600 w-full hover:shadow-md"
+                    <ReactDatePicker className="focus:outline-none pl-5 py-1 rounded-full shadow text-gray-600 w-full hover:shadow-md"
                         selected={startDate} onChange={(date: any) => setStartDate(date)} selectsStart
                         dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
                 </div>
                 <div>
                     <h1 className="text-sm mb-1 text-gray-500 pl-3">Date To:</h1>
-                    <ReactDatePicker className="focus:outline-none pl-3 py-1 rounded-lg border shadow text-gray-600 w-full hover:shadow-md"
+                    <ReactDatePicker className="focus:outline-none pl-5 py-1 rounded-full shadow text-gray-600 w-full hover:shadow-md"
                         selected={endDate} onChange={(date: any) => setEndDate(date)} selectsEnd
                         dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
                 </div>
