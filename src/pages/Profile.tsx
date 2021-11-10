@@ -115,7 +115,7 @@ const Profile = () => {
                                                 key={favouriteRestaurant.restaurantId}
                                                 restaurantId={favouriteRestaurant.restaurantId}
                                                 name={favouriteRestaurant.restaurantName}
-                                                url={favouriteRestaurant.picture?.url} />
+                                                url={favouriteRestaurant.picture?.url} {...{ setDeleteMessage }} />
                                         )
                                     })
                                 }
