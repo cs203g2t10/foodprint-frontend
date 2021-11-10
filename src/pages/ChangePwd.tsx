@@ -12,9 +12,12 @@ const ChangePwd = () => {
     const [oldPwd, setOldPwd] = useState("")
     const [newPwd, setNewPwd] = useState("")
     const [confirmNewPwd, setConfirmNewPwd] = useState("")
+    const [loading, setLoading] = useState(false);
     
     const update = () => {
+        setLoading(true);
         if (!validateNewPwd(newPwd, confirmNewPwd) || oldPwd.length === 0) {
+            setLoading(false);
             return;
         }
 
@@ -27,6 +30,7 @@ const ChangePwd = () => {
                     setError("");
                 }
             }
+            setLoading(false);
         }).catch((error) => {
             console.log(error.response);
             setError(error.response.data.message);
@@ -34,6 +38,7 @@ const ChangePwd = () => {
                 setError("old password is wrong")
             }
             setSuccess(false);
+            setLoading(false);
         })
     }
 
@@ -89,10 +94,14 @@ const ChangePwd = () => {
                         {
                             (success ? <div className="text-green-standard mt-2">Your password has been successfully changed!</div>
                             : <div className="flex">
-                                <button className="rounded-full px-4 text-white-standard bg-green-standard hover:shadow text-justify mt-2 h-8"
+                                <button className="rounded-full px-4 text-white-standard bg-green-standard hover:shadow text-center mt-2 h-8 md:w-48"
                                     onClick={update}>
-                                    <span id="button-text">Change password
-                                    </span>
+                                        {
+                                            loading ? <div className="spinner" />
+                                            : 'Change Password'
+                                        }
+                                    {/* <span id="button-text">Change password
+                                    </span> */}
                                 </button>
                             </div>)
                         }
