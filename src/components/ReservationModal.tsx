@@ -186,17 +186,17 @@ const ReservationModal = (
                                     <NavLink to="/login" className="border text-center bg-green-standard text-white-standard py-1 px-8 rounded-full hover:shadow-md shadow">Log In</NavLink>
                                     <NavLink to="/register" className="border text-center bg-green-standard text-white-standard py-1 px-8 rounded-full hover:shadow-md shadow">Register</NavLink>
                                 </div>
-
+                                <div className="col-span-2 flex">
+                                    <button className="text-green-standard px-7 py-1 rounded-xl shadow-md hover:shadow-lg border border-green-standard mt-2" onClick={() => setModal(false)}>Return</button>
+                                </div>
                             </>
                         }
-
-
                     </div>
                     {
                         (reserved ?
                             <div className="grid">
                                 <div className="pt-5 pb-3 text-green-standard text-center">Your reservation is successful!</div>
-                                <Link to={"/payment/" + reservationId} className="border bg-green-standard text-center mx-auto py-1.5 rounded-xl shadow-md hover:shadow-lg text-white-standard px-10">Proceed to payment</Link>
+                                <Link to={"/payment/" + reservationId} className="border bg-green-standard text-center mx-auto py-1.5 rounded-xl shadow hover:shadow-md text-white-standard px-10">Proceed to make deposit</Link>
                             </div>
                             : <></>)
                     }
