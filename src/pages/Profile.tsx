@@ -9,19 +9,36 @@ import Restricted from '../components/errors/Restricted';
 import moment from 'moment'
 import ReservationListing from '../components/ReservationListing';
 import FavouriteRestaurant from '../components/FavouriteRestaurant';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
 
     const { isAuthenticated } = useAppContext() || {}
-    const getUserName = () => {
-        const userInfo: UserDetails = LogInService.getUserDetails();
-        return `${userInfo.userFname} ${userInfo.userLname}`;
-    }
+    // const getUserName = () => {
+    //     const userInfo: UserDetails = LogInService.getUserDetails();
+    //     if (userInfo.vaccinationName !== null) {
+    //         setVaccinated(true);
+    //     }
+    //     return `${userInfo.userFname} ${userInfo.userLname}`;
+    // }
 
     const [favouriteRestaurants, setFavouriteRestaurants] = useState<any[]>([])
     const [upcomingReservation, setUpcomingReservation] = useState<any[]>([])
     const [pastReservation, setPastReservation] = useState<any[]>([])
     const [deletemessage, setDeleteMessage] = useState<string>("");
+    const [vaccinated, setVaccinated] = useState(false);
+    const [userName, setUserName] = useState("");
+
+    useEffect(() => {
+        const userInfo: UserDetails = LogInService.getUserDetails();
+        console.log(userInfo);
+        if (userInfo.userFname !== null && userInfo.userLname !== null) {
+            setUserName(userInfo.userFname + " " + userInfo.userLname);
+        }
+        if (userInfo.vaccinationName !== undefined) {
+            setVaccinated(true);
+        }
+    }, [])
 
 
     useEffect(() => {
@@ -54,7 +71,13 @@ const Profile = () => {
                                     <img className="h-48" src="/images/user.png" alt="user" />
                                 </div>
                                 <div className="col-span-5">
-                                    <h1 className="text-6xl pb-4 text-green-standard">Hello {getUserName()}!</h1>
+                                    <h1 className="text-6xl text-green-standard">Hello {userName}!</h1>
+                                    {
+                                        vaccinated ? <h1 className="text text-gray-600">Vaccination Status: Verified</h1>
+                                            : <>
+                                                <h1 className="text text-gray-600 mb-4">Vaccination Status: Unverified</h1>
+                                                <Link to="/vaccinationcheck" className="px-6 py-1 bg-green-standard text-white-standard rounded-full ">Get Verified</Link></>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -76,14 +99,14 @@ const Profile = () => {
                         <div className="col-span-4 bg-white-dirtyWhite rounded-xxl h-auto shadow-md px-10 py-6">
                             <h1 className="text-green-standard text-2xl font-bold tracking-wide ml-3 mb-4">Favourite Restaurants</h1>
                             {
-                                    (
-                                        (favouriteRestaurants.length === 0) && 
-                                           <div className="">
-                                               <img className="h-48 mx-auto mt-10" src="/images/noFavRestaurant.png" alt="no fav restaurant" />
-                                                <h1 className="text-green-standard text-center">No saved restaurants.</h1>
-                                            </div>
-                                    )
-                                }
+                                (
+                                    (favouriteRestaurants.length === 0) &&
+                                    <div className="">
+                                        <img className="h-48 mx-auto mt-10" src="/images/noFavRestaurant.png" alt="no fav restaurant" />
+                                        <h1 className="text-green-standard text-center">No saved restaurants.</h1>
+                                    </div>
+                                )
+                            }
                             <div className="mx-3">
                                 {
                                     favouriteRestaurants.map((favouriteRestaurant: any) => {
@@ -92,7 +115,7 @@ const Profile = () => {
                                                 key={favouriteRestaurant.restaurantId}
                                                 restaurantId={favouriteRestaurant.restaurantId}
                                                 name={favouriteRestaurant.restaurantName}
-                                                url={favouriteRestaurant.picture?.url}/>
+                                                url={favouriteRestaurant.picture?.url} />
                                         )
                                     })
                                 }

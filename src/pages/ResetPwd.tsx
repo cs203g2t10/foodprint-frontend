@@ -42,7 +42,6 @@ const ResetPwd = (props: any) => {
             console.log(resp.data.status);
             setSuccess(true);
             if (error) {
-                console.log(error)
                 setError("");
             }
         }).catch(error => {

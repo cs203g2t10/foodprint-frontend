@@ -22,10 +22,14 @@ const UserDetailsConfig = () => {
             console.log(response);
             if (response.status === 200) {
                 setSuccess(true);
+                if (error) {
+                    setError("");
+                }
             }
         }).catch((error) => {
             console.log(error.response);
             setError(error.response.data.message);
+            setSuccess(false);
         })
     }
 
