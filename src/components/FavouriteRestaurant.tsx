@@ -1,4 +1,3 @@
-import React from 'react'
 import { AiFillHeart } from 'react-icons/ai';
 import UserService from '../services/UserService';
 

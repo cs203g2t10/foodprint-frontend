@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ADMIN_REST_API_URL = process.env.REACT_APP_CF_PAGES ? "https://api.foodprint.works/api/v1/user" : "http://localhost:8080/api/v1/user";
+const USER_REST_API_URL = process.env.REACT_APP_CF_PAGES ? "https://api.foodprint.works/api/v1/user" : "http://localhost:8080/api/v1/user";
 
 class UserService {
     headers = () => {
@@ -13,14 +13,38 @@ class UserService {
     }
 
     getFavRestaurant= async () => {
-        const url = ADMIN_REST_API_URL+"/favouriteRestaurants";
+        const url = USER_REST_API_URL+"/favouriteRestaurants";
         return await axios.get(url, this.headers());
     }
     //@DeleteMapping({"favourite/{restaurantId}"})
 
     deleteFavRestaurant= async (restaurantId : number) => {
-        const url = `${ADMIN_REST_API_URL}/favourite/${restaurantId}`;
+        const url = `${USER_REST_API_URL}/favourite/${restaurantId}`;
         return await axios.delete(url, this.headers());
+    }
+
+    updateUserFirstName = (id:number, firstName:any) => {
+        const url = USER_REST_API_URL+"/"+id;
+        const requestBody = {
+            firstName
+        };
+        return axios.patch(url, requestBody, this.headers());
+    }
+
+    updateUserLastName = (id:number, lastName:any) => {
+        const url = USER_REST_API_URL+"/"+id;
+        const requestBody = {
+            lastName
+        };
+        return axios.patch(url, requestBody, this.headers());
+    }
+
+    updateUserEmail = (id:number, email:any) => {
+        const url = USER_REST_API_URL+"/"+id;
+        const requestBody = {
+            email,
+        };
+        return axios.patch(url, requestBody, this.headers());
     }
 }
 

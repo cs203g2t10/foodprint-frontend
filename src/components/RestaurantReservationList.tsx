@@ -1,5 +1,3 @@
-import React from 'react'
-
 const RestaurantReservationList = (props: any) => {
 
     return (

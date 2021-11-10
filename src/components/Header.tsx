@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import { useAppContext } from '../lib/AppContext';
 import LogInService from "../services/LogInService";
@@ -13,11 +13,6 @@ const Header = () => {
         setIsAuthenticated(false);
         window.localStorage.removeItem("token");
     }
-
-    // const getUserName = () => {
-    //     const userInfo = LogInService.getUserDetails();
-    //     return `${userInfo.userFname} ${userInfo.userLname}`;
-    // }
 
     const isUserAdmin = () => {
         const userInfo = LogInService.getUserDetails();
@@ -196,23 +191,6 @@ const Header = () => {
                 </Transition>
             </nav>
         </div>
-
-        // <header>
-        //     <nav>
-        //         <div className="flex gap-2 bg-yellow-standard">
-        //             <div className="grid grid-cols-2 mx-4 sm:mx-20 my-4 w-full h-full">
-        //                 <div className="flex flex-wrap gap-x-8">
-        //                     <Link to='/' className="font-bold tracking-widest">FOODPRINT</Link>
-        //                     <Link to='/restaurants' className="inline-block align-middle">Marketplace</Link>
-        //                     </div>
-        //                 <div className="flex flex-wrap justify-self-end">
-
-
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     </nav>
-        // </header>
     )
 }
 
