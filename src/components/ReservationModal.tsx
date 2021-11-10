@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import ReservationService from '../services/ReservationService'
 import { Link, NavLink } from 'react-router-dom';
 import { useAppContext } from '../lib/AppContext';
+import LogInService, { UserDetails } from '../services/LogInService';
 
 Modal.setAppElement('#root')
 
@@ -18,13 +19,19 @@ const ReservationModal = (
     const [bookingDate, setBookingDate] = useState<Date>();
     const [reserved, setReserved] = useState(false);
     const [isVaccinated, setVaccinated] = useState(false);
+    const [vaxCheckBox, setVaxCheckBox] = useState(false);
     const [selectDate, setSelectDate] = useState(false);
-    const [declare, setDeclare] = useState(false);
     const [reservationId, setReservationId] = useState();
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [afterDiscount, setAfterDiscount] = useState(0);
-    // const [noSlot, setNoSlot] = useState(false);
+
+    useEffect(() => {
+        const userInfo: UserDetails = LogInService.getUserDetails();
+        if (userInfo.vaccinationName !== undefined) {
+            setVaccinated(true);
+        }
+    }, [])
 
     useEffect(() => {
         setAfterDiscount(totalPrice - (totalPrice * discount / 100));
@@ -40,13 +47,14 @@ const ReservationModal = (
     };
 
     const makeReservation = () => {
+        setError("");
         setLoading(true);
         if (bookingDate === undefined) {
             setSelectDate(true);
             setLoading(false);
             return;
-        } else if (isVaccinated === false) {
-            setDeclare(true);
+        } else if (vaxCheckBox === false) {
+            setError("Please declare the above")
             setLoading(false);
             return;
         }
@@ -121,7 +129,6 @@ const ReservationModal = (
                             {
                                 discount !== 0 && <>
                                     <div className="gap-x-2 text-md text-grey-standard">-${(totalPrice * discount / 100).toFixed(2)}</div>
-                                    {/* <div className="gap-x-2 text-md text-grey-standard">${(totalPrice - totalPrice * discount / 100).toFixed(2)}</div> */}
                                     <div className="gap-x-2 text-md text-grey-standard">${afterDiscount.toFixed(2)}</div>
                                 </>
                             }
@@ -142,65 +149,70 @@ const ReservationModal = (
                     {
                         (selectDate ? <h1 className="text-red-standard text-base">Please select a booking slot</h1> : <></>)
                     }
-                    <div className="flex mb-8">
+                    <div className="flex mb-5">
                         <h1 className="flex text-md text-green-standard mr-5">Booking: </h1>
                         <DatePicker selected={bookingDate} onChange={(date: Date) => { setBookingDate(date); setSelectDate(false) }} showTimeSelect
                             dateFormat="d/MM/yyyy, h:mm aa" className="flex flex-col focus:outline-none rounded-xl shadow-sm py-1 w-64 pl-5"
                             minDate={new Date()} filterTime={filterAcceptableTimings}
                         />
                     </div>
+
                     {
-                        (declare ? <h1 className="text-center flex text-red-standard text-base">You have not declared the following: </h1>
-                            : <h1 className="flex text-base text-green-standard">Please declare the following: </h1>)
+                        isVaccinated ? <>
+                            <h1 className="flex text-base text-green-standard">Please declare the following: </h1>
+                            <div className="flex">
+                                <input
+                                    name="isVaccinated"
+                                    type="checkbox"
+                                    checked={vaxCheckBox}
+                                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                                        setVaxCheckBox(e.target.type === 'checkbox' ? e.target.checked : (e.target.value === 'true'));
+                                    }} className="my-auto mr-4 checkbox checkbox-md bg-white-standard " />
+                                <h1 className="text-sm text-grey-standard">I hereby declare that all of the guests are vaccinated (compulsory)</h1>
+                            </div> </> : <>
+                            <h1 className="flex text-base text-green-standard">Your vaccination status is not verified,</h1>
+                            <h1 className="text-sm text-grey-standard mb-4">Please ensure you verify your vaccination status before proceeding with making a reservation</h1>
+                            <div>
+                                <Link to="/vaccinationcheck" className="bg-green-standard text-white-standard px-8 py-1 rounded-full shadow hover:shadow-md">Verify Vaccination Status</Link>
+                            </div>
+                        </>
                     }
-                    {/* <h1 className="text-center mx-auto flex">Please declare the following: </h1> */}
-                    <div className="flex">
-                        <input
-                            name="isVaccinated"
-                            type="checkbox"
-                            checked={isVaccinated}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                                setVaccinated(e.target.type === 'checkbox' ? e.target.checked : (e.target.value === 'true'));
-                                setDeclare(false);
-                            }} className="my-auto mr-4 checkbox checkbox-md bg-white-standard " />
-                        <h1 className="text-sm text-grey-standard">I hereby declare that all of the guests are vaccinated (compulsory)</h1>
-                    </div>
-                    <div className="text-red-standard py-2">{error}</div>
-                    <div className="grid grid-cols-2 gap-x-10 mr-2 justify-center">
+                    <div className="text-red-standard my-2">{error}</div>
+                    <div className="grid grid-cols-2 gap-x-10 justify-center">
                         {
-                            isAuthenticated ? <>
-                                <button className=" bg-green-standard text-white-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border"
-                                    onClick={makeReservation} disabled={reserved || loading}>
-                                    <span>
-                                        {
-                                            loading ?
-                                                <div className="spinner" id="spinner" /> :
-                                                'Confirm'
-                                        }
-                                    </span>
-                                </button>
-                                <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border border-green-standard" onClick={() => setModal(false)}>Edit order</button>
-                            </> : <>
-                                <h1 className="text-sm text-grey-standard col-span-2 pb-2">Please Log In or Register to make a reservation:</h1>
-                                <div className="col-span-2 flex gap-x-4">
-                                    <NavLink to="/login" className="border text-center bg-green-standard text-white-standard py-1 px-8 rounded-full hover:shadow-md shadow">Log In</NavLink>
-                                    <NavLink to="/register" className="border text-center bg-green-standard text-white-standard py-1 px-8 rounded-full hover:shadow-md shadow">Register</NavLink>
+                            reserved ?
+                                <div className="col-span-2">
+                                    <div className="pb-3 text-green-standard text-center">Your reservation is successful!</div>
+                                    <div className="flex justify-center">
+                                        <Link to={"/payment/" + reservationId} className="bg-green-standard text-center py-1 rounded-xl shadow hover:shadow-md text-white-standard px-10">Make deposit to confirm</Link>
+                                    </div>
                                 </div>
-                                <div className="col-span-2 flex">
-                                    <button className="text-green-standard px-7 py-1 rounded-xl shadow-md hover:shadow-lg border border-green-standard mt-2" onClick={() => setModal(false)}>Return</button>
-                                </div>
-                            </>
+                                :
+                                isVaccinated && (
+                                    isAuthenticated ? <>
+                                        <button className="bg-green-standard text-white-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border"
+                                            onClick={makeReservation} disabled={reserved || loading}>
+                                            <span>
+                                                {
+                                                    loading ?
+                                                        <div className="spinner" id="spinner" /> :
+                                                        'Confirm'
+                                                }
+                                            </span>
+                                        </button>
+                                        <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border border-green-standard" onClick={() => setModal(false)}>Edit order</button>
+                                    </> : <>
+                                        <h1 className="text-sm text-grey-standard col-span-2 pb-2 mt-3">Please Log In or Register to make a reservation:</h1>
+                                        <div className="col-span-2 flex gap-x-4">
+                                            <NavLink to="/login" className="border text-center bg-green-standard text-white-standard py-1 px-8 rounded-full hover:shadow-md shadow">Log In</NavLink>
+                                            <NavLink to="/register" className="border text-center bg-green-standard text-white-standard py-1 px-8 rounded-full hover:shadow-md shadow">Register</NavLink>
+                                        </div>
+                                        <div className="col-span-2 flex">
+                                            <button className="text-green-standard px-7 py-1 rounded-xl shadow-md hover:shadow-lg border border-green-standard mt-2" onClick={() => setModal(false)}>Return</button>
+                                        </div>
+                                    </>)
                         }
                     </div>
-                    {
-                        (reserved ?
-                            <div className="grid">
-                                <div className="pt-5 pb-3 text-green-standard text-center">Your reservation is successful!</div>
-                                <Link to={"/payment/" + reservationId} className="border bg-green-standard text-center mx-auto py-1.5 rounded-xl shadow hover:shadow-md text-white-standard px-10">Proceed to make deposit</Link>
-                            </div>
-                            : <></>)
-                    }
-
                 </div>
             </div>
         </div>
