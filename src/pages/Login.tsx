@@ -107,6 +107,7 @@ const Login = () => {
                             </button>
                             <Link to="/forgotpassword" className="py-1 border shadow-sm hover:shadow-md rounded-full border-green-standard text-green-standard text-center">Forgot password?</Link>
                         </div>
+                        <h2 className="text-grey-lighter mt-2 mb-5">Don't have an account? <Link to='/register' className="text-green-standard">Register now!</Link></h2>
                         <div className="text-red-standard text-center">{error}</div>
                     </div>
                     <div>

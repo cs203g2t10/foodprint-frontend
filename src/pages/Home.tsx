@@ -81,11 +81,11 @@ const Home = () => {
                                 <Link to="/restaurants" className="bg-green-standard mt-4 py-1 px-8 text-center text-white-standard hover:shadow-lg rounded-xl">Start browsing now!</Link>
                             </div>
                         </> : <>
-                            <h1 className="text-center text-grey-standard text-base mt-5">Log In to an existing account, or Get Started by Registering!</h1>
-                            <div className="flex justify-center items-center gap-x-4">
+                            <h1 className="text-center text-grey-lighter text-base mt-5"><Link to="/login" className="text-green-standard">Log in</Link> to an existing account, or get started by <Link to="/register" className="text-green-standard">registering</Link>!</h1>
+                            {/* <div className="flex justify-center items-center gap-x-4">
                                 <Link to="/login" className="bg-green-standard mt-4 py-1 px-8 text-center text-white-standard hover:shadow-lg rounded-xl">Log In</Link>
                                 <Link to="/register" className="bg-green-standard mt-4 py-1 px-8 text-center text-white-standard hover:shadow-lg rounded-xl">Register</Link>
-                            </div>
+                            </div> */}
                         </>
                     }
                 </div>
