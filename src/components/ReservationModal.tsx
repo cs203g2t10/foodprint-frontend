@@ -2,7 +2,7 @@ import { ChangeEvent, SetStateAction, useEffect, useState } from 'react'
 import Modal from 'react-modal'
 import DatePicker from "react-datepicker";
 import ReservationService from '../services/ReservationService'
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAppContext } from '../lib/AppContext';
 import LogInService, { UserDetails } from '../services/LogInService';
 
