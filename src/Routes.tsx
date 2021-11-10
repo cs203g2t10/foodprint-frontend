@@ -25,6 +25,7 @@ import TwoFa from "./pages/TwoFa";
 import AdminMenu from "./pages/AdminMenu";
 import AdminManageRestaurants from "./pages/AdminManageRestaurants";
 import UserDetailsConfig from "./pages/UserDetailsConfig";
+import ChangePwd from "./pages/ChangePwd";
 
 export default function Routes() {
     let location = useLocation<any>();
@@ -110,6 +111,9 @@ export default function Routes() {
                 </Route>
                 <Route exact path="/userdetailsconfig">
                     <UserDetailsConfig />
+                </Route>
+                <Route exact path="/changepassword">
+                    <ChangePwd />
                 </Route>
                 <Route>
                     <NotFound />
