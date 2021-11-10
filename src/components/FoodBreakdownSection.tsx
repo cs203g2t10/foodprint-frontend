@@ -1,5 +1,5 @@
 import moment from 'moment';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import ReactDatePicker from 'react-datepicker';
 import { MdFastfood } from 'react-icons/md'
 import RestaurantService from '../services/RestaurantService';

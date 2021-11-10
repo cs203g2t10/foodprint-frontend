@@ -1,5 +1,3 @@
-import React from 'react'
-
 const TrendingRestaurant = (props: any) => {
     return (
         <div className="bg-white-creamWhite h-full w-64 shadow-md hover:shadow-lg rounded-xl flex-none pb-1">

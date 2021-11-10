@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import AdminService from '../services/AdminService';
 import UserListing from '../components/UserListing';
 import CreateUserModal from '../components/CreateUserModal';

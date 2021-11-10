@@ -95,7 +95,7 @@ const Profile = () => {
                         (deletemessage ? <h1 className="text-red-standard text-right mr-40 mb-3">{deletemessage}</h1> : <></>)
                     }
 
-                    <div className="grid lg:grid-cols-11 gap-x-10 mx-20 h-5/6">
+                    <div className="grid lg:grid-cols-11 gap-x-10 mx-20">
                         <div className="col-span-4 bg-white-dirtyWhite rounded-xxl shadow-md px-10 py-6 h-3/4">
                             <h1 className="text-green-standard text-2xl font-bold tracking-wide ml-3 mb-8">Favourite Restaurants</h1>
                             {

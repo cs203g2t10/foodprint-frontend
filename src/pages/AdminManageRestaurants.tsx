@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import AdminRestaurantListing from '../components/AdminRestaurantListing'
 import CreateRestaurantModal from '../components/CreateRestaurantModal'
 import Restricted from '../components/errors/Restricted'
