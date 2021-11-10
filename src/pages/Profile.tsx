@@ -78,7 +78,7 @@ const Profile = () => {
                                     (
                                         (favouriteRestaurants.length === 0) && 
                                            <div className="">
-                                               <img className="h-48 mx-auto mt-10" src="/images/noFavRestaurant.png" alt="No fav restaurant" />
+                                               <img className="h-48 mx-auto mt-10" src="/images/noFavRestaurant.png" alt="no fav restaurant" />
                                                 <h1 className="text-green-standard text-center">No saved restaurants.</h1>
                                             </div>
                                     )
@@ -114,7 +114,7 @@ const Profile = () => {
                                             </div>
                                             :
                                             <>
-                                                <img className="h-52 mx-auto" src="/images/noUpcomingReservation.png" alt="No past reservations" />
+                                                <img className="h-52 mx-auto" src="/images/noUpcomingReservation.png" alt="no past reservations" />
                                                 <h1 className="text-green-standard text-center">No Upcoming Reservations Book a Table.</h1>
                                             </>
                                     )
@@ -146,7 +146,7 @@ const Profile = () => {
                                             </div>
                                             :
                                             <>
-                                                <img className="h-52 mx-auto" src="/images/noPastReservation.png" alt="No past reservations" />
+                                                <img className="h-52 mx-auto" src="/images/noPastReservation.png" alt="no past reservations" />
                                                 <h1 className="text-green-standard text-center">No Past Reservations</h1>
                                             </>
                                     )

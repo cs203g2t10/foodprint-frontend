@@ -62,9 +62,9 @@ const Home = () => {
         <div className="w-full">
 
             <div className="grid grid-cols-6 absolute">
-                <img className="col-span-2 px-0 z-10 mt-28 -rotate-65 transform scale-110 " src="/images/aboutUs.png" alt="food" />
+                <img className="col-span-2 px-0 z-10 mt-28 -rotate-65 transform scale-110 " src="/images/aboutUs.png" alt="about us" />
                 <div className="col-span-2"></div>
-                <img className="col-span-2 px-0 z-10 mt-56 -rotate-45 transform scale-90" src="/images/aboutUs2.png" alt="food" />
+                <img className="col-span-2 px-0 z-10 mt-56 -rotate-45 transform scale-90" src="/images/aboutUs2.png" alt="about us" />
 
             </div>
             <div className="absolute z-10 grid grid-cols-8">
@@ -102,7 +102,7 @@ const Home = () => {
             <div className="overflow-hidden mt-10 w-full px-3 bg-white-standard">
                 <div className="grid md:grid-cols-2 gap-4 bg-white-standard md:pb-16 md:pl-12">
                     <motion.div ref={ref} className="Box" initial="hidden" animate={controls} variants={fadeInLeft}>
-                        <img className="transform scale-75" src="/images/landingPage2.webp" alt="cooking illustration" />
+                        <img className="transform scale-75" src="/images/landingPage2.webp" alt="landing page" />
                     </motion.div>
                     <motion.div ref={ref} initial="hidden" animate={controls} variants={fadeInRight}>
                         <h1 className="text-4xl md:pt-32 md:pr-64 font-bold">Reduce food waste and Save money</h1>

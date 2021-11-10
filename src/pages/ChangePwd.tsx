@@ -94,7 +94,7 @@ const ChangePwd = () => {
                         }
                     </div>
                     <div>
-                        <img className="mt-8 my-7 transform scale-90" src="/images/changePwd.png" alt="Change password illustration" style={{'borderRadius':'25px'}}/>
+                        <img className="mt-8 my-7 transform scale-90" src="/images/changePwd.png" alt="change password illustration" style={{'borderRadius':'25px'}}/>
                     </div>
                 </div>
             </div>

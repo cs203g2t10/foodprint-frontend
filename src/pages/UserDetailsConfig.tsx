@@ -122,7 +122,7 @@ const UserDetailsConfig = () => {
 
                     </div>
                     <div>
-                        <img className="transform scale-90" src="/images/UserDetailsConfig.png" alt="Register illustration" style={{'borderRadius':'25px'}}/>
+                        <img className="transform scale-90" src="/images/UserDetailsConfig.png" alt="user details config illustration" style={{'borderRadius':'25px'}}/>
                     </div>
                 </div>
             </div>

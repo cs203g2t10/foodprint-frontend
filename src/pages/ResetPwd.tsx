@@ -92,7 +92,7 @@ const ResetPwd = (props: any) => {
                         }
                     </div>
                     <div>
-                        <img className="w-85 transform scale-75" src="/images/resetPassword.png" alt="Reset Password illustration" />
+                        <img className="w-85 transform scale-75" src="/images/resetPassword.png" alt="reset password illustration" />
                     </div>
                 </div>
             </div>

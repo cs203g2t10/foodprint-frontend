@@ -45,7 +45,7 @@ const VaccinationCheck = () => {
 
             <div className="mx-auto mt-14 lg:w-3/6 shadow-md rounded-xxl h-auto bg-white-offWhite">
                 <div className="grid grid-cols-2 p-8 pr-14">
-                    <img src="/images/upload.png" alt="Upload illustration" className="transform scale-95 pt-8" />
+                    <img src="/images/upload.png" alt="upload illustration" className="transform scale-95 pt-8" />
                     <div>
                         <h1 className="text-grey-standard text-5xl font-bold">Upload File.</h1>
                         <h1 className="text-grey-lighter text-sm pb-4">Dining in is only available for vaccinated individuals. Please upload your certification to help us with this process.</h1>

@@ -120,7 +120,7 @@ const Register = () => {
                         </div>
                     </div>
                     <div>
-                        <img className="mt-16 my-7 transform scale-90" src="/images/register.png" alt="Register illustration" />
+                        <img className="mt-16 my-7 transform scale-90" src="/images/register.png" alt="register illustration" />
                     </div>
                 </div>
             </div>
