@@ -34,17 +34,6 @@ class AdminService {
         return axios.patch(url, requestBody, this.headers());
     }
 
-    updateUserDetails = (id:number, email:any, firstName:any, lastName:any) => {
-        console.log(id, email, firstName, lastName);
-        const url = ADMIN_REST_API_URL+"/"+id;
-        const requestBody = {
-            email,
-            firstName,
-            lastName
-        };
-        return axios.patch(url, requestBody, this.headers());
-    }
-
     updateUserPwd = (id:number, email:any, oldPassword:any, newPassword:any) => {
         console.log(id, email);
         const url = ADMIN_REST_API_URL+"/"+id;
