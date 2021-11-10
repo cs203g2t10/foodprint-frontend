@@ -57,7 +57,7 @@ const SearchBar = (props: any) => {
 
                 <div className="justify-items-center items-center flex">
                     <label htmlFor="sortDescending" className=" ml-5 mr-2 text-green-standard mt-8">Dsc:</label>
-                    <input type="checkbox" className="form-checkbox checkbox checkbox-md mt-10 inline-block" id="sortDescending" onChange={onChangeFunction} ref={restaurantSortDescRef} />
+                    <input type="checkbox" className="form-checkbox checkbox checkbox-md mt-8 inline-block" id="sortDescending" onChange={onChangeFunction} ref={restaurantSortDescRef} />
                 </div>
             </div>
             <h2 className="col-span-2">&nbsp;</h2>
