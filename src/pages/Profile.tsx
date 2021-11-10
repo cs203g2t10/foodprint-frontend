@@ -95,9 +95,9 @@ const Profile = () => {
                         (deletemessage ? <h1 className="text-red-standard text-right mr-40 mb-3">{deletemessage}</h1> : <></>)
                     }
 
-                    <div className="grid lg:grid-cols-11 gap-x-10 mx-20">
-                        <div className="col-span-4 bg-white-dirtyWhite rounded-xxl h-auto shadow-md px-10 py-6">
-                            <h1 className="text-green-standard text-2xl font-bold tracking-wide ml-3 mb-4">Favourite Restaurants</h1>
+                    <div className="grid lg:grid-cols-11 gap-x-10 mx-20 h-5/6">
+                        <div className="col-span-4 bg-white-dirtyWhite rounded-xxl shadow-md px-10 py-6 h-3/4">
+                            <h1 className="text-green-standard text-2xl font-bold tracking-wide ml-3 mb-8">Favourite Restaurants</h1>
                             {
                                 (
                                     (favouriteRestaurants.length === 0) &&
@@ -107,7 +107,7 @@ const Profile = () => {
                                     </div>
                                 )
                             }
-                            <div className="mx-3">
+                            <div className="mx-3 overflow-y-auto h-5/6">
                                 {
                                     favouriteRestaurants.map((favouriteRestaurant: any) => {
                                         return (
@@ -123,8 +123,8 @@ const Profile = () => {
                         </div>
 
 
-                        <div className="col-span-7">
-                            <div className="bg-white-dirtyWhite rounded-xxl h-96 shadow-md px-10 py-6 mb-8">
+                        <div className="col-span-7 h-full">
+                            <div className="bg-white-dirtyWhite rounded-xxl shadow-md h-96 px-10 py-6 mb-14">
                                 <h1 className="text-green-standard text-2xl font-bold tracking-wide pb-3">Upcoming Reservations</h1>
                                 {
                                     (

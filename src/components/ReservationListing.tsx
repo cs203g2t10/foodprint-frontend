@@ -6,9 +6,11 @@ const ReservationListing = (props: any) => {
 
     const { setDeleteMessage } = props;
 
-    const deleteReservation: any = async (id: number) => {
+    const cancelReservation: any = async (id: number) => {
+        console.log(props.status)
         console.log(id)
-        await ReservationService.deleteReservation(id);
+        await ReservationService.cancelReservation(id);
+        console.log(props.status)
     }
 
     return (
@@ -29,13 +31,13 @@ const ReservationListing = (props: any) => {
                     (props.status === "PAID" && 'Paid')
                 }
                 {
-                    (props.status==="CANCELLED" && 'Cancelled')
+                    (props.status === "CANCELLED" && 'Cancelled')
                 }
             </div>
 
             <button className="text-white-standard text-xs mx-auto col-span-2 w-20 px-1 grid my-auto py-1 bg-green-standard rounded-large shadow-md hover:shadow-lg opacity-90 hover:opacity-100">View Order</button>
             <div> {
-                props.past ? (<></>) : (<button className="my-auto col-span-1 mx-auto text-green-standard hover:bg-gray-200 bg-gray-100 shadow-sm hover:shadow-md p-2 rounded-full" onClick={() => { deleteReservation(props.reservationId); setDeleteMessage("Your reservation at " + props.restaurantName + " has been cancelled") }}><AiOutlineClose /></button>)
+                props.past || (props.status === "CANCELLED" && 'Cancelled') ? (<></>) : (<button className="my-auto col-span-1 mx-auto text-green-standard hover:bg-gray-200 bg-gray-100 shadow-sm hover:shadow-md p-2 rounded-full" onClick={() => { cancelReservation(props.reservationId); setDeleteMessage("Your reservation at " + props.restaurantName + " has been cancelled") }}><AiOutlineClose /></button>)
             }
             </div>
         </div>
