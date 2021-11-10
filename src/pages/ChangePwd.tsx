@@ -65,7 +65,7 @@ const ChangePwd = () => {
                 <div className="mt-20 mb-10 bg-white-standard w-7/12 grid md:grid-cols-2 shadow-xxl shadow rounded-xxl">
                     <div className="ml-16 mt-12 mb-10">
                         <h1 className="text-3xl font-bold mb-2 text-green-standard">Change Password</h1>
-                        <h2 className="text-grey-lighter mb-5">Enter old and new password</h2>
+                        <h2 className="text-grey-lighter mb-1">Enter old and new password</h2>
                         <div className="mb-4">
                             <input className="focus:outline-none px-4 py-1 mt-4 h-10 rounded-full border border-grey-lightest md:w-11/12"
                                 placeholder="Old password"
