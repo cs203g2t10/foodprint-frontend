@@ -70,7 +70,7 @@ module.exports = {
     },
     lineHeight: {
       'extra-tight': '4rem',
-      '12': '5rem',
+      '12': '5.5rem',
     },
     rotate: {
       '-180': '-180deg',
