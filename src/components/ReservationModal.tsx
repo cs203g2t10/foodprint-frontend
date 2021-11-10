@@ -2,14 +2,17 @@ import { ChangeEvent, SetStateAction, useEffect, useState } from 'react'
 import Modal from 'react-modal'
 import DatePicker from "react-datepicker";
 import ReservationService from '../services/ReservationService'
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { useAppContext } from '../lib/AppContext';
 
 Modal.setAppElement('#root')
 
 const ReservationModal = (
     { id, modalIsOpen, lineItems, totalPrice, setModal, discount }:
-        { id: any, modalIsOpen: boolean, lineItems: any[], totalPrice: number, setModal: SetStateAction<any>, discount:number }
+        { id: any, modalIsOpen: boolean, lineItems: any[], totalPrice: number, setModal: SetStateAction<any>, discount: number }
 ) => {
+
+    const { isAuthenticated } = useAppContext() || {}
 
     const [pax, setPax] = useState(1);
     const [bookingDate, setBookingDate] = useState<Date>();
@@ -105,8 +108,8 @@ const ReservationModal = (
                             <div className="gap-x-2 text-md text-green-standard">Total:</div>
                             {
                                 discount !== 0 && <>
-                                <div className="gap-x-2 text-md text-green-standard">Discount ({discount}% off):</div>
-                                <div className="gap-x-2 text-md text-green-standard">After discount:</div>
+                                    <div className="gap-x-2 text-md text-green-standard">Discount ({discount}% off):</div>
+                                    <div className="gap-x-2 text-md text-green-standard">After discount:</div>
                                 </>
                             }
                             <div className="gap-x-2 text-md text-green-standard">GST:</div>
@@ -117,9 +120,9 @@ const ReservationModal = (
                             <div className="gap-x-2 text-md text-grey-standard">${totalPrice.toFixed(2)}</div>
                             {
                                 discount !== 0 && <>
-                                <div className="gap-x-2 text-md text-grey-standard">-${(totalPrice * discount / 100).toFixed(2)}</div>
-                                {/* <div className="gap-x-2 text-md text-grey-standard">${(totalPrice - totalPrice * discount / 100).toFixed(2)}</div> */}
-                                <div className="gap-x-2 text-md text-grey-standard">${afterDiscount.toFixed(2)}</div>
+                                    <div className="gap-x-2 text-md text-grey-standard">-${(totalPrice * discount / 100).toFixed(2)}</div>
+                                    {/* <div className="gap-x-2 text-md text-grey-standard">${(totalPrice - totalPrice * discount / 100).toFixed(2)}</div> */}
+                                    <div className="gap-x-2 text-md text-grey-standard">${afterDiscount.toFixed(2)}</div>
                                 </>
                             }
                             <div className="gap-x-2 text-md text-grey-standard">${(afterDiscount * 0.07).toFixed(2)}</div>
@@ -152,31 +155,41 @@ const ReservationModal = (
                     }
                     {/* <h1 className="text-center mx-auto flex">Please declare the following: </h1> */}
                     <div className="flex">
-                        <div className="flex">
-                            <input
-                                name="isVaccinated"
-                                type="checkbox"
-                                checked={isVaccinated}
-                                onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                                    setVaccinated(e.target.type === 'checkbox' ? e.target.checked : (e.target.value === 'true'));
-                                    setDeclare(false);
-                                }} className="my-auto mr-4 checkbox checkbox-md" />
-                            <h1 className="text-sm text-grey-standard">I hereby declare that all of the guests are vaccinated (compulsory)</h1>
-                        </div>
+                        <input
+                            name="isVaccinated"
+                            type="checkbox"
+                            checked={isVaccinated}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                                setVaccinated(e.target.type === 'checkbox' ? e.target.checked : (e.target.value === 'true'));
+                                setDeclare(false);
+                            }} className="my-auto mr-4 checkbox checkbox-md bg-white-standard " />
+                        <h1 className="text-sm text-grey-standard">I hereby declare that all of the guests are vaccinated (compulsory)</h1>
                     </div>
-                    <div className="text-red-standard py-4">{error}</div>
+                    <div className="text-red-standard py-2">{error}</div>
                     <div className="grid grid-cols-2 gap-x-10 mr-2 justify-center">
-                        <button className=" bg-green-standard text-white-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border"
-                            onClick={makeReservation} disabled={reserved || loading}>
-                            <span>
-                                {
-                                    loading ?
-                                        <div className="spinner" id="spinner" /> :
-                                        'Confirm'
-                                }
-                            </span>
-                        </button>
-                        <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border border-green-standard" onClick={() => setModal(false)}>Edit order</button>
+                        {
+                            isAuthenticated ? <>
+                                <button className=" bg-green-standard text-white-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border"
+                                    onClick={makeReservation} disabled={reserved || loading}>
+                                    <span>
+                                        {
+                                            loading ?
+                                                <div className="spinner" id="spinner" /> :
+                                                'Confirm'
+                                        }
+                                    </span>
+                                </button>
+                                <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border border-green-standard" onClick={() => setModal(false)}>Edit order</button>
+                            </> : <>
+                                <h1 className="text-sm text-grey-standard col-span-2 pb-2">Please Log In or Register to make a reservation:</h1>
+                                <div className="col-span-2 flex gap-x-4">
+                                    <NavLink to="/login" className="border text-center bg-green-standard text-white-standard py-1 px-8 rounded-full hover:shadow-md shadow">Log In</NavLink>
+                                    <NavLink to="/register" className="border text-center bg-green-standard text-white-standard py-1 px-8 rounded-full hover:shadow-md shadow">Register</NavLink>
+                                </div>
+
+                            </>
+                        }
+
 
                     </div>
                     {
