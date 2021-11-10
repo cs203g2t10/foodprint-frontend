@@ -53,41 +53,41 @@ const Register = () => {
     return (
         <div className="bg-yellow-standard h-screen ">
             <div className="flex justify-center">
-                <div className="mt-20 mb-10 bg-white-standard w-7/12 grid md:grid-cols-2 shadow-xxl shadow rounded-xxl">
+                <div className="mt-12 mb-10 bg-white-standard w-7/12 grid md:grid-cols-2 shadow-xxl shadow rounded-xxl">
                     <div className="ml-16 mt-12 mb-10">
-                        <h1 className="text-3xl font-bold mb-2 text-green-standard">Register</h1>
-                        <h2 className="text-grey-lighter mb-5">Sign up now to get started!</h2>
+                        <h1 className="text-5xl font-bold text-green-standard">Register</h1>
+                        <h2 className="text-grey-lighter mb-2">Sign up now to get started!</h2>
 
-                        <div className="mb-4">
-                            <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"
+                        <div className="mb-2">
+                            <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-full"
                                 placeholder="First Name"
                                 value={firstName}
                                 onChange={e => setFirstName(e.target.value)} />
                         </div>
 
-                        <div className="mb-4">
-                            <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"
+                        <div className="mb-2">
+                            <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-full"
                                 placeholder="Last Name"
                                 value={lastName}
                                 onChange={e => setLastName(e.target.value)} />
                         </div>
 
-                        <div className="mb-4">
-                            <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"
+                        <div className="mb-2">
+                            <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-full"
                                 placeholder="Email"
                                 type="email"
                                 onChange={e => setEmail(e.target.value)} />
                         </div>
 
-                        <div className="mb-4">
-                            <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"
+                        <div className="mb-2">
+                            <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-full"
                                 placeholder="Password"
                                 type="password"
                                 onChange={e => setPassword(e.target.value)} />
                         </div>
 
                         <div className="">
-                            <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"
+                            <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-full"
                                 placeholder="Confirm Password"
                                 type="password"
                                 onChange={e => setConfirmPassword(e.target.value)} />
@@ -104,8 +104,8 @@ const Register = () => {
                             (successfulReg ? <div className="text-green-standard mt-2">We have sent you an email!</div> : <div className=""></div>)
                         }
 
-                        <div className="pt-5 flex">
-                            <button className="rounded-xl px-5 bg-green-standard text-white-standard shadow hover:shadow-md text-justify h-8" disabled={!validateForm}
+                        <div className="pt-5 flex w-full mb-8">
+                            <button className="rounded-xl px-5 w-32 bg-green-standard text-white-standard shadow hover:shadow-md text-justify h-8" disabled={!validateForm}
                                 onClick={userRegister}>
                                 <span id="button-text">
                                     {processing ? (
@@ -116,11 +116,11 @@ const Register = () => {
                                 </span>
                             </button>
 
-                            <Link to="/login" className="ml-6 py-1 px-5 self-end rounded-full text-green-standard border">Log in to existing account</Link>
+                            <Link to="/login" className="text-center ml-6 py-1 px-5 w-full self-end rounded-full border-green-standard text-green-standard border">Log in to existing account</Link>
                         </div>
                     </div>
                     <div>
-                        <img className="mt-16 my-7 transform scale-90" src="/images/register.png" alt="register illustration" />
+                        <img className="transform scale-95 my-auto mt-28" src="/images/register.png" alt="register illustration" />
                     </div>
                 </div>
             </div>

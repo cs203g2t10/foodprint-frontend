@@ -33,7 +33,7 @@ const ResetPwd = () => {
             <div className="flex justify-center object-contain">
                 <div className="h-auto mt-36 bg-white-standard w-10/12 md:w-6/12 grid md:grid-cols-2 shadow-xxl rounded-xxl">
                     <div className="ml-16 mt-12">
-                        <h1 className = "text-3xl font-bold mb-2 text-green-standard">Gold Fish Brain?</h1>
+                        <h1 className = "text-4xl font-bold mb-2 text-green-standard">Gold Fish Brain?</h1>
                         <h2 className = "text-grey-lighter mb-5 text-sm">Enter the email associated with your account and we’ll send an email with instructions to reset your password.</h2>
                         <div className = "mb-4">
                             <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"

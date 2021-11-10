@@ -140,7 +140,7 @@ const ReservationModal = (
                 </div>
                 <div>
                     <div className="flex mb-5">
-                        <h1 className="text-md text-green-standard mr-5">Pax (5 max): </h1>
+                        <h1 className="text-md text-green-standard w-52">Pax (5 max): </h1>
                         <input className="flex focus:outline-none rounded-xl w-56 pl-5 py-1 shadow-sm"
                             placeholder="0" type="number" min="1" max="5"
                             onChange={(e) => setPax(parseInt(e.target.value))}
