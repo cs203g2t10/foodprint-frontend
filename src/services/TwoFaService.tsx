@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const TWOFA_API_URL = process.env.REACT_APP_CF_PAGES ? "https://api.foodprint.works/api/v1/twofactor" : "http://localhost:8080/api/v1/twofactor";
+const TWOFA_API_URL = process.env.REACT_APP_CF_PAGES ? "https://rest.foodprint.works/api/v1/twofactor" : "http://localhost:8080/api/v1/twofactor";
 
 class TwoFaService {
     headers = () => {

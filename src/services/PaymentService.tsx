@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const PAYMENT_REST_API_URL = process.env.REACT_APP_CF_PAGES ? "https://api.foodprint.works/api/v1/charge" : "http://localhost:8080/api/v1/charge";
+const PAYMENT_REST_API_URL = process.env.REACT_APP_CF_PAGES ? "https://rest.foodprint.works/api/v1/charge" : "http://localhost:8080/api/v1/charge";
 
 class PaymentService {
     headers = () => {

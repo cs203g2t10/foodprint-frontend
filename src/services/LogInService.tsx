@@ -1,7 +1,7 @@
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 
-const LOGIN_REST_API_URL = process.env.REACT_APP_CF_PAGES ? "https://api.foodprint.works/api/v1/auth" : "http://localhost:8080/api/v1/auth";
+const LOGIN_REST_API_URL = process.env.REACT_APP_CF_PAGES ? "https://rest.foodprint.works/api/v1/auth" : "http://localhost:8080/api/v1/auth";
 
 type UserDetails = {
     email: string

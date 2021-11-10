@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const USER_REST_API_URL = process.env.REACT_APP_CF_PAGES ? "https://api.foodprint.works/api/v1/user" : "http://localhost:8080/api/v1/user";
+const USER_REST_API_URL = process.env.REACT_APP_CF_PAGES ? "https://arest.foodprint.worksapi/v1/user" : "http://localhost:8080/api/v1/user";
 
 class UserService {
     headers = () => {
