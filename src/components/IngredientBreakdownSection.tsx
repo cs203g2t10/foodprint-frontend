@@ -52,16 +52,30 @@ const IngredientBreakdownSection = (props: any) => {
 
     return (
         <div className="bg-white-dirtyWhite rounded-xxl p-7">
-            <div className="flex pb-5 gap-x-4">
+            <div className="flex pb-2 gap-x-4">
                 <MdFoodBank className="text-green-standard text-3xl my-auto filter drop-shadow" />
-                <h1 className="text-green-standard text-xl font-semibold tracking-wide filter drop-shadow-sm">Ingredients between</h1>
-                <div>
+                <h1 className="text-green-standard text-xl font-semibold tracking-wide filter drop-shadow-sm">Ingredients required</h1>
+                {/* <div>
                     <ReactDatePicker className="focus:outline-none w-32 text-center py-1 rounded-full border shadow"
                         selected={startDate} onChange={(date: any) => setStartDate(date)} selectsStart
                         dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
                 </div>
                 <div>
                     <ReactDatePicker className="focus:outline-none w-32 text-center py-1 rounded-full border shadow"
+                        selected={endDate} onChange={(date: any) => setEndDate(date)} selectsEnd
+                        dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
+                </div> */}
+            </div>
+            <div className="grid grid-cols-2 pb-2 gap-x-4">
+                <div>
+                    <h1 className="text-sm mb-1 text-gray-600 pl-3">Date From:</h1>
+                    <ReactDatePicker className="focus:outline-none pl-3 py-1 rounded-lg border shadow text-gray-700 w-full"
+                        selected={startDate} onChange={(date: any) => setStartDate(date)} selectsStart
+                        dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
+                </div>
+                <div>
+                    <h1 className="text-sm mb-1 text-gray-600 pl-3">Date To:</h1>
+                    <ReactDatePicker className="focus:outline-none pl-3 py-1 rounded-lg border shadow text-gray-700 w-full"
                         selected={endDate} onChange={(date: any) => setEndDate(date)} selectsEnd
                         dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
                 </div>
