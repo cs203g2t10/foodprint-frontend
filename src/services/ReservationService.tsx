@@ -55,7 +55,14 @@ class ReservationService {
         return axios.get(`${RESERVATIONS_REST_API_URL}/restaurant/${restaurantId}?after=${startDate}&before=${endDate}&p=${page}`, this.headers());
     }
 
-
+    cancelReservation = (reservationId:number) => {
+        const url = RESERVATIONS_REST_API_URL+"/"+reservationId;
+        const status = "CANCELLED";
+        const requestBody = {
+            status
+        };
+        return axios.patch(url, requestBody, this.headers());
+    }
 }
 
 export default new ReservationService();
