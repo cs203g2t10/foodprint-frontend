@@ -1,5 +1,3 @@
-import React from 'react'
-
 import "../css/waves.css"
 
 import { AiFillInstagram, AiFillTwitterSquare, AiFillLinkedin } from "react-icons/ai";
@@ -35,11 +33,6 @@ const Footer = () => {
                                     <AiFillLinkedin className = "opacity-50" fontSize="2em" />
                                     <AiFillTwitterSquare className = "opacity-50" fontSize="2em" />
                                     <div className="col-span-3"></div>
-                                    {
-                                    /* <img className = "transform scale-50 opacity-50" src="/images/instagram.png" alt="footer" />
-                                    <img className = "transform scale-50 opacity-50" src="/images/linkedIn.png" alt="footer" />
-                                    <img className = "transform scale-50 opacity-50" src="/images/twitter.png" alt="footer" /> */
-                                    }
                                 </div>
                             </div>
                         </div>

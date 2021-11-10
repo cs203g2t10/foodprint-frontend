@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import RestaurantService from '../services/RestaurantService'
 import { Link } from 'react-router-dom'
 import queryString from 'query-string'
