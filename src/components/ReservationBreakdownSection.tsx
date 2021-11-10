@@ -57,29 +57,33 @@ const ReservationBreakdownSection = (props:any) => {
     }, [currPage, restaurantId, startDate, endDate])
 
     return (
-        <div className="bg-white-dirtyWhite rounded-xxl p-7 mx-20">
-            <div className="flex pb-5 px-14 gap-x-4">
+        <div className="bg-white-dirtyWhite rounded-xxl p-7 mx-20 px-14">
+            <div className="flex pb-2 gap-x-4">
                 <AiFillSchedule className="text-green-standard text-3xl my-auto filter drop-shadow" />
                 <h1 className="text-green-standard text-xl font-semibold tracking-wide filter drop-shadow-sm">Upcoming reservation</h1>
+            </div>
+            <div className="grid grid-cols-2 pb-6 gap-x-4 mx-10">
                 <div>
-                    <ReactDatePicker className="focus:outline-none w-32 text-center py-1 rounded-full border shadow"
+                    <h1 className="text-sm mb-1 text-gray-500 pl-3">Date From:</h1>
+                    <ReactDatePicker className="focus:outline-none pl-3 py-1 rounded-lg border shadow text-gray-600 w-full hover:shadow-md"
                         selected={startDate} onChange={(date: any) => setStartDate(date)} selectsStart
                         dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
                 </div>
                 <div>
-                    <ReactDatePicker className="focus:outline-none w-32 text-center py-1 rounded-full border shadow"
+                    <h1 className="text-sm mb-1 text-gray-500 pl-3">Date To:</h1>
+                    <ReactDatePicker className="focus:outline-none pl-3 py-1 rounded-lg border shadow text-gray-600 w-full hover:shadow-md"
                         selected={endDate} onChange={(date: any) => setEndDate(date)} selectsEnd
                         dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
                 </div>
             </div>
-            <div className="grid grid-cols-6 mx-10 px-14 mb-4">
+            <div className="grid grid-cols-6 mx-10 mb-4">
                 <h1 className="flex col-span-1 text-base text-grey-standard">Reservation Id</h1>
                 <h1 className="flex col-span-1 text-base text-grey-standard">Booker</h1>
                 <h1 className="flex col-span-2 text-base text-grey-standard">Reservation Date</h1>
                 <h1 className="flex col-span-1 text-base text-grey-standard">Status</h1>
             </div>
             {
-                reservationLoading && <div className="flex justify-center bg-white-standard rounded-xxl"><Loading /></div>
+                reservationLoading && <div className="flex justify-center bg-white-standard rounded-lg mx-10"><Loading /></div>
             }
             <div className="text-red-standard text-center">{resError}</div>
             {

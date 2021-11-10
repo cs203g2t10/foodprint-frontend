@@ -56,13 +56,17 @@ const FoodBreakdownSection = (props: any) => {
             <div className="flex gap-x-4 pb-2">
                 <MdFastfood className="text-green-standard text-2xl my-auto filter drop-shadow" />
                 <h1 className="text-green-standard text-xl font-semibold tracking-wide filter drop-shadow-sm">Food required</h1>
+            </div>
+            <div className="grid grid-cols-2 pb-6 gap-x-4">
                 <div>
-                    <ReactDatePicker className="focus:outline-none w-32 text-center py-1 rounded-full border shadow"
+                    <h1 className="text-sm mb-1 text-gray-500 pl-3">Date From:</h1>
+                    <ReactDatePicker className="focus:outline-none pl-3 py-1 rounded-lg border shadow text-gray-600 w-full hover:shadow-md"
                         selected={startDate} onChange={(date: any) => setStartDate(date)} selectsStart
                         dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
                 </div>
                 <div>
-                    <ReactDatePicker className="focus:outline-none w-32 text-center py-1 rounded-full border shadow"
+                    <h1 className="text-sm mb-1 text-gray-500 pl-3">Date To:</h1>
+                    <ReactDatePicker className="focus:outline-none pl-3 py-1 rounded-lg border shadow text-gray-600 w-full hover:shadow-md"
                         selected={endDate} onChange={(date: any) => setEndDate(date)} selectsEnd
                         dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
                 </div>
@@ -77,7 +81,7 @@ const FoodBreakdownSection = (props: any) => {
 
             <div className="overflow-y-auto h-64">
                 {
-                    foodLoading && <div className="flex justify-center bg-white-standard rounded-xxl"><Loading /></div>
+                    foodLoading && <div className="flex justify-center bg-white-standard rounded-lg"><Loading /></div>
                 }
                 <div className="text-red-standard text-center">{foodError}</div>
                 {Object.keys(foodBetween).map((food) => (
