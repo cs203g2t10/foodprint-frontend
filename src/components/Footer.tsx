@@ -10,7 +10,7 @@ const Footer = () => {
             <div className = "w-full">
                 <div className="flex absolute mt-6 w-full content-center">
                     <div className = "px-12 md:mt-14">
-                        <h1 className = "text-green-standard font-bold lg:text-4xl tracking-wide text-center md:text-left">foodPrint</h1>
+                        <h1 className = "text-green-standard font-bold lg:text-4xl tracking-wide text-center md:text-left">foodprint</h1>
                         <h2 className = "lg:pt-2 lg:pr-44 text-grey-light w-full text-center md:text-left pb-4">Here at foodprint, we encourage restaurant reservation to help F&B establishments reduce food waste. </h2>
                         <div className="grid sm:grid-cols-6 lg:grid-cols-4 gap-x-12 gap-y-4 md:pt-4 pb-3 text-center md:text-left">
                             <div>

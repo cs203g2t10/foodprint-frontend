@@ -106,7 +106,7 @@ const Home = () => {
                     </motion.div>
                     <motion.div ref={ref} initial="hidden" animate={controls} variants={fadeInRight}>
                         <h1 className="text-4xl md:pt-32 md:pr-64 font-bold">Reduce food waste and Save money</h1>
-                        <h2 className="md:pt-4 md:pr-44 text-grey-light">Here at foodPrint, we encourage restaurant reservation to help F&B establishments reduce food waste. </h2>
+                        <h2 className="md:pt-4 md:pr-44 text-grey-light">Here at foodprint, we encourage restaurant reservation to help F&B establishments reduce food waste. </h2>
                         <div className="flex justify-left">
                             <Link to="/restaurants" className="border border-green-standard mt-4 pt-2 pb-3 px-5 text-center text-green-standard hover:shadow-lg rounded-xl">Discover Restaurants</Link>
                         </div>
