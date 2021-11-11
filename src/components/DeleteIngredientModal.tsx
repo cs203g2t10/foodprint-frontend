@@ -42,7 +42,7 @@ const DeleteIngredientModal = (props: any) => {
                             <div className="px-10 pb-2 text-green-standard">{name} has been successfully deleted!</div>
                             <div className=" grid grid-cols-2 gap-x-10 justify-center mx-10">
                                 <button className="col-span-2 bg-green-standard px-3 py-1 rounded-lg w-full shadow-md hover:shadow-lg text-white-standard"
-                                    onClick={() => { setDeleteModal(false) }}>Return</button>
+                                    onClick={() => { setDeleteModal(false); window.location.reload(); }}>Return</button>
                             </div>
                         </> :
                         <div className=" grid grid-cols-2 gap-x-8 justify-center mx-10">

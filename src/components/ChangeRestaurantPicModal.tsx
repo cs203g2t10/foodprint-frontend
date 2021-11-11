@@ -98,7 +98,7 @@ const ChangeRestaurantPicModal = (props: any) => {
                 }
                 <div className="text-red-standard text-center">{error}</div>
                 <button className="text-white-standard bg-green-standard px-3 py-1 rounded-lg shadow-md hover:shadow-lg w-52 mx-auto"
-                    onClick={() => setChangePic(false)}
+                    onClick={() => {setChangePic(false); window.location.reload(); }}
                 >
                     <span>
                         {

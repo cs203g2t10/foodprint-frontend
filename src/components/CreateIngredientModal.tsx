@@ -74,7 +74,7 @@ const CreateIngredientModal = (props: any) => {
                                         setUnits("");
                                     }}>Reset</button>
                                 <button className=" text-green-standard px-3 py-1 rounded-lg shadow-md hover:shadow-lg border border-green-standard"
-                                    onClick={() => { setCreateIngredient(false) }}>Return</button>
+                                    onClick={() => { setCreateIngredient(false); window.location.reload(); }}>Return</button>
                             </div>
                         </> :
                         <div className="mx-6 grid grid-cols-2 gap-x-6 justify-center pt-3">

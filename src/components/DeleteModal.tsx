@@ -55,7 +55,8 @@ const DeleteUserModal = (props: any) => {
                         <>
                             <div className="mx-16 text-green-standard">User with ID {props.userId} has been deleted!</div>
                             <div className="mx-16 pt-4">
-                                <button className="text-white-standard py-1 rounded-lg shadow-md hover:shadow-lg border border-green-standard bg-green-standard text-center w-full" onClick={() => setDeleteModal(false)}>Return</button>
+                                <button className="text-white-standard py-1 rounded-lg shadow-md hover:shadow-lg border border-green-standard bg-green-standard text-center w-full" 
+                                onClick={() => {setDeleteModal(false); window.location.reload();}}>Return</button>
                             </div>
                         </> :
                         <div className="grid grid-cols-2 gap-x-8 justify-center mx-16">

@@ -102,7 +102,7 @@ const CreateUserModal = (
                                         setRoles("");
                                     }}>Reset</button>
                                 <button className=" text-green-standard px-3 py-1 rounded-lg shadow-md hover:shadow-lg border w-full border-green-standard"
-                                    onClick={() => { setCreateUser(false) }}>Return</button>
+                                    onClick={() => { setCreateUser(false); window.location.reload(); }}>Return</button>
                             </div>
                         </> :
                         <div className="pt-2 pb-0 grid grid-cols-2 gap-x-6 md:justify-center px-10 gap-y-2">

@@ -84,7 +84,8 @@ const CreateManagerModal = (props: any) => {
                                         setCreated(false);
                                         setUserId(0);
                                         setRestaurantId(0);
-                                        setError("")
+                                        setError("");
+                                        window.location.reload();
                                     }}>Return</button>
                             </div>
                         </> :
