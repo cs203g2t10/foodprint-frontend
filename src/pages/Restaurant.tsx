@@ -63,7 +63,7 @@ const Restaurant = () => {
                 return <></>;
             })
         })
-    }, [restaurantDetails.restaurantId])
+    }, [restaurantDetails.restaurantId, isAuthenticated])
 
     useEffect(() => {
         setLoading(true);

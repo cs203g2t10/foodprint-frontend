@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
 import LineItemsModal from "./LineItemsModal";
 
 const RestaurantReservationList = (props: any) => {
