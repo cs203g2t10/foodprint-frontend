@@ -74,6 +74,7 @@ const CreateManagerModal = (props: any) => {
                                         setCreated(false);
                                         setUserId(0);
                                         setRestaurantId(0);
+                                        setError("")
                                     }}>Reset</button>
                                 <button className=" text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border"
                                     onClick={() => {
@@ -81,6 +82,7 @@ const CreateManagerModal = (props: any) => {
                                         setCreated(false);
                                         setUserId(0);
                                         setRestaurantId(0);
+                                        setError("")
                                     }}>Return</button>
                             </div>
                         </> :
@@ -101,6 +103,7 @@ const CreateManagerModal = (props: any) => {
                                     setCreated(false);
                                     setUserId(0);
                                     setRestaurantId(0);
+                                    setError("")
                                 }
                                 }
                             >Cancel</button>
