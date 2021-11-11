@@ -57,7 +57,7 @@ const ReservationBreakdownSection = (props: any) => {
     }, [currPage, restaurantId, startDate, endDate])
 
     return (
-        <div className="bg-white-dirtyWhite rounded-xxl shadow-md p-7 mx-20 px-14">
+        <div className="bg-white-dirtyWhite rounded-lg shadow-md p-7 mx-20 px-14">
             <div className="grid grid-cols-5 pb-6 gap-x-4 mx-10">
                 <div className="flex pb-2 gap-x-4 col-span-2">
                     <AiFillSchedule className="text-green-standard text-3xl my-auto filter drop-shadow" />

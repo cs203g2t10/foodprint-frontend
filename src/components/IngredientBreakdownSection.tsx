@@ -51,7 +51,7 @@ const IngredientBreakdownSection = (props: any) => {
     }, [restaurantId, startDate, endDate])
 
     return (
-        <div className="bg-white-dirtyWhite shadow-md rounded-xxl p-7">
+        <div className="bg-white-dirtyWhite shadow-md rounded-lg p-7">
             <div className="flex pb-2 gap-x-4">
                 <MdFoodBank className="text-green-standard text-3xl my-auto filter drop-shadow" />
                 <h1 className="text-green-standard text-xl font-semibold tracking-wide filter drop-shadow-sm">Ingredients required</h1>

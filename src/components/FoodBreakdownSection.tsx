@@ -52,7 +52,7 @@ const FoodBreakdownSection = (props: any) => {
     }, [restaurantId, startDate, endDate])
 
     return (
-        <div className="bg-white-dirtyWhite rounded-xxl shadow-md p-7">
+        <div className="bg-white-dirtyWhite rounded-lg shadow-md p-7">
             <div className="flex gap-x-4 pb-2">
                 <MdFastfood className="text-green-standard text-2xl my-auto filter drop-shadow" />
                 <h1 className="text-green-standard text-xl font-semibold tracking-wide filter drop-shadow-sm">Food required</h1>
