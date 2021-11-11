@@ -72,6 +72,9 @@ const ManageUser = () => {
                         <p className="col-span-3 text-lg text-grey-dark cursor-pointer" onClick={() => { setSortField("roles") }}>Role</p>
                         <p className="col-span-1 text-lg text-grey-dark">Edit</p>
                     </div>
+                    <div className="flex justify-center bg-white-standard rounded-lg mx-10">
+                        {userDetails.length === 0 && <Loading />}
+                    </div>
                     {
                         userDetails?.map(
                             (user: any) => {
@@ -83,12 +86,6 @@ const ManageUser = () => {
                     }
                 </div>
             </div>
-            {
-                loading &&
-                <div className="flex justify-center py-1">
-                    <Loading />
-                </div>
-            }
             <PageLinks {...{ numPages, currPage, setCurrPage }} />
             <div>
             </div>
