@@ -59,9 +59,11 @@ const ReservationModal = (
             setLoading(false);
             return;
         }
-        bookingDate.setHours(bookingDate.getHours() + 8);
 
-        const response = ReservationService.makeReservation(bookingDate, pax, true, lineItems, id.id)
+        var d = new Date(bookingDate)
+        d.setHours(d.getHours() + 8);
+
+        const response = ReservationService.makeReservation(d, pax, true, lineItems, id.id)
         response.then((resp) => {
             console.log(resp);
             if (resp.status === 201) {
@@ -75,7 +77,6 @@ const ReservationModal = (
                 setLoading(false);
             }
         })
-        bookingDate.setHours(bookingDate.getHours() - 8);
     }
 
     const customStyles = {
