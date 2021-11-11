@@ -16,11 +16,15 @@ class UserService {
         const url = USER_REST_API_URL+"/favouriteRestaurants";
         return await axios.get(url, this.headers());
     }
-    //@DeleteMapping({"favourite/{restaurantId}"})
 
     deleteFavRestaurant= async (restaurantId : number) => {
         const url = `${USER_REST_API_URL}/favourite/${restaurantId}`;
         return await axios.delete(url, this.headers());
+    }
+
+    addRestaurantToFav= async (restaurantId : number) => {
+        const url = `${USER_REST_API_URL}/favourite/${restaurantId}`;
+        return await axios.post(url, this.headers());
     }
 
     updateUserFirstName = (id:number, firstName:any) => {

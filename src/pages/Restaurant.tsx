@@ -26,6 +26,17 @@ const Restaurant = () => {
 
     const [isFavourite, setIsFavourite] = useState(false)
 
+    const addRestaurantToFav: any = (id: number) => {
+        console.log("HELLO ADDING FAV")
+        console.log(id);
+        UserService.addRestaurantToFav(id).then((response) => {
+            console.log(response);
+            setIsFavourite(true);
+        }).catch((error) => {
+            console.log(error.response);
+        })
+    }
+
     const deleteFavourite: any = (id: number) => {
         console.log(id)
         UserService.deleteFavRestaurant(id).then((response) => {
@@ -43,10 +54,10 @@ const Restaurant = () => {
                 if (restaurant.restaurantId === restaurantDetails.restaurantId) {
                     setIsFavourite(true);
                 }
-                return;
+                return <></>;
             })
         })
-    }, [restaurantDetails])
+    }, [restaurantDetails.restaurantId])
 
     useEffect(() => {
         setLoading(true);
@@ -103,6 +114,8 @@ const Restaurant = () => {
                                             deleteFavourite(restaurantDetails.restaurantId);
                                         }} />
                                     : <AiFillHeart className="text-6xl my-auto pt-4 text-grey-standard opacity-60 hover:text-red-standard hover:opacity-90"
+                                        onClick={() => {
+                                            addRestaurantToFav(restaurantDetails.restaurantId);}}
                                     />}
                             </h1>
 
