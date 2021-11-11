@@ -5,6 +5,7 @@ import VaccinationService from '../services/VaccinationService';
 import { useDropzone } from 'react-dropzone';
 import LogInService, { UserDetails } from '../services/LogInService';
 import { Link } from 'react-router-dom';
+import { BeatLoader } from 'react-spinners';
 
 const VaccinationCheck = () => {
 
@@ -13,6 +14,7 @@ const VaccinationCheck = () => {
     const [modalMessage, setModalMessage] = useState("");
     const [error, setError] = useState("");
     const [invalid, setInvalid] = useState(false);
+    const [loading, setLoading] = useState(false);
 
 
     useEffect(() => {
@@ -23,6 +25,7 @@ const VaccinationCheck = () => {
     }, [])
 
     const onDrop = useCallback((acceptedFiles: any) => {
+        setLoading(true);
         setInvalid(false);
         setError("");
         if (acceptedFiles == null) {
@@ -35,6 +38,7 @@ const VaccinationCheck = () => {
         console.log("Uploading");
         const response = VaccinationService.userUploadVaccination(file);
         response.then((response) => {
+            setLoading(false);
             setInvalid(false);
             setError("")
             console.log(response);
@@ -43,6 +47,7 @@ const VaccinationCheck = () => {
             setModalIsOpened(true);
         }).catch((error) => {
             console.log(error.response.data);
+            setLoading(false);
             if (error.response.status === 500) {
                 setInvalid(true);
                 console.log('Error:', error.response.data.reason)
@@ -60,7 +65,7 @@ const VaccinationCheck = () => {
         <div className="min-h-screen">
             <h1 className="flex shadow-sm items-center justify-center text-5xl font-bold tracking-wide text-green-standard bg-yellow-standard p-3">Vaccination Check</h1>
 
-            <div className="mx-auto mt-14 lg:w-3/6 shadow-md rounded-xxl h-auto bg-white-offWhite">
+            <div className="mx-auto mt-14 lg:w-3/6 shadow-md rounded-lg h-auto bg-white-offWhite">
                 <div className="grid grid-cols-2 p-8 pr-14">
                     <img src="/images/upload.png" alt="upload illustration" className="transform scale-95 pt-8" />
                     <div>
@@ -76,7 +81,7 @@ const VaccinationCheck = () => {
                         {
                             !isVaccinated &&
                             <div {...getRootProps()}>
-                                <div className="bg-grey-lightest place-items-stretch rounded-xxl text-center p-6 border-dashed border-2 border-grey-light hover:shadow-md shadow-sm focus:outline-none">
+                                <div className="bg-grey-lightest place-items-stretch rounded-xl text-center p-6 border-dashed border-2 border-grey-light hover:shadow-md shadow-sm focus:outline-none">
                                     <div>
                                         <input {...getInputProps()} />
                                         {
@@ -92,7 +97,13 @@ const VaccinationCheck = () => {
                                                     <h1 className="text-light text-base text-grey-dark">Drag and drop your certificate here</h1>
                                                     <img src="/images/cloud.png" alt="cloud illustration" className="transform scale-75 grid justify-items-center mx-auto" />
                                                     <h1 className="text-lightest text-sm pb-2">OR</h1>
-                                                    <h1 className="text-light bg-green-standard text-white-standard text-sm opacity-90 hover:opacity-100 shadow-sm hover:shadow-md w-4/5 mx-auto py-1 rounded-full px-5">Click to browse for a file</h1>
+                                                    <h1 className="text-light bg-green-standard text-white-standard text-sm opacity-90 hover:opacity-100 shadow-sm hover:shadow-md w-4/5 mx-auto py-1 rounded-full px-5">
+                                                        {
+                                                            loading ? <BeatLoader size="9" color="#daeddb" /> 
+                                                            : 'Click to browse for a file'
+                                                        }
+                                                        
+                                                    </h1>
                                                 </>
                                         }
                                     </div>
