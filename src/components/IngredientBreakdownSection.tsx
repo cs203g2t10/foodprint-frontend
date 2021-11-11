@@ -59,13 +59,13 @@ const IngredientBreakdownSection = (props: any) => {
             <div className="grid grid-cols-2 pb-6 gap-x-4">
                 <div>
                     <h1 className="text-sm mb-1 text-gray-500 pl-3">Date From:</h1>
-                    <ReactDatePicker className="focus:outline-none pl-5 py-1 rounded-full shadow text-gray-600 w-full hover:shadow-md"
+                    <ReactDatePicker className="focus:outline-none pl-5 py-1 h-9 rounded-full shadow text-gray-600 w-full hover:shadow-md"
                         selected={startDate} onChange={(date: any) => setStartDate(date)} selectsStart
                         dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
                 </div>
                 <div>
                     <h1 className="text-sm mb-1 text-gray-500 pl-3">Date To:</h1>
-                    <ReactDatePicker className="focus:outline-none pl-5 py-1 h-8 rounded-full shadow text-gray-600 w-full hover:shadow-md"
+                    <ReactDatePicker className="focus:outline-none pl-5 py-1 h-9 rounded-full shadow text-gray-600 w-full hover:shadow-md"
                         selected={endDate} onChange={(date: any) => setEndDate(date)} selectsEnd
                         dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
                 </div>

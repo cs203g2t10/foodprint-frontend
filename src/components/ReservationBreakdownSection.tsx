@@ -66,13 +66,13 @@ const ReservationBreakdownSection = (props: any) => {
                 <div className="grid grid-cols-2 col-span-3 gap-x-8">
                     <div className="flex">
                         <h1 className="text-sm mb-1 text-gray-500 pl-3 w-32 pt-1">Date From:</h1>
-                        <ReactDatePicker className="focus:outline-none pl-3 py-1 rounded-full w-full shadow text-gray-600 hover:shadow-md"
+                        <ReactDatePicker className="focus:outline-none pl-3 py-1 rounded-full w-full h-9 shadow text-gray-600 hover:shadow-md"
                             selected={startDate} onChange={(date: any) => setStartDate(date)} selectsStart
                             dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
                     </div>
                     <div className="flex">
                         <h1 className="text-sm mb-1 text-gray-500 pl-3 w-28 pt-1">Date To:</h1>
-                        <ReactDatePicker className="focus:outline-none pl-3 py-1 rounded-full w-full shadow text-gray-600 hover:shadow-md"
+                        <ReactDatePicker className="focus:outline-none pl-3 py-1 rounded-full w-full h-9 shadow text-gray-600 hover:shadow-md"
                             selected={endDate} onChange={(date: any) => setEndDate(date)} selectsEnd
                             dateFormat="dd/MM/yyyy" startDate={startDate} endDate={endDate} />
                     </div>
