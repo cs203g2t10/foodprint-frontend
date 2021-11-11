@@ -55,9 +55,9 @@ const ManageUser = () => {
                     <input className="bg-white-offWhite focus:outline-none md:px-4 px-1 py-1 rounded-large shadow-sm" value={emailContains} onChange={(e) => { setEmailContains(e.target.value) }}></input>
                 </div>
                 <div className="md:flex gap-x-2">
-                    <button className="border px-4 py-1 bg-green-standard rounded-full shadow-sm hover:shadow-md text-white-standard flexopacity-90 hover:opacity-100"
+                    <button className="border px-4 py-1 bg-green-standard rounded-lg shadow-sm hover:shadow-md text-white-standard flexopacity-90 hover:opacity-100"
                         onClick={() => { setCreateManager(true) }}>Create Manager</button>
-                    <button className="border px-4 py-1 bg-green-standard rounded-full shadow-sm hover:shadow-md text-white-standard flexopacity-90 hover:opacity-100"
+                    <button className="border px-4 py-1 bg-green-standard rounded-lg shadow-sm hover:shadow-md text-white-standard flexopacity-90 hover:opacity-100"
                         onClick={() => { setCreateUser(true) }}>Create new User</button>
                 </div>
             </div>
