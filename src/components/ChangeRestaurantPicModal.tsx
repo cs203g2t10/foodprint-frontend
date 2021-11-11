@@ -65,7 +65,7 @@ const ChangeRestaurantPicModal = (props: any) => {
                         changed ?
                             <div>
                                 <h1 className="text-center pb-1 text-base">Updated Photo</h1>
-                                <img src={newUrl} alt={props?.description} className=" mb-2 h-48 w-full rounded-xxl flex mx-auto object-cover" />
+                                <img src={newUrl} alt={props?.description} className=" mb-2 h-48 w-full px-2 rounded-xxl flex mx-auto object-cover" />
                             </div> :
                             <div {...getRootProps()}>
                                 <div className="grid mx-auto max-auto w-full bg-grey-lightest rounded-xxl text-center p-4 border-dashed border-2 border-grey-light hover:shadow-md shadow-sm focus:outline-none">
@@ -84,7 +84,7 @@ const ChangeRestaurantPicModal = (props: any) => {
                                                     <h1 className="text-light text-base text-grey-dark">Drag and drop the new image here</h1>
                                                     <img src="/images/cloud.png" alt="cloud illustration" className="transform scale-75 grid justify-items-center mx-auto" />
                                                     <h1 className="text-lightest text-sm pb-2">OR</h1>
-                                                    <h1 className="text-light border border-green-standard text-green-standard text-sm opacity-80 hover:opacity-90 shadow-sm hover:shadow-md w-3/5 mx-auto my-auto rounded-lg py-1 px-5">Click to browse for a file</h1>
+                                                    <h1 className="text-light border border-green-standard text-green-standard text-sm opacity-80 hover:opacity-90 shadow-sm hover:shadow-md w-52 mx-auto my-auto rounded-lg py-1 px-5">Click to browse for a file</h1>
                                                 </>
                                         }
                                     </div>
