@@ -52,7 +52,7 @@ const UserDetailsConfig = () => {
     }
 
     const updateEmail = () => {
-        setEmailLoading(false);
+        setEmailLoading(true);
         UserService.updateUserEmail(id, email).then((response: any) => {
             console.log(response);
             setSuccess(true);
@@ -87,12 +87,12 @@ const UserDetailsConfig = () => {
                         <h1 className="text-4xl font-semibold mb-2 text-green-standard mt-5">Update Details</h1>
                         <h2 className="text-grey-lighter mb-5">Make changes to fields you wish to update</h2>
 
-                        <div className="mb-4">
+                        <div className="mb-4 flex items-center">
                             {(editFName ? <>
                                 <button disabled={!verify(fName)} className="shadow-sm hover:shadow-md mr-2 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard justify-center items-center px-2"
                                     onClick={() => { updateFirstName(); }}>
                                     {
-                                        firstNameLoading ? <HashLoader size="15" color="#daeddb"/>
+                                        firstNameLoading ? <HashLoader size="15" color="#daeddb" />
                                             : <AiOutlineCheck />
                                     }
                                 </button>
@@ -101,20 +101,20 @@ const UserDetailsConfig = () => {
                                     value={fName}
                                     onChange={e => setFName(e.target.value)} />
                             </> :
-                                <div className="focus:outline-none py-1 my-1 h-10 rounded-full md:w-10/12">
-                                    <button className="shadow-sm hover:shadow-md px-2 mr-2 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center"
+                                <div className="focus:outline-none py-1 my-1 h-10 rounded-full md:w-10/12 items-center">
+                                    <button className="shadow-sm hover:shadow-md px-2 mr-6 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center"
                                         onClick={() => setEditFName(true)}><AiFillEdit /></button>
                                     {fName}
                                 </div>
                             )}
                         </div>
 
-                        <div className="mb-4">
+                        <div className="mb-4 flex items-center">
                             {(editLName ? <>
                                 <button disabled={!verify(lName)} className="shadow-sm hover:shadow-md px-2 mr-2 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center"
                                     onClick={() => { updateLastName(); }}>
                                     {
-                                        lastNameLoading ? <HashLoader size="15" color="#daeddb"/>
+                                        lastNameLoading ? <HashLoader size="15" color="#daeddb" />
                                             : <AiOutlineCheck />
                                     }
                                 </button>
@@ -124,19 +124,19 @@ const UserDetailsConfig = () => {
                                     onChange={e => setLName(e.target.value)} />
                             </> :
                                 <div className="focus:outline-none py-1 my-1 h-10 rounded-full md:w-10/12">
-                                    <button className="shadow-sm hover:shadow-md px-2 mr-2 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center"
+                                    <button className="shadow-sm hover:shadow-md px-2 mr-6 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center"
                                         onClick={() => setEditLName(true)}><AiFillEdit /></button>
                                     {lName}
                                 </div>
                             )}
                         </div>
 
-                        <div className="mb-4">
+                        <div className="mb-4 flex items-center">
                             {(editEmail ? <>
                                 <button disabled={!verify(email)} className="shadow-sm hover:shadow-md px-2 mr-2 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center"
                                     onClick={() => { updateEmail(); }}>
                                     {
-                                        emailLoading ? <HashLoader size="15" color="#daeddb"/>
+                                        emailLoading ? <HashLoader size="15" color="#daeddb" />
                                             : <AiOutlineCheck />
                                     }
                                 </button>
@@ -146,7 +146,7 @@ const UserDetailsConfig = () => {
                                     onChange={e => setEmail(e.target.value)} />
                             </> :
                                 <div className="focus:outline-none py-1 my-1 h-10 rounded-full md:w-10/12">
-                                    <button className="shadow-sm hover:shadow-md px-2 mr-2 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center"
+                                    <button className="shadow-sm hover:shadow-md px-2 mr-6 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center"
                                         onClick={() => setEditEmail(true)}><AiFillEdit /></button>
                                     {error ? prevEmail : email}
                                 </div>
