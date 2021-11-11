@@ -100,7 +100,7 @@ const Profile = () => {
                     }
 
                     <div className="grid lg:grid-cols-11 gap-x-10 mx-20">
-                        <div className="col-span-4 bg-white-dirtyWhite rounded-xxl shadow-md px-10 py-6 h-3/4">
+                        <div className="col-span-4 bg-white-dirtyWhite rounded-xxl shadow-md px-10 py-6 h-auto">
                             <h1 className="text-green-standard text-2xl font-bold tracking-wide ml-3 mb-8">Favourite Restaurants</h1>
                             {
                                 favLoading ?
