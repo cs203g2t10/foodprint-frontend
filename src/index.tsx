@@ -3,36 +3,41 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import axios from "axios";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Router>
+            <App />
+        </Router>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 
 // Add a request interceptor
 axios.interceptors.request.use((request: any) => {
-  return request;
-}, (error: any) =>{
-  return Promise.reject(error);
+    return request;
+}, (error: any) => {
+    return Promise.reject(error);
 });
 
 // Add a response interceptor
-axios.interceptors.response.use(function (response: any) {
-    return response;
-  }, function (error) {
+axios.interceptors.response.use(
+    (response: any) => {
+        if (response.headers.authorization !== undefined) {
+            localStorage.setItem("token", response.headers.authorization);
+        }
+        return response;
+    }
+    , (error: any) => {
     if (error.response?.status === 401) {
-      localStorage.removeItem("email");
-      localStorage.removeItem("token");
-      if (!window.location.href.includes("/login")) {
-        window.location.href = "/login"; // redir to login page
-      }
+        localStorage.removeItem("email");
+        localStorage.removeItem("token");
+        if (!window.location.href.includes("/login")) {
+            window.location.href = "/login"; // redir to login page
+        }
     }
     return Promise.reject(error);
 });
