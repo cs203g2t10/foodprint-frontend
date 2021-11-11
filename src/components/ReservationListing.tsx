@@ -15,7 +15,7 @@ const ReservationListing = (props: any) => {
 
     return (
         <div className="grid grid-cols-12 mb-3 bg-white-standard p-2 rounded-large gap-x-3">
-            <img className="flex items-center mx-auto col-span-1 h-11 w-11 rounded-md ml-2 shadow-sm" src={props.imageUrl} alt="img" />
+            <img className="flex items-center mx-auto col-span-1 h-11 w-11 rounded-md ml-2 shadow-sm object-cover" src={props.imageUrl} alt="img" />
             <h1 className="flex items-center col-span-3 px-4 text-sm text-grey-dark">{props.restaurantName}</h1>
             <h1 className="flex items-center col-span-3 text-sm text-grey-dark">{props.dateTime}</h1>
             <div className="flex items-center col-span-2 mx-auto text-sm text-grey-dark">

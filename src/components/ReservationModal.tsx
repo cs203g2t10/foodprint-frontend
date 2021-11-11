@@ -166,11 +166,13 @@ const ReservationModal = (
                                 <input
                                     name="isVaccinated"
                                     type="checkbox"
+                                    id="checkbox"
                                     checked={vaxCheckBox}
                                     onChange={(e: ChangeEvent<HTMLInputElement>) => {
                                         setVaxCheckBox(e.target.type === 'checkbox' ? e.target.checked : (e.target.value === 'true'));
-                                    }} className="my-auto mr-4 checkbox checkbox-md bg-white-standard " />
-                                <h1 className="text-sm text-grey-standard">I hereby declare that all of the guests are vaccinated (compulsory)</h1>
+                                    }} 
+                                    className="my-auto mr-4 checkbox checkbox-md bg-white-standard " /> 
+                                <label htmlFor="checkbox" className="text-sm text-grey-standard cursor-pointer">I hereby declare that all of the guests are vaccinated (compulsory)</label>
                             </div> </> : <>
                             <h1 className="flex text-base text-green-standard">Your vaccination status is not verified,</h1>
                             <h1 className="text-sm text-grey-standard mb-4">Please ensure you verify your vaccination status before proceeding with making a reservation</h1>

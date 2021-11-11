@@ -9,6 +9,7 @@ import RestaurantFood from '../components/RestaurantFood';
 import Loading from '../components/Loading';
 import { AiFillHeart } from 'react-icons/ai';
 import { useAppContext } from '../lib/AppContext';
+import { BeatLoader, SyncLoader } from 'react-spinners';
 
 const Restaurant = () => {
 
@@ -20,7 +21,7 @@ const Restaurant = () => {
     const [food, setFood] = useState<any>([]);
     const [lineItems, setLineItems] = useState([]);
     const [modalIsOpen, setModal] = useState(false);
-    const [imageUrl, setImageUrl] = useState("/images/shop.jpg")
+    const [imageUrl, setImageUrl] = useState("")
 
     const [haveFood, setHaveFood] = useState(false);
     const [totalPrice, setTotalPrice] = useState(0);
@@ -72,6 +73,8 @@ const Restaurant = () => {
             setRestaurantDetails(response.data)
             if (response.data.picture) {
                 setImageUrl(response.data.picture.url);
+            } else {
+                setImageUrl("/images/shop.jpg");
             }
             if (response.data.discount) {
                 setDiscount(response.data.discount.discountPercentage);
@@ -102,20 +105,34 @@ const Restaurant = () => {
         }
     }
 
+    if (restaurantDetails.length === 0) {
+        return (
+            <div className="h-screen">
+                <div className="flex justify-center items-center h-full">
+                    <Loading />
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div>
             <div>
                 <div className="absolute z-10 ">
                     <div className="grid grid-cols-9 gap-x-16 md:mx-4 my-10">
                         <h2 className="md:col-span-1">&nbsp;</h2>
-                        <div className="col-span-2">
-                            <img className="object-cover rounded-full w-40 h-40" src={imageUrl} alt="shop" />
+                        <div className="col-span-2 w-40 h-40">
+                            {
+                                imageUrl === "" ? <></> :
+                                    <img className="object-cover rounded-full w-40 h-40" src={imageUrl} alt="shop" />
+                            }
+
                         </div>
                         <div className="col-span-6 px-0 leading-1">
                             <h1 className="text-4xl md:text-6xl font-bold tracking-wide text-green-standard flex items-center gap-x-4">
                                 {restaurantDetails.restaurantName}
                                 {
-                                    isAuthenticated &&
+                                    isAuthenticated && !loading &&
                                     (isFavourite ?
                                         <AiFillHeart className="text-6xl my-auto pt-4 text-red-standard opacity-100 hover:opacity-90"
                                             onClick={() => {

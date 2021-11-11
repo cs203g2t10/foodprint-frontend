@@ -166,13 +166,12 @@ const ManageFood = (props: any) => {
 
                 </div>
 
-                <div className="grid grid-cols-2 gap-x-4 mt-4">
+                <div className="grid grid-cols-2 gap-x-4 mt-4 pb-2">
                     <button className="my-auto grid rounded-lg border bg-green-standard py-1 text-white-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md"
                         onClick={() => { setEdit(true); setSuccess(false) }}>Edit</button>
                     <button className="my-auto grid rounded-lg border bg-red-standard py-1 text-white-standard opacity-80 hover:opacity-90 shadow-sm hover:shadow-md"
                         onClick={() => { setDeleteModal(true) }}>Delete</button>
                 </div>
-                <br />
                 {
                     (success &&
                         <div className="text-center text-green-standard">Your changes have been saved!</div>)
