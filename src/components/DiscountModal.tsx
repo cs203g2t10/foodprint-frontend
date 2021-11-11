@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai';
 import Modal from 'react-modal';
 import { BeatLoader } from 'react-spinners';
-import AdminService from '../services/AdminService';
 import RestaurantService from '../services/RestaurantService';
 
 const DiscountModal = (props: any) => {
@@ -39,8 +38,8 @@ const DiscountModal = (props: any) => {
             console.log('hello')
         }
         const response = props.discount === null ?
-        RestaurantService.makeNewDiscount(restaurantId, newDiscount)
-        : RestaurantService.editDiscount(restaurantId, newDiscount);
+            RestaurantService.makeNewDiscount(restaurantId, newDiscount)
+            : RestaurantService.editDiscount(restaurantId, newDiscount);
 
         response.then((response) => {
             console.log(response);
@@ -53,23 +52,23 @@ const DiscountModal = (props: any) => {
     }
 
     return (
-        <Modal style={customStyles} isOpen={editDiscount} className="flex mt-4 focus:outline-none">
-            <div className="grid justify-center items-center gap-y-2 rounded-lg shadow py-10 bg-white-standard mx-auto px-6 relative w-2/6">
+        <Modal style={customStyles} isOpen={editDiscount} className="flex mt-12 focus:outline-none">
+            <div className="grid justify-center items-center gap-y-2 rounded-lg shadow py-10 bg-white-standard mx-auto px-6 relative w-2/5">
                 <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setEditDiscount(false)}> <AiOutlineClose className="h-4 w-4" /> </button>
-                <img className="px-5 h-56 mx-auto" src="/images/invite.png" alt="create" />
+                <img className="px-5 h-44 mx-auto" src="/images/createIngre.png" alt="create" />
                 <div className="px-10 grid gap-y-2">
                     <h1 className=" flex text-3xl text-green-standard font-bold  mt-3">Set Discount</h1>
                     <h1 className=" flex text-base text-grey-standard font-light ">Set a discount for your restaurant!</h1>
-                    <h1 className=" flex text-base">Current Discount (%): {discount}</h1>
-                    <div className="flex gap-x-2 justify-between">
+                    <div className="grid grid-cols-2 justify-between gap-x-2 gap-y-2">
+                        <h1 className=" flex text-base text-left">Current Discount:</h1>
+                        <h1 className=" flex text-base">{discount}%</h1>
                         <div className="my-auto">New Discount: </div>
-                        <input className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest" placeholder="%"
+                        <input className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest" placeholder="Discount in %"
                             onChange={(e) => {
                                 setNewDiscount(JSON.parse(e.target.value))
                             }} />
                     </div>
                 </div>
-
                 {
                     (error ? <div className="mx-auto text-red-standard">{error}</div> : <></>)
                 }

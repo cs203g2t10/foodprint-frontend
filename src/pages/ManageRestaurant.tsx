@@ -141,7 +141,7 @@ const ManageRestaurant = () => {
                 <EditRestaurantDetails {...{ editDetails, setEditDetails, restaurantDetails }} />
                 <DiscountModal {...{editDiscount, setEditDiscount}} 
                 restaurantId={restaurantId} 
-                discount={restaurantDetails.discount.discountPercentage}/>
+                discount={restaurantDetails.discount?.discountPercentage}/>
             </div>
             : <Restricted />
     )
