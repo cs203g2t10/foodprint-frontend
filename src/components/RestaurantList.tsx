@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const RestaurantList = () => {
     const [restaurants, setRestaurants] = useState([])
-    
+
     useEffect(() => {
         RestaurantService.getRestaurants().then((response) => {
             console.log(response)

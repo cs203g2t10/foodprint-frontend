@@ -96,8 +96,8 @@ const ReservationBreakdownSection = (props: any) => {
                     return (
                         <RestaurantReservationList key={upcomingReservation.reservationId} reservationId={upcomingReservation.reservationId}
                             userFirstName={upcomingReservation.userFirstName} userLastName={upcomingReservation.userLastName}
-                            date={moment(dateTime).format('MMM Do YYYY, h:mm a')} status={upcomingReservation.status} 
-                            lineItems={upcomingReservation.lineItems}/>
+                            date={moment(dateTime).format('MMM Do YYYY, h:mm a')} status={upcomingReservation.status}
+                            lineItems={upcomingReservation.lineItems} />
                     )
                 })
             }

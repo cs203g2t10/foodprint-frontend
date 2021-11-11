@@ -139,9 +139,9 @@ const ManageRestaurant = () => {
                 <ChangeRestaurantPicModal {...{ changePic, setChangePic, imageUrl }} name={restaurantDetails.restaurantName} restaurantId={restaurantDetails.restaurantId} />
                 <CreateFoodModal {...{ showCreateFood, setShowCreateFood, ingredients }} restaurantId={restaurantId} />
                 <EditRestaurantDetails {...{ editDetails, setEditDetails, restaurantDetails }} />
-                <DiscountModal {...{editDiscount, setEditDiscount}} 
-                restaurantId={restaurantId} 
-                discount={restaurantDetails.discount?.discountPercentage}/>
+                <DiscountModal {...{ editDiscount, setEditDiscount }}
+                    restaurantId={restaurantId}
+                    discount={restaurantDetails.discount?.discountPercentage} />
             </div>
             : <Restricted />
     )

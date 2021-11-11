@@ -46,7 +46,7 @@ const Dashboard = () => {
                 <FoodBreakdownSection restaurantId={restaurantId} />
             </div>
 
-            <ReservationBreakdownSection restaurantId={restaurantId}/>
+            <ReservationBreakdownSection restaurantId={restaurantId} />
         </div>
     )
 }

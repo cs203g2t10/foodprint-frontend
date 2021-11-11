@@ -35,8 +35,8 @@ const DeleteFoodModal = (props: any) => {
     return (
         <ReactModal style={customStyles} isOpen={deleteModalOpen} className="focus:outline-none">
             <div className="grid justify-center items-center gap-y-2 rounded-lg shadow w-1/3 mx-auto pb-10 pt-12 mt-24 bg-white-standard relative">
-            <img className="px-5 h-44 mx-auto" src="/images/createIngre.png" alt="create" />
-            <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setDeleteModal(false)}> <AiOutlineClose className="h-4 w-4" /> </button>
+                <img className="px-5 h-44 mx-auto" src="/images/createIngre.png" alt="create" />
+                <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setDeleteModal(false)}> <AiOutlineClose className="h-4 w-4" /> </button>
                 <h1 className="flex text-3xl text-green-standard font-bold px-10 mt-3">Delete Food</h1>
                 <h1 className=" flex text-md mb-2 text-grey-standard font-light px-10">Are you sure you want to delete {name}?</h1>
                 {

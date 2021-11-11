@@ -92,7 +92,7 @@ const ManageUser = () => {
             <PageLinks {...{ numPages, currPage, setCurrPage }} />
             <div>
             </div>
-            <CreateManagerModal {...{createManager, setCreateManager}} />
+            <CreateManagerModal {...{ createManager, setCreateManager }} />
             <CreateUserModal {...{ createUser, setCreateUser }} />
         </div>
     )

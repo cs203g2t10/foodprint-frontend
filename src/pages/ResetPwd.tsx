@@ -5,8 +5,8 @@ import queryString from 'query-string'
 import { BeatLoader } from 'react-spinners'
 
 const ResetPwd = (props: any) => {
-    const value=queryString.parse(window.location.search);
-    const emailToken=value.token;
+    const value = queryString.parse(window.location.search);
+    const emailToken = value.token;
 
     const [newPassword, setNewPassword] = useState("");
     const [confirmNewPassword, setConfirmNewPassword] = useState("");
@@ -57,7 +57,7 @@ const ResetPwd = (props: any) => {
                 <div className="mt-32 bg-white-standard w-10/12 md:w-7/12 grid md:grid-cols-2 shadow-xxl shadow rounded-xxl pb-10">
                     <div className="ml-16 mt-16">
                         <h1 className="text-3xl font-semibold mb-2 text-green-standard mt-8">Reset password</h1>
-                        <h1 className = "text-grey-lighter mb-5 text-sm">Please choose a new password.</h1>
+                        <h1 className="text-grey-lighter mb-5 text-sm">Please choose a new password.</h1>
                         <div className="mb-4">
                             <input className="focus:outline-none px-4 py-1 mt-4 h-10 rounded-full border border-grey-lightest md:w-11/12"
                                 placeholder="New password"
@@ -79,10 +79,10 @@ const ResetPwd = (props: any) => {
                                 </>
                                 : <div className="flex">
                                     <button className="rounded-full px-4 text-white-standard bg-green-standard hover:shadow text-justify mt-2 h-8"
-                                        onClick={()=>{resetPwd()}}>
+                                        onClick={() => { resetPwd() }}>
                                         <span id="button-text">
                                             {processing ? (
-                                                <BeatLoader size="9" color="#daeddb"/>
+                                                <BeatLoader size="9" color="#daeddb" />
                                             ) : (
                                                 'Reset password'
                                             )}

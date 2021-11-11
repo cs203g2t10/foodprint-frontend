@@ -38,8 +38,6 @@ const ReservationListing = (props: any) => {
                     <NavLink className="text-white-standard text-center text-xs mx-auto col-span-2 w-20 px-1 grid my-auto py-1 bg-green-standard rounded-large shadow-md hover:shadow-lg opacity-90 hover:opacity-100"
                         to={"/payment/" + props.reservationId}>View Order</NavLink>
             }
-            {/* <NavLink className="text-white-standard text-center text-xs mx-auto col-span-2 w-20 px-1 grid my-auto py-1 bg-green-standard rounded-large shadow-md hover:shadow-lg opacity-90 hover:opacity-100"
-                to={"/payment/" + props.reservationId}>View Order</NavLink> */}
             <div> {
                 props.past || (props.status === "CANCELLED" && 'Cancelled') ? (<></>) : (<button className="my-auto col-span-1 mx-auto text-green-standard hover:bg-gray-200 bg-gray-100 shadow-sm hover:shadow-md p-2 rounded-full" onClick={() => { cancelReservation(props.reservationId); setDeleteMessage("Your reservation at " + props.restaurantName + " has been cancelled") }}><AiOutlineClose /></button>)
             }

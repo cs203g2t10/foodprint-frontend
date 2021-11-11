@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom'
 
-const AdminRestaurantListing = (props:any) => {
-    const {restaurant} = props;
+const AdminRestaurantListing = (props: any) => {
+    const { restaurant } = props;
 
     return (
         <div className="grid grid-cols-8 gap-x-6 mx-6  rounded-large py-2 px-4">
             {
-                restaurant.picture ? 
-                <img className="col-span-1 h-12 w-12 rounded-lg shadow object-cover" src={restaurant.picture?.url} alt={restaurant.restaurantName} />
-                : <div className="col-span-1 border rounded-full h-10 w-10"/>
+                restaurant.picture ?
+                    <img className="col-span-1 h-12 w-12 rounded-lg shadow object-cover" src={restaurant.picture?.url} alt={restaurant.restaurantName} />
+                    : <div className="col-span-1 border rounded-full h-10 w-10" />
             }
             <p className="col-span-1 text-base text-grey-standard my-auto grid">{restaurant?.restaurantId}</p>
             <p className="col-span-2 text-base text-grey-standard my-auto grid">{restaurant?.restaurantName}</p>

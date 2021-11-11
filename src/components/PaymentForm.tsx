@@ -23,7 +23,7 @@ const CARD_OPTIONS: any = {
             }
         },
         invalid: {
-            iconColor: "#F3E8C9", 
+            iconColor: "#F3E8C9",
             color: "#F3E8C9"
         }
     }
@@ -39,7 +39,7 @@ const PaymentForm = (props: any) => {
     const [amount, setAmount] = useState(0)
 
     useEffect(() => {
-        setAmount(props.amount * 1/5)
+        setAmount(props.amount * 1 / 5)
     }, [props])
 
     const stripe = useStripe()

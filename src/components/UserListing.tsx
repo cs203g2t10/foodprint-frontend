@@ -3,7 +3,7 @@ import AdminService from '../services/AdminService';
 import { AiOutlineClose } from 'react-icons/ai';
 import { AiOutlineEdit } from 'react-icons/ai';
 import DeleteUserModal from './DeleteModal';
-import {  HashLoader } from 'react-spinners';
+import { HashLoader } from 'react-spinners';
 
 const UserListing = (props: any) => {
 

@@ -39,7 +39,7 @@ const Category = () => {
             <div className="justify-items-center grid 3xl:grid-cols-6 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-y-16 md:px-24 mt-10 md:pb-8 animate__animated animate__fadeIn">
                 {
                     restaurants?.map(
-                        (restaurant : any) => {
+                        (restaurant: any) => {
                             let priceRange = restaurant.restaurantPriceRange === null ? 0 : restaurant.restaurantPriceRange;
                             let imageUrl = restaurant.picture ? restaurant.picture.url : "/images/shop.jpg";
                             let discount = restaurant.discount ? restaurant.discount.discountPercentage : 0;

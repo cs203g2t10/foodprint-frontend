@@ -118,27 +118,27 @@ const Home = () => {
                 </div>
             </div>
             {
-                isAuthenticated ? 
-                <div className="md:pl-24 md:pt-10 bg-white-standard md:pb-24 px-5">
-                    <h1 className="text-4xl md:pr-64 pl-1 font-extrabold pb-7">Your Favourites</h1>
-                    <div className="overflow-hidden h-full w-full pr-24">
-                        <div className="flex flex-row gap-x-10 w-full overflow-auto h-auto py-5">
-                            {
-                                (favourites.length > 0) ?
-                                favourites.map(restaurant =>
-                                    <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId}>
-                                        <ShowRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={(restaurant.picture !== null) ? restaurant.picture.url : "/images/restaurant.jpg"} />
-                                    </Link>
-                                )
-                                :
-                                <div className="pl-2 text-grey-lighter">
-                                    You have no favourites, view other restaurants <Link to={"/restaurants"} className="text-green-standard">here</Link>!
-                                </div>
-                            }
+                isAuthenticated ?
+                    <div className="md:pl-24 md:pt-10 bg-white-standard md:pb-24 px-5">
+                        <h1 className="text-4xl md:pr-64 pl-1 font-extrabold pb-7">Your Favourites</h1>
+                        <div className="overflow-hidden h-full w-full pr-24">
+                            <div className="flex flex-row gap-x-10 w-full overflow-auto h-auto py-5">
+                                {
+                                    (favourites.length > 0) ?
+                                        favourites.map(restaurant =>
+                                            <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId}>
+                                                <ShowRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={(restaurant.picture !== null) ? restaurant.picture.url : "/images/restaurant.jpg"} />
+                                            </Link>
+                                        )
+                                        :
+                                        <div className="pl-2 text-grey-lighter">
+                                            You have no favourites, view other restaurants <Link to={"/restaurants"} className="text-green-standard">here</Link>!
+                                        </div>
+                                }
+                            </div>
                         </div>
                     </div>
-                </div>
-                : <></>
+                    : <></>
             }
 
             <div className="md:pl-24 bg-white-standard md:pb-32  px-5">
@@ -164,10 +164,10 @@ const Home = () => {
                                 return <></>
                             })}
                         {
-                            !upTo50Present ? 
-                            <div className="pl-2 text-grey-lighter">
-                                None for now, view other restaurants <Link to={"/restaurants"} className="text-green-standard">here</Link>!
-                            </div> : <></>
+                            !upTo50Present ?
+                                <div className="pl-2 text-grey-lighter">
+                                    None for now, view other restaurants <Link to={"/restaurants"} className="text-green-standard">here</Link>!
+                                </div> : <></>
                         }
                     </div>
                 </div>

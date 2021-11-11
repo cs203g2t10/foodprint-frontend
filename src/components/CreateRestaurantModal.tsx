@@ -135,9 +135,9 @@ const CreateRestaurantModal = (props: any) => {
                                     onClick={() => { editRestaurantDetails() }} >
                                     <span>
                                         {
-                                            loading ? 
-                                            <BeatLoader size="9" color="#daeddb"/>
-                                            : 'Confirm'
+                                            loading ?
+                                                <BeatLoader size="9" color="#daeddb" />
+                                                : 'Confirm'
                                         }
                                     </span>
                                 </button>

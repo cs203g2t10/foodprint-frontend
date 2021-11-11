@@ -118,7 +118,7 @@ const ManageFood = (props: any) => {
                     <button className="rounded-lg bg-green-standard text-white-standard my-auto h-8 opacity-90 hover:opacity-100 shadow-sm hover:shadow-md"
                         onClick={() => { editFood(name, desc, price, newIngredientQty) }}>
                         {
-                            loading ? <HashLoader size="15" color="#daeddb"/> :
+                            loading ? <HashLoader size="15" color="#daeddb" /> :
                                 'Confirm'
                         }
                     </button>

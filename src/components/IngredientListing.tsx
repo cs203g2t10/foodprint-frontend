@@ -46,7 +46,7 @@ const IngredientListing = (props: any) => {
                 <div className="col-span-1 flex ">
                     <button className="shadow-sm hover:shadow-md rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center px-2"
                         onClick={() => { updateIngredientDetails(id, name, desc, units) }}>
-                        {loading ? <HashLoader size="15"  color="#daeddb" />
+                        {loading ? <HashLoader size="15" color="#daeddb" />
                             : <AiOutlineCheck />
                         }
                     </button>

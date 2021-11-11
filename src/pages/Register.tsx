@@ -110,7 +110,7 @@ const Register = () => {
                                 onClick={userRegister}>
                                 <span id="button-text">
                                     {processing ? (
-                                        <BeatLoader size="9" color="#daeddb"/>
+                                        <BeatLoader size="9" color="#daeddb" />
                                     ) : (
                                         'Sign up'
                                     )}

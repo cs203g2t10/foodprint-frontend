@@ -12,7 +12,7 @@ const VaccinationCheck = () => {
     const [modalIsOpened, setModalIsOpened] = useState(false);
     const [modalMessage, setModalMessage] = useState("");
     const [error, setError] = useState("");
-    
+
 
     useEffect(() => {
         const userInfo: UserDetails = LogInService.getUserDetails();

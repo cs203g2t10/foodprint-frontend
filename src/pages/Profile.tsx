@@ -136,26 +136,26 @@ const Profile = () => {
                             <div className="bg-white-dirtyWhite rounded-xxl shadow-md h-96 px-10 py-6 mb-14">
                                 <h1 className="text-green-standard text-2xl font-bold tracking-wide pb-3">Upcoming Reservations</h1>
                                 {
-                                    upcomingLoading ? 
-                                    <div className="flex bg-white-standard justify-center items-center rounded-lg">
-                                        <Loading />
-                                    </div> :
-                                    (
-                                        (upcomingReservation.length > 0) ?
-                                            <div className="grid grid-cols-12 mb-2 gap-x-3">
-                                                <h2 className="col-span-1">&nbsp;</h2>
-                                                <h2 className="col-span-3 text-grey-lighter text-md">Restaurant</h2>
-                                                <h2 className="col-span-3 text-grey-lighter text-md">Date / Time</h2>
-                                                <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Status</h2>
-                                                <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Orders</h2>
-                                                <h2 className="col-span-1">&nbsp;</h2>
-                                            </div>
-                                            :
-                                            <>
-                                                <img className="h-52 mx-auto" src="/images/noUpcomingReservation.png" alt="no past reservations" />
-                                                <h1 className="text-green-standard text-center">No Upcoming Reservations Book a Table.</h1>
-                                            </>
-                                    )
+                                    upcomingLoading ?
+                                        <div className="flex bg-white-standard justify-center items-center rounded-lg">
+                                            <Loading />
+                                        </div> :
+                                        (
+                                            (upcomingReservation.length > 0) ?
+                                                <div className="grid grid-cols-12 mb-2 gap-x-3">
+                                                    <h2 className="col-span-1">&nbsp;</h2>
+                                                    <h2 className="col-span-3 text-grey-lighter text-md">Restaurant</h2>
+                                                    <h2 className="col-span-3 text-grey-lighter text-md">Date / Time</h2>
+                                                    <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Status</h2>
+                                                    <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Orders</h2>
+                                                    <h2 className="col-span-1">&nbsp;</h2>
+                                                </div>
+                                                :
+                                                <>
+                                                    <img className="h-52 mx-auto" src="/images/noUpcomingReservation.png" alt="no past reservations" />
+                                                    <h1 className="text-green-standard text-center">No Upcoming Reservations Book a Table.</h1>
+                                                </>
+                                        )
                                 }
                                 <div className="overflow-y-auto h-60 mb-4">
                                     {
@@ -172,26 +172,26 @@ const Profile = () => {
                             <div className="bg-white-dirtyWhite rounded-xxl h-96 shadow-md px-10 py-6">
                                 <h1 className="text-green-standard text-2xl font-bold tracking-wide pb-3">Past Reservations</h1>
                                 {
-                                    pastLoading ? 
-                                    <div className="flex bg-white-standard justify-center items-center rounded-lg">
-                                        <Loading />
-                                    </div> :
-                                    (
-                                        (pastReservation.length > 0) ?
-                                            <div className="grid grid-cols-12 mb-2 gap-x-3">
-                                                <h2 className="col-span-1">&nbsp;</h2>
-                                                <h2 className="col-span-3 text-grey-lighter text-md">Restaurant</h2>
-                                                <h2 className="col-span-3 text-grey-lighter text-md">Date / Time</h2>
-                                                <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Status</h2>
-                                                <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Orders</h2>
-                                                <h2 className="col-span-1">&nbsp;</h2>
-                                            </div>
-                                            :
-                                            <>
-                                                <img className="h-52 mx-auto" src="/images/noPastReservation.png" alt="no past reservations" />
-                                                <h1 className="text-green-standard text-center">No Past Reservations</h1>
-                                            </>
-                                    )
+                                    pastLoading ?
+                                        <div className="flex bg-white-standard justify-center items-center rounded-lg">
+                                            <Loading />
+                                        </div> :
+                                        (
+                                            (pastReservation.length > 0) ?
+                                                <div className="grid grid-cols-12 mb-2 gap-x-3">
+                                                    <h2 className="col-span-1">&nbsp;</h2>
+                                                    <h2 className="col-span-3 text-grey-lighter text-md">Restaurant</h2>
+                                                    <h2 className="col-span-3 text-grey-lighter text-md">Date / Time</h2>
+                                                    <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Status</h2>
+                                                    <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Orders</h2>
+                                                    <h2 className="col-span-1">&nbsp;</h2>
+                                                </div>
+                                                :
+                                                <>
+                                                    <img className="h-52 mx-auto" src="/images/noPastReservation.png" alt="no past reservations" />
+                                                    <h1 className="text-green-standard text-center">No Past Reservations</h1>
+                                                </>
+                                        )
                                 }
 
                                 <div className="overflow-y-auto h-60 mb-4">

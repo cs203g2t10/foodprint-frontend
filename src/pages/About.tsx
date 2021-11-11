@@ -66,18 +66,18 @@ const About = () => {
                     <h1 className="text-green-standard tracking-widest font-semibold text-xl mb-5">OUR STORY</h1>
                     <h1 className="text-grey-standard text-base">FoodPrint was started in 2021 by a group of SMU undergraduates who are passionate about using technology to solve persisting problems within our community.</h1>
                     <h1 className="text-grey-standard text-base mt-3">Especially during trying times when COVID-19 hit, we saw that F&B establishments face huge difficulty in managing their inventories, worsening the issue of food wastage.</h1>
-                    <h1 className="text-grey-standard text-base mt-3">    With this, we embarked on a journey to solve this problem and after months of hardwork, we present to you the FoodPrint you see today. </h1>
+                    <h1 className="text-grey-standard text-base mt-3">With this, we embarked on a journey to solve this problem and after months of hardwork, we present to you the FoodPrint you see today. </h1>
                 </motion.div>
             </div>
             <div className="mb-44">
                 <h1 className="text-green-standard tracking-widest font-semibold text-xl mb-10 text-center">MEET THE TEAM</h1>
                 <div className="grid grid-cols-6 mx-28">
-                    <AboutUsTeam linkedIn="https://www.linkedin.com/in/cherie-lim-hui-ting/" name="Cherie Lim" role="Developer" imgUrl="/images/cherie.png"/>
-                    <AboutUsTeam linkedIn="https://www.linkedin.com/in/michelle-tan-2a124a1b9/" name="Michelle Tan" role="Developer" imgUrl="/images/michelle.jpg"/>
-                    <AboutUsTeam linkedIn="https://www.linkedin.com/in/yvonnelhs/" name="Yvonne Lim" role="Developer" imgUrl="/images/von.jpg"/>
-                    <AboutUsTeam linkedIn="https://www.linkedin.com/in/wongrenyidaryl/" name="Daryl Wong" role="Developer" imgUrl="/images/daryl.jpg"/>
-                    <AboutUsTeam linkedIn="https://www.linkedin.com/in/wenlianggoh/" name="Goh Wen Liang" role="Developer" imgUrl="/images/boss.jpg"/>
-                    <AboutUsTeam linkedIn="https://www.linkedin.com/in/yixuan-leow/" name="Leow Yi Xuan" role="Developer" imgUrl="/images/yixuan.jpg"/>
+                    <AboutUsTeam linkedIn="https://www.linkedin.com/in/cherie-lim-hui-ting/" name="Cherie Lim" role="Developer" imgUrl="/images/cherie.png" />
+                    <AboutUsTeam linkedIn="https://www.linkedin.com/in/michelle-tan-2a124a1b9/" name="Michelle Tan" role="Developer" imgUrl="/images/michelle.jpg" />
+                    <AboutUsTeam linkedIn="https://www.linkedin.com/in/yvonnelhs/" name="Yvonne Lim" role="Developer" imgUrl="/images/von.jpg" />
+                    <AboutUsTeam linkedIn="https://www.linkedin.com/in/wongrenyidaryl/" name="Daryl Wong" role="Developer" imgUrl="/images/daryl.jpg" />
+                    <AboutUsTeam linkedIn="https://www.linkedin.com/in/wenlianggoh/" name="Goh Wen Liang" role="Developer" imgUrl="/images/boss.jpg" />
+                    <AboutUsTeam linkedIn="https://www.linkedin.com/in/yixuan-leow/" name="Leow Yi Xuan" role="Developer" imgUrl="/images/yixuan.jpg" />
                 </div>
             </div>
         </div>

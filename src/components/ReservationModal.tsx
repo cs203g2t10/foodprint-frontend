@@ -205,10 +205,6 @@ const ReservationModal = (
                                         <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border border-green-standard" onClick={() => setModal(false)}>Edit order</button>
                                     </> : <>
                                         <h1 className="text-sm text-grey-lighter col-span-2 pb-2 mt-3">Please <Link to="/login" className="text-green-standard">log in</Link> or <Link to="/register" className="text-green-standard">register</Link> to make a reservation:</h1>
-                                        {/* <div className="col-span-2 flex gap-x-4">
-                                            <NavLink to="/login" className="border text-center bg-green-standard text-white-standard py-1 px-8 rounded-full hover:shadow-md shadow">Log In</NavLink>
-                                            <NavLink to="/register" className="border text-center bg-green-standard text-white-standard py-1 px-8 rounded-full hover:shadow-md shadow">Register</NavLink>
-                                        </div> */}
                                         <div className="col-span-2 flex">
                                             <button className="text-green-standard px-7 py-1 rounded-xl shadow-md hover:shadow-lg border border-green-standard mt-2" onClick={() => setModal(false)}>Return</button>
                                         </div>

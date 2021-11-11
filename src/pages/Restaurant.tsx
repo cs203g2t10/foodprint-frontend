@@ -115,16 +115,17 @@ const Restaurant = () => {
                             <h1 className="text-4xl md:text-6xl font-bold tracking-wide text-green-standard flex items-center gap-x-4">
                                 {restaurantDetails.restaurantName}
                                 {
-                                    isAuthenticated && 
+                                    isAuthenticated &&
                                     (isFavourite ?
-                                    <AiFillHeart className="text-6xl my-auto pt-4 text-red-standard opacity-100 hover:opacity-90"
-                                        onClick={() => {
-                                            deleteFavourite(restaurantDetails.restaurantId);
-                                        }} />
-                                    : <AiFillHeart className="text-6xl my-auto pt-4 text-grey-standard opacity-60 hover:text-red-standard hover:opacity-90"
-                                        onClick={() => {
-                                            addRestaurantToFav(restaurantDetails.restaurantId);}}
-                                    />)
+                                        <AiFillHeart className="text-6xl my-auto pt-4 text-red-standard opacity-100 hover:opacity-90"
+                                            onClick={() => {
+                                                deleteFavourite(restaurantDetails.restaurantId);
+                                            }} />
+                                        : <AiFillHeart className="text-6xl my-auto pt-4 text-grey-standard opacity-60 hover:text-red-standard hover:opacity-90"
+                                            onClick={() => {
+                                                addRestaurantToFav(restaurantDetails.restaurantId);
+                                            }}
+                                        />)
                                 }
                             </h1>
 

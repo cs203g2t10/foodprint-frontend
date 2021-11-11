@@ -24,14 +24,14 @@ const ManageIngredients = () => {
 
     useEffect(() => {
         const userInfo: UserDetails = LogInService.getUserDetails();
-        if (userInfo.userAuthorities.includes("FP_MANAGER") && Object.keys(params).length === 0){
+        if (userInfo.userAuthorities.includes("FP_MANAGER") && Object.keys(params).length === 0) {
             if (userInfo.restaurantId == null) {
                 console.log("User has no restaurant ID");
                 return;
             }
             setAuthorized(true);
             setRestaurantId(userInfo.restaurantId);
-        } else if (userInfo.userAuthorities.includes("FP_ADMIN")){
+        } else if (userInfo.userAuthorities.includes("FP_ADMIN")) {
             setRestaurantId(params.id);
             setAuthorized(true);
         } else {
@@ -55,9 +55,9 @@ const ManageIngredients = () => {
             setLoading(false);
         })
     }, [restaurantId, currPage, createIngredient])
-    
+
     if (!isAuthorized) {
-        return (<Restricted/>)
+        return (<Restricted />)
     }
 
     return (
@@ -79,21 +79,21 @@ const ManageIngredients = () => {
                         restaurantIngredients?.content?.map(
                             (ingredient: any) => {
                                 return (
-                                    <IngredientListing 
+                                    <IngredientListing
                                         restaurantId={restaurantId}
                                         id={ingredient.ingredientId}
                                         name={ingredient.ingredientName}
                                         desc={ingredient.ingredientDesc}
                                         units={ingredient.units}
-                                        key={ingredient.ingredientId}/>
+                                        key={ingredient.ingredientId} />
                                 )
                             }
                         )
                     }
                 </div>
             </div>
-            {loading && <div className="flex justify-center py-1"><Loading /></div> }
-            <PageLinks {...{ numPages, currPage, setCurrPage}} />
+            {loading && <div className="flex justify-center py-1"><Loading /></div>}
+            <PageLinks {...{ numPages, currPage, setCurrPage }} />
             <div>
             </div>
             <CreateIngredientModal {...{ createIngredient, setCreateIngredient, restaurantId }} />

@@ -66,7 +66,7 @@ const DiscountModal = (props: any) => {
                         <h1 className=" flex text-base">{discount}%</h1>
                         <div className="my-auto">New Discount: </div>
                         <input className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest" placeholder="Discount in %"
-                        disabled={success}
+                            disabled={success}
                             onChange={(e) => {
                                 setNewDiscount(JSON.parse(e.target.value))
                             }} />
@@ -80,12 +80,6 @@ const DiscountModal = (props: any) => {
                         <>
                             <div className="mx-auto pt-3 pb-3 px-10 text-green-standard text-base">Discount of {newDiscount}% has been set for Restaurant with ID: {restaurantId}</div>
                             <div className="pt-2 pb-0  gap-x-10 justify-center mx-10">
-                                {/* <button className=" text-white-standard bg-green-standard px-3 py-1 rounded-lg shadow-md hover:shadow-lg w-full"
-                                    onClick={() => {
-                                        setSuccess(false);
-                                        setError("")
-                                        setNewDiscount(0);
-                                    }}>Reset</button> */}
                                 <button className=" text-white-standard px-3 py-1 rounded-lg shadow-md hover:shadow-lg bg-green-standard w-full"
                                     onClick={() => {
                                         setEditDiscount(false);

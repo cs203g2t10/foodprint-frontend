@@ -14,7 +14,7 @@ const ChangePwd = () => {
     const [newPwd, setNewPwd] = useState("")
     const [confirmNewPwd, setConfirmNewPwd] = useState("")
     const [loading, setLoading] = useState(false);
-    
+
     const update = () => {
         setLoading(true);
         if (!validateNewPwd(newPwd, confirmNewPwd) || oldPwd.length === 0) {
@@ -94,19 +94,19 @@ const ChangePwd = () => {
                         }
                         {
                             (success ? <div className="text-green-standard mt-2">Your password has been successfully changed!</div>
-                            : <div className="flex">
-                                <button className="rounded-full px-4 text-white-standard bg-green-standard hover:shadow text-center mt-2 h-8 md:w-48"
-                                    onClick={update}>
+                                : <div className="flex">
+                                    <button className="rounded-full px-4 text-white-standard bg-green-standard hover:shadow text-center mt-2 h-8 md:w-48"
+                                        onClick={update}>
                                         {
-                                            loading ? <BeatLoader size="9" color="#daeddb"/>
-                                            : 'Change Password'
+                                            loading ? <BeatLoader size="9" color="#daeddb" />
+                                                : 'Change Password'
                                         }
-                                </button>
-                            </div>)
+                                    </button>
+                                </div>)
                         }
                     </div>
                     <div>
-                        <img className="mt-8 my-7 transform scale-90" src="/images/changePwd.png" alt="change password illustration" style={{'borderRadius':'25px'}}/>
+                        <img className="mt-8 my-7 transform scale-90" src="/images/changePwd.png" alt="change password illustration" style={{ 'borderRadius': '25px' }} />
                     </div>
                 </div>
             </div>
