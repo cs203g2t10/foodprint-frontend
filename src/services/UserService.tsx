@@ -12,39 +12,39 @@ class UserService {
         }
     }
 
-    getFavRestaurant= async () => {
-        const url = USER_REST_API_URL+"/favouriteRestaurants";
+    getFavRestaurant = async () => {
+        const url = USER_REST_API_URL + "/favouriteRestaurants";
         return await axios.get(url, this.headers());
     }
 
-    deleteFavRestaurant= async (restaurantId : number) => {
+    deleteFavRestaurant = async (restaurantId: number) => {
         const url = `${USER_REST_API_URL}/favourite/${restaurantId}`;
         return await axios.delete(url, this.headers());
     }
 
-    addRestaurantToFav= async (restaurantId : number) => {
+    addRestaurantToFav = async (restaurantId: number) => {
         const url = `${USER_REST_API_URL}/favourite/${restaurantId}`;
-        return await axios.post(url, this.headers());
+        return await axios.post(url, null, this.headers());
     }
 
-    updateUserFirstName = (id:number, firstName:any) => {
-        const url = USER_REST_API_URL+"/"+id;
+    updateUserFirstName = (id: number, firstName: any) => {
+        const url = USER_REST_API_URL + "/" + id;
         const requestBody = {
             firstName
         };
         return axios.patch(url, requestBody, this.headers());
     }
 
-    updateUserLastName = (id:number, lastName:any) => {
-        const url = USER_REST_API_URL+"/"+id;
+    updateUserLastName = (id: number, lastName: any) => {
+        const url = USER_REST_API_URL + "/" + id;
         const requestBody = {
             lastName
         };
         return axios.patch(url, requestBody, this.headers());
     }
 
-    updateUserEmail = (id:number, email:any) => {
-        const url = USER_REST_API_URL+"/"+id;
+    updateUserEmail = (id: number, email: any) => {
+        const url = USER_REST_API_URL + "/" + id;
         const requestBody = {
             email,
         };
