@@ -73,7 +73,7 @@ const ManageUser = () => {
                         <p className="col-span-1 text-lg text-grey-dark">Edit</p>
                     </div>
                     <div className="flex justify-center bg-white-standard rounded-lg mx-10">
-                        {userDetails.length === 0 && <Loading />}
+                        {loading && <Loading />}
                     </div>
                     {
                         userDetails?.map(
