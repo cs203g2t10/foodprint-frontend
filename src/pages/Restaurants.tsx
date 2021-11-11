@@ -38,7 +38,7 @@ const Restaurants = () => {
                 <div className="pb-3"></div>
             </div>
 
-            <div className="h-full w-full md:px-24 px-4 pt-4">
+            <div className="h-full w-full md:px-32 px-4 pt-4">
                 <div className="flex flex-row gap-x-6 w-full overflow-x-auto  pb-6 overflow-hidden mt-6">
                     {
                         categories?.map(
