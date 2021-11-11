@@ -143,7 +143,7 @@ const ReservationModal = (
                 <div>
                     <div className="flex mb-5">
                         <h1 className="text-md text-green-standard w-52">Pax (5 max): </h1>
-                        <input className="flex focus:outline-none rounded-xl w-56 pl-5 py-1 shadow-sm"
+                        <input className="flex focus:outline-none rounded-xl w-full pl-5 py-1 shadow-sm"
                             placeholder="0" type="number" min="1" max="5"
                             onChange={(e) => setPax(parseInt(e.target.value))}
                             value={pax} required></input>
@@ -154,7 +154,7 @@ const ReservationModal = (
                     <div className="flex mb-5">
                         <h1 className="flex text-md text-green-standard mr-5">Booking: </h1>
                         <DatePicker selected={bookingDate} onChange={(date: Date) => { setBookingDate(date); setSelectDate(false) }} showTimeSelect
-                            dateFormat="d/MM/yyyy, h:mm aa" className="flex flex-col focus:outline-none rounded-xl shadow-sm py-1 w-64 pl-5"
+                            dateFormat="d/MM/yyyy, h:mm aa" className="flex flex-col focus:outline-none rounded-xl shadow-sm py-1 w-full pl-5"
                             minDate={new Date()} filterTime={filterAcceptableTimings}
                         />
                     </div>
