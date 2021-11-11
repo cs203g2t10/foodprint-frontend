@@ -86,7 +86,7 @@ const CreateManagerModal = (props: any) => {
                                     }}>Return</button>
                             </div>
                         </> :
-                        <div className="pt-2 grid grid-cols-2 gap-x-10 justify-center mx-28">
+                        <div className="pt-2 grid grid-cols-2 gap-x-10 justify-center md:mx-28">
                             <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-sm hover:shadow-md"
                                 onClick={() => makeManager()}>
                                 <span>
