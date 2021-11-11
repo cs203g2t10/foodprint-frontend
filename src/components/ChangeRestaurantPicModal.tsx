@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDropzone } from 'react-dropzone';
+import { AiOutlineClose } from 'react-icons/ai';
 import ReactModal from 'react-modal';
 import { BeatLoader } from 'react-spinners';
 import RestaurantService from '../services/RestaurantService';
@@ -34,7 +35,6 @@ const ChangeRestaurantPicModal = (props: any) => {
         console.log(file);
 
         console.log("Uploading");
-        // const response = RestaurantService.changeRestaurantPicture(restaurantId, file);
         const response = imageUrl === "/images/shop.jpg" ?
             RestaurantService.uploadRestaurantPicture(restaurantId, name, name, file) :
             RestaurantService.changeRestaurantPicture(restaurantId, file);
@@ -55,7 +55,8 @@ const ChangeRestaurantPicModal = (props: any) => {
 
     return (
         <ReactModal style={customStyles} isOpen={changePic} className="mt-10 focus:outline-none">
-            <div className="grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-64 pb-10 bg-white-dirtyWhite">
+            <div className="grid justify-center items-center gap-y-2 m-10 rounded-lg shadow lg:mx-64 pb-10 bg-white-dirtyWhite relative">
+                <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setChangePic(false)}> <AiOutlineClose className="h-4 w-4" /> </button>
                 <h1 className=" flex text-5xl pt-12 text-green-standard font-bold mx-auto">{name} Display Picture</h1>
                 <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Choose a new photo for your Restaurant!</h1>
                 <div className="grid grid-cols-2 justify-between pt-5 gap-x-16">
@@ -101,7 +102,7 @@ const ChangeRestaurantPicModal = (props: any) => {
                     changed && <div className="mx-auto text-green-standard">Picture has been successfully changed!</div>
                 }
                 <div className="text-red-standard text-center">{error}</div>
-                <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg w-1/3 mx-auto"
+                <button className="text-white-standard bg-green-standard px-3 py-1 rounded-lg shadow-md hover:shadow-lg w-1/3 mx-auto"
                     onClick={() => setChangePic(false)}
                 >
                     <span>
