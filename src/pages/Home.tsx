@@ -64,8 +64,6 @@ const Home = () => {
         }
     }, [isAuthenticated])
 
-    const [upTo50Present, setUpTo50Present] = useState(false)
-
     return (
         <div className="w-full">
 
@@ -142,33 +140,24 @@ const Home = () => {
             }
 
             <div className="md:pl-24 bg-white-standard md:pb-32  px-5">
-                <h1 className="text-4xl md:pr-64 pl-1 font-extrabold pb-7">Good deals</h1>
+                <h1 className="text-4xl md:pr-64 pl-1 font-extrabold pb-7">Deals You Shouldn't Miss</h1>
                 <div className="overflow-hidden h-full w-full">
                     <div className="flex flex-row gap-x-10 w-full overflow-auto  h-auto py-5">
                         {
                             restaurants.map(restaurant => {
                                 let discount = restaurant.discount ? restaurant.discount.discountPercentage : 0;
-                                let upTo50 = (discount <= 50);
+                                let atLeast20 = (discount >= 20);
                                 let imageUrl = "/images/restaurant.jpg";
                                 if (restaurant.picture) {
                                     imageUrl = restaurant.picture.url;
                                 }
-                                if (upTo50) {
-                                    if (!upTo50Present) {
-                                        setUpTo50Present(true)
-                                    }
+                                if (atLeast20) {
                                     return <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
-                                        <ShowRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={imageUrl} />
-                                    </Link>
+                                            <ShowRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={imageUrl} />
+                                        </Link>
                                 }
                                 return <></>
                             })}
-                        {
-                            !upTo50Present ?
-                                <div className="pl-2 text-grey-lighter">
-                                    None for now, view other restaurants <Link to={"/restaurants"} className="text-green-standard">here</Link>!
-                                </div> : <></>
-                        }
                     </div>
                 </div>
             </div>
