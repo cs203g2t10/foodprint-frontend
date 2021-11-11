@@ -64,9 +64,9 @@ const ManageIngredients = () => {
         <div className="min-h-screen">
             <h1 className="text-center font-bold tracking-wide text-4xl text-green-standard pt-5 bg-yellow-standard">Manage Ingredients for {restaurantDetails?.restaurantName}</h1>
             <div className="pt-1 text-center pb-7 text-grey-standard bg-yellow-standard mb-5">Please only edit those fields that you wish to change</div>
-            <button className="mr-44 mb-5 border px-4 py-1 bg-green-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md rounded-full ml-auto grid text-white-standard"
+            <button className="mr-44 mb-5 border px-8 py-1 bg-green-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md rounded-lg ml-auto grid text-white-standard"
                 onClick={() => { setCreateIngredient(true) }}>Create new Ingredient</button>
-            <div className="md:mx-44 bg-white-offWhite pt-6 pb-8 rounded-xxl shadow">
+            <div className="md:mx-44 bg-white-offWhite pt-6 pb-8 rounded-lg shadow">
                 <div className="grid grid-cols-1 gap-y-9 items-center">
                     <div className="grid grid-cols-10 gap-x-6 mx-10">
                         <div className="col-span-1"></div>
