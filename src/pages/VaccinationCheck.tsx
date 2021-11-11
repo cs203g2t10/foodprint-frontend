@@ -12,6 +12,7 @@ const VaccinationCheck = () => {
     const [modalIsOpened, setModalIsOpened] = useState(false);
     const [modalMessage, setModalMessage] = useState("");
     const [error, setError] = useState("");
+    const [invalid, setInvalid] = useState(false);
 
 
     useEffect(() => {
@@ -22,6 +23,8 @@ const VaccinationCheck = () => {
     }, [])
 
     const onDrop = useCallback((acceptedFiles: any) => {
+        setInvalid(false);
+        setError("");
         if (acceptedFiles == null) {
             alert("No file selected");
             return;
@@ -32,12 +35,16 @@ const VaccinationCheck = () => {
         console.log("Uploading");
         const response = VaccinationService.userUploadVaccination(file);
         response.then((response) => {
+            setInvalid(false);
+            setError("")
+            console.log(response);
             console.log("Success: ", response.data.reservationId)
             setModalMessage(`Thank you! We have successfully verfied ${response.data.reason}`);
             setModalIsOpened(true);
         }).catch((error) => {
             console.log(error.response.data);
             if (error.response.status === 500) {
+                setInvalid(true);
                 console.log('Error:', error.response.data.reason)
                 setError(`Error while validating certificate - ${error.response.data.reason}`)
                 setModalIsOpened(true)
@@ -112,7 +119,7 @@ const VaccinationCheck = () => {
                     </div>
                     <div>
                         {
-                            (error ?
+                            (invalid ?
                                 <div>
                                     <h1 className="text-red-standard text-5xl font-bold">Check Unsuccessful.</h1>
                                     <h1 className="text-base text-grey-standard text-light mt-4 mb-16">{error}</h1>
