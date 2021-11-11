@@ -8,7 +8,7 @@ const FavouriteRestaurant = (props: any) => {
     const deleteFavourite: any = async (id: number) => {
         UserService.deleteFavRestaurant(id).then((response) => {
             console.log(response);
-            setDeleteMessage("restaurant " + props.name + " has been unfavourited");
+            setDeleteMessage(props.name + " has been unfavourited");
         }).catch((error) => {
             console.log(error.response);
         })
