@@ -75,7 +75,7 @@ const CreateRestaurantModal = (props: any) => {
                     </div>
                     <div className="flex gap-x-2 justify-between">
                         <div className="text-base my-auto w-full">Price Range(1-5):</div>
-                        <input type="number" min="1" max="5" className="focus:outline-none w-full rounded-large shadow-sm h-9 border border-grey-lightest" value={priceRange} onChange={(e) => { setPriceRange(e.target.value) }}></input>
+                        <input type="number" min="1" max="5" className="focus:outline-none w-full rounded-large shadow-sm h-9 border border-grey-lightest pl-4" value={priceRange} onChange={(e) => { setPriceRange(e.target.value) }}></input>
                     </div>
                     <div className="flex gap-x-2 justify-between">
                         <div className="text-base my-auto w-full">Table Capacity:</div>
@@ -122,9 +122,9 @@ const CreateRestaurantModal = (props: any) => {
                 {
                     (created ?
                         <>
-                            <div className="mx-auto py-2 text-green-standard">Restaurant has been created!</div>
+                            <div className="mx-auto text-green-standard">Restaurant has been created!</div>
                             <div className=" grid gap-x-10 justify-center mx-28">
-                                <button className=" text-green-standard px-10 py-1 rounded-xl shadow-md hover:shadow-lg"
+                                <button className=" text-green-standard px-10 py-1 rounded-lg shadow-md hover:shadow-lg border"
                                     onClick={() => { setCreateRestaurant(false); setCreateRestaurant(false); }}>Return</button>
                             </div>
                         </> :
