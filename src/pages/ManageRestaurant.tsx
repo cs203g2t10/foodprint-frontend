@@ -118,7 +118,7 @@ const ManageRestaurant = () => {
                         <h1 className="pl-4 text-5xl text-grey-standard font-semibold pb-3">Menu</h1>
                         <div className="flex gap-x-4">
                             <button className="bg-green-standard text-1xl text-white-standard opacity-90 hover:opacity-100 px-5 h-8 my-auto rounded-lg shadow-md hover:shadow-lg"
-                                onClick={() => { setEditDiscount(true) }}>Add/Edit Discount</button>
+                                onClick={() => { setEditDiscount(true) }}>Manage Discount</button>
                             <button className="bg-green-standard text-1xl text-white-standard opacity-90 hover:opacity-100 px-5 h-8 my-auto rounded-lg shadow-md hover:shadow-lg"
                                 onClick={() => { setShowCreateFood(true) }}>Add to Menu</button>
                         </div>
