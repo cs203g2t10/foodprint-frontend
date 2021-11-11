@@ -9,7 +9,6 @@ import RestaurantFood from '../components/RestaurantFood';
 import Loading from '../components/Loading';
 import { AiFillHeart } from 'react-icons/ai';
 import { useAppContext } from '../lib/AppContext';
-import { BeatLoader, SyncLoader } from 'react-spinners';
 
 const Restaurant = () => {
 

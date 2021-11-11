@@ -61,6 +61,9 @@ const AdminManageRestaurants = () => {
                                 <p className="col-span-2 text-base text-grey-dark">Restaurant Name</p>
                                 <p className="col-span-4 text-base text-grey-dark text-center">Manage options</p>
                             </div>
+                            <div className="flex justify-center items-center bg-white-standard rouded-lg">
+                                {restaurants.length === 0 && <Loading />}
+                            </div>
                             <div className="grid grid-cols-1 gap-y-3 items-center">
                                 {
                                     restaurants?.map(
@@ -75,9 +78,7 @@ const AdminManageRestaurants = () => {
                             </div>
                         </div>
                         <PageLinks {...{ numPages, currPage, setCurrPage }} />
-                        <div className="flex justify-center">
-                            {restaurants.length === 0 && <Loading />}
-                        </div>
+
                     </div>
                     <CreateRestaurantModal {...{ createRestaurant, setCreateRestaurant }} />
                 </>

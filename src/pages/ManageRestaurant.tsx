@@ -79,6 +79,16 @@ const ManageRestaurant = () => {
         })
     }, [restaurantId])
 
+    if (restaurantDetails.length === 0) {
+        return (
+            <div className="h-screen">
+                <div className="flex justify-center items-center h-full">
+                    <Loading />
+                </div>
+            </div>
+        )
+    }
+
     return (
         isAuthorized ?
             <div className="min-h-screen">
