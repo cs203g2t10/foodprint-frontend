@@ -38,7 +38,6 @@ const Restaurants = () => {
                 <div className="pb-3"></div>
             </div>
 
-            {/* <h1 className="text-xl md:pr-40 font-semibold text-grey-dark pl-32 pt-10 text-grey">Categories</h1> */}
             <div className="h-full w-full md:px-24 px-4 pt-4">
                 <div className="flex flex-row gap-x-6 w-full overflow-x-auto  pb-6 overflow-hidden mt-6">
                     {
