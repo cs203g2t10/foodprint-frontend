@@ -39,7 +39,7 @@ const Restaurants = () => {
             </div>
 
             {/* <h1 className="text-xl md:pr-40 font-semibold text-grey-dark pl-32 pt-10 text-grey">Categories</h1> */}
-            <div className="h-full w-full px-24 pt-4">
+            <div className="h-full w-full md:px-24 px-4 pt-4">
                 <div className="flex flex-row gap-x-6 w-full overflow-x-auto  pb-6 overflow-hidden mt-6">
                     {
                         categories?.map(
@@ -55,8 +55,7 @@ const Restaurants = () => {
                 </div>
             </div>
 
-            {/* <h1 className="text-3xl md:pr-64 font-extrabold pl-40">Restaurants</h1> */}
-            <div className="justify-items-center grid 3xl:grid-cols-6 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-y-16 px-24 mt-10 pb-8 animate__animated animate__fadeIn">
+            <div className="justify-items-center grid 3xl:grid-cols-6 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-y-16 md:px-24 mt-10 md:pb-8 animate__animated animate__fadeIn">
                 {
                     restaurants?.map(
                         restaurant => {

@@ -30,7 +30,7 @@ const SearchBar = (props: any) => {
     }
 
     return <>
-        <div className="grid grid-cols-12">
+        <div className="grid md:grid-cols-12 mx-4 md:mx-0">
             <h2 className="col-span-2">&nbsp;</h2>
             <div className="col-span-5 bg-white-offWhite h-10 flex items-center rounded-xl shadow-lg mt-8">
                 <div className="px-5">
@@ -46,18 +46,18 @@ const SearchBar = (props: any) => {
             </div>
 
             <div className="col-span-4 items-center rounded-xl flex px-5">
-                <div>
+                <div className="mt-8 md:flex items-center gap-x-2">
                     <label htmlFor="restaurantSort" className="text-green-standard">Sort By: </label>
-                    <select name="restaurantSort" className="rounded-large h-10 mt-8 px-3 text-grey-standard shadow-md" id="restaurantSort" ref={restaurantSortRef} onChange={onChangeFunction}>
+                    <select name="restaurantSort" className="rounded-large h-10 px-3 text-grey-standard shadow-md" id="restaurantSort" ref={restaurantSortRef} onChange={onChangeFunction}>
                         <option value="restaurantId">Restaurant ID</option>
                         <option value="restaurantName">Restaurant Name</option>
                         <option value="restaurantPriceRange">Price Range</option>
                     </select>
                 </div>
 
-                <div className="justify-items-center items-center flex">
+                <div className="justify-items-center items-center md:flex">
                     <label htmlFor="sortDescending" className=" ml-5 mr-2 text-green-standard mt-8">Dsc:</label>
-                    <input type="checkbox" className="form-checkbox checkbox checkbox-md mt-8 inline-block" id="sortDescending" onChange={onChangeFunction} ref={restaurantSortDescRef} />
+                    <input type="checkbox" className="form-checkbox checkbox checkbox-md mt-8 inline-block bg-white-standard" id="sortDescending" onChange={onChangeFunction} ref={restaurantSortDescRef} />
                 </div>
             </div>
             <h2 className="col-span-2">&nbsp;</h2>
