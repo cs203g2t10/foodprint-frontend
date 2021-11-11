@@ -49,11 +49,11 @@ const AdminManageRestaurants = () => {
                         <h1 className="text-5xl font-bold pt-4 text-center text-green-standard bg-yellow-standard">Admin Restaurants Menu</h1>
                         <h1 className="text-base text text-center text-grey-standard pb-8 bg-yellow-standard">Hello {getUserName()}, which restaurants / ingredients would you like to edit?</h1>
 
-                        <button className="ml-auto mr-56 grid bg-green-standard opacity-95 hover:opacity-100 my-5 text-white-standard shadow-sm hover:shadow-md px-4 py-1 mx-14 rounded-lg"
-                            onClick={() => { setCreateRestaurant(true) }}>Create New Restaurant</button>
+                        <button className="ml-auto mr-56 grid bg-green-standard opacity-95 hover:opacity-100 my-5 text-white-standard shadow hover:shadow-md px-8 py-1 rounded-lg"
+                            onClick={() => { setCreateRestaurant(true) }}>Add New Restaurant</button>
 
 
-                        <div className="mx-56 px-8 overflow-auto bg-white-offWhite pt-6 pb-8 rounded-xxl shadow mb-2">
+                        <div className="mx-56 px-8 overflow-auto bg-white-creamWhite pt-6 pb-8 rounded-lg shadow-md mb-2">
 
                             <div className="px-8 pb-5 grid grid-cols-8 gap-x-6">
                                 <div className="col-span-1"></div>
