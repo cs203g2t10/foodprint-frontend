@@ -122,9 +122,9 @@ const ReservationModal = (
                                     <div className="gap-x-2 text-md text-green-standard">After discount:</div>
                                 </>
                             }
-                            <div className="gap-x-2 text-md text-green-standard">GST:</div>
+                            {/* <div className="gap-x-2 text-md text-green-standard">GST:</div>
                             <div className="gap-x-2 text-md text-green-standard">Service Charge:</div>
-                            <div className="gap-x-2 text-md text-green-standard">Final price :</div>
+                            <div className="gap-x-2 text-md text-green-standard">Final price :</div> */}
                         </div>
                         <div>
                             <div className="gap-x-2 text-md text-grey-standard">${totalPrice.toFixed(2)}</div>
@@ -134,9 +134,9 @@ const ReservationModal = (
                                     <div className="gap-x-2 text-md text-grey-standard">${afterDiscount.toFixed(2)}</div>
                                 </>
                             }
-                            <div className="gap-x-2 text-md text-grey-standard">${(afterDiscount * 0.07).toFixed(2)}</div>
+                            {/* <div className="gap-x-2 text-md text-grey-standard">${(afterDiscount * 0.07).toFixed(2)}</div>
                             <div className="gap-x-2 text-md text-grey-standard">${(afterDiscount * 1.07 * 0.1).toFixed(2)}</div>
-                            <div className="gap-x-2 text-md text-grey-standard">${(afterDiscount * 1.17).toFixed(2)}</div>
+                            <div className="gap-x-2 text-md text-grey-standard">${(afterDiscount * 1.17).toFixed(2)}</div> */}
                         </div>
                     </div>
                 </div>
