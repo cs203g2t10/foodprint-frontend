@@ -38,7 +38,7 @@ const CreateFoodModal = (props: any) => {
             <div className="grid justify-center items-center gap-y-2 m-8 rounded-lg shadow py-4 bg-white-standard mx-auto px-6 relative w-2/5">
                 <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => { setShowCreateFood(false) }}> <AiOutlineClose className="h-4 w-4" /> </button>
                 <img className="h-40 mx-auto" src="/images/createPic2.png" alt="create" />
-                <div className="grid grid-cols-2 px-10 mb-3 justify-between">
+                <div className="grid grid-cols-2 px-6 mb-3 justify-between">
                     <h1 className="flex text-3xl text-green-standard font-bold">Create Food</h1>
                     <h1 className="flex mb-2 text-grey-standard font-light text-sm my-auto ml-auto">*All fields are compulsory.</h1>
                 </div>
@@ -96,7 +96,7 @@ const CreateFoodModal = (props: any) => {
                 {
                     (created ?
                         <>
-                            <div className="text-green-standard  mx-10 text-basre pb-2 mt-1">Item has been added to the menu!</div>
+                            <div className="text-green-standard  mx-6 text-basre pb-2 mt-1">Item has been added to the menu!</div>
                             <div className=" grid grid-cols-2 gap-x-10 justify-center mx-10 pb-3">
                                 <button className=" text-white-standard bg-green-standard px-3 pt-1 rounded-lg shadow-md hover:shadow-lg"
                                     onClick={() => {
@@ -110,7 +110,7 @@ const CreateFoodModal = (props: any) => {
                                     onClick={() => { setShowCreateFood(false) }}>Return</button>
                             </div>
                         </> :
-                        <div className=" grid grid-cols-2 gap-x-10 justify-center mx-10 pt-1 pb-3">
+                        <div className=" grid grid-cols-2 gap-x-10 justify-center mx-6 pt-1 pb-3">
                             <div className="col-span-2 text-red-standard text-sm pb-2">{error}</div>
                             <button className="text-white-standard bg-green-standard px-3 rounded-lg shadow-md hover:shadow-lg"
                                 onClick={() => createNewFood(name, desc, price, ingredientQty)} disabled={loading}>
