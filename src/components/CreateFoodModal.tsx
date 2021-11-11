@@ -101,7 +101,7 @@ const CreateFoodModal = (props: any) => {
                         <>
                             <div className="text-green-standard  mx-6 text-basre pb-2 mt-1">Item has been added to the menu!</div>
                             <div className=" grid grid-cols-2 gap-x-10 justify-center mx-8 pb-3">
-                                <button className=" text-white-standard bg-green-standard px-3 pt-1 rounded-lg shadow-md hover:shadow-lg"
+                                <button className=" absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200"
                                     onClick={() => {
                                         setCreated(false);
                                         setName("");

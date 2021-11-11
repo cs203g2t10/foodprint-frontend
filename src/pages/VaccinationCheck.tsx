@@ -97,7 +97,7 @@ const VaccinationCheck = () => {
                 </div>
             </div>
 
-            <Modal isOpen={modalIsOpened} className="mx-auto w-1/2 my-auto bg-white-offWhite mt-40 rounded-xxl">
+            <Modal isOpen={modalIsOpened} className="mx-auto w-1/2 my-auto bg-white-standard mt-40 rounded-lg shadow-md">
                 <button
                     type="button"
                     className="uk-button uk-button-danger uk-button-small ml-5 mt-5 bg-grey-lightest p-3 rounded-full shadow-sm hover:shadow-md"
