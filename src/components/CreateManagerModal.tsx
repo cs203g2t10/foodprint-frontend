@@ -69,7 +69,7 @@ const CreateManagerModal = (props: any) => {
                 {
                     (created ?
                         <>
-                            <div className="mx-auto pt-3 pb-3 px-10 text-green-standard text-base">User with id: {userId} is now Manager of Restaurant with id: {restaurantId}</div>
+                            <div className="pb-1 px-10 text-green-standard text-base">User is now a Manager</div>
                             <div className="pt-2 pb-0 grid grid-cols-2 gap-x-10 justify-center mx-10">
                                 <button className=" text-white-standard bg-green-standard px-3 py-1 rounded-lg shadow-md hover:shadow-lg w-full"
                                     onClick={() => {
