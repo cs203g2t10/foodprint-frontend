@@ -45,8 +45,8 @@ const Restaurants = () => {
                         categories?.map(
                             category => {
                                 return <Link to={"/categories?category=" + category} key={category}>
-                                    <div className="bg-white-offWhite hover:bg-white-dirtyWhite text-green-standard shadow-md hover:shadow-lg rounded-xl w-28 text-center">
-                                        <h1 className="px-2 py-2 text-base text-grey-dark">{category}</h1>
+                                    <div className="h-8 text-green-standard border border-green-standard shadow-md hover:shadow-lg rounded-xl w-28 text-center">
+                                        <h1 className="px-2 my-auto text-base text-green-standard">{category}</h1>
                                     </div>
                                 </Link>
                             }
