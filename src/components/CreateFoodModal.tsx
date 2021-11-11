@@ -42,10 +42,10 @@ const CreateFoodModal = (props: any) => {
                     <h1 className="flex text-3xl text-green-standard font-bold">Create Food</h1>
                     <h1 className="flex mb-2 text-grey-standard font-light text-sm my-auto ml-auto">*All fields are compulsory.</h1>
                 </div>
-                <div className="grid gap-y-3 grid-cols-2 gap-x-4 mx-10">
+                <div className="grid gap-y-3 grid-cols-2 gap-x-4 mx-6">
                     <div className="flex gap-x-2 justify-between">
                         <div>Name: </div>
-                        <input className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest w-full" value={name} onChange={(e) => { setName(e.target.value) }}></input>
+                        <input className="focus:outline-none rounded-large shadow-sm h-9 border border-grey-lightest w-32" value={name} onChange={(e) => { setName(e.target.value) }}></input>
                     </div>
                     <div className="flex gap-x-2 justify-between">
                         <div>Price:</div>
@@ -57,12 +57,12 @@ const CreateFoodModal = (props: any) => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-6 mx-20 mt-2">
+                <div className="grid grid-cols-6 mx-10 mt-2">
                     <h1 className="text-sm text-grey-dark col-span-3">Ingredient Name</h1>
                     <h1 className="text-sm text-grey-dark col-span-2">Units</h1>
                     <h1 className="text-sm text-grey-dark col-span-1">Quantity</h1>
                 </div>
-                <div className="grid overflow-y-scroll h-40 px-6 mx-10 py-2 gap-y-2 bg-white-dirtyWhite rounded-lg ">
+                <div className="grid overflow-y-scroll h-40 px-6 mx-4 py-2 gap-y-2 bg-white-dirtyWhite rounded-lg ">
                     {
                         ingredients?.map((ingredient: any) => {
 
@@ -71,7 +71,7 @@ const CreateFoodModal = (props: any) => {
                                     <p className="text-base text-grey-standard col-span-3">{ingredient.ingredientName}</p>
                                     <p className="text-base text-grey-standard col-span-2">{ingredient.units}</p>
                                     <input type="number" placeholder="0" min="0"
-                                        className="focus:outline-none text-right px-4 w-16 rounded-lg col-span-1 "
+                                        className="focus:outline-none text-right px-4 rounded-lg col-span-1 w-20"
                                         onChange={(e) => {
                                             if (e.target.value === '0') {
                                                 setIngredientQty((oldArray: any) => [...oldArray.filter((inQ: any) =>
