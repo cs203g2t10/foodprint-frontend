@@ -26,8 +26,8 @@ const Header = () => {
 
     return (
         <div>
-            <nav className="bg-yellow-standard">
-                <div className="px-4 mx-20 sm:px-6 lg:px-8">
+            <nav className="bg-yellow-standard relative">
+                <div className="px-4 mx-20 sm:px-6 lg:px-8 relative z-50">
                     <div className="flex items-center justify-between h-16">
                         <Link to='/' className=" text-black px-1 py-2 rounded-md text-md font-medium">
                             foodprint

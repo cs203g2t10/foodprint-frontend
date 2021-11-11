@@ -62,7 +62,7 @@ const Home = () => {
         <div className="w-full">
 
             <div className="grid grid-cols-6 absolute">
-                <img className="col-span-2 px-0 z-10 mt-28 -rotate-65 transform scale-110 " src="/images/aboutUs.png" alt="about us" />
+                <img className="col-span-2 px-0 z-10 mt-28 -rotate-65 transform scale-110" src="/images/aboutUs.png" alt="about us" />
                 <div className="col-span-2"></div>
                 <img className="col-span-2 px-0 z-10 mt-56 -rotate-45 transform scale-90" src="/images/aboutUs2.png" alt="about us" />
 
