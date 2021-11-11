@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import LogInService, { UserDetails } from '../services/LogInService';
 import { AiFillEdit, AiOutlineCheck } from 'react-icons/ai';
 import UserService from '../services/UserService';
-import { BeatLoader, CircleLoader, ClipLoader, FadeLoader, GridLoader, HashLoader } from 'react-spinners';
+import { HashLoader } from 'react-spinners';
 
 const UserDetailsConfig = () => {
     const [error, setError] = useState("")

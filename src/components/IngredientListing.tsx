@@ -3,7 +3,7 @@ import { AiFillEdit, AiOutlineCheck, AiOutlineUndo } from 'react-icons/ai';
 import RestaurantService from '../services/RestaurantService';
 import { AiOutlineClose } from 'react-icons/ai';
 import DeleteIngredientModal from './DeleteIngredientModal';
-import { BeatLoader, HashLoader } from 'react-spinners';
+import { HashLoader } from 'react-spinners';
 
 const IngredientListing = (props: any) => {
 

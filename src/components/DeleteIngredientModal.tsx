@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { AiOutlineClose } from 'react-icons/ai';
 import ReactModal from 'react-modal';
 import { BeatLoader } from 'react-spinners';
 import RestaurantService from '../services/RestaurantService';
@@ -30,7 +31,8 @@ const DeleteIngredientModal = (props: any) => {
 
     return (
         <ReactModal style={customStyles} isOpen={deleteModalOpen} className="focus:outline-none">
-            <div className="grid justify-center items-center gap-y-2 rounded-xxl shadow w-1/3 mx-auto pb-10 pt-12 mt-24 bg-white-dirtyWhite">
+            <div className="grid justify-center items-center gap-y-2 rounded-lg shadow w-1/3 mx-auto pb-10 pt-12 mt-24 bg-white-dirtyWhite relative">
+            <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setDeleteModal(false)}> <AiOutlineClose className="h-4 w-4" /> </button>
                 <h1 className=" flex text-5xl text-green-standard font-bold mx-auto">Delete Ingredient</h1>
                 <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Are you sure you want to delete {name}?</h1>
                 {

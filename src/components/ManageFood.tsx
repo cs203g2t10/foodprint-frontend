@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BeatLoader, HashLoader } from 'react-spinners';
+import { HashLoader } from 'react-spinners';
 import RestaurantService from '../services/RestaurantService';
 import ChangeFoodPicModal from './ChangeFoodPicModal';
 import DeleteFoodModal from './DeleteFoodModal';
