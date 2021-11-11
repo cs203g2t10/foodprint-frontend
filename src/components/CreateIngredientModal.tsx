@@ -64,16 +64,16 @@ const CreateIngredientModal = (props: any) => {
                 {
                     (created ?
                         <>
-                            <div className="pt-7 pb-2 text-green-standard">Ingredient has been successfully created!</div>
-                            <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28">
-                                <button className=" text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
+                            <div className="pt-7 pb-2 mx-6 text-green-standard">Ingredient has been successfully created!</div>
+                            <div className=" grid grid-cols-2 gap-x-6 justify-center mx-6">
+                                <button className=" text-white-standard bg-green-standard px-3 py-1 rounded-lg shadow-md hover:shadow-lg"
                                     onClick={() => {
                                         setCreated(false);
                                         setName("");
                                         setDesc("");
                                         setUnits("");
                                     }}>Reset</button>
-                                <button className=" text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border border-green-standard"
+                                <button className=" text-green-standard px-3 py-1 rounded-lg shadow-md hover:shadow-lg border border-green-standard"
                                     onClick={() => { setCreateIngredient(false) }}>Return</button>
                             </div>
                         </> :
