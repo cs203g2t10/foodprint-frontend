@@ -148,7 +148,7 @@ const Home = () => {
                         {
                             restaurants.map(restaurant => {
                                 let discount = restaurant.discount ? restaurant.discount.discountPercentage : 0;
-                                let upTo50 = (discount >= 50);
+                                let upTo50 = (discount <= 50);
                                 let imageUrl = "/images/restaurant.jpg";
                                 if (restaurant.picture) {
                                     imageUrl = restaurant.picture.url;
