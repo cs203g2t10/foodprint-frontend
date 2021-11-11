@@ -6,6 +6,7 @@ import ReservationModal from '../components/ReservationModal'
 import "react-datepicker/dist/react-datepicker.css";
 import RestaurantFood from '../components/RestaurantFood';
 import Loading from '../components/Loading';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 
 const Restaurant = () => {
 
@@ -69,7 +70,9 @@ const Restaurant = () => {
                             <img className="object-contain rounded-full" src={imageUrl} alt="shop" />
                         </div>
                         <div className="col-span-6 px-0">
-                            <h1 className="text-4xl md:text-6xl font-bold tracking-wide text-green-standard">{restaurantDetails.restaurantName}</h1>
+                            <h1 className="text-4xl md:text-6xl font-bold tracking-wide text-green-standard flex items-center gap-x-4">{restaurantDetails.restaurantName} 
+                            <AiFillHeart/> <AiOutlineHeart /> 
+                            </h1>
                             <p className="text-lg md:text-2xl text-green-standard">{restaurantDetails.restaurantDesc}</p>
                             <p className="text-md md:pb-4 text-grey-standard">{restaurantDetails.restaurantLocation}</p>
                         </div>
