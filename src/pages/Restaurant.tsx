@@ -66,8 +66,8 @@ const Restaurant = () => {
                 <div className="absolute z-10 ">
                     <div className="grid grid-cols-9 gap-x-16 md:mx-4 my-10">
                         <h2 className="md:col-span-1">&nbsp;</h2>
-                        <div className="col-span-2 md:w-40 h-40 w-32">
-                            <img className="object-contain rounded-full" src={imageUrl} alt="shop" />
+                        <div className="col-span-2">
+                            <img className="object-cover rounded-full w-40 h-40" src={imageUrl} alt="shop" />
                         </div>
                         <div className="col-span-6 px-0">
                             <h1 className="text-4xl md:text-6xl font-bold tracking-wide text-green-standard flex items-center gap-x-4">{restaurantDetails.restaurantName} 
