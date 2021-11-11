@@ -52,19 +52,19 @@ const ManageFood = (props: any) => {
 
                 <div className="grid gap-y-2 ">
                     <div className="flex gap-x-3 justify-between h-8">
-                        <h1 className="text-green-standard">Name: </h1>
+                        <h1 className="text-green-standard text-base">Name: </h1>
                         <input value={name} className="px-2 focus:outline-none border rounded-large"
                             onChange={(e) => { setName(e.target.value) }} />
                     </div>
 
                     <div className="flex gap-x-3 justify-between h-8">
-                        <h1 className="text-green-standard">Description: </h1>
+                        <h1 className="text-green-standard text-base">Description: </h1>
                         <input value={desc} className="px-2 focus:outline-none border rounded-large"
                             onChange={(e) => { setDesc(e.target.value) }} />
                     </div>
 
                     <div className="flex gap-x-3 justify-between h-8">
-                        <h1 className="text-green-standard">Price: $</h1>
+                        <h1 className="text-green-standard text-base">Price: $</h1>
                         <input value={price} className="px-2 focus:outline-none border rounded-large" type="number"
                             onChange={(e) => { setPrice(e.target.value) }} />
                     </div>
@@ -113,16 +113,16 @@ const ManageFood = (props: any) => {
                         }
                     </div>
                 </div>
-                <div className="grid grid-cols-2 gap-x-10 mt-4">
+                <div className="grid grid-cols-2 gap-x-4 mt-4">
                     <div className="col-span-2 text-red-standard text-center">{error}</div>
-                    <button className="rounded-full bg-green-standard text-white-standard py-1 h-8 opacity-90 hover:opacity-100 shadow-sm hover:shadow-md"
+                    <button className="rounded-lg bg-green-standard text-white-standard my-auto h-8 opacity-90 hover:opacity-100 shadow-sm hover:shadow-md"
                         onClick={() => { editFood(name, desc, price, newIngredientQty) }}>
                         {
                             loading ? <HashLoader size="15" color="#daeddb"/> :
                                 'Confirm'
                         }
                     </button>
-                    <button className="rounded-full border border-green-standard py-1 h-8 text-green-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md" onClick={() => {
+                    <button className="rounded-lg border border-green-standard my-auto h-8 text-green-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md" onClick={() => {
                         setName(props.name);
                         setDesc(props.desc);
                         setPrice(props.price);
@@ -137,11 +137,11 @@ const ManageFood = (props: any) => {
             <div className="py-4 px-8 rounded-xl bg-white-dirtyWhite shadow-sm">
                 <img src={pictureUrl} alt={props.pic?.description} className="rounded-full mb-5 h-32 w-32 flex mx-auto shadow-sm object-cover" />
                 <div className="grid grid-cols-5 justify-between gap-y-1">
-                    <h1 className="col-span-2 text-green-standard">Name: </h1>
+                    <h1 className="col-span-2 text-green-standard text-base">Name: </h1>
                     <h1 className="col-span-3 text-grey-dark text-base">{name}</h1>
-                    <h1 className="col-span-2 text-green-standard">Description:</h1>
+                    <h1 className="col-span-2 text-green-standard text-base">Description:</h1>
                     <h1 className="col-span-3 text-grey-dark text-base">{desc}</h1>
-                    <h1 className="col-span-2 text-green-standard">Price: $</h1>
+                    <h1 className="col-span-2 text-green-standard text-base">Price: $</h1>
                     <h1 className="col-span-3 pb-3 text-grey-dark text-base">{price}</h1>
                 </div>
 
@@ -166,10 +166,10 @@ const ManageFood = (props: any) => {
 
                 </div>
 
-                <div className="grid grid-cols-2 gap-x-10 mt-4">
-                    <button className="my-auto grid rounded-full border bg-green-standard h-8 text-white-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md"
+                <div className="grid grid-cols-2 gap-x-4 mt-4">
+                    <button className="my-auto grid rounded-lg border bg-green-standard h-8 text-white-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md"
                         onClick={() => { setEdit(true); setSuccess(false) }}>Edit</button>
-                    <button className="my-auto grid rounded-full border bg-red-standard h-8 text-white-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md"
+                    <button className="my-auto grid rounded-lg border bg-red-standard h-8 text-white-standard opacity-80 hover:opacity-90 shadow-sm hover:shadow-md"
                         onClick={() => { setDeleteModal(true) }}>Delete</button>
                 </div>
                 <br />

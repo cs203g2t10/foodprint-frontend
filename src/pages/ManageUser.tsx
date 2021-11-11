@@ -52,7 +52,7 @@ const ManageUser = () => {
             <div className="md:flex gap-x-2 justify-between mr-16 mb-5 ml-16 ">
                 <div className="md:flex gap-x-2 ">
                     <span className="">Filter Email: </span>
-                    <input className="bg-white-offWhite focus:outline-none md:px-4 px-1 py-1 rounded-large shadow-sm" value={emailContains} onChange={(e) => { setEmailContains(e.target.value) }}></input>
+                    <input className="border border-grey-lightest bg-white-offWhite focus:outline-none md:px-4 px-1 py-1 rounded-large shadow-sm" value={emailContains} onChange={(e) => { setEmailContains(e.target.value) }}></input>
                 </div>
                 <div className="md:flex gap-x-2">
                     <button className="border px-4 py-1 bg-green-standard rounded-lg shadow-sm hover:shadow-md text-white-standard flexopacity-90 hover:opacity-100"
