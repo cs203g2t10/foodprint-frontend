@@ -55,31 +55,32 @@ const CreateUserModal = (
     }
 
     return (
-        <Modal style={customStyles} isOpen={createUser} className="flex md:mt-24 focus:outline-none">
-            <div className="grid justify-center items-center gap-y-2 rounded-lg shadow pb-10 bg-white-dirtyWhite relative mx-auto px-20">
-                <button className="absolute top-3 right-3 " onClick={() => setCreateUser(false)}> <AiOutlineClose className="h-5 w-5" /> </button>
-                <h1 className=" flex text-5xl pt-10 text-green-standard font-bold mx-auto">Create User</h1>
-                <h1 className=" flex text-base mb-2 text-grey-standard font-light mx-auto">Please fill up all details below </h1>
-                <div className="grid gap-y-5 md:grid-cols-2 md:mt-10 gap-x-10">
+        <Modal style={customStyles} isOpen={createUser} className="flex md:mt-6 focus:outline-none">
+            <div className="grid justify-center items-center gap-y-2 m-8 rounded-lg shadow py-10 bg-white-standard mx-auto px-6 relative w-2/6">
+                <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setCreateUser(false)}> <AiOutlineClose className="h-5 w-5" /> </button>
+                <img className="px-5" src="/images/create.png" alt="create" />
+                <h1 className="flex text-3xl text-green-standard font-bold px-10 mt-3">Create User</h1>
+                <h1 className=" flex text-base mb-2 text-grey-standard font-light mx-10">Please fill up all details below </h1>
+                <div className="grid md:mt-3 gap-y-2 mx-10">
                     <div className="md:flex gap-x-2 justify-between">
                         <div>Email: </div>
-                        <input type="email" className="focus:outline-none px-4 py-1 rounded-large shadow-sm" value={email} onChange={(e) => { setEmail(e.target.value) }}></input>
+                        <input type="email" className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest" value={email} onChange={(e) => { setEmail(e.target.value) }}></input>
                     </div>
                     <div className="md:flex gap-x-2 justify-between">
                         <div>Password: </div>
-                        <input type="password" className="focus:outline-none px-4 py-1 rounded-large shadow-sm" value={password} onChange={(e) => { setPassword(e.target.value) }}></input>
+                        <input type="password" className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest" value={password} onChange={(e) => { setPassword(e.target.value) }}></input>
                     </div>
                     <div className="md:flex gap-x-2 justify-between">
                         <div>First Name: </div>
-                        <input className="focus:outline-none px-4 py-1 rounded-large shadow-sm" value={firstName} onChange={(e) => { setFirstName(e.target.value) }}></input>
+                        <input className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest" value={firstName} onChange={(e) => { setFirstName(e.target.value) }}></input>
                     </div>
                     <div className="md:flex gap-x-2 justify-between">
                         <div>Last Name: </div>
-                        <input className="focus:outline-none px-4 py-1 rounded-large shadow-sm" value={lastName} onChange={(e) => { setLastName(e.target.value) }}></input>
+                        <input className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest" value={lastName} onChange={(e) => { setLastName(e.target.value) }}></input>
                     </div>
                     <div className="md:flex gap-x-2 justify-between">
                         <div>Role: </div>
-                        <input className="focus:outline-none px-4 py-1 rounded-large shadow-sm" value={roles} onChange={(e) => { setRoles(e.target.value) }}></input>
+                        <input className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest" value={roles} onChange={(e) => { setRoles(e.target.value) }}></input>
                     </div>
                 </div>
 
@@ -89,9 +90,9 @@ const CreateUserModal = (
                 {
                     (created ?
                         <>
-                            <div className="mx-auto pt-3 pb-3 text-green-standard text-base">User has been successfully created!</div>
-                            <div className="pt-2 pb-0 grid grid-cols-2 gap-x-10 justify-center mx-28">
-                                <button className=" text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
+                            <div className="pt-3 text-green-standard text-base px-10">User has been successfully created!</div>
+                            <div className="pt-2 grid grid-cols-2 gap-x-6 justify-center mx-10">
+                                <button className=" text-white-standard bg-green-standard px-3 py-1 rounded-lg shadow-md hover:shadow-lg w-full"
                                     onClick={() => {
                                         setCreated(false);
                                         setEmail("");
@@ -100,12 +101,12 @@ const CreateUserModal = (
                                         setLastName("");
                                         setRoles("");
                                     }}>Reset</button>
-                                <button className=" text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border"
+                                <button className=" text-green-standard px-3 py-1 rounded-lg shadow-md hover:shadow-lg border w-full border-green-standard"
                                     onClick={() => { setCreateUser(false) }}>Return</button>
                             </div>
                         </> :
-                        <div className="pt-2 pb-0 grid grid-cols-2 gap-x-10 md:justify-center md:mx-28 gap-y-2">
-                            <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-sm hover:shadow-md"
+                        <div className="pt-2 pb-0 grid grid-cols-2 gap-x-6 md:justify-center px-10 gap-y-2">
+                            <button className="text-white-standard bg-green-standard px-3 py-1 rounded-lg shadow-sm hover:shadow-md"
                                 onClick={() => createNewUser(email, firstName, lastName, password, roles)}>
                                 <span>
                                     {
@@ -115,7 +116,7 @@ const CreateUserModal = (
                                     }
                                 </span>
                             </button>
-                            <button className="text-green-standard px-3 py-1 rounded-xl shadow-sm hover:shadow-md border border-green-standard" onClick={() => setCreateUser(false)}>Cancel</button>
+                            <button className="text-green-standard px-3 py-1 rounded-lg shadow-sm hover:shadow-md border border-green-standard w-full" onClick={() => setCreateUser(false)}>Cancel</button>
                         </div>)
                 }
             </div>
