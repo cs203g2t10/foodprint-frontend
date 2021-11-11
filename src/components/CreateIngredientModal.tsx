@@ -41,29 +41,30 @@ const CreateIngredientModal = (props: any) => {
 
     return (
         <Modal style={customStyles} isOpen={createIngredient} className="mt-28 focus:outline-none">
-            <div className="grid justify-center items-center gap-y-2 m-10 rounded-lg shadow lg:mx-64 pb-10 bg-white-dirtyWhite relative">
-            <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setCreateIngredient(false)}> <AiOutlineClose className="h-4 w-4" /> </button>
-                <h1 className=" flex text-5xl pt-12 text-green-standard font-bold mx-auto">Create Ingredient</h1>
-                <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Please fill up all details below </h1>
-                <div className="grid gap-y-5 grid-cols-1 mt-10 gap-x-10">
+            <div className="grid justify-center items-center gap-y-2 rounded-lg shadow py-6 bg-white-standard mx-auto px-6 relative w-2/6">
+                <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setCreateIngredient(false)}> <AiOutlineClose className="h-5 w-5" /> </button>
+                <img className="px-5 h-44 mx-auto" src="/images/createIngre.png" alt="create" />
+                <h1 className="flex text-3xl text-green-standard font-bold px-6 mt-3">Create Ingredient</h1>
+                <h1 className=" flex text-base text-grey-standard font-light mx-6">Please fill up all details below </h1>
+                <div className="grid md:mt-3 gap-y-2 mx-6">
                     <div className="flex gap-x-2 justify-between">
                         <div>Ingredient Name: </div>
-                        <input type="text" className="focus:outline-none px-4 h-8 rounded-xl " value={name} onChange={(e) => { setName(e.target.value) }}></input>
+                        <input type="text" className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest" value={name} onChange={(e) => { setName(e.target.value) }}></input>
                     </div>
                     <div className="flex gap-x-2 justify-between">
                         <div>Ingredient Description: </div>
-                        <input type="text" className="focus:outline-none px-4 h-8 rounded-xl " value={desc} onChange={(e) => { setDesc(e.target.value) }}></input>
+                        <input type="text" className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest" value={desc} onChange={(e) => { setDesc(e.target.value) }}></input>
                     </div>
                     <div className="flex gap-x-2 justify-between">
                         <div>Unit of Measure: </div>
-                        <input type="text" className="focus:outline-none px-4 h-8 rounded-xl " value={units} onChange={(e) => { setUnits(e.target.value) }}></input>
+                        <input type="text" className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest" value={units} onChange={(e) => { setUnits(e.target.value) }}></input>
                     </div>
                 </div>
 
                 {
                     (created ?
                         <>
-                            <div className="mx-auto pt-7 pb-2 text-green-standard">Ingredient has been successfully created!</div>
+                            <div className="pt-7 pb-2 text-green-standard">Ingredient has been successfully created!</div>
                             <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28">
                                 <button className=" text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
                                     onClick={() => {
@@ -76,9 +77,9 @@ const CreateIngredientModal = (props: any) => {
                                     onClick={() => { setCreateIngredient(false) }}>Return</button>
                             </div>
                         </> :
-                        <div className=" grid grid-cols-2 gap-x-10 justify-center pt-6">
-                            <div className="col-span-2 text-red-standard text-center pb-2">{error}</div>
-                            <button className="text-white-standard bg-green-standard px-4 py-1 rounded-xl shadow-md hover:shadow-lg"
+                        <div className="mx-6 grid grid-cols-2 gap-x-6 justify-center pt-3">
+                            <div className="col-span-2 text-red-standard pb-4">{error}</div>
+                            <button className="text-white-standard bg-green-standard px-4 py-1 rounded-lg shadow-md hover:shadow-lg"
                                 onClick={() => createNewIngredient(name, desc, units)}>
                                 {
                                     loading ? <BeatLoader size="9" color="#daeddb" />
@@ -86,7 +87,7 @@ const CreateIngredientModal = (props: any) => {
                                 }
                             </button>
 
-                            <button className="border border-green-standard text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setCreateIngredient(false)}>
+                            <button className="border border-green-standard text-green-standard px-3 py-1 rounded-lg shadow-md hover:shadow-lg" onClick={() => setCreateIngredient(false)}>
                                 Cancel
                             </button>
                         </div>)
