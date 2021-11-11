@@ -142,7 +142,7 @@ const Home = () => {
             }
 
             <div className="md:pl-24 bg-white-standard md:pb-32  px-5">
-                <h1 className="text-4xl md:pr-64 pl-1 font-extrabold pb-7">Up to 50% off deals</h1>
+                <h1 className="text-4xl md:pr-64 pl-1 font-extrabold pb-7">Good deals</h1>
                 <div className="overflow-hidden h-full w-full">
                     <div className="flex flex-row gap-x-10 w-full overflow-auto  h-auto py-5">
                         {
