@@ -70,9 +70,9 @@ const ManageIngredients = () => {
                 <div className="grid grid-cols-1 gap-y-9 items-center">
                     <div className="grid grid-cols-10 gap-x-6 mx-10">
                         <div className="col-span-1"></div>
-                        <p className="col-span-3 text-lg text-green-standard">Ingredient Name</p>
-                        <p className="col-span-3 text-lg text-green-standard">Description</p>
-                        <p className="col-span-2 text-lg text-green-standard">Unit of Measure</p>
+                        <p className="col-span-3 text-lg text-grey-dark">Ingredient Name</p>
+                        <p className="col-span-3 text-lg text-grey-dark">Description</p>
+                        <p className="col-span-2 text-lg text-grey-dark">Unit of Measure</p>
                         <div className="col-span-1"></div>
                     </div>
                     {

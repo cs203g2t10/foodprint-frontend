@@ -40,9 +40,9 @@ const IngredientListing = (props: any) => {
                 <div className="col-span-10 text-red-standard text-center pb-1">{error}</div>}
             <button className="px-2 rounded-full w-8 h-8 bg-opacity-80 hover:bg-opacity-100 bg-red-standard text-white-standard text-center" onClick={() => { setDeleteModal(true) }}><AiOutlineClose /></button>
             {(edit ? <>
-                <input className=" border pl-2 rounded col-span-3 focus:outline-none" onChange={(e) => { setName(e.target.value) }} value={name} />
-                <input className=" border pl-2 rounded col-span-3 focus:outline-none" onChange={(e) => { setDesc(e.target.value) }} value={desc} />
-                <input className=" border pl-2 rounded col-span-2 focus:outline-none" onChange={(e) => { setUnits(e.target.value) }} value={units} />
+                <input className="text-grey-standard border pl-2 rounded col-span-3 focus:outline-none" onChange={(e) => { setName(e.target.value) }} value={name} />
+                <input className=" text-grey-standard border pl-2 rounded col-span-3 focus:outline-none" onChange={(e) => { setDesc(e.target.value) }} value={desc} />
+                <input className=" text-grey-standard border pl-2 rounded col-span-2 focus:outline-none" onChange={(e) => { setUnits(e.target.value) }} value={units} />
                 <div className="col-span-1 flex ">
                     <button className="shadow-sm hover:shadow-md rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center px-2"
                         onClick={() => { updateIngredientDetails(id, name, desc, units) }}>
@@ -63,9 +63,9 @@ const IngredientListing = (props: any) => {
                 </div>
             </>
                 : <>
-                    <p className="col-span-3">{name}</p>
-                    <p className="col-span-3"> {desc}</p>
-                    <p className="col-span-2">{units}</p>
+                    <p className="col-span-3 text-grey-standard ">{name}</p>
+                    <p className="col-span-3 text-grey-standard "> {desc}</p>
+                    <p className="col-span-2 text-grey-standard ">{units}</p>
                     <button className="shadow-sm hover:shadow-md px-2 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center"
                         onClick={() => setEdit(true)}><AiFillEdit /></button>
                 </>)}
