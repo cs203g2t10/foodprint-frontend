@@ -162,6 +162,24 @@ class RestaurantService {
         return axios.patch(url, formData, this.headers());
     }
 
+    makeNewDiscount = (restaurantId: number, discountPercentage: number) => {
+        const url = `${RESTAURANTS_REST_API_URL}/${restaurantId}/discount`;
+        const requestBody = {
+            restaurantId,
+            discountDescription: "discount",
+            discountPercentage,
+        }
+        return axios.post(url, requestBody, this.headers());
+    }
+
+    editDiscount = (restaurantId: number, discountPercentage: number) => {
+        const url = `${RESTAURANTS_REST_API_URL}/${restaurantId}/discount`;
+        const requestBody = {
+            discountPercentage
+        }
+        return axios.patch(url, requestBody, this.headers());
+    }
+
     managerGetAllIngredients = (restaurantId: number) => {
         return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/ingredient/all`, this.headers());
     }
