@@ -124,7 +124,7 @@ const CreateRestaurantModal = (props: any) => {
                         <>
                             <div className="mx-auto text-green-standard">Restaurant has been created!</div>
                             <div className=" grid gap-x-10 justify-center mx-28">
-                                <button className=" text-green-standard px-10 py-1 rounded-lg shadow-md hover:shadow-lg border"
+                                <button className=" bg-green-standard text-white-standard w-52 px-10 py-1 rounded-lg shadow-md hover:shadow-lg border"
                                     onClick={() => { setCreateRestaurant(false); setCreateRestaurant(false); }}>Return</button>
                             </div>
                         </> :
