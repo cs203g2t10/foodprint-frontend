@@ -93,7 +93,7 @@ const ChangeFoodPicModal = (props: any) => {
                     </div>
                 </div>
                 {
-                    changed && <div className="mx-auto text-green-standard">Picture has been successfully changed!</div>
+                    changed && <div className="mx-auto text-green-standard">Picture has been successfully changed! Refresh to view changes</div>
                 }
                 <div className="text-red-standard text-center">{error}</div>
                 <button className="text-white-standard bg-green-standard px-3 py-1 rounded-lg shadow-md hover:shadow-lg w-1/3 mx-auto"
