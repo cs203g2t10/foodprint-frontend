@@ -86,7 +86,7 @@ const Home = () => {
                         isAuthenticated ? <>
                             <h1 className="text-center text-grey-standard text-base mt-5">Reserve a table, save with deals and reduce food wastage.</h1>
                             <div className="flex justify-center items-center">
-                                <Link to="/restaurants" className="bg-white-standard mt-4 pt-2 pb-3 px-5 text-center text-green-standard hover:shadow-lg rounded-xl">Start browsing now!</Link>
+                                <Link to="/restaurants" className="border border-green-standard mt-4 pt-2 pb-3 px-5 text-center text-green-standard hover:shadow-lg rounded-xl">Start browsing now!</Link>
                             </div>
                         </> : <>
                             <h1 className="text-center text-grey-lighter text-base mt-5"><Link to="/login" className="text-green-standard">Log in</Link> to an existing account, or get started by <Link to="/register" className="text-green-standard">registering</Link>!</h1>

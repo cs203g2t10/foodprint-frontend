@@ -82,9 +82,9 @@ const UserDetailsConfig = () => {
     return (
         <div className="bg-yellow-standard h-screen ">
             <div className="flex justify-center">
-                <div className="mt-16 mb-10 bg-white-standard w-7/12 grid md:grid-cols-2 shadow-xxl shadow rounded-xxl">
+                <div className="mt-32 mb-10 bg-white-standard w-7/12 grid md:grid-cols-2 shadow-xxl shadow rounded-xxl">
                     <div className="ml-16 my-auto">
-                        <h1 className="text-4xl font-semibold mb-2 text-green-standard mt-5">Update Details</h1>
+                        <h1 className="text-4xl tracking-wide font-semibold mb-4 text-green-standard">Update Details</h1>
                         <h2 className="text-grey-lighter mb-5">Make changes to fields you wish to update</h2>
 
                         <div className="mb-4 flex items-center">
@@ -160,7 +160,7 @@ const UserDetailsConfig = () => {
                                 : <></>)
                         }
                         {
-                            (success ? <div className="text-green-standard mt-2">Changes will be reflected when you relogin!</div> : <div className=""></div>)
+                            (success ? <div className="text-green-standard mt-2">Changes saved!</div> : <div className=""></div>)
                         }
 
                     </div>
