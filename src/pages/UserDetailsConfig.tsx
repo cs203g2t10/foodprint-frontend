@@ -160,7 +160,7 @@ const UserDetailsConfig = () => {
                                 : <></>)
                         }
                         {
-                            (success ? <div className="text-green-standard mt-2">Changes will be reflected when you relogin!</div> : <div className=""></div>)
+                            (success ? <div className="text-green-standard mt-2">Changes saved!</div> : <div className=""></div>)
                         }
 
                     </div>
