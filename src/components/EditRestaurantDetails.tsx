@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import ReactModal from 'react-modal';
+import { BeatLoader } from 'react-spinners';
 import RestaurantService from '../services/RestaurantService';
 
 const EditRestaurantDetails = (props: any) => {
@@ -97,15 +98,15 @@ const EditRestaurantDetails = (props: any) => {
                 <div className="grid gap-y-5 grid-cols-2">
                     <div className="flex gap-x-2 justify-center">
                         <div>From</div>
-                        <input type="number" min="0" max="23" className="focus:outline-none px-2 rounded" value={weekdayOpeningHour} onChange={(e) => { setWeekdayOpeningHour(('00'+e.target.value).slice(-2)) }}></input>
+                        <input type="number" min="0" max="23" className="focus:outline-none px-2 rounded" value={weekdayOpeningHour} onChange={(e) => { setWeekdayOpeningHour(('00' + e.target.value).slice(-2)) }}></input>
                         :
-                        <input type="number" min="0" max="59" className="focus:outline-none px-2 rounded" value={weekdayOpeningMinute} onChange={(e) => { setWeekdayOpeningMinute(('00'+e.target.value).slice(-2)) }}></input>
+                        <input type="number" min="0" max="59" className="focus:outline-none px-2 rounded" value={weekdayOpeningMinute} onChange={(e) => { setWeekdayOpeningMinute(('00' + e.target.value).slice(-2)) }}></input>
                     </div>
                     <div className="flex gap-x-2 justify-center">
                         <div>To</div>
-                        <input type="number" min="0" max="23" className="focus:outline-none px-2 rounded" value={weekdayClosingHour} onChange={(e) => { setWeekdayClosingHour(('00'+e.target.value).slice(-2)) }}></input>
+                        <input type="number" min="0" max="23" className="focus:outline-none px-2 rounded" value={weekdayClosingHour} onChange={(e) => { setWeekdayClosingHour(('00' + e.target.value).slice(-2)) }}></input>
                         :
-                        <input type="number" min="0" max="59" className="focus:outline-none px-2 rounded" value={weekdayClosingMinute} onChange={(e) => { setWeekdayClosingMinute(('00'+e.target.value).slice(-2)) }}></input>
+                        <input type="number" min="0" max="59" className="focus:outline-none px-2 rounded" value={weekdayClosingMinute} onChange={(e) => { setWeekdayClosingMinute(('00' + e.target.value).slice(-2)) }}></input>
 
                     </div>
                 </div>
@@ -115,15 +116,15 @@ const EditRestaurantDetails = (props: any) => {
                 <div className="grid gap-y-5 grid-cols-2">
                     <div className="flex gap-x-2 justify-center">
                         <div>From</div>
-                        <input type="number" min="0" max="23" className="focus:outline-none px-2 rounded" value={weekendOpeningHour} onChange={(e) => { setWeekendOpeningHour(('00'+e.target.value).slice(-2)) }}></input>
+                        <input type="number" min="0" max="23" className="focus:outline-none px-2 rounded" value={weekendOpeningHour} onChange={(e) => { setWeekendOpeningHour(('00' + e.target.value).slice(-2)) }}></input>
                         :
-                        <input type="number" min="0" max="59" className="focus:outline-none px-2 rounded" value={weekendOpeningMinute} onChange={(e) => { setWeekendOpeningMinute(('00'+e.target.value).slice(-2)) }}></input>
+                        <input type="number" min="0" max="59" className="focus:outline-none px-2 rounded" value={weekendOpeningMinute} onChange={(e) => { setWeekendOpeningMinute(('00' + e.target.value).slice(-2)) }}></input>
                     </div>
                     <div className="flex gap-x-2 justify-center">
                         <div>To</div>
-                        <input type="number" min="0" max="23" className="focus:outline-none px-2 rounded" value={weekendClosingHour} onChange={(e) => { setWeekendClosingHour(('00'+e.target.value).slice(-2)) }}></input>
+                        <input type="number" min="0" max="23" className="focus:outline-none px-2 rounded" value={weekendClosingHour} onChange={(e) => { setWeekendClosingHour(('00' + e.target.value).slice(-2)) }}></input>
                         :
-                        <input type="number" min="0" max="59" className="focus:outline-none px-2 rounded" value={weekendClosingMinute} onChange={(e) => { setWeekendClosingMinute(('00'+e.target.value).slice(-2)) }}></input>
+                        <input type="number" min="0" max="59" className="focus:outline-none px-2 rounded" value={weekendClosingMinute} onChange={(e) => { setWeekendClosingMinute(('00' + e.target.value).slice(-2)) }}></input>
                     </div>
                 </div>
 
@@ -143,9 +144,9 @@ const EditRestaurantDetails = (props: any) => {
                                     onClick={() => { editRestaurantDetails() }} >
                                     <span>
                                         {
-                                            loading ? 
-                                            <div className="spinner" id="spinner" />
-                                            : 'Confirm'
+                                            loading ?
+                                                <BeatLoader size="9" color="#daeddb" />
+                                                : 'Confirm'
                                         }
                                     </span>
                                 </button>

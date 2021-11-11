@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import LogInService, { UserDetails } from '../services/LogInService';
 import { AiFillEdit, AiOutlineCheck } from 'react-icons/ai';
 import UserService from '../services/UserService';
+import { BeatLoader, CircleLoader, ClipLoader, FadeLoader, GridLoader, HashLoader } from 'react-spinners';
 
 const UserDetailsConfig = () => {
     const [error, setError] = useState("")
@@ -88,14 +89,14 @@ const UserDetailsConfig = () => {
 
                         <div className="mb-4">
                             {(editFName ? <>
-                                <button disabled={!verify(fName)} className="shadow-sm hover:shadow-md px-2 mr-2 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center"
+                                <button disabled={!verify(fName)} className="shadow-sm hover:shadow-md mr-2 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard justify-center items-center px-2"
                                     onClick={() => { updateFirstName(); }}>
                                     {
-                                        firstNameLoading ? <div className="spinner"></div>
+                                        firstNameLoading ? <HashLoader size="15" color="#daeddb"/>
                                             : <AiOutlineCheck />
                                     }
                                 </button>
-                                <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-10/12"
+                                <input className="focus:outline-none px-4 py-0.5 my-1 h-10 rounded-full border border-grey-lightest md:w-10/12"
                                     placeholder="First Name"
                                     value={fName}
                                     onChange={e => setFName(e.target.value)} />
@@ -113,7 +114,7 @@ const UserDetailsConfig = () => {
                                 <button disabled={!verify(lName)} className="shadow-sm hover:shadow-md px-2 mr-2 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center"
                                     onClick={() => { updateLastName(); }}>
                                     {
-                                        lastNameLoading ? <div className="spinner" />
+                                        lastNameLoading ? <HashLoader size="15" color="#daeddb"/>
                                             : <AiOutlineCheck />
                                     }
                                 </button>
@@ -135,7 +136,7 @@ const UserDetailsConfig = () => {
                                 <button disabled={!verify(email)} className="shadow-sm hover:shadow-md px-2 mr-2 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center"
                                     onClick={() => { updateEmail(); }}>
                                     {
-                                        emailLoading ? <div className="spinner" />
+                                        emailLoading ? <HashLoader size="15" color="#daeddb"/>
                                             : <AiOutlineCheck />
                                     }
                                 </button>

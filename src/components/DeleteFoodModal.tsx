@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import ReactModal from 'react-modal';
+import { BeatLoader } from 'react-spinners';
 import RestaurantService from '../services/RestaurantService';
 
 
@@ -20,7 +21,7 @@ const DeleteFoodModal = (props: any) => {
         setError("")
         const response = RestaurantService.deleteFood(props.restaurantId, props.foodId);
         response.then((res) => {
-            console.log(res);           
+            console.log(res);
             setDeleted(true);
             setLoading(false);
         }).catch((error) => {
@@ -47,11 +48,11 @@ const DeleteFoodModal = (props: any) => {
                         <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28 pt-4">
                             <div className="col-span-2 text-red-standard text-center pb-4" >{error}</div>
                             <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
-                            onClick={()=>{deleteFood()}}>
+                                onClick={() => { deleteFood() }}>
                                 <span>
                                     {
                                         loading ?
-                                            <div className="spinner" id="spinner" />
+                                            <BeatLoader size="9" color="#daeddb" />
                                             : 'Confirm'
                                     }
                                 </span>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { BeatLoader, HashLoader } from 'react-spinners';
 import RestaurantService from '../services/RestaurantService';
 import ChangeFoodPicModal from './ChangeFoodPicModal';
 import DeleteFoodModal from './DeleteFoodModal';
@@ -117,7 +118,7 @@ const ManageFood = (props: any) => {
                     <button className="rounded-full bg-green-standard text-white-standard py-1 h-8 opacity-90 hover:opacity-100 shadow-sm hover:shadow-md"
                         onClick={() => { editFood(name, desc, price, newIngredientQty) }}>
                         {
-                            loading ? <div className="spinner" id="spinner" /> :
+                            loading ? <HashLoader size="15" color="#daeddb"/> :
                                 'Confirm'
                         }
                     </button>
@@ -166,17 +167,17 @@ const ManageFood = (props: any) => {
                 </div>
 
                 <div className="grid grid-cols-2 gap-x-10 mt-4">
-                    <button className="my-auto grid rounded-full border bg-green-standard h-8 text-white-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md" 
-                    onClick={() => { setEdit(true); setSuccess(false) }}>Edit</button>
+                    <button className="my-auto grid rounded-full border bg-green-standard h-8 text-white-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md"
+                        onClick={() => { setEdit(true); setSuccess(false) }}>Edit</button>
                     <button className="my-auto grid rounded-full border bg-red-standard h-8 text-white-standard opacity-90 hover:opacity-100 shadow-sm hover:shadow-md"
-                    onClick={() => {setDeleteModal(true)}}>Delete</button>
+                        onClick={() => { setDeleteModal(true) }}>Delete</button>
                 </div>
                 <br />
-                    {
-                        (success &&
-                            <div className="text-center text-green-standard">Your changes have been saved!</div>)
-                    }
-                <DeleteFoodModal {...{deleteModalOpen, setDeleteModal, name}} restaurantId={props.restaurantId} foodId={props.foodId}/>
+                {
+                    (success &&
+                        <div className="text-center text-green-standard">Your changes have been saved!</div>)
+                }
+                <DeleteFoodModal {...{ deleteModalOpen, setDeleteModal, name }} restaurantId={props.restaurantId} foodId={props.foodId} />
             </div>
     )
 }

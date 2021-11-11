@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import ReactModal from 'react-modal'
+import { BeatLoader } from 'react-spinners';
 import AdminService from '../services/AdminService';
 
 const DeleteUserModal = (props: any) => {
@@ -49,7 +50,7 @@ const DeleteUserModal = (props: any) => {
                             <button className="text-white-standard bg-green-standard px-4 py-1 rounded-full  shadow-md hover:shadow-lg"
                                 onClick={() => deleteUser(props.userId)}>
                                 {
-                                    loading ? <div className="spinner" id="spinner" />
+                                    loading ? <BeatLoader size="9" color="#daeddb"/>
                                         : 'Confirm'
                                 }
                             </button>

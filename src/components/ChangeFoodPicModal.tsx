@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone';
 import ReactModal from 'react-modal'
+import { BeatLoader } from 'react-spinners';
 import RestaurantService from '../services/RestaurantService';
 
 const ChangeFoodPicModal = (props: any) => {
@@ -94,12 +95,12 @@ const ChangeFoodPicModal = (props: any) => {
                 }
                 <div className="text-red-standard text-center">{error}</div>
                 <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg w-1/3 mx-auto"
-                    onClick={() => {setChangePic(false); setEdit(false)}}
+                    onClick={() => { setChangePic(false); setEdit(false) }}
                 >
                     <span>
                         {
                             loading ?
-                                <div className="spinner" id="spinner" /> :
+                                <BeatLoader size="9" color="#daeddb" /> :
                                 'Go Back'
                         }
                     </span>

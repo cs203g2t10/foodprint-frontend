@@ -3,6 +3,7 @@ import { AiFillEdit, AiOutlineCheck, AiOutlineUndo } from 'react-icons/ai';
 import RestaurantService from '../services/RestaurantService';
 import { AiOutlineClose } from 'react-icons/ai';
 import DeleteIngredientModal from './DeleteIngredientModal';
+import { BeatLoader, HashLoader } from 'react-spinners';
 
 const IngredientListing = (props: any) => {
 
@@ -25,7 +26,7 @@ const IngredientListing = (props: any) => {
         }).catch(err => {
             setLoading(false);
             console.log(err.response);
-            if ( typeof(err.response.data.message) ===  "string") {
+            if (typeof (err.response.data.message) === "string") {
                 setError(err.response.data.message);
             } else {
                 setError(err.response.data.message[0]);
@@ -45,7 +46,7 @@ const IngredientListing = (props: any) => {
                 <div className="col-span-1">
                     <button className="shadow-sm hover:shadow-md px-2 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center"
                         onClick={() => { updateIngredientDetails(id, name, desc, units) }}>
-                        {loading ? <div className="spinner"></div>
+                        {loading ? <HashLoader size="15" color="#daeddb"/>
                             : <AiOutlineCheck />}
                     </button>
                     <button className="mx-2 shadow-sm px-2 bg-yellow-standard hover:shadow text-center rounded-full w-8 h-8"

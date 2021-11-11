@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import LogInService, { UserDetails } from '../services/LogInService';
 import AdminService from '../services/AdminService';
+import { BeatLoader } from 'react-spinners';
 
 const ChangePwd = () => {
     const [error, setError] = useState("")
@@ -97,7 +98,7 @@ const ChangePwd = () => {
                                 <button className="rounded-full px-4 text-white-standard bg-green-standard hover:shadow text-center mt-2 h-8 md:w-48"
                                     onClick={update}>
                                         {
-                                            loading ? <div className="spinner" />
+                                            loading ? <BeatLoader size="9" color="#daeddb"/>
                                             : 'Change Password'
                                         }
                                     {/* <span id="button-text">Change password

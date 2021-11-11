@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Modal from 'react-modal';
+import { BeatLoader } from 'react-spinners';
 import RestaurantService from '../services/RestaurantService';
 
 Modal.setAppElement('#root')
@@ -76,11 +77,11 @@ const CreateIngredientModal = (props: any) => {
                         <div className=" grid grid-cols-2 gap-x-10 justify-center pt-6">
                             <div className="col-span-2 text-red-standard text-center pb-2">{error}</div>
                             <button className="text-white-standard bg-green-standard px-4 py-1 rounded-xl shadow-md hover:shadow-lg"
-                                onClick={() => createNewIngredient( name, desc, units)}>
-                                    {
-                                        loading ? <div className="spinner" id="spinner"/>
+                                onClick={() => createNewIngredient(name, desc, units)}>
+                                {
+                                    loading ? <BeatLoader size="9" color="#daeddb" />
                                         : 'Confirm'
-                                    }
+                                }
                             </button>
 
                             <button className="border border-green-standard text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setCreateIngredient(false)}>

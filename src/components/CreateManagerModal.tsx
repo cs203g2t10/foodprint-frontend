@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Modal from 'react-modal';
 import { AiOutlineClose } from 'react-icons/ai';
 import AdminService from '../services/AdminService';
+import { BeatLoader } from 'react-spinners';
 
 const CreateManagerModal = (props: any) => {
 
@@ -93,7 +94,7 @@ const CreateManagerModal = (props: any) => {
                                 <span>
                                     {
                                         loading ?
-                                            <div className="spinner" id="spinner" />
+                                            <BeatLoader size="9" color="#daeddb" />
                                             : 'Confirm'
                                     }
                                 </span>

@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDropzone } from 'react-dropzone';
 import ReactModal from 'react-modal';
+import { BeatLoader } from 'react-spinners';
 import RestaurantService from '../services/RestaurantService';
 
 const ChangeRestaurantPicModal = (props: any) => {
@@ -106,7 +107,7 @@ const ChangeRestaurantPicModal = (props: any) => {
                     <span>
                         {
                             loading ?
-                                <div className="spinner" id="spinner" /> :
+                                <BeatLoader size="9" color="#daeddb" /> :
                                 'Go Back'
                         }
                     </span>

@@ -5,6 +5,7 @@ import ReservationService from '../services/ReservationService'
 import { Link } from 'react-router-dom';
 import { useAppContext } from '../lib/AppContext';
 import LogInService, { UserDetails } from '../services/LogInService';
+import { BeatLoader } from 'react-spinners';
 
 Modal.setAppElement('#root')
 
@@ -195,7 +196,7 @@ const ReservationModal = (
                                             <span>
                                                 {
                                                     loading ?
-                                                        <div className="spinner" id="spinner" /> :
+                                                        <BeatLoader size="9" color="#daeddb" /> :
                                                         'Confirm'
                                                 }
                                             </span>

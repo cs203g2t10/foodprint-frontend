@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import ReactModal from 'react-modal';
+import { BeatLoader } from 'react-spinners';
 import RestaurantService from '../services/RestaurantService';
 
 const CreateRestaurantModal = (props: any) => {
@@ -127,7 +128,7 @@ const CreateRestaurantModal = (props: any) => {
                                     <span>
                                         {
                                             loading ? 
-                                            <div className="spinner" id="spinner" />
+                                            <BeatLoader size="9" color="#daeddb"/>
                                             : 'Confirm'
                                         }
                                     </span>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { BeatLoader } from 'react-spinners'
 import LogInService from '../services/LogInService'
 
 const Register = () => {
@@ -109,7 +110,7 @@ const Register = () => {
                                 onClick={userRegister}>
                                 <span id="button-text">
                                     {processing ? (
-                                        < div className="spinner" id="spinner"></div>
+                                        <BeatLoader size="9" color="#daeddb"/>
                                     ) : (
                                         'Sign up'
                                     )}

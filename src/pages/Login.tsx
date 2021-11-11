@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 import { Redirect } from "react-router-dom";
 import LogInService from '../services/LogInService'
 import { useAppContext } from '../lib/AppContext';
-import { BeatLoader, ClipLoader, RingLoader, SyncLoader } from 'react-spinners';
+import { BeatLoader } from 'react-spinners';
 
 
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
+import { BeatLoader } from 'react-spinners'
 import ResetPwdService from '../services/ResetPwdService'
 
 const ResetPwd = () => {
@@ -47,7 +48,7 @@ const ResetPwd = () => {
                                 onClick={requestResetPwd}>
                                     <span id="button-text">
                                         {processing ? (
-                                            < div className="spinner" id="spinner"></div>
+                                            <BeatLoader size="9" color="#daeddb"/>
                                         ) : (
                                             'Reset password'
                                         )}

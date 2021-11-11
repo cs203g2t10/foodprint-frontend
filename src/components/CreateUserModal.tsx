@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai';
 import Modal from 'react-modal';
+import { BeatLoader } from 'react-spinners';
 import AdminService from '../services/AdminService';
 
 Modal.setAppElement('#root')
@@ -111,7 +112,7 @@ const CreateUserModal = (
                                 <span>
                                     {
                                         loading ?
-                                            <div className="spinner" id="spinner" />
+                                            <BeatLoader size="9" color="#daeddb" />
                                             : 'Confirm'
                                     }
                                 </span>

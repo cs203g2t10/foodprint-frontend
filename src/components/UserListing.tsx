@@ -3,6 +3,7 @@ import AdminService from '../services/AdminService';
 import { AiOutlineClose } from 'react-icons/ai';
 import { AiOutlineEdit } from 'react-icons/ai';
 import DeleteUserModal from './DeleteModal';
+import {  HashLoader } from 'react-spinners';
 
 const UserListing = (props: any) => {
 
@@ -14,7 +15,7 @@ const UserListing = (props: any) => {
     const [deleteModal, setDeleteModal] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    
+
 
     const updateUserDetails: any = async (id: number, email: any, firstName: any, lastName: any, roles: any) => {
         setLoading(true);
@@ -40,7 +41,7 @@ const UserListing = (props: any) => {
                         <span>
                             {
                                 loading ?
-                                    <div className="spinner" id="spinner" /> :
+                                    <HashLoader size="15" color="#daeddb" /> :
                                     'Confirm'
                             }
                         </span>
