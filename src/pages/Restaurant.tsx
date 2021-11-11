@@ -25,23 +25,28 @@ const Restaurant = () => {
     const [loading, setLoading] = useState(false);
 
     const [isFavourite, setIsFavourite] = useState(false)
+
+    const deleteFavourite: any = (id: number) => {
+        console.log(id)
+        UserService.deleteFavRestaurant(id).then((response) => {
+            console.log(response);
+            setIsFavourite(false);
+        }).catch((error) => {
+            console.log(error.response);
+        })
+    }
+
     useEffect(() => {
         UserService.getFavRestaurant().then((response) => {
             console.log(response.data)
-            // for (let i = 0; i < response.data.length; i++) {
-            //     if(params.id === ){
-            //         setIsFavourite(true);
-            //     }
-            // }
             response?.data?.map((restaurant: any) => {
-                console.log(restaurant.restaurantId)
                 if (restaurant.restaurantId === restaurantDetails.restaurantId) {
                     setIsFavourite(true);
                 }
                 return;
             })
         })
-    }, [])
+    }, [restaurantDetails])
 
     useEffect(() => {
         setLoading(true);
@@ -89,11 +94,18 @@ const Restaurant = () => {
                         <div className="col-span-2">
                             <img className="object-cover rounded-full w-40 h-40" src={imageUrl} alt="shop" />
                         </div>
-                        <div className="col-span-6 px-0 ">
-                            <h1 className="text-4xl md:text-6xl font-bold tracking-wide text-green-standard flex items-center gap-x-4">{restaurantDetails.restaurantName}
-                                {isFavourite && <AiFillHeart className="text-6xl my-auto pt-4 text-red-standard opacity-100 hover:opacity-90" />}
-                                {!isFavourite && <AiFillHeart className="text-6xl my-auto pt-4 text-grey-standard opacity-60 hover:text-red-standard hover:opacity-90" />}
+                        <div className="col-span-6 px-0 leading-1">
+                            <h1 className="text-4xl md:text-6xl font-bold tracking-wide text-green-standard flex items-center gap-x-4">
+                                {restaurantDetails.restaurantName}
+                                {isFavourite ?
+                                    <AiFillHeart className="text-6xl my-auto pt-4 text-red-standard opacity-100 hover:opacity-90"
+                                        onClick={() => {
+                                            deleteFavourite(restaurantDetails.restaurantId);
+                                        }} />
+                                    : <AiFillHeart className="text-6xl my-auto pt-4 text-grey-standard opacity-60 hover:text-red-standard hover:opacity-90"
+                                    />}
                             </h1>
+
                             <p className="text-lg md:text-2xl text-green-standard">{restaurantDetails.restaurantDesc}</p>
                             <p className="text-md md:pb-4 text-grey-standard">{restaurantDetails.restaurantLocation}</p>
                         </div>
