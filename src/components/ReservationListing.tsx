@@ -1,6 +1,6 @@
 import { AiOutlineClose } from 'react-icons/ai';
 import ReservationService from '../services/ReservationService';
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const ReservationListing = (props: any) => {
 
@@ -20,12 +20,7 @@ const ReservationListing = (props: any) => {
             <h1 className="flex items-center col-span-3 text-sm text-grey-dark">{props.dateTime}</h1>
             <div className="flex items-center col-span-2 mx-auto text-sm text-grey-dark">
                 {
-                    (props.status === "UNPAID" &&
-                        <Link to={"/payment/" + props.reservationId}>
-                            <div>
-                                <button className="bg-red-standard opacity-90 hover:opacity-100 text-white-standard text-xs mx-auto col-span-2 w-20 px-1 my-auto py-1 rounded-large shadow-md hover:shadow-lg">Not paid</button>
-                            </div>
-                        </Link>)
+                    (props.status === "UNPAID" && 'Not Paid')
                 }
                 {
                     (props.status === "PAID" && 'Paid')
@@ -35,7 +30,16 @@ const ReservationListing = (props: any) => {
                 }
             </div>
 
-            <button className="text-white-standard text-xs mx-auto col-span-2 w-20 px-1 grid my-auto py-1 bg-green-standard rounded-large shadow-md hover:shadow-lg opacity-90 hover:opacity-100">View Order</button>
+            {
+                props.status === "UNPAID" ?
+                    <NavLink className="text-white-standard text-center text-xs mx-auto col-span-2 w-20 px-1 grid my-auto py-1 bg-red-standard rounded-large shadow-md hover:shadow-lg opacity-90 hover:opacity-100"
+                        to={"/payment/" + props.reservationId}>Payment</NavLink>
+                    :
+                    <NavLink className="text-white-standard text-center text-xs mx-auto col-span-2 w-20 px-1 grid my-auto py-1 bg-green-standard rounded-large shadow-md hover:shadow-lg opacity-90 hover:opacity-100"
+                        to={"/payment/" + props.reservationId}>View Order</NavLink>
+            }
+            {/* <NavLink className="text-white-standard text-center text-xs mx-auto col-span-2 w-20 px-1 grid my-auto py-1 bg-green-standard rounded-large shadow-md hover:shadow-lg opacity-90 hover:opacity-100"
+                to={"/payment/" + props.reservationId}>View Order</NavLink> */}
             <div> {
                 props.past || (props.status === "CANCELLED" && 'Cancelled') ? (<></>) : (<button className="my-auto col-span-1 mx-auto text-green-standard hover:bg-gray-200 bg-gray-100 shadow-sm hover:shadow-md p-2 rounded-full" onClick={() => { cancelReservation(props.reservationId); setDeleteMessage("Your reservation at " + props.restaurantName + " has been cancelled") }}><AiOutlineClose /></button>)
             }

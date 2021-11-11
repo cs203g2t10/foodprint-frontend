@@ -64,7 +64,7 @@ const Payment = () => {
                                 })
                             }
                         </div>
-                        
+
                         <div className="grid grid-cols-4 mx-8">
                             <div className="col-span-2">
                                 <div className="gap-x-2 text-md text-green-standard">Total bill:</div>
@@ -78,25 +78,28 @@ const Payment = () => {
                         </div>
 
                     </div>
-                    
+
                     <div className="col-span-4 bg-white-dirtyWhite rounded-xxl shadow:md h-auto p-8">
-                    <h1 className="flex items-center justify-center text-3xl font-bold tracking-wide text-green-standard pb-5">Payment Information</h1>
-                        <h1 className="text-center text-base text-grey-standard">We require you to make a small deposit amount</h1>
-                        <h1 className="text-center text-base text-grey-standard pb-8">of 20% of your total bill</h1>
+                        <h1 className="flex items-center justify-center text-3xl font-bold tracking-wide text-green-standard pb-5">Payment Information</h1>
+
                         {
                             (paid ?
                                 <div className="">
-                                    <h1 className="text-center pb-5 ">You have already paid!</h1>
+                                    <h1 className="text-center pb-4 text-green-standard">You have already paid!</h1>
                                     <div className="flex justify-center items-center gap-x-10">
-                                        <Link to={"/"} className="text-center bg-green-standard text-white-standard rounded-xl shadow-md hover:shadow-lg px-3 py-1">Back to Home</Link>
-                                        <Link to={"/"} className=" text-center bg-green-standard text-white-standard  rounded-xl shadow-md hover:shadow-lg px-3 py-1">Refund</Link>
+                                        <Link to={"/"} className="text-center bg-green-standard text-white-standard rounded-xl shadow-md hover:shadow-lg px-6 py-1">Back to Home</Link>
+                                        <Link to={"/profile"} className=" text-center bg-green-standard text-white-standard  rounded-xl shadow-md hover:shadow-lg px-6 py-1">Back to Profile</Link>
                                     </div>
 
                                 </div>
                                 :
-                                <Elements stripe={stripeTestPromise}>
-                                    <PaymentForm reservationId={params.id} amount={reservationDetails.price} />
-                                </Elements>)
+                                <>
+                                    <h1 className="text-center text-base text-grey-standard">We require you to make a small deposit amount</h1>
+                                    <h1 className="text-center text-base text-grey-standard pb-4">of 20% of your total bill</h1>
+                                    <Elements stripe={stripeTestPromise}>
+                                        <PaymentForm reservationId={params.id} amount={reservationDetails.price} />
+                                    </Elements>
+                                </>)
                         }
                     </div>
                 </div>

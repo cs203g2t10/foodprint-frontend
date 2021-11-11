@@ -57,6 +57,15 @@ class AdminService {
         }
         return axios.post(url, requestBody, this.headers());
     }
+
+    makeManager = (userId: number, restaurantId: number) => {
+        const url = ADMIN_REST_API_URL+"/manager";
+        const requestBody = {
+            userId,
+            restaurantId
+        }
+        return axios.post(url, requestBody, this.headers());
+    }
 }
 
 export default new AdminService();

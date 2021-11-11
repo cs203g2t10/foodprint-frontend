@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import "animate.css"
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Link } from 'react-router-dom'
 import AboutUsTeam from '../components/AboutUsTeam';
 
 const About = () => {
@@ -59,7 +58,7 @@ const About = () => {
                     <use xlinkHref="#gentle-wave" x="100" y="-25" fill="rgba(243, 232, 201, 1)" />
                 </g>
             </svg>
-            <div className="grid grid-cols-2 mt-10">
+            <div className="grid grid-cols-2 mt-10 mb-16">
                 <motion.div ref={ref} className="Box" initial="hidden" animate={controls} variants={fadeInLeft}>
                     <img className="transform scale-60" src="/images/story.png" alt="our story" />
                 </motion.div>
