@@ -30,7 +30,9 @@ axios.interceptors.response.use(function (response: any) {
     if (error.response?.status === 401) {
       localStorage.removeItem("email");
       localStorage.removeItem("token");
-      window.location.href = "/login"; // redir to login page
+      if (!window.location.href.includes("/login")) {
+        window.location.href = "/login"; // redir to login page
+      }
     }
     return Promise.reject(error);
 });
