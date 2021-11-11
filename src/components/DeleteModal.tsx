@@ -57,11 +57,6 @@ const DeleteUserModal = (props: any) => {
                             <button className="text-green-standard border border-green-standard px-4 py-1 rounded-full shadow-md hover:shadow-lg" onClick={() => setDeleteModal(false)}>Cancel</button>
                         </div>
                 }
-                {/* <div className=" grid grid-cols-2 gap-x-10 justify-center mx-28 pt-4">
-                    <button className="text-white-standard bg-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg"
-                        onClick={() => deleteUser(props.userId)}>Confirm</button>
-                    <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg" onClick={() => setDeleteModal(false)}>Cancel</button>
-                </div> */}
             </div>
 
         </ReactModal>
