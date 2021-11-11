@@ -42,16 +42,16 @@ const CreateFoodModal = (props: any) => {
                     <h1 className="flex text-3xl text-green-standard font-bold">Create Food</h1>
                     <h1 className="flex mb-2 text-grey-standard font-light text-sm my-auto ml-auto">*All fields are compulsory.</h1>
                 </div>
-                <div className="grid gap-y-3 grid-cols-2 gap-x-4 mx-6">
-                    <div className="flex gap-x-2 justify-between">
-                        <div>Name: </div>
-                        <input className="focus:outline-none rounded-large shadow-sm h-9 border border-grey-lightest w-32" value={name} onChange={(e) => { setName(e.target.value) }}></input>
+                <div className="grid gap-y-3 grid-cols-5 gap-x-4 mx-6">
+                    <div className="flex gap-x-2 col-span-3 justify-between">
+                        <div>Food Name: </div>
+                        <input className="px-2 focus:outline-none rounded-large shadow-sm h-9 border border-grey-lightest w-44" value={name} onChange={(e) => { setName(e.target.value) }}></input>
                     </div>
-                    <div className="flex gap-x-2 justify-between">
+                    <div className="flex gap-x-2 justify-between col-span-2 ">
                         <div>Price:</div>
                         <input type="number" className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest w-full" value={price} onChange={(e) => { setPrice(e.target.value) }}></input>
                     </div>
-                    <div className="flex gap-x-2 justify-between col-span-2">
+                    <div className="flex gap-x-2 justify-between col-span-5">
                         <div>Description: </div>
                         <input className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest w-full" value={desc} onChange={(e) => { setDesc(e.target.value) }}></input>
                     </div>
