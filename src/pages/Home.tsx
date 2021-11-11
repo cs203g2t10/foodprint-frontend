@@ -62,7 +62,7 @@ const Home = () => {
         <div className="w-full">
 
             <div className="grid grid-cols-6 absolute">
-                <img className="col-span-2 px-0 z-10 mt-28 -rotate-65 transform scale-110 " src="/images/aboutUs.png" alt="about us" />
+                <img className="col-span-2 px-0 z-10 mt-28 -rotate-65 transform scale-110 xl:scale-90" src="/images/aboutUs.png" alt="about us" />
                 <div className="col-span-2"></div>
                 <img className="col-span-2 px-0 z-10 mt-56 -rotate-45 transform scale-90" src="/images/aboutUs2.png" alt="about us" />
 
@@ -82,10 +82,6 @@ const Home = () => {
                             </div>
                         </> : <>
                             <h1 className="text-center text-grey-lighter text-base mt-5"><Link to="/login" className="text-green-standard">Log in</Link> to an existing account, or get started by <Link to="/register" className="text-green-standard">registering</Link>!</h1>
-                            {/* <div className="flex justify-center items-center gap-x-4">
-                                <Link to="/login" className="bg-green-standard mt-4 py-1 px-8 text-center text-white-standard hover:shadow-lg rounded-xl">Log In</Link>
-                                <Link to="/register" className="bg-green-standard mt-4 py-1 px-8 text-center text-white-standard hover:shadow-lg rounded-xl">Register</Link>
-                            </div> */}
                         </>
                     }
                 </div>
