@@ -8,10 +8,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import RestaurantFood from '../components/RestaurantFood';
 import Loading from '../components/Loading';
 import { AiFillHeart } from 'react-icons/ai';
+import { useAppContext } from '../lib/AppContext';
 
 const Restaurant = () => {
 
     let params = useParams<any>();
+
+    const { isAuthenticated } = useAppContext() || {};
 
     const [restaurantDetails, setRestaurantDetails] = useState<any>([]);
     const [food, setFood] = useState<any>([]);
@@ -48,6 +51,9 @@ const Restaurant = () => {
     }
 
     useEffect(() => {
+        if (!isAuthenticated) {
+            return;
+        }
         UserService.getFavRestaurant().then((response) => {
             console.log(response.data)
             response?.data?.map((restaurant: any) => {
@@ -108,7 +114,9 @@ const Restaurant = () => {
                         <div className="col-span-6 px-0 leading-1">
                             <h1 className="text-4xl md:text-6xl font-bold tracking-wide text-green-standard flex items-center gap-x-4">
                                 {restaurantDetails.restaurantName}
-                                {isFavourite ?
+                                {
+                                    isAuthenticated && 
+                                    (isFavourite ?
                                     <AiFillHeart className="text-6xl my-auto pt-4 text-red-standard opacity-100 hover:opacity-90"
                                         onClick={() => {
                                             deleteFavourite(restaurantDetails.restaurantId);
@@ -116,7 +124,8 @@ const Restaurant = () => {
                                     : <AiFillHeart className="text-6xl my-auto pt-4 text-grey-standard opacity-60 hover:text-red-standard hover:opacity-90"
                                         onClick={() => {
                                             addRestaurantToFav(restaurantDetails.restaurantId);}}
-                                    />}
+                                    />)
+                                }
                             </h1>
 
                             <p className="text-lg md:text-2xl text-green-standard">{restaurantDetails.restaurantDesc}</p>
