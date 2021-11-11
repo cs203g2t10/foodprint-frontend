@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 import { Redirect } from "react-router-dom";
 import LogInService from '../services/LogInService'
 import { useAppContext } from '../lib/AppContext';
+import { BeatLoader, ClipLoader, RingLoader, SyncLoader } from 'react-spinners';
 
 
 
@@ -100,9 +101,9 @@ const Login = () => {
                         )}
 
                         <div className="grid grid-cols-2 pt-5 gap-x-4 pb-2">
-                            <button className="rounded-xl bg-green-standard shadow-sm hover:shadow-md text-white-standard opacity-90 hover:opacity-100 text-center" disabled={!validateForm}
+                            <button className="rounded-xl bg-green-standard shadow-sm hover:shadow-md text-white-standard opacity-90 hover:opacity-100 text-center py-1" disabled={!validateForm}
                                 onClick={userLogin}>
-                                {loading ? <div className="spinner" id="spinner" ></div>
+                                {loading ? <BeatLoader size="9" color="#daeddb"/>
                                     : 'Log in'}
                             </button>
                             <Link to="/forgotpassword" className=" w-full py-1 border shadow-sm hover:shadow-md rounded-full border-green-standard text-green-standard text-center">Forgot password?</Link>
