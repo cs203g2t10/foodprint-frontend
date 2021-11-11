@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
 import RestaurantService from '../services/RestaurantService'
 import ReservationModal from '../components/ReservationModal'
+import UserService from '../services/UserService';
 
 import "react-datepicker/dist/react-datepicker.css";
 import RestaurantFood from '../components/RestaurantFood';
@@ -22,6 +23,25 @@ const Restaurant = () => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [discount, setDiscount] = useState(0);
     const [loading, setLoading] = useState(false);
+
+    const [isFavourite, setIsFavourite] = useState(false)
+    useEffect(() => {
+        UserService.getFavRestaurant().then((response) => {
+            console.log(response.data)
+            // for (let i = 0; i < response.data.length; i++) {
+            //     if(params.id === ){
+            //         setIsFavourite(true);
+            //     }
+            // }
+            response?.data?.map((restaurant: any) => {
+                console.log(restaurant.restaurantId)
+                if (restaurant.restaurantId === restaurantDetails.restaurantId) {
+                    setIsFavourite(true);
+                }
+                return;
+            })
+        })
+    }, [])
 
     useEffect(() => {
         setLoading(true);
@@ -69,9 +89,10 @@ const Restaurant = () => {
                         <div className="col-span-2 md:w-40 h-40 w-32">
                             <img className="object-contain rounded-full" src={imageUrl} alt="shop" />
                         </div>
-                        <div className="col-span-6 px-0">
-                            <h1 className="text-4xl md:text-6xl font-bold tracking-wide text-green-standard flex items-center gap-x-4">{restaurantDetails.restaurantName} 
-                            <AiFillHeart/> <AiOutlineHeart /> 
+                        <div className="col-span-6 px-0 ">
+                            <h1 className="text-4xl md:text-6xl font-bold tracking-wide text-green-standard flex items-center gap-x-4">{restaurantDetails.restaurantName}
+                                {isFavourite && <AiFillHeart className="text-6xl my-auto pt-4 text-red-standard opacity-100 hover:opacity-90" />}
+                                {!isFavourite && <AiFillHeart className="text-6xl my-auto pt-4 text-grey-standard opacity-60 hover:text-red-standard hover:opacity-90" />}
                             </h1>
                             <p className="text-lg md:text-2xl text-green-standard">{restaurantDetails.restaurantDesc}</p>
                             <p className="text-md md:pb-4 text-grey-standard">{restaurantDetails.restaurantLocation}</p>
@@ -102,7 +123,7 @@ const Restaurant = () => {
                 }
             </div>
             {
-                loading && 
+                loading &&
                 <div className="flex justify-center">
                     <Loading />
                 </div>
