@@ -46,7 +46,7 @@ const ChangeRestaurantPicModal = (props: any) => {
         }).catch((error) => {
             console.log(error.response.data);
             setLoading(false);
-            setError(error.response.data.message);
+            setError(error.response.data.message.split(";")[0]);
         });
     }, [restaurantId, imageUrl, name]);
 
@@ -57,7 +57,7 @@ const ChangeRestaurantPicModal = (props: any) => {
         <ReactModal style={customStyles} isOpen={changePic} className="mt-10 focus:outline-none">
             <div className="grid justify-center items-center gap-y-2 rounded-lg shadow py-6 bg-white-standard mx-auto px-20 relative w-2/5 ">
                 <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setChangePic(false)}> <AiOutlineClose className="h-4 w-4" /> </button>
-                <img className="h-52 mx-auto" src="/images/edit.png" alt="create" />
+                <img className="h-40 mx-auto" src="/images/edit.png" alt="create" />
                 <h1 className="flex text-3xl text-green-standard font-bold">Edit {name} Display Picture</h1>
                 <h1 className=" flex text-base text-grey-standard font-light">Choose a new photo for your Restaurant!</h1>
                 <div className=" pt-2 gap-x-16">

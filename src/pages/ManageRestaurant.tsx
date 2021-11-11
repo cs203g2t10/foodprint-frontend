@@ -97,7 +97,7 @@ const ManageRestaurant = () => {
                         <div className="grid grid-cols-9 gap-x-16 mx-4 my-10">
                             <h2 className="col-span-1">&nbsp;</h2>
                             <div className="col-span-2">
-                                <img className="w-40 h-40 rounded-full" src={imageUrl} alt="shop" />
+                                <img className="w-40 h-40 rounded-full object-cover" src={imageUrl} alt="shop" />
                                 <button className="border border-green-standard text-green-standard shadow-sm hover:shadow-md px-4 py-1 rounded-lg mt-3 ml-5"
                                     onClick={() => { setChangePic(true) }} >Change pic</button>
                             </div>
