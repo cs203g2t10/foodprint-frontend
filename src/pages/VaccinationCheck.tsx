@@ -129,7 +129,8 @@ const VaccinationCheck = () => {
                         {
                             (invalid ?
                                 <div>
-                                    <h1 className="text-red-standard text-5xl font-bold">Check Unsuccessful.</h1>
+                                    <img src="/images/unvax.jpg" alt="vaccinated" className="transform h-64 grid mx-auto" />
+                                    <h1 className="text-red-standard text-3xl font-bold mt-4">Check Unsuccessful.</h1>
                                     <h1 className="text-base text-grey-standard text-light mt-4 mb-16">{error}</h1>
                                 </div>
                                 : <>
