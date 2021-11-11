@@ -104,7 +104,7 @@ const VaccinationCheck = () => {
                 </div>
             </div>
 
-            <Modal isOpen={modalIsOpened} className="mx-auto w-1/2 my-auto bg-white-standard mt-40 rounded-lg shadow-md">
+            <Modal isOpen={modalIsOpened} className="mx-auto w-2/6  my-auto bg-white-standard mt-24 rounded-lg shadow-md">
                 <button
                     type="button"
                     className="uk-button uk-button-danger uk-button-small ml-5 mt-5 bg-grey-lightest p-3 rounded-full shadow-sm hover:shadow-md"
@@ -113,10 +113,7 @@ const VaccinationCheck = () => {
                 </button>
 
 
-                <div className="grid grid-cols-2 gap-x-6 mx-8 h-auto py-8">
-                    <div>
-                        <img src="/images/confirm.png" alt="confirm" />
-                    </div>
+                <div className="h-auto mx-20 pb-5">
                     <div>
                         {
                             (invalid ?
@@ -125,8 +122,9 @@ const VaccinationCheck = () => {
                                     <h1 className="text-base text-grey-standard text-light mt-4 mb-16">{error}</h1>
                                 </div>
                                 : <>
-                                    <h1 className="text-green-standard text-5xl font-bold">You're <br />Vaccinated.</h1>
-                                    <h1 className="text-base text-grey-standard text-light mt-4 mb-8">{modalMessage}</h1>
+                                    <img src="/images/vax.jpg" alt="vaccinated" className="transform h-52 grid mx-auto" />
+                                    <h1 className="text-green-standard text-3xl font-bold mt-4">You're Vaccinated.</h1>
+                                    <h1 className="text-base text-grey-standard text-light mt-4 mb-8 ">{modalMessage}</h1>
                                 </>
                             )
                         }
