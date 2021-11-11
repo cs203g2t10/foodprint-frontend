@@ -6,10 +6,12 @@ import PageLinks from '../components/PageLinks';
 import LogInService, { UserDetails } from '../services/LogInService';
 import Restricted from '../components/errors/Restricted';
 import Loading from '../components/Loading';
+import CreateManagerModal from '../components/CreateManagerModal';
 
 const ManageUser = () => {
     const [userDetails, setUserDetails] = useState([]);
     const [createUser, setCreateUser] = useState(false);
+    const [createManager, setCreateManager] = useState(false);
     const [deleteMessage, setDeleteMessage] = useState("");
     const [isAuthorized, setAuthorized] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -52,8 +54,13 @@ const ManageUser = () => {
                     <span className="">Filter Email: </span>
                     <input className="bg-white-offWhite focus:outline-none px-4 py-1 rounded-large shadow-sm" value={emailContains} onChange={(e) => { setEmailContains(e.target.value) }}></input>
                 </div>
-                <button className="border px-4 py-1 bg-green-standard rounded-full shadow-sm hover:shadow-md text-white-standard flexopacity-90 hover:opacity-100"
-                onClick={() => { setCreateUser(true) }}>Create new User</button>
+                <div className="flex gap-x-2">
+                    <button className="border px-4 py-1 bg-green-standard rounded-full shadow-sm hover:shadow-md text-white-standard flexopacity-90 hover:opacity-100"
+                        onClick={() => { setCreateManager(true) }}>Create Manager</button>
+                    <button className="border px-4 py-1 bg-green-standard rounded-full shadow-sm hover:shadow-md text-white-standard flexopacity-90 hover:opacity-100"
+                        onClick={() => { setCreateUser(true) }}>Create new User</button>
+                </div>
+
             </div>
             <div className="mx-14 bg-white-offWhite pt-6 pb-8 rounded-xxl shadow">
                 <div className="grid grid-cols-1 gap-y-9 items-center">
@@ -61,7 +68,7 @@ const ManageUser = () => {
                         <div className="col-span-1"></div>
                         <p className="col-span-1 text-lg text-grey-dark cursor-pointer" onClick={() => { setSortField("id") }} >User ID</p>
                         <p className="col-span-3 text-lg text-grey-dark cursor-pointer" onClick={() => { setSortField("email") }}>Email</p>
-                        <p className="col-span-2 text-lg text-grey-dark cursor-pointer" onClick={()  => { setSortField("firstName") }}>Name</p>
+                        <p className="col-span-2 text-lg text-grey-dark cursor-pointer" onClick={() => { setSortField("firstName") }}>Name</p>
                         <p className="col-span-3 text-lg text-grey-dark cursor-pointer" onClick={() => { setSortField("roles") }}>Role</p>
                         <p className="col-span-1 text-lg text-grey-dark">Edit</p>
                     </div>
@@ -85,6 +92,7 @@ const ManageUser = () => {
             <PageLinks {...{ numPages, currPage, setCurrPage }} />
             <div>
             </div>
+            <CreateManagerModal {...{createManager, setCreateManager}} />
             <CreateUserModal {...{ createUser, setCreateUser }} />
         </div>
     )
