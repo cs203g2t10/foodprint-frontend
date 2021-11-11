@@ -7,7 +7,7 @@ import UserService from '../services/UserService';
 import "react-datepicker/dist/react-datepicker.css";
 import RestaurantFood from '../components/RestaurantFood';
 import Loading from '../components/Loading';
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { AiFillHeart } from 'react-icons/ai';
 
 const Restaurant = () => {
 

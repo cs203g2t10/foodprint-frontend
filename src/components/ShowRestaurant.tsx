@@ -1,4 +1,4 @@
-const TrendingRestaurant = (props: any) => {
+const ShowRestaurant = (props: any) => {
     return (
         <div className="bg-white-creamWhite h-full w-64 shadow-md hover:shadow-lg rounded-xl flex-none pb-1">
             <img className="object-cover w-full h-40 rounded-xl bg-green-standard" src={props.src} alt="restaurant" />
@@ -8,4 +8,4 @@ const TrendingRestaurant = (props: any) => {
     )
 }
 
-export default TrendingRestaurant
+export default ShowRestaurant

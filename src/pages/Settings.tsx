@@ -21,17 +21,17 @@ const Settings = () => {
                         <div className="gap-y-2 m-10 rounded-xxl lg:mx-32 pb-10">
                             <div className="grid lg:grid-cols-3 justify-center items-center gap-x-20 mx-10 pt-10 gap-y-7">
                                 <Link to="/userdetailsconfig" className="bg-white-dirtyWhite rounded-xxl shadow hover:shadow-md py-8">
-                                    <img className=" md:m-auto h-44" src="/images/General.png" alt="general settings" />
+                                    <img className=" md:m-auto h-44" src="/images/ManageRestaurant.png" alt="general settings" />
                                     <h1 className="text-center text-md pt-10 text-green-standard">General</h1>
                                     <h1 className="text-center text-base text-grey-standard px-8">Update user details</h1>
                                 </Link>
                                 <Link to="/twofasetup" className="bg-white-dirtyWhite rounded-xxl shadow hover:shadow-md py-8">
-                                    <img className=" md:m-auto h-44" src="/images/2FA.png" alt="2fa config" />
+                                    <img className=" md:m-auto h-44" src="/images/Dashboard.png" alt="2fa config" />
                                     <h1 className="text-center text-md pt-10 text-green-standard">2FA Configuration</h1>
                                     <h1 className="text-center text-base text-grey-standard px-8">Update 2FA settings</h1>
                                 </Link>
                                 <Link to="/changepassword" className="bg-white-dirtyWhite rounded-xxl shadow hover:shadow-md py-8">
-                                    <img className=" md:m-auto h-44" src="/images/pwdConfig.png" alt="password config" />
+                                    <img className=" md:m-auto h-44" src="/images/ManageIngredients.png" alt="password config" />
                                     <h1 className="text-center text-md pt-10 text-green-standard">Change Password</h1>
                                     <h1 className="text-center text-base text-grey-standard px-2">Update user password</h1>
                                 </Link>

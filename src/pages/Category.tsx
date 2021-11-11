@@ -3,6 +3,7 @@ import RestaurantService from '../services/RestaurantService'
 import { Link } from 'react-router-dom'
 import queryString from 'query-string'
 import RestaurantListing from '../components/RestaurantListing'
+import Loading from '../components/Loading'
 
 const Category = () => {
     const value = queryString.parse(window.location.search)
@@ -35,26 +36,23 @@ const Category = () => {
             </div>
 
             <h1 className="text-2xl md:pr-64 font-semibold pl-32 pt-10 text-grey-dark">Restaurants Containing "{cat}"</h1>
-            <div className="justify-items-center grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-y-16 mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
+            <div className="justify-items-center grid 3xl:grid-cols-6 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-y-16 md:px-24 mt-10 md:pb-8 animate__animated animate__fadeIn">
                 {
-                (
-                    (restaurants.length > 0) ? (
-                        restaurants?.map(
-                            (restaurant: any) => {
-                                let priceRange = restaurant.restaurantPriceRange === null ? 0 : restaurant.restaurantPriceRange;
-                                let imageUrl = restaurant.picture ? restaurant.picture.url : "/images/shop.jpg";
-                                let discount = restaurant.discount ? restaurant.discount.discountPercentage : 0;
-                                return <RestaurantListing key={restaurant.restaurantId} {...{restaurant, imageUrl, discount, priceRange}} />
-                            })
-                    ) : (
-                        <>
-                            No restaurants found
-                        </>
-                    )
-                )
+                    restaurants?.map(
+                        (restaurant : any) => {
+                            let priceRange = restaurant.restaurantPriceRange === null ? 0 : restaurant.restaurantPriceRange;
+                            let imageUrl = restaurant.picture ? restaurant.picture.url : "/images/shop.jpg";
+                            let discount = restaurant.discount ? restaurant.discount.discountPercentage : 0;
+                            return <RestaurantListing key={restaurant.restaurantId} {...{ restaurant, imageUrl, discount, priceRange }} />
+                        })
                 }
             </div>
-            
+            {
+                restaurants.length === 0 &&
+                <div className="flex justify-center">
+                    <Loading />
+                </div>
+            }
         </div>
     )
 }

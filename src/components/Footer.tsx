@@ -1,5 +1,5 @@
 import "../css/waves.css"
-
+import { Link } from 'react-router-dom'
 import { AiFillInstagram, AiFillTwitterSquare, AiFillLinkedin } from "react-icons/ai";
 
 const Footer = () => {
@@ -18,7 +18,7 @@ const Footer = () => {
                             </div>
                             <div>
                                 <h1 className="lg:text-md text-grey-standard tracking-widest">ABOUT</h1>
-                                <h2 className="lg:text-sm text-grey-lighter text-xs">About foodprint</h2>
+                                <h2 className="lg:text-sm text-grey-lighter text-xs"><Link to="/about">About foodprint</Link></h2>
                                 <h2 className="lg:text-sm text-grey-lighter text-xs">Get in touch</h2>
                             </div>
                             <div className="sm:col-span-2 lg:col-span-1">

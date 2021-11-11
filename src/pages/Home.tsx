@@ -7,10 +7,9 @@ import { useInView } from 'react-intersection-observer';
 import { useAppContext } from '../lib/AppContext'
 import LogInService from '../services/LogInService'
 import type { UserDetails } from '../services/LogInService';
-import TrendingRestaurant from '../components/TrendingRestaurant'
+import ShowRestaurant from '../components/ShowRestaurant'
 import RestaurantService from '../services/RestaurantService'
-
-
+import UserService from '../services/UserService';
 
 const Home = () => {
     const { isAuthenticated } = useAppContext() || {}
@@ -51,12 +50,21 @@ const Home = () => {
     }
 
     const [restaurants, setRestaurants] = useState<any[]>([])
+    const [favourites, setFavourites] = useState<any[]>([])
 
     useEffect(() => {
         RestaurantService.getRestaurants().then((response) => {
             setRestaurants(response.data)
         })
-    }, [])
+
+        if (isAuthenticated) {
+            UserService.getFavRestaurant().then((response) => {
+                setFavourites(response.data)
+            })
+        }
+    }, [isAuthenticated])
+
+    const [upTo50Present, setUpTo50Present] = useState(false)
 
     return (
         <div className="w-full">
@@ -78,7 +86,7 @@ const Home = () => {
                         isAuthenticated ? <>
                             <h1 className="text-center text-grey-standard text-base mt-5">Reserve a table, save with deals and reduce food wastage.</h1>
                             <div className="flex justify-center items-center">
-                                <Link to="/restaurants" className="bg-green-standard mt-4 py-1 px-8 text-center text-white-standard hover:shadow-lg rounded-xl">Start browsing now!</Link>
+                                <Link to="/restaurants" className="bg-white-standard mt-4 pt-2 pb-3 px-5 text-center text-green-standard hover:shadow-lg rounded-xl">Start browsing now!</Link>
                             </div>
                         </> : <>
                             <h1 className="text-center text-grey-lighter text-base mt-5"><Link to="/login" className="text-green-standard">Log in</Link> to an existing account, or get started by <Link to="/register" className="text-green-standard">registering</Link>!</h1>
@@ -109,28 +117,29 @@ const Home = () => {
                     </motion.div>
                 </div>
             </div>
-
-            <div className="md:pl-24 md:pt-10 bg-white-standard md:pb-24 px-5">
-                <h1 className="text-4xl md:pr-64 pl-1 font-extrabold pb-7">What's Trending</h1>
-                <div className="overflow-hidden h-full w-full pr-24">
-                    <div className="flex flex-row gap-x-10 w-full overflow-auto h-auto py-5">
-                        {
-                            restaurants.map(restaurant =>
-                                <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId}>
-                                    {
-                                        (restaurant.picture !== null) ?
-                                            (
-                                                <TrendingRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={restaurant.picture.url} />
-                                            ) : (
-                                                <TrendingRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src="/images/restaurant.jpg" />
-                                            )
-                                    }
-                                </Link>
-                            )
-                        }
+            {
+                isAuthenticated ? 
+                <div className="md:pl-24 md:pt-10 bg-white-standard md:pb-24 px-5">
+                    <h1 className="text-4xl md:pr-64 pl-1 font-extrabold pb-7">Your Favourites</h1>
+                    <div className="overflow-hidden h-full w-full pr-24">
+                        <div className="flex flex-row gap-x-10 w-full overflow-auto h-auto py-5">
+                            {
+                                (favourites.length > 0) ?
+                                favourites.map(restaurant =>
+                                    <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId}>
+                                        <ShowRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={(restaurant.picture !== null) ? restaurant.picture.url : "/images/restaurant.jpg"} />
+                                    </Link>
+                                )
+                                :
+                                <div className="pl-2 text-grey-lighter">
+                                    You have no favourites, view other restaurants <Link to={"/restaurants"} className="text-green-standard">here</Link>!
+                                </div>
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
+                : <></>
+            }
 
             <div className="md:pl-24 bg-white-standard md:pb-32  px-5">
                 <h1 className="text-4xl md:pr-64 pl-1 font-extrabold pb-7">Up to 50% off deals</h1>
@@ -145,12 +154,20 @@ const Home = () => {
                                     imageUrl = restaurant.picture.url;
                                 }
                                 if (upTo50) {
+                                    if (!upTo50Present) {
+                                        setUpTo50Present(true)
+                                    }
                                     return <Link to={"/restaurant/" + restaurant.restaurantId} key={restaurant.restaurantId} >
-                                        <TrendingRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={imageUrl} />
+                                        <ShowRestaurant key={restaurant.restaurantId} name={restaurant.restaurantName} location={restaurant.restaurantLocation} src={imageUrl} />
                                     </Link>
                                 }
                                 return <></>
-                            })
+                            })}
+                        {
+                            !upTo50Present ? 
+                            <div className="pl-2 text-grey-lighter">
+                                None for now, view other restaurants <Link to={"/restaurants"} className="text-green-standard">here</Link>!
+                            </div> : <></>
                         }
                     </div>
                 </div>

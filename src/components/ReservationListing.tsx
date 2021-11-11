@@ -1,6 +1,6 @@
 import { AiOutlineClose } from 'react-icons/ai';
 import ReservationService from '../services/ReservationService';
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const ReservationListing = (props: any) => {
 
