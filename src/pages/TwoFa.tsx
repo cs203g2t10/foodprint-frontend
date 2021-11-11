@@ -60,7 +60,7 @@ const TwoFa = () => {
                 <div className="mt-32 p-10 bg-white-standard w-10/12 md:w-7/12 grid md:grid-cols-5 shadow-xxl shadow rounded-xxl">
                     <img className="transform scale-90 col-span-2 my-auto grid" src="/images/twoFactorAuthentication.png" alt="2fa" />
                     <div className="col-span-3 py-5">
-                        <h1 className="text-4xl font-semibold mb-4 text-green-standard">{twoFaEnabled ? "Disable" : "Enable"} 2FA</h1>
+                        <h1 className="text-4xl tracking-wide font-semibold mb-4 text-green-standard">{twoFaEnabled ? "Disable" : "Enable"} 2FA</h1>
 
                         <div className="grid grid-cols-2">
                             <div>
@@ -86,7 +86,6 @@ const TwoFa = () => {
                             {
                                 !twoFaEnabled && <img className="h-32 pl-8" src={QRUrl} alt="QR code" />
                             }
-                            {/* <img className={(!twoFaEnabled) ? "h-32 pl-8" : "h-20 display-none"} src={(!twoFaEnabled) ? QRUrl : "/images/login.png"} alt="QR code" /> */}
                         </div>
 
 
@@ -108,11 +107,11 @@ const TwoFa = () => {
                         }
                         {(
                             twoFaEnabled ?
-                                <button className="opacity-90 hover:opacity-100 rounded-full px-5 border hover:shadow text-justify text-white-standard mt-2 h-8 bg-green-standard"
+                                <button className="opacity-90 hover:opacity-100 rounded-lg px-5 border hover:shadow text-justify text-white-standard mt-2 h-8 bg-green-standard"
                                     onClick={disable}>Disable 2FA
                                 </button>
                                 :
-                                <button className=" opacity-90 hover:opacity-100 rounded-full px-5 border hover:shadow text-justify text-white-standard mt-2 h-8 bg-green-standard"
+                                <button className=" opacity-90 hover:opacity-100 rounded-lg px-5 border hover:shadow text-justify text-white-standard mt-2 h-8 bg-green-standard"
                                     onClick={confirmTwoFaToken}>Enable 2FA
                                 </button>
                         )}
