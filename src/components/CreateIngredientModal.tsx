@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { AiOutlineClose } from 'react-icons/ai';
 import Modal from 'react-modal';
 import { BeatLoader } from 'react-spinners';
 import RestaurantService from '../services/RestaurantService';
@@ -40,7 +41,8 @@ const CreateIngredientModal = (props: any) => {
 
     return (
         <Modal style={customStyles} isOpen={createIngredient} className="mt-28 focus:outline-none">
-            <div className="grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-64 pb-10 bg-white-dirtyWhite">
+            <div className="grid justify-center items-center gap-y-2 m-10 rounded-lg shadow lg:mx-64 pb-10 bg-white-dirtyWhite relative">
+            <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setCreateIngredient(false)}> <AiOutlineClose className="h-4 w-4" /> </button>
                 <h1 className=" flex text-5xl pt-12 text-green-standard font-bold mx-auto">Create Ingredient</h1>
                 <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Please fill up all details below </h1>
                 <div className="grid gap-y-5 grid-cols-1 mt-10 gap-x-10">
