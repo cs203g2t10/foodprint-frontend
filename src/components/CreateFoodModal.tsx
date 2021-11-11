@@ -38,31 +38,31 @@ const CreateFoodModal = (props: any) => {
             <div className="grid justify-center items-center gap-y-2 m-8 rounded-lg shadow py-4 bg-white-standard mx-auto px-6 relative w-2/5">
                 <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => { setShowCreateFood(false) }}> <AiOutlineClose className="h-4 w-4" /> </button>
                 <img className="h-40 mx-auto" src="/images/createPic2.png" alt="create" />
-                <div className="grid grid-cols-2 px-10 mb-3 justify-between">
+                <div className="grid grid-cols-2 px-6 mb-3 justify-between">
                     <h1 className="flex text-3xl text-green-standard font-bold">Create Food</h1>
                     <h1 className="flex mb-2 text-grey-standard font-light text-sm my-auto ml-auto">*All fields are compulsory.</h1>
                 </div>
-                <div className="grid gap-y-3 grid-cols-2 gap-x-4 mx-10">
-                    <div className="flex gap-x-2 justify-between">
-                        <div>Name: </div>
-                        <input className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest w-full" value={name} onChange={(e) => { setName(e.target.value) }}></input>
+                <div className="grid gap-y-3 grid-cols-5 gap-x-4 mx-6">
+                    <div className="flex gap-x-2 col-span-3 justify-between">
+                        <div>Food Name: </div>
+                        <input className="px-2 focus:outline-none rounded-large shadow-sm h-9 border border-grey-lightest w-44" value={name} onChange={(e) => { setName(e.target.value) }}></input>
                     </div>
-                    <div className="flex gap-x-2 justify-between">
+                    <div className="flex gap-x-2 justify-between col-span-2 ">
                         <div>Price:</div>
                         <input type="number" className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest w-full" value={price} onChange={(e) => { setPrice(e.target.value) }}></input>
                     </div>
-                    <div className="flex gap-x-2 justify-between col-span-2">
+                    <div className="flex gap-x-2 justify-between col-span-5">
                         <div>Description: </div>
                         <input className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest w-full" value={desc} onChange={(e) => { setDesc(e.target.value) }}></input>
                     </div>
                 </div>
 
-                <div className="grid grid-cols-6 mx-20 mt-2">
+                <div className="grid grid-cols-6 mx-10 mt-2">
                     <h1 className="text-sm text-grey-dark col-span-3">Ingredient Name</h1>
                     <h1 className="text-sm text-grey-dark col-span-2">Units</h1>
                     <h1 className="text-sm text-grey-dark col-span-1">Quantity</h1>
                 </div>
-                <div className="grid overflow-y-scroll h-40 px-6 mx-10 py-2 gap-y-2 bg-white-dirtyWhite rounded-lg ">
+                <div className="grid overflow-y-scroll h-40 px-6 mx-4 py-2 gap-y-2 bg-white-dirtyWhite rounded-lg ">
                     {
                         ingredients?.map((ingredient: any) => {
 
@@ -71,7 +71,7 @@ const CreateFoodModal = (props: any) => {
                                     <p className="text-base text-grey-standard col-span-3">{ingredient.ingredientName}</p>
                                     <p className="text-base text-grey-standard col-span-2">{ingredient.units}</p>
                                     <input type="number" placeholder="0" min="0"
-                                        className="focus:outline-none text-right px-4 w-16 rounded-lg col-span-1 "
+                                        className="focus:outline-none text-right px-4 rounded-lg col-span-1 w-20"
                                         onChange={(e) => {
                                             if (e.target.value === '0') {
                                                 setIngredientQty((oldArray: any) => [...oldArray.filter((inQ: any) =>
@@ -96,7 +96,7 @@ const CreateFoodModal = (props: any) => {
                 {
                     (created ?
                         <>
-                            <div className="text-green-standard  mx-10 text-basre pb-2 mt-1">Item has been added to the menu!</div>
+                            <div className="text-green-standard  mx-6 text-basre pb-2 mt-1">Item has been added to the menu!</div>
                             <div className=" grid grid-cols-2 gap-x-10 justify-center mx-10 pb-3">
                                 <button className=" text-white-standard bg-green-standard px-3 pt-1 rounded-lg shadow-md hover:shadow-lg"
                                     onClick={() => {
@@ -110,7 +110,7 @@ const CreateFoodModal = (props: any) => {
                                     onClick={() => { setShowCreateFood(false) }}>Return</button>
                             </div>
                         </> :
-                        <div className=" grid grid-cols-2 gap-x-10 justify-center mx-10 pt-1 pb-3">
+                        <div className=" grid grid-cols-2 gap-x-10 justify-center mx-6 pt-1 pb-3">
                             <div className="col-span-2 text-red-standard text-sm pb-2">{error}</div>
                             <button className="text-white-standard bg-green-standard px-3 rounded-lg shadow-md hover:shadow-lg"
                                 onClick={() => createNewFood(name, desc, price, ingredientQty)} disabled={loading}>
