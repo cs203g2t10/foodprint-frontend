@@ -41,7 +41,7 @@ const CreateManagerModal = (props: any) => {
     }
 
     return (
-        <Modal style={customStyles} isOpen={createManager} className="flex mt-4 focus:outline-none">
+        <Modal style={customStyles} isOpen={createManager} className="flex mt-14 focus:outline-none">
             <div className="grid justify-center items-center gap-y-2 rounded-lg shadow py-10 bg-white-standard mx-auto px-6 relative w-2/6">
                 <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setCreateManager(false)}> <AiOutlineClose className="h-4 w-4" /> </button>
                 <img className="px-5 h-56 mx-auto" src="/images/invite.png" alt="create" />
