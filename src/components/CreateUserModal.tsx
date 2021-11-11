@@ -56,12 +56,12 @@ const CreateUserModal = (
     }
 
     return (
-        <Modal style={customStyles} isOpen={createUser} className="flex md:mt-6 focus:outline-none">
+        <Modal style={customStyles} isOpen={createUser} className="flex md:mt-3 focus:outline-none">
             <div className="grid justify-center items-center gap-y-2 m-8 rounded-lg shadow py-10 bg-white-standard mx-auto px-6 relative w-2/6">
                 <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setCreateUser(false)}> <AiOutlineClose className="h-5 w-5" /> </button>
-                <img className="px-5" src="/images/create.png" alt="create" />
+                <img className="px-5 h-56 mx-auto" src="/images/invite.png" alt="create" />
                 <h1 className="flex text-3xl text-green-standard font-bold px-10 mt-3">Create User</h1>
-                <h1 className=" flex text-base mb-2 text-grey-standard font-light mx-10">Please fill up all details below </h1>
+                <h1 className=" flex text-base text-grey-standard font-light mx-10">Please fill up all details below </h1>
                 <div className="grid md:mt-3 gap-y-2 mx-10">
                     <div className="md:flex gap-x-2 justify-between">
                         <div>Email: </div>

@@ -44,7 +44,7 @@ const CreateManagerModal = (props: any) => {
         <Modal style={customStyles} isOpen={createManager} className="flex mt-24 focus:outline-none">
             <div className="grid justify-center items-center gap-y-2 m-8 rounded-lg shadow py-10 bg-white-standard mx-auto px-6 relative w-2/6">
                 <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setCreateManager(false)}> <AiOutlineClose className="h-4 w-4" /> </button>
-                <img className="px-5" src="/images/create.png" alt="create" />
+                <img className="px-5 h-56 mx-auto" src="/images/invite.png" alt="create" />
                 <h1 className=" flex text-3xl text-green-standard font-bold px-10 mt-3">Make Manager</h1>
                 <h1 className=" flex text-base mb-2 text-grey-standard font-light px-10">An existing user is required to be converted to Manager. </h1>
                 <div className="grid gap-y-3 pb-2 px-10">
