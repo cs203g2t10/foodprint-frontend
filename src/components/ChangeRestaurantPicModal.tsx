@@ -55,54 +55,49 @@ const ChangeRestaurantPicModal = (props: any) => {
 
     return (
         <ReactModal style={customStyles} isOpen={changePic} className="mt-10 focus:outline-none">
-            <div className="grid justify-center items-center gap-y-2 m-10 rounded-lg shadow lg:mx-64 pb-10 bg-white-dirtyWhite relative">
+            <div className="grid justify-center items-center gap-y-2 rounded-lg shadow py-6 bg-white-standard mx-auto px-20 relative w-2/5 ">
                 <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setChangePic(false)}> <AiOutlineClose className="h-4 w-4" /> </button>
-                <h1 className=" flex text-5xl pt-12 text-green-standard font-bold mx-auto">{name} Display Picture</h1>
-                <h1 className=" flex text-md mb-2 text-grey-standard font-light mx-auto">Choose a new photo for your Restaurant!</h1>
-                <div className="grid grid-cols-2 justify-between pt-5 gap-x-16">
+                <img className="h-52 mx-auto" src="/images/edit.png" alt="create" />
+                <h1 className="flex text-3xl text-green-standard font-bold">Edit {name} Display Picture</h1>
+                <h1 className=" flex text-base text-grey-standard font-light">Choose a new photo for your Restaurant!</h1>
+                <div className=" pt-2 gap-x-16">
                     {
                         changed ?
                             <div>
-                                <h1 className="text-center pb-4">Updated Photo</h1>
-                                <img src={newUrl} alt={props?.description} className="rounded-full mb-5 h-56 w-56 flex mx-auto object-cover" />
+                                <h1 className="text-center pb-1 text-base">Updated Photo</h1>
+                                <img src={newUrl} alt={props?.description} className=" mb-2 h-48 w-full rounded-xxl flex mx-auto object-cover" />
                             </div> :
-                            <div>
-                                <h1 className="text-center pb-4">Original Photo</h1>
-                                <img src={imageUrl} alt={name + ' pic'} className="rounded-full mb-5 h-56 w-56 flex mx-auto object-cover" />
-                            </div>
-                    }
-                    <div>
-                        <div {...getRootProps()}>
-                            <div className="bg-grey-lightest place-items-stretch rounded-xxl text-center p-10 border-dashed border-2 border-grey-light hover:shadow-md shadow-sm focus:outline-none">
-                                <div>
-                                    <input {...getInputProps()} />
-                                    {
-                                        isDragActive ?
-                                            <>
-                                                <h1 className="text-light">Drop your new image here.</h1>
-                                                <img src="/images/cloud.png" alt="cloud illustration" className="transform scale-75 grid justify-items-center mx-auto" />
-                                                <h1 className="text-lightest text-sm pb-2">&nbsp;</h1>
-                                                <h1 className="text-light">&nbsp;</h1>
-                                            </>
-                                            :
-                                            <>
-                                                <h1 className="text-light text-base text-grey-dark">Drag and drop the new image here</h1>
-                                                <img src="/images/cloud.png" alt="cloud illustration" className="transform scale-75 grid justify-items-center mx-auto" />
-                                                <h1 className="text-lightest text-sm pb-2">OR</h1>
-                                                <h1 className="text-light bg-green-standard text-white-standard text-sm opacity-70 hover:opacity-80 shadow-sm hover:shadow-md w-4/5 mx-auto py-1 rounded-full px-5">Click to browse for a file</h1>
-                                            </>
-                                    }
+                            <div {...getRootProps()}>
+                                <div className="grid mx-auto max-auto w-full bg-grey-lightest rounded-xxl text-center p-4 border-dashed border-2 border-grey-light hover:shadow-md shadow-sm focus:outline-none">
+                                    <div>
+                                        <input {...getInputProps()} />
+                                        {
+                                            isDragActive ?
+                                                <>
+                                                    <h1 className="text-light text-base text-grey-dark">Drop your new image here.</h1>
+                                                    <img src="/images/cloud.png" alt="cloud illustration" className="transform scale-75 grid justify-items-center mx-auto" />
+                                                    <h1 className="text-lightest text-sm pb-2">&nbsp;</h1>
+                                                    <h1 className="text-light">&nbsp;</h1>
+                                                </>
+                                                :
+                                                <>
+                                                    <h1 className="text-light text-base text-grey-dark">Drag and drop the new image here</h1>
+                                                    <img src="/images/cloud.png" alt="cloud illustration" className="transform scale-75 grid justify-items-center mx-auto" />
+                                                    <h1 className="text-lightest text-sm pb-2">OR</h1>
+                                                    <h1 className="text-light border border-green-standard text-green-standard text-sm opacity-80 hover:opacity-90 shadow-sm hover:shadow-md w-3/5 mx-auto my-auto rounded-lg py-1 px-5">Click to browse for a file</h1>
+                                                </>
+                                        }
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                    }
                 </div>
 
                 {
                     changed && <div className="mx-auto text-green-standard">Picture has been successfully changed! Refresh to view changes</div>
                 }
                 <div className="text-red-standard text-center">{error}</div>
-                <button className="text-white-standard bg-green-standard px-3 py-1 rounded-lg shadow-md hover:shadow-lg w-1/3 mx-auto"
+                <button className="text-white-standard bg-green-standard px-3 py-1 rounded-lg shadow-md hover:shadow-lg w-52 mx-auto"
                     onClick={() => setChangePic(false)}
                 >
                     <span>

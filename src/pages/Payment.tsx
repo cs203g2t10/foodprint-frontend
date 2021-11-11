@@ -42,7 +42,7 @@ const Payment = () => {
 
                 <div className="grid grid-cols-7 gap-x-12 py-16 px-40">
                     <div className="col-span-3 bg-white-dirtyWhite rounded-xxl shadow:md h-auto p-8">
-                        <h1 className="flex items-center justify-center text-3xl font-bold tracking-wide text-green-standard pb-2">Your Order</h1>
+                        <h1 className="flex mx-10 text-3xl font-bold tracking-wide text-green-standard pb-2">Your Order</h1>
                         <div className="overflow-y-auto max-h-64">
                             {
                                 reservationDetails.lineItems?.map((lineItem: any) => {
@@ -56,7 +56,7 @@ const Payment = () => {
                                                 <img src={imageUrl} className=" w-14 h-14 shadow-md rounded-full" alt="food pic" />
                                             </div>
                                             <div className="col-span-4 mx-5">
-                                                <h1 className="text-grey-dark text-xl">{lineItem.foodName}</h1>
+                                                <h1 className="text-grey-dark text-base">{lineItem.foodName}</h1>
                                             </div>
                                             <h1 className="text-grey-light text-sm">x {lineItem.quantity}</h1>
                                         </div>
@@ -80,7 +80,7 @@ const Payment = () => {
                     </div>
 
                     <div className="col-span-4 bg-white-dirtyWhite rounded-xxl shadow:md h-auto p-8">
-                        <h1 className="flex items-center justify-center text-3xl font-bold tracking-wide text-green-standard pb-5">Payment Information</h1>
+                        <h1 className="flex mx-6 text-3xl font-bold tracking-wide text-green-standard pb-5">Payment Information</h1>
 
                         {
                             (paid ?
@@ -94,8 +94,7 @@ const Payment = () => {
                                 </div>
                                 :
                                 <>
-                                    <h1 className="text-center text-base text-grey-standard">We require you to make a small deposit amount</h1>
-                                    <h1 className="text-center text-base text-grey-standard pb-4">of 20% of your total bill</h1>
+                                    <h1 className="text-base text-grey-standard mx-6">We require you to make a small deposit amount <br></br> of 20% of your total bill</h1>
                                     <Elements stripe={stripeTestPromise}>
                                         <PaymentForm reservationId={params.id} amount={reservationDetails.price} />
                                     </Elements>
