@@ -71,7 +71,7 @@ const CreateFoodModal = (props: any) => {
                                     <p className="text-base text-grey-standard col-span-3">{ingredient.ingredientName}</p>
                                     <p className="text-base text-grey-standard col-span-2">{ingredient.units}</p>
                                     <input type="number" placeholder="0" min="0"
-                                        className="focus:outline-none text-right px-4 rounded-lg col-span-1 w-20"
+                                        className="focus:outline-none text-right px-4 rounded-lg col-span-1 w-20 h-8"
                                         onChange={(e) => {
                                             if (e.target.value === '0') {
                                                 setIngredientQty((oldArray: any) => [...oldArray.filter((inQ: any) =>
