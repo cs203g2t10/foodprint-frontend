@@ -49,7 +49,7 @@ const AdminManageRestaurants = () => {
                         <h1 className="text-5xl font-bold pt-4 text-center text-green-standard bg-yellow-standard">Admin Restaurants Menu</h1>
                         <h1 className="text-base text text-center text-grey-standard pb-8 bg-yellow-standard">Hello {getUserName()}, which restaurants / ingredients would you like to edit?</h1>
 
-                        <button className="ml-auto mr-56 grid bg-green-standard opacity-95 hover:opacity-100 my-5 text-white-standard shadow-sm hover:shadow-md px-4 py-1 mx-14 rounded-full"
+                        <button className="ml-auto mr-56 grid bg-green-standard opacity-95 hover:opacity-100 my-5 text-white-standard shadow-sm hover:shadow-md px-4 py-1 mx-14 rounded-lg"
                             onClick={() => { setCreateRestaurant(true) }}>Create New Restaurant</button>
 
 

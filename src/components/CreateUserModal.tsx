@@ -56,10 +56,10 @@ const CreateUserModal = (
     }
 
     return (
-        <Modal style={customStyles} isOpen={createUser} className="flex md:mt-3 focus:outline-none">
-            <div className="grid justify-center items-center gap-y-2 m-8 rounded-lg shadow py-10 bg-white-standard mx-auto px-6 relative w-2/6">
+        <Modal style={customStyles} isOpen={createUser} className="flex md:mt-4 focus:outline-none">
+            <div className="grid justify-center items-center gap-y-2 rounded-lg shadow py-6 bg-white-standard mx-auto px-6 relative w-2/6">
                 <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setCreateUser(false)}> <AiOutlineClose className="h-5 w-5" /> </button>
-                <img className="px-5 h-56 mx-auto" src="/images/invite.png" alt="create" />
+                <img className="px-5 h-52 mx-auto" src="/images/invite.png" alt="create" />
                 <h1 className="flex text-3xl text-green-standard font-bold px-10 mt-3">Create User</h1>
                 <h1 className=" flex text-base text-grey-standard font-light mx-10">Please fill up all details below </h1>
                 <div className="grid md:mt-3 gap-y-2 mx-10">
@@ -84,9 +84,8 @@ const CreateUserModal = (
                         <input className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest" value={roles} onChange={(e) => { setRoles(e.target.value) }}></input>
                     </div>
                 </div>
-
                 {
-                    (error ? <div className="mx-auto pt-3 pb-3 text-red-standard">{error}</div> : <></>)
+                    (error ? <div className="mx-auto text-red-standard">{error}</div> : <></>)
                 }
                 {
                     (created ?

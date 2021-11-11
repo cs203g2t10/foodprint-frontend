@@ -43,11 +43,12 @@ const IngredientListing = (props: any) => {
                 <input className=" border pl-2 rounded col-span-3 focus:outline-none" onChange={(e) => { setName(e.target.value) }} value={name} />
                 <input className=" border pl-2 rounded col-span-3 focus:outline-none" onChange={(e) => { setDesc(e.target.value) }} value={desc} />
                 <input className=" border pl-2 rounded col-span-2 focus:outline-none" onChange={(e) => { setUnits(e.target.value) }} value={units} />
-                <div className="col-span-1">
-                    <button className="shadow-sm hover:shadow-md px-2 rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center"
+                <div className="col-span-1 flex ">
+                    <button className="shadow-sm hover:shadow-md rounded-full w-8 h-8 bg-opacity-60 hover:bg-opacity-100 bg-green-standard text-white-standard text-center px-2"
                         onClick={() => { updateIngredientDetails(id, name, desc, units) }}>
-                        {loading ? <HashLoader size="15" color="#daeddb"/>
-                            : <AiOutlineCheck />}
+                        {loading ? <HashLoader size="15"  color="#daeddb" />
+                            : <AiOutlineCheck />
+                        }
                     </button>
                     <button className="mx-2 shadow-sm px-2 bg-yellow-standard hover:shadow text-center rounded-full w-8 h-8"
                         onClick={() => {

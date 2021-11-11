@@ -86,14 +86,14 @@ const ManageRestaurant = () => {
                             <h2 className="col-span-1">&nbsp;</h2>
                             <div className="col-span-2">
                                 <img className="w-40 h-40 rounded-full" src={imageUrl} alt="shop" />
-                                <button className="border border-green-standard text-green-standard shadow-sm hover:shadow-md px-4 py-1 rounded-full mt-3 ml-5"
+                                <button className="border border-green-standard text-green-standard shadow-sm hover:shadow-md px-4 py-1 rounded-lg mt-3 ml-5"
                                  onClick={()=>{setChangePic(true)}} >Change pic</button>
                             </div>
                             <div className="col-span-6 px-0">
                                 <h1 className="text-4xl md:text-6xl font-bold tracking-wide text-green-standard">{restaurantDetails.restaurantName}</h1>
                                 <p className="text-lg md:text-2xl text-green-standard">{restaurantDetails.restaurantDesc}</p>
                                 <p className="text-md md:pb-4 text-grey-standard">{restaurantDetails.restaurantLocation}</p>
-                                <button className="border border-green-standard text-green-standard shadow-sm hover:shadow-md px-4 py-1 rounded-full"
+                                <button className="border border-green-standard text-green-standard shadow-sm hover:shadow-md px-4 py-1 rounded-lg"
                                 onClick={()=>{setEditDetails(true)}}>Edit Details</button>
                             </div>
                         </div>
@@ -114,7 +114,7 @@ const ManageRestaurant = () => {
 
                     <div className="flex justify-between">
                         <h1 className="pl-4 text-5xl text-grey-standard font-semibold pb-3">Menu</h1>
-                        <button className="bg-green-standard text-1xl text-white-standard opacity-90 hover:opacity-100 px-4 h-8 my-auto rounded-full shadow-md hover:shadow-lg"
+                        <button className="bg-green-standard text-1xl text-white-standard opacity-90 hover:opacity-100 px-5 h-8 my-auto rounded-lg shadow-md hover:shadow-lg"
                         onClick={()=>{setShowCreateFood(true)}}>Add to Menu</button>
                     </div>
 
