@@ -45,15 +45,18 @@ const CreateFoodModal = (props: any) => {
                 <div className="grid gap-y-3 grid-cols-5 gap-x-4 mx-6">
                     <div className="flex gap-x-2 col-span-3 justify-between">
                         <div>Food Name: </div>
-                        <input className="px-2 focus:outline-none rounded-large shadow-sm h-9 border border-grey-lightest w-44" value={name} onChange={(e) => { setName(e.target.value) }}></input>
+                        <input className="px-2 focus:outline-none rounded-large shadow-sm h-9 border border-grey-lightest w-44" value={name} 
+                        onChange={(e) => { setName(e.target.value) }} disabled={created}/>
                     </div>
                     <div className="flex gap-x-2 justify-between col-span-2 ">
                         <div>Price:</div>
-                        <input type="number" className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest w-full" value={price} onChange={(e) => { setPrice(e.target.value) }}></input>
+                        <input type="number" className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest w-full" 
+                        value={price} onChange={(e) => { setPrice(e.target.value) }} disabled={created}/>
                     </div>
                     <div className="flex gap-x-2 justify-between col-span-5">
                         <div>Description: </div>
-                        <input className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest w-full" value={desc} onChange={(e) => { setDesc(e.target.value) }}></input>
+                        <input className="focus:outline-none px-4 rounded-large shadow-sm h-9 border border-grey-lightest w-full" value={desc} 
+                        onChange={(e) => { setDesc(e.target.value) }} disabled={created}/>
                     </div>
                 </div>
 
