@@ -105,8 +105,8 @@ const Register = () => {
                             (successfulReg ? <div className="text-green-standard mt-2">We have sent you an email!</div> : <div className=""></div>)
                         }
 
-                        <div className="pt-5 flex w-full mb-8">
-                            <button className="rounded-xl px-5 w-32 bg-green-standard text-white-standard shadow hover:shadow-md text-justify h-8" disabled={!validateForm}
+                        <div className="pt-5 flex mb-8">
+                            <button className="rounded-xl px-5 w-32 bg-green-standard text-white-standard shadow hover:shadow-md text-center h-8" disabled={!validateForm}
                                 onClick={userRegister}>
                                 <span id="button-text">
                                     {processing ? (
