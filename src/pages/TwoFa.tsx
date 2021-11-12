@@ -60,7 +60,7 @@ const TwoFa = () => {
                 <div className="mt-32 p-10 bg-white-standard w-10/12 md:w-7/12 grid md:grid-cols-5 shadow-xxl shadow rounded-xxl">
                     <img className="transform scale-90 col-span-2 my-auto grid" src="/images/twoFactorAuthentication.png" alt="2fa" />
                     <div className="col-span-3 py-5">
-                        <h1 className="text-4xl tracking-wide font-semibold mb-4 text-green-standard">{twoFaEnabled ? "Disable" : "Enable"} 2FA</h1>
+                        <h1 className="text-4xl tracking-wide font-semibold mb-4 text-green-standard my-auto">{twoFaEnabled ? "Disable" : "Enable"} 2FA</h1>
 
                         <div className="grid grid-cols-2">
                             <div>

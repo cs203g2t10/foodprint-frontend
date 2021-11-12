@@ -171,7 +171,7 @@ const ReservationModal = (
                             <h1 className="flex text-base text-green-standard">Your vaccination status is not verified,</h1>
                             <h1 className="text-sm text-grey-standard mb-4">Please ensure you verify your vaccination status before proceeding with making a reservation</h1>
                             <div>
-                                <Link to="/vaccinationcheck" className="bg-green-standard text-white-standard px-8 py-1 rounded-full shadow hover:shadow-md">Verify Vaccination Status</Link>
+                                <Link to="/vaccinationcheck" className="bg-green-standard text-white-standard px-8 py-1 rounded-lg shadow hover:shadow-md">Verify Vaccination Status</Link>
                             </div>
                         </>
                     }
@@ -188,7 +188,7 @@ const ReservationModal = (
                                 :
                                 isVaccinated && (
                                     isAuthenticated ? <>
-                                        <button className="bg-green-standard text-white-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border"
+                                        <button className="bg-green-standard text-white-standard px-3 py-1 rounded-lg shadow-md hover:shadow-lg border"
                                             onClick={makeReservation} disabled={reserved || loading}>
                                             <span>
                                                 {
