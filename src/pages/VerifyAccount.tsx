@@ -31,9 +31,10 @@ const VerifyAccount = (props: any) => {
     return (
         <div className="bg-yellow-standard h-screen">
             <div className="flex justify-center">
-                <div className="mt-32 bg-white-standard w-10/12 md:w-7/12 grid md:grid-cols-2 shadow-xxl shadow rounded-xxl pb-10">
+                <div className="my-32 bg-white-standard w-10/12 md:w-1/2 py-10 grid md:grid-cols-2 shadow-xxl shadow rounded-xxl pb-10">
                     <div className="ml-16 mt-16">
-                        <h1 className="text-3xl font-bold mb-2">Verify Account</h1>
+                        <h1 className="text-4xl font-bold mb-2 tracking-wide text-green-standard">Verify Account</h1>
+                        <h1 className="text-base mb-2 tracking-wide text-grey-standard">Hello, welcome to foodprint! Please click to verify your account.</h1>
                         {
                             (invalid ? <div className="text-red-standard pb-4 mt-6">Your token is invalid. Please try again!</div>
                                 : <div className="">
@@ -47,13 +48,13 @@ const VerifyAccount = (props: any) => {
                                     <Link to="/login" className="bg-green-standard mt-4 pt-2 pb-3 px-5 text-center text-white-standard hover:shadow-lg rounded-xl">Proceed to log in!</Link>
                                 </>
                                 : <div className="">
-                                    <button className="rounded-xl mt-4 px-5 border hover:shadow text-justify h-8"
+                                    <button className="rounded-xl mt-4 px-5 border hover:shadow text-justify h-9 text-green-standard border-green-standard"
                                         onClick={() => { confirmToken() }}>Verify account</button>
                                 </div>)
                         }
                     </div>
                     <div>
-                        <img className="mt-16 my-7 w-80 transform scale-90" src="/images/login.png" alt="log in illustration" />
+                        <img className="my-auto grid pb-10" src="/images/welcome.webp" alt="verify" />
                     </div>
                 </div>
             </div>
