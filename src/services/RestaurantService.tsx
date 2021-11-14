@@ -180,6 +180,11 @@ class RestaurantService {
         return axios.patch(url, requestBody, this.headers());
     }
 
+    deleteRestaurant = (restaurantId: number) => {
+        const url = `${RESTAURANTS_REST_API_URL}/${restaurantId}`;
+        return axios.delete(url, this.headers());
+    }
+
     managerGetAllIngredients = (restaurantId: number) => {
         return axios.get(`${RESTAURANTS_REST_API_URL}/${restaurantId}/ingredient/all`, this.headers());
     }

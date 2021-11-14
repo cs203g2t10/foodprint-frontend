@@ -55,7 +55,7 @@ const AdminManageRestaurants = () => {
 
                         <div className="mx-56 px-8 overflow-auto bg-white-creamWhite pt-6 pb-8 rounded-lg shadow-md mb-2">
 
-                            <div className="px-8 pb-5 grid grid-cols-8 gap-x-6">
+                            <div className="px-8 pb-5 grid grid-cols-9 gap-x-6">
                                 <div className="col-span-1"></div>
                                 <p className="col-span-1 text-base text-grey-dark">ID</p>
                                 <p className="col-span-2 text-base text-grey-dark">Restaurant Name</p>
@@ -64,7 +64,7 @@ const AdminManageRestaurants = () => {
                             <div className="flex justify-center items-center bg-white-standard rouded-lg">
                                 {restaurants.length === 0 && <Loading />}
                             </div>
-                            <div className="grid grid-cols-1 gap-y-3 items-center">
+                            {/* <div className="grid grid-cols-1 gap-y-3 items-center"> */}
                                 {
                                     restaurants?.map(
                                         (restaurant: any) => {
@@ -75,7 +75,7 @@ const AdminManageRestaurants = () => {
                                         }
                                     )
                                 }
-                            </div>
+                            {/* </div> */}
                         </div>
                         <PageLinks {...{ numPages, currPage, setCurrPage }} />
 
