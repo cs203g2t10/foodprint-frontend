@@ -124,7 +124,7 @@ const Profile = () => {
                                                 key={favouriteRestaurant.restaurantId}
                                                 restaurantId={favouriteRestaurant.restaurantId}
                                                 name={favouriteRestaurant.restaurantName}
-                                                url={favouriteRestaurant.picture?.url} {...{ setDeleteMessage }} />
+                                                url={favouriteRestaurant.picture?.url} />
                                         )
                                     })
                                 }
@@ -143,8 +143,8 @@ const Profile = () => {
                                         (
                                             (upcomingReservation.length > 0) ?
                                                 <div className="grid grid-cols-12 mb-2 gap-x-3">
-                                                    <h2 className="col-span-1">&nbsp;</h2>
-                                                    <h2 className="col-span-3 text-grey-lighter text-md">Restaurant</h2>
+                                                    <h2 className="col-span-1 ml-2">&nbsp;</h2>
+                                                    <h2 className="col-span-3 text-grey-lighter text-md px-5">Restaurant</h2>
                                                     <h2 className="col-span-3 text-grey-lighter text-md">Date / Time</h2>
                                                     <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Status</h2>
                                                     <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Orders</h2>
@@ -179,8 +179,8 @@ const Profile = () => {
                                         (
                                             (pastReservation.length > 0) ?
                                                 <div className="grid grid-cols-12 mb-2 gap-x-3">
-                                                    <h2 className="col-span-1">&nbsp;</h2>
-                                                    <h2 className="col-span-3 text-grey-lighter text-md">Restaurant</h2>
+                                                    <h2 className="col-span-1 ml-2">&nbsp;</h2>
+                                                    <h2 className="col-span-3 text-grey-lighter text-md px-5">Restaurant</h2>
                                                     <h2 className="col-span-3 text-grey-lighter text-md">Date / Time</h2>
                                                     <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Status</h2>
                                                     <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Orders</h2>

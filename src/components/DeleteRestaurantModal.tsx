@@ -38,7 +38,7 @@ const DeleteRestaurantModal = (props: any) => {
                 <img className="px-5 h-56 mx-auto" src="/images/delete.png" alt="create" />
                 <div className="px-16">
                     <h1 className="flex text-3xl text-green-standard font-bold mt-3">Delete Restaurant</h1>
-                    <h1 className="flex text-base mb-2 text-grey-standard font-light ">Are you sure you want to delete this restaurant:</h1>
+                    <h1 className="flex text-base mb-2 text-grey-standard font-light ">Are you sure you want to delete this restaurant? This action cannot be undone</h1>
                     <div className="justify-center items-center">
                         <div className="grid grid-cols-3">
                             <div>

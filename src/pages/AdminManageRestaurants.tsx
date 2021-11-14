@@ -52,10 +52,9 @@ const AdminManageRestaurants = () => {
                         <button className="ml-auto mr-56 grid bg-green-standard opacity-95 hover:opacity-100 my-5 text-white-standard shadow hover:shadow-md px-8 py-1 rounded-lg"
                             onClick={() => { setCreateRestaurant(true) }}>Add New Restaurant</button>
 
-
                         <div className="mx-56 px-8 overflow-auto bg-white-creamWhite pt-6 pb-8 rounded-lg shadow-md mb-2">
 
-                            <div className="px-8 pb-5 grid grid-cols-9 gap-x-6">
+                            <div className="pl-8 pb-5 grid grid-cols-9 gap-x-6">
                                 <div className="col-span-1"></div>
                                 <p className="col-span-1 text-base text-grey-dark">ID</p>
                                 <p className="col-span-2 text-base text-grey-dark">Restaurant Name</p>
@@ -64,18 +63,16 @@ const AdminManageRestaurants = () => {
                             <div className="flex justify-center items-center bg-white-standard rouded-lg">
                                 {restaurants.length === 0 && <Loading />}
                             </div>
-                            {/* <div className="grid grid-cols-1 gap-y-3 items-center"> */}
-                                {
-                                    restaurants?.map(
-                                        (restaurant: any) => {
-                                            console.log(restaurant);
-                                            return (
-                                                <AdminRestaurantListing key={restaurant.restaurantId} {...{ restaurant }} />
-                                            )
-                                        }
-                                    )
-                                }
-                            {/* </div> */}
+                            {
+                                restaurants?.map(
+                                    (restaurant: any) => {
+                                        console.log(restaurant);
+                                        return (
+                                            <AdminRestaurantListing key={restaurant.restaurantId} {...{ restaurant }} />
+                                        )
+                                    }
+                                )
+                            }
                         </div>
                         <PageLinks {...{ numPages, currPage, setCurrPage }} />
 
