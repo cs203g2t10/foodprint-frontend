@@ -63,6 +63,10 @@ class ReservationService {
         };
         return axios.patch(url, requestBody, this.headers());
     }
+
+    getSlots = (restaurantId: number) => {
+        return axios.get(`${RESERVATIONS_REST_API_URL}/slots/${restaurantId}`, this.headers());
+    }
 }
 
 export default new ReservationService();

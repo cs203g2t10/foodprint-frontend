@@ -7,6 +7,7 @@ import { useAppContext } from '../lib/AppContext';
 import LogInService, { UserDetails } from '../services/LogInService';
 import { BeatLoader } from 'react-spinners';
 import { AiOutlineClose } from 'react-icons/ai';
+import moment from 'moment';
 
 Modal.setAppElement('#root')
 
@@ -27,6 +28,7 @@ const ReservationModal = (
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [afterDiscount, setAfterDiscount] = useState(0);
+    const [availableSlots, setAvailableSlots] = useState<any[]>([]);
 
     useEffect(() => {
         const userInfo: UserDetails = LogInService.getUserDetails();
@@ -39,14 +41,19 @@ const ReservationModal = (
         setAfterDiscount(totalPrice - (totalPrice * discount / 100));
     }, [totalPrice, discount]);
 
-    const filterAcceptableTimings = (time: any) => {
-        const currentDate = new Date()
-        const selectedDate = new Date(time)
-        // const opening = restaurantDetails.restaurantWeekdayOpeningHour * 3600000 + restaurantDetails.restaurantWeekdayOpeningMinutes * 60000;
-        // const closing = restaurantDetails.restaurantWeekdayClosingHour * 3600000 + restaurantDetails.restaurantWeekdayClosingMinutes * 60000;
-        // return currentDate.getTime() < selectedDate.getTime() && selectedDate.getTime() > opening && selectedDate.getTime() < closing;
-        return currentDate.getTime() < selectedDate.getTime()
-    };
+
+    useEffect(() => {
+        ReservationService.getSlots(id.id).then((resp) => {
+            var newDateArray: Date[] = [];
+            var dates = resp.data;
+            for(let i = 0; i <= dates.length; i++) {
+                let date = moment(dates[i]).toDate()
+                newDateArray.push(date)
+            }
+            console.log(newDateArray);
+            setAvailableSlots(newDateArray);
+        });
+    }, [modalIsOpen]);
 
     const makeReservation = () => {
         setError("");
@@ -149,9 +156,13 @@ const ReservationModal = (
                     }
                     <div className="flex mb-5">
                         <h1 className="flex text-md text-green-standard mr-5">Booking: </h1>
-                        <DatePicker selected={bookingDate} onChange={(date: Date) => { setBookingDate(date); setSelectDate(false) }} showTimeSelect
-                            dateFormat="d/MM/yyyy, h:mm aa" className="flex flex-col focus:outline-none rounded-xl shadow-sm py-1 w-full pl-5"
-                            minDate={new Date()} filterTime={filterAcceptableTimings} disabled={reserved}
+                        <DatePicker selected={bookingDate} onChange={(date: Date) => { setBookingDate(date); setSelectDate(false) }}
+                            showTimeSelect
+                            includeTimes={availableSlots}
+                            includeDates={availableSlots}
+                            dateFormat="d/MM/yyyy, h:mm aa" 
+                            className="flex flex-col focus:outline-none rounded-xl shadow-sm py-1 w-full pl-5"
+                            disabled={reserved}
                         />
                     </div>
 
