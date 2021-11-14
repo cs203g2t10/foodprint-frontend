@@ -8,7 +8,7 @@ const AdminRestaurantListing = (props: any) => {
     const [deleteRestaurantModal, setDeleteRestaurantModal] = useState(false);
 
     return (
-        <div className="grid grid-cols-9 gap-x-6 mx-6  rounded-large py-2 px-4">
+        <div className="grid grid-cols-9 gap-x-6 ml-8 rounded-large py-2">
             {
                 restaurant.picture ?
                     <img className="col-span-1 h-12 w-12 rounded-lg shadow object-cover" src={restaurant.picture?.url} alt={restaurant.restaurantName} />
