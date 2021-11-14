@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useAppContext } from '../lib/AppContext';
 import LogInService, { UserDetails } from '../services/LogInService';
 import { BeatLoader } from 'react-spinners';
+import { AiOutlineClose } from 'react-icons/ai';
 
 Modal.setAppElement('#root')
 
@@ -84,7 +85,8 @@ const ReservationModal = (
     };
 
     return <Modal isOpen={modalIsOpen} className="mt-20 focus:outline-none" style={customStyles}>
-        <div className="grid justify-center items-center gap-y-2 m-10 rounded-xxl shadow lg:mx-64 pb-10 bg-white-dirtyWhite">
+        <div className="grid justify-center items-center gap-y-2 m-10 rounded-lg shadow lg:mx-64 pb-10 bg-white-dirtyWhite relative">
+        <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setModal(false)}> <AiOutlineClose className="h-4 w-4" /> </button>
             <h1 className=" flex text-5xl pt-12 text-green-standard mx-20 font-bold">Reservation</h1>
             <h1 className=" flex text-md mx-20 mb-2 text-grey-standard font-light">Please confirm your order below </h1>
             <div className="grid lg:grid-cols-2 gap-x-16 mx-20">
@@ -140,7 +142,7 @@ const ReservationModal = (
                         <input className="flex focus:outline-none rounded-xl w-full pl-5 py-1 shadow-sm"
                             placeholder="0" type="number" min="1" max="5"
                             onChange={(e) => setPax(parseInt(e.target.value))}
-                            value={pax} required></input>
+                            value={pax} required disabled={reserved}></input>
                     </div>
                     {
                         (selectDate ? <h1 className="text-red-standard text-base">Please select a booking slot</h1> : <></>)
@@ -149,7 +151,7 @@ const ReservationModal = (
                         <h1 className="flex text-md text-green-standard mr-5">Booking: </h1>
                         <DatePicker selected={bookingDate} onChange={(date: Date) => { setBookingDate(date); setSelectDate(false) }} showTimeSelect
                             dateFormat="d/MM/yyyy, h:mm aa" className="flex flex-col focus:outline-none rounded-xl shadow-sm py-1 w-full pl-5"
-                            minDate={new Date()} filterTime={filterAcceptableTimings}
+                            minDate={new Date()} filterTime={filterAcceptableTimings} disabled={reserved}
                         />
                     </div>
 
@@ -162,6 +164,7 @@ const ReservationModal = (
                                     type="checkbox"
                                     id="checkbox"
                                     checked={vaxCheckBox}
+                                    disabled={reserved}
                                     onChange={(e: ChangeEvent<HTMLInputElement>) => {
                                         setVaxCheckBox(e.target.type === 'checkbox' ? e.target.checked : (e.target.value === 'true'));
                                     }} 
@@ -180,9 +183,9 @@ const ReservationModal = (
                         {
                             reserved ?
                                 <div className="col-span-2">
-                                    <div className="pb-3 text-green-standard text-center">Your reservation is successful!</div>
+                                    <div className="pb-1 text-green-standard text-center">Your reservation is successful!</div>
                                     <div className="flex justify-center">
-                                        <Link to={"/payment/" + reservationId} className="bg-green-standard text-center py-1 rounded-xl shadow hover:shadow-md text-white-standard px-10">Make deposit to confirm</Link>
+                                        <Link to={"/payment/" + reservationId} className="bg-green-standard text-center py-1 rounded-lg shadow hover:shadow-md text-white-standard px-10">Make deposit to confirm</Link>
                                     </div>
                                 </div>
                                 :
@@ -198,11 +201,11 @@ const ReservationModal = (
                                                 }
                                             </span>
                                         </button>
-                                        <button className="text-green-standard px-3 py-1 rounded-xl shadow-md hover:shadow-lg border border-green-standard" onClick={() => setModal(false)}>Edit order</button>
+                                        <button className="text-green-standard px-3 py-1 rounded-lg shadow-md hover:shadow-lg border border-green-standard" onClick={() => setModal(false)}>Edit order</button>
                                     </> : <>
                                         <h1 className="text-sm text-grey-lighter col-span-2 pb-2 mt-3">Please <Link to="/login" className="text-green-standard">log in</Link> or <Link to="/register" className="text-green-standard">register</Link> to make a reservation:</h1>
                                         <div className="col-span-2 flex">
-                                            <button className="text-green-standard px-7 py-1 rounded-xl shadow-md hover:shadow-lg border border-green-standard mt-2" onClick={() => setModal(false)}>Return</button>
+                                            <button className="text-green-standard px-7 py-1 rounded-lg shadow-md hover:shadow-lg border border-green-standard mt-2" onClick={() => setModal(false)}>Return</button>
                                         </div>
                                     </>)
                         }
