@@ -9,6 +9,7 @@ import RestaurantFood from '../components/RestaurantFood';
 import Loading from '../components/Loading';
 import { AiFillHeart } from 'react-icons/ai';
 import { useAppContext } from '../lib/AppContext';
+import { PuffLoader } from 'react-spinners';
 
 const Restaurant = () => {
 
@@ -26,27 +27,32 @@ const Restaurant = () => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [discount, setDiscount] = useState(0);
     const [loading, setLoading] = useState(false);
+    const [favLoading, setFavLoading] = useState(false);
 
     const [isFavourite, setIsFavourite] = useState(false)
 
     const addRestaurantToFav: any = (id: number) => {
-        console.log("HELLO ADDING FAV")
-        console.log(id);
+        setFavLoading(true);
         UserService.addRestaurantToFav(id).then((response) => {
             console.log(response);
             setIsFavourite(true);
+            setFavLoading(false);
         }).catch((error) => {
             console.log(error.response);
+            setFavLoading(false);
         })
     }
 
     const deleteFavourite: any = (id: number) => {
+        setFavLoading(true);
         console.log(id)
         UserService.deleteFavRestaurant(id).then((response) => {
             console.log(response);
             setIsFavourite(false);
+            setFavLoading(false);
         }).catch((error) => {
             console.log(error.response);
+            setFavLoading(false);
         })
     }
 
@@ -131,17 +137,24 @@ const Restaurant = () => {
                             <h1 className="text-4xl md:text-6xl font-bold tracking-wide text-green-standard flex items-center gap-x-4">
                                 {restaurantDetails.restaurantName}
                                 {
-                                    isAuthenticated && !loading &&
-                                    (isFavourite ?
-                                        <AiFillHeart className="text-6xl my-auto pt-4 text-red-standard opacity-100 hover:opacity-90"
-                                            onClick={() => {
-                                                deleteFavourite(restaurantDetails.restaurantId);
-                                            }} />
-                                        : <AiFillHeart className="text-6xl my-auto pt-4 text-grey-standard opacity-60 hover:text-red-standard hover:opacity-90"
-                                            onClick={() => {
-                                                addRestaurantToFav(restaurantDetails.restaurantId);
-                                            }}
-                                        />)
+                                    isAuthenticated &&
+                                    (
+                                        favLoading ?
+                                            <div className="pl-3 pb-7">
+                                                <PuffLoader size="40" color="green"/>
+                                            </div> :
+                                            (isFavourite ?
+                                                <AiFillHeart className="text-6xl my-auto pt-4 text-red-standard opacity-100 hover:opacity-90"
+                                                    onClick={() => {
+                                                        deleteFavourite(restaurantDetails.restaurantId);
+                                                    }} />
+                                                : <AiFillHeart className="text-6xl my-auto pt-4 text-grey-standard opacity-60 hover:text-red-standard hover:opacity-90"
+                                                    onClick={() => {
+                                                        addRestaurantToFav(restaurantDetails.restaurantId);
+                                                    }}
+                                                />)
+                                    )
+
                                 }
                             </h1>
 
@@ -161,7 +174,7 @@ const Restaurant = () => {
             </div>
 
             <div className="grid items-end mx-16 md:mx-0 md:justify-end md:mr-24">
-                <button className=" text-white-standard py-2 px-5 bg-green-standard rounded-xl shadow-md hover:shadow-lg" onClick={makeReservationButtonClick}>Make Reservation</button>
+                <button className=" text-white-standard py-2 px-5 bg-green-standard rounded-lg shadow-md hover:shadow-lg" onClick={makeReservationButtonClick}>Make Reservation</button>
             </div>
             {haveFood &&
                 <h1 className="text-right text-red-standard mr-24">Please select some food</h1>
