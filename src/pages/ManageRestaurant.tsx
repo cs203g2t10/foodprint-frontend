@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import ChangeRestaurantPicModal from '../components/ChangeRestaurantPicModal';
 import CreateFoodModal from '../components/CreateFoodModal';
 import DiscountModal from '../components/DiscountModal';
@@ -25,6 +26,7 @@ const ManageRestaurant = () => {
     const [editDetails, setEditDetails] = useState(false);
     const [changePic, setChangePic] = useState(false);
     const [editDiscount, setEditDiscount] = useState(false);
+    const [ingredientsLink, setIngredientsLink] = useState("");
 
     useEffect(() => {
         console.log('params are', params);
@@ -36,9 +38,11 @@ const ManageRestaurant = () => {
             }
             setRestaurantId(userInfo.restaurantId);
             setAuthorized(true);
+            setIngredientsLink("/manageingredients");
         } else if (userInfo.userAuthorities.includes("FP_ADMIN")) {
             setRestaurantId(params.id);
             setAuthorized(true);
+            setIngredientsLink("/manageingredients/" + params.id);
         } else {
             return;
         }
@@ -127,6 +131,8 @@ const ManageRestaurant = () => {
                     <div className="flex justify-between">
                         <h1 className="pl-4 text-5xl text-grey-standard font-semibold pb-3">Menu</h1>
                         <div className="flex gap-x-4">
+                            <Link className="bg-green-standard text-1xl text-white-standard opacity-90 hover:opacity-100 px-5 py-1 my-auto rounded-lg shadow-md hover:shadow-lg text-center"
+                                to={ingredientsLink} >Manage Ingredients</Link>
                             <button className="bg-green-standard text-1xl text-white-standard opacity-90 hover:opacity-100 px-5 h-8 my-auto rounded-lg shadow-md hover:shadow-lg"
                                 onClick={() => { setEditDiscount(true) }}>Manage Discount</button>
                             <button className="bg-green-standard text-1xl text-white-standard opacity-90 hover:opacity-100 px-5 h-8 my-auto rounded-lg shadow-md hover:shadow-lg"
