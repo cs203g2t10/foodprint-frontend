@@ -7,10 +7,9 @@ const SearchBar = (props: any) => {
     const restaurantSortRef = useRef<HTMLSelectElement>(null);
     const restaurantSearchBoxRef = useRef<HTMLInputElement>(null);
     const restaurantSortDescRef = useRef<HTMLInputElement>(null);
-    const { changeRestaurants } = props;
+    const { changeRestaurants, setLoading } = props;
 
     const onChangeFunction = async (event: any) => {
-
         if (restaurantSearchBoxRef.current == null
             || restaurantSortRef.current == null
             || restaurantSortDescRef.current == null) {
@@ -21,11 +20,15 @@ const SearchBar = (props: any) => {
         const sortBy = restaurantSortRef.current.value;
         const sortDesc = restaurantSortDescRef.current.checked;
 
+        setLoading(true);
+        changeRestaurants([]);
+
         console.log("%s %s", searchQuery, sortBy)
 
         RestaurantService.searchRestaurant(searchQuery, sortBy, sortDesc).then((suggestions) => {
             const searchResults = suggestions.data.content;
             changeRestaurants(searchResults);
+            setLoading(false);
         });
     }
 

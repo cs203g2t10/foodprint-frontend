@@ -53,7 +53,7 @@ const Payment = () => {
                                     return <div key={lineItem.reservationId} >
                                         <div className="mx-8 grid grid-cols-7 bg-white-standard rounded-xl justify-center items-center py-2 mb-3 ">
                                             <div className="col-span-2 ml-8">
-                                                <img src={imageUrl} className=" w-14 h-14 shadow-md rounded-full" alt="food pic" />
+                                                <img src={imageUrl} className=" w-14 h-14 shadow-md rounded-full object-cover" alt="food pic" />
                                             </div>
                                             <div className="col-span-4 mx-5">
                                                 <h1 className="text-grey-dark text-base">{lineItem.foodName}</h1>
@@ -87,8 +87,8 @@ const Payment = () => {
                                 <div className="">
                                     <h1 className="text-center pb-4 text-green-standard">You have already paid!</h1>
                                     <div className="flex justify-center items-center gap-x-10">
-                                        <Link to={"/"} className="text-center bg-green-standard text-white-standard rounded-xl shadow-md hover:shadow-lg px-6 py-1">Back to Home</Link>
-                                        <Link to={"/profile"} className=" text-center bg-green-standard text-white-standard  rounded-xl shadow-md hover:shadow-lg px-6 py-1">Back to Profile</Link>
+                                        <Link to={"/"} className="text-center bg-green-standard text-white-standard rounded-lg shadow-md hover:shadow-lg px-6 py-1">Back to Home</Link>
+                                        <Link to={"/profile"} className=" text-center bg-green-standard text-white-standard  rounded-lg shadow-md hover:shadow-lg px-6 py-1">Back to Profile</Link>
                                     </div>
 
                                 </div>

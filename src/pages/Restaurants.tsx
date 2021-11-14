@@ -8,6 +8,7 @@ import Loading from '../components/Loading'
 const Restaurants = () => {
     const [restaurants, setRestaurants] = useState<any[]>([])
     const [categories, setCategories] = useState<any[]>([])
+    const [loading, setLoading] = useState(false);
 
     const changeRestaurants = (restaurantData: any) => {
         setRestaurants(restaurantData)
@@ -18,8 +19,10 @@ const Restaurants = () => {
     }
 
     useEffect(() => {
+        setLoading(true);
         RestaurantService.getRestaurants().then((response) => {
             changeRestaurants(response.data)
+            setLoading(false);
         })
     }, [])
 
@@ -34,7 +37,7 @@ const Restaurants = () => {
             <div className="bg-yellow-standard">
                 <img className="h-28 mx-auto pt-3" src="/images/burgers.png" alt="burger" />
                 <h1 className="flex text-center justify-center text-3xl font-bold tracking-wide text-grey-dark">Make reservations, reduce food waste and save money</h1>
-                <SearchBar changeRestaurants={changeRestaurants} />
+                <SearchBar {...{ changeRestaurants, setLoading }} />
                 <div className="pb-3"></div>
             </div>
 
@@ -66,7 +69,7 @@ const Restaurants = () => {
                 }
             </div>
             {
-                restaurants.length === 0 &&
+                loading &&
                 <div className="flex justify-center">
                     <Loading />
                 </div>
