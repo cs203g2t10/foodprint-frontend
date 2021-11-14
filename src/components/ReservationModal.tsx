@@ -53,7 +53,7 @@ const ReservationModal = (
             console.log(newDateArray);
             setAvailableSlots(newDateArray);
         });
-    }, [modalIsOpen]);
+    }, [modalIsOpen, id]);
 
     const makeReservation = () => {
         setError("");
