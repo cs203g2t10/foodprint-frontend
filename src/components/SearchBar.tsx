@@ -52,7 +52,8 @@ const SearchBar = (props: any) => {
                 <div className="mt-8 md:flex items-center gap-x-2">
                     <label htmlFor="restaurantSort" className="text-green-standard">Sort By: </label>
                     <select name="restaurantSort" className="rounded-large h-10 px-3 text-grey-standard shadow-md" id="restaurantSort" ref={restaurantSortRef} onChange={onChangeFunction}>
-                        <option value="restaurantId">Restaurant ID</option>
+                        <option value="restaurantId">New</option>
+                        <option value="discount.discountPercentage">Discount %</option>
                         <option value="restaurantName">Restaurant Name</option>
                         <option value="restaurantPriceRange">Price Range</option>
                     </select>
