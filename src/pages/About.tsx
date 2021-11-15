@@ -40,13 +40,13 @@ const About = () => {
     return (
         <div className="min-h-screen">
             <div className="absolute z-10 px-3 overflow-hidden">
-                <div className="grid md:grid-cols-7 gap-4 h-screen px-10 py-20 md:py-0">
+                <div className="grid md:grid-cols-7 gap-4 h-screen px-10 md:py-20 ">
                     <div className="border-1 md:col-span-4 md:pl-36">
-                        <h1 className="text-left md:pt-36 text-7xl font-semibold tracking-wide text-green-standard leading-12 pb-2 animate__animated animate__fadeIn">Reducing <br /> Food Wastage</h1>
-                        <h1 className="text-base text-grey-standard pr-10 pt-2">Here at foodprint, we support F&B establishments in their journey towards reducing food wastage. We provide an innovative solution to better manage food inventories, based on the level of demand. This is especially helpful during such unpredictable times, in light of the current pandemic.</h1>
+                        <h1 className="text-left md:pt-20 md:text-7xl font-semibold tracking-wide text-green-standard text-xl md:leading-12 pb-2 animate__animated animate__fadeIn ">Reducing Food Wastage</h1>
+                        <h1 className="md:text-base text-xs text-grey-standard pr-10 pt-2 text-center md:text-left">Here at foodprint, we support for F&B establishments in their journey towards reducing food wastage. We offer an innovative solution to better manage food inventories based on the level of demand. This is especially helpful during such unpredictable times, in light of the current pandemic.</h1>
                     </div>
-                    <div className="md:col-span-3 pt-24">
-                        <img className="transform scale-90" src="/images/landingPage.webp" alt="cooking illustration" />
+                    <div className="md:col-span-3 md:pt-10">
+                        <img className="transform scale-90 hidden md:block" src="/images/landingPage.webp" alt="cooking illustration" />
                     </div>
                 </div>
             </div>
@@ -58,11 +58,11 @@ const About = () => {
                     <use xlinkHref="#gentle-wave" x="100" y="-25" fill="rgba(243, 232, 201, 1)" />
                 </g>
             </svg>
-            <div className="grid grid-cols-2 mt-10 mb-16">
+            <div className="grid md:grid-cols-2 mt-10 mb-16">
                 <motion.div ref={ref} className="Box" initial="hidden" animate={controls} variants={fadeInLeft}>
                     <img className="transform scale-60" src="/images/story.png" alt="our story" />
                 </motion.div>
-                <motion.div className="my-auto mr-52" ref={ref} initial="hidden" animate={controls} variants={fadeInRight}>
+                <motion.div className="md:my-auto md:mr-52 md:text-left text-center mx-5" ref={ref} initial="hidden" animate={controls} variants={fadeInRight}>
                     <h1 className="text-green-standard tracking-widest font-semibold text-xl mb-5">OUR STORY</h1>
                     <h1 className="text-grey-standard text-base">FoodPrint was started in 2021 by a group of SMU undergraduates who are passionate about using technology to solve persisting problems within our community.</h1>
                     <h1 className="text-grey-standard text-base mt-3">Especially during trying times when COVID-19 hit, we saw that F&B establishments face huge difficulty in managing their inventories, worsening the issue of food wastage.</h1>
@@ -71,7 +71,7 @@ const About = () => {
             </div>
             <div className="mb-44">
                 <h1 className="text-green-standard tracking-widest font-semibold text-xl mb-10 text-center">MEET THE TEAM</h1>
-                <div className="grid grid-cols-6 mx-28">
+                <div className="grid md:grid-cols-6 grid-cols-2 md:mx-28 gap-y-6">
                     <AboutUsTeam linkedIn="https://www.linkedin.com/in/cherie-lim-hui-ting/" name="Cherie Lim" role="Developer" imgUrl="/images/cherie.png" />
                     <AboutUsTeam linkedIn="https://www.linkedin.com/in/michelle-tan-2a124a1b9/" name="Michelle Tan" role="Developer" imgUrl="/images/michelle.jpg" />
                     <AboutUsTeam linkedIn="https://www.linkedin.com/in/yvonnelhs/" name="Yvonne Lim" role="Developer" imgUrl="/images/von.jpg" />
