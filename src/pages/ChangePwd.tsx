@@ -68,9 +68,9 @@ const ChangePwd = () => {
     return (
         <div className="bg-yellow-standard h-screen ">
             <div className="flex justify-center">
-                <div className="mt-32 mb-10 px-16 bg-white-standard w-7/12 py-14 grid md:grid-cols-2 shadow-xxl shadow rounded-xxl">
+                <div className="mt-32 mb-10 px-16 bg-white-standard md:w-7/12 mx-5 py-14 grid md:grid-cols-2 shadow-xxl shadow rounded-xxl">
                     <div>
-                        <h1 className="text-4xl tracking-wide font-semibold mb-4 text-green-standard">Change Password</h1>
+                        <h1 className="text-2xl md:text-4xl tracking-wide font-semibold mb-4 text-green-standard">Change Password</h1>
                         <h2 className="text-grey-lighter mb-1">Enter old and new password</h2>
                         <div className="mb-4">
                             <input className="focus:outline-none px-4 py-1 mt-4 h-10 rounded-full border border-grey-lightest md:w-11/12"
@@ -95,7 +95,7 @@ const ChangePwd = () => {
                         {
                             (success ? <div className="text-green-standard mt-2">Your password has been successfully changed!</div>
                                 : <div className="flex">
-                                    <button className="rounded-full px-4 text-white-standard bg-green-standard hover:shadow text-center mt-2 h-8 md:w-48"
+                                    <button className="rounded-lg px-4 text-white-standard bg-green-standard hover:shadow text-center mt-2 h-8 md:w-48"
                                         onClick={update}>
                                         {
                                             loading ? <BeatLoader size="9" color="#daeddb" />
@@ -106,7 +106,7 @@ const ChangePwd = () => {
                         }
                     </div>
                     <div>
-                        <img className="mt-8 my-7 transform scale-90" src="/images/changePwd.png" alt="change password illustration" style={{ 'borderRadius': '25px' }} />
+                        <img className="mt-8 my-7 transform scale-90 hidden md:block" src="/images/changePwd.png" alt="change password illustration" style={{ 'borderRadius': '25px' }} />
                     </div>
                 </div>
             </div>
