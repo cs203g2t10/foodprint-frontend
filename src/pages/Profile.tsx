@@ -144,10 +144,10 @@ const Profile = () => {
                                             (upcomingReservation.length > 0) ?
                                                 <div className="grid md:grid-cols-12 grid-cols-11 mb-2 gap-x-3">
                                                     <h2 className="md:col-span-1 md:ml-2 hidden md:block">&nbsp;</h2>
-                                                    <h2 className="col-span-3 text-grey-lighter text-md md:px-5">Restaurant</h2>
-                                                    <h2 className="col-span-3 text-grey-lighter text-md">Date / Time</h2>
-                                                    <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Status</h2>
-                                                    <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Orders</h2>
+                                                    <h2 className="col-span-3 text-grey-lighter text-sm md:text-md md:px-5">Restaurant</h2>
+                                                    <h2 className="col-span-3 text-grey-lighter text-sm md:text-md">Date / Time</h2>
+                                                    <h2 className="col-span-2 text-grey-lighter text-sm md:text-md mx-auto">Status</h2>
+                                                    <h2 className="col-span-2 text-grey-lighter text-sm md:text-md mx-auto">Orders</h2>
                                                     <h2 className="col-span-1">&nbsp;</h2>
                                                 </div>
                                                 :
@@ -180,10 +180,10 @@ const Profile = () => {
                                             (pastReservation.length > 0) ?
                                                 <div className="grid md:grid-cols-12 grid-cols-11 mb-2 gap-x-3">
                                                     <h2 className="col-span-1 md:ml-2 hidden md:block">&nbsp;</h2>
-                                                    <h2 className="col-span-3 text-grey-lighter text-md md:px-5">Restaurant</h2>
-                                                    <h2 className="col-span-3 text-grey-lighter text-md">Date / Time</h2>
-                                                    <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Status</h2>
-                                                    <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Orders</h2>
+                                                    <h2 className="col-span-3 text-grey-lighter text-sm md:text-md md:px-5">Restaurant</h2>
+                                                    <h2 className="col-span-3 text-grey-lighter text-sm md:text-md">Date / Time</h2>
+                                                    <h2 className="col-span-2 text-grey-lighter text-sm md:text-md mx-auto">Status</h2>
+                                                    <h2 className="col-span-2 text-grey-lighter text-sm md:text-md mx-auto">Orders</h2>
                                                     <h2 className="col-span-1">&nbsp;</h2>
                                                 </div>
                                                 :
