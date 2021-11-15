@@ -134,7 +134,7 @@ const Profile = () => {
 
                         <div className="col-span-7 h-full">
                             <div className="bg-white-dirtyWhite md:rounded-xxl rounded-lg shadow-md h-96 md:px-10 px-4 py-6 mb-14">
-                                <h1 className="text-green-standard text-2xl font-bold tracking-wide pb-3">Upcoming Reservations</h1>
+                                <h1 className="text-green-standard text-2xl font-bold tracking-wide pb-3 md:px-0 px-6">Upcoming Reservations</h1>
                                 {
                                     upcomingLoading ?
                                         <div className="flex bg-white-standard justify-center items-center rounded-lg">
@@ -170,7 +170,7 @@ const Profile = () => {
                                 </div>
                             </div>
                             <div className="bg-white-dirtyWhite md:rounded-xxl rounded-lg h-96 shadow-md md:px-10 px-4 py-6">
-                                <h1 className="text-green-standard text-2xl font-bold tracking-wide pb-3">Past Reservations</h1>
+                                <h1 className="text-green-standard text-2xl font-bold tracking-wide pb-3 md:px-0 px-6">Past Reservations</h1>
                                 {
                                     pastLoading ?
                                         <div className="flex bg-white-standard justify-center items-center rounded-lg">
