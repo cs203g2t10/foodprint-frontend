@@ -70,22 +70,22 @@ const Profile = () => {
                 <>
                     <div className="">
                         <div className="absolute z-10">
-                            <div className="grid grid-cols-7 gap-x-16 mx-32 my-10">
+                            <div className="grid md:grid-cols-7 md:gap-x-16 gap-x-4 md:mx-32 mx-10 my-10 mb-32 md:mb-0">
                                 <div className="col-span-2">
-                                    <img className="h-48" src="/images/user.png" alt="user" />
+                                    <img className="md:h-48 md:w-48 h-28 w-28 object-cover" src="/images/user.png" alt="user" />
                                 </div>
                                 <div className="col-span-5">
-                                    <h1 className="text-6xl text-green-standard">Hello {userName}!</h1>
+                                    <h1 className="md:text-6xl text-3xl text-green-standard">Hello {userName}!</h1>
                                     {
                                         vaccinated ? <h1 className="text text-gray-600">Vaccination Status: Verified</h1>
                                             : <>
                                                 <h1 className="text text-gray-600 mb-4">Vaccination Status: Unverified</h1>
-                                                <Link to="/vaccinationcheck" className="px-6 py-1 bg-green-standard text-white-standard rounded-full ">Get Verified</Link></>
+                                                <Link to="/vaccinationcheck" className="px-6 py-1 bg-green-standard text-white-standard rounded-lg ">Get Verified</Link></>
                                     }
                                 </div>
                             </div>
                         </div>
-                        <svg className="h-72 waves w-full transform -rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="100 20 130 70" preserveAspectRatio="none" shapeRendering="auto">
+                        <svg className="md:h-72 h-96 waves w-full transform -rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="100 20 130 70" preserveAspectRatio="none" shapeRendering="auto">
                             <defs>
                                 <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
                             </defs>
@@ -96,11 +96,11 @@ const Profile = () => {
                     </div>
 
                     {
-                        (deletemessage ? <h1 className="text-red-standard text-right mr-40 mb-3">{deletemessage}</h1> : <></>)
+                        (deletemessage ? <h1 className="text-red-standard text-right md:mr-40 mb-3">{deletemessage}</h1> : <></>)
                     }
 
-                    <div className="grid lg:grid-cols-11 gap-x-10 mx-20">
-                        <div className="col-span-4 bg-white-dirtyWhite rounded-xxl shadow-md px-10 py-6 h-auto">
+                    <div className="md:grid lg:grid-cols-11 md:gap-x-10 md:mx-20 mx-4 md:mb-0 mb-20">
+                        <div className="col-span-4 bg-white-dirtyWhite rounded-xxl shadow-md px-10 py-6 h-auto md:mb-0 mb-8">
                             <h1 className="text-green-standard text-2xl font-bold tracking-wide ml-3 mb-8">Favourite Restaurants</h1>
                             {
                                 favLoading ?
@@ -133,7 +133,7 @@ const Profile = () => {
 
 
                         <div className="col-span-7 h-full">
-                            <div className="bg-white-dirtyWhite rounded-xxl shadow-md h-96 px-10 py-6 mb-14">
+                            <div className="bg-white-dirtyWhite md:rounded-xxl rounded-lg shadow-md h-96 md:px-10 px-4 py-6 mb-14">
                                 <h1 className="text-green-standard text-2xl font-bold tracking-wide pb-3">Upcoming Reservations</h1>
                                 {
                                     upcomingLoading ?
@@ -142,9 +142,9 @@ const Profile = () => {
                                         </div> :
                                         (
                                             (upcomingReservation.length > 0) ?
-                                                <div className="grid grid-cols-12 mb-2 gap-x-3">
-                                                    <h2 className="col-span-1 ml-2">&nbsp;</h2>
-                                                    <h2 className="col-span-3 text-grey-lighter text-md px-5">Restaurant</h2>
+                                                <div className="grid md:grid-cols-12 grid-cols-11 mb-2 gap-x-3">
+                                                    <h2 className="md:col-span-1 md:ml-2 hidden md:block">&nbsp;</h2>
+                                                    <h2 className="col-span-3 text-grey-lighter text-md md:px-5">Restaurant</h2>
                                                     <h2 className="col-span-3 text-grey-lighter text-md">Date / Time</h2>
                                                     <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Status</h2>
                                                     <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Orders</h2>
@@ -169,7 +169,7 @@ const Profile = () => {
 
                                 </div>
                             </div>
-                            <div className="bg-white-dirtyWhite rounded-xxl h-96 shadow-md px-10 py-6">
+                            <div className="bg-white-dirtyWhite md:rounded-xxl rounded-lg h-96 shadow-md md:px-10 px-4 py-6">
                                 <h1 className="text-green-standard text-2xl font-bold tracking-wide pb-3">Past Reservations</h1>
                                 {
                                     pastLoading ?
@@ -178,9 +178,9 @@ const Profile = () => {
                                         </div> :
                                         (
                                             (pastReservation.length > 0) ?
-                                                <div className="grid grid-cols-12 mb-2 gap-x-3">
-                                                    <h2 className="col-span-1 ml-2">&nbsp;</h2>
-                                                    <h2 className="col-span-3 text-grey-lighter text-md px-5">Restaurant</h2>
+                                                <div className="grid md:grid-cols-12 grid-cols-11 mb-2 gap-x-3">
+                                                    <h2 className="col-span-1 md:ml-2 hidden md:block">&nbsp;</h2>
+                                                    <h2 className="col-span-3 text-grey-lighter text-md md:px-5">Restaurant</h2>
                                                     <h2 className="col-span-3 text-grey-lighter text-md">Date / Time</h2>
                                                     <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Status</h2>
                                                     <h2 className="col-span-2 text-grey-lighter text-md mx-auto">Orders</h2>
