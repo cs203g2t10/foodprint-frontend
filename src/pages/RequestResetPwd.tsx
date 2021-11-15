@@ -34,7 +34,7 @@ const ResetPwd = () => {
             <div className="flex justify-center object-contain">
                 <div className="h-auto mt-36 bg-white-standard w-10/12 md:w-6/12 grid md:grid-cols-2 shadow-xxl rounded-xxl">
                     <div className="ml-16 mt-12">
-                        <h1 className="text-4xl font-bold mb-2 text-green-standard">Gold Fish Brain?</h1>
+                        <h1 className="text-2xl md:text-4xl font-bold mb-2 text-green-standard">Gold Fish Brain?</h1>
                         <h2 className="text-grey-lighter mb-5 text-sm">Enter the email associated with your account and we’ll send an email with instructions to reset your password.</h2>
                         <div className="mb-4">
                             <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-11/12"
@@ -43,8 +43,8 @@ const ResetPwd = () => {
                                 onChange={e => setEmail(e.target.value)} />
                         </div>
 
-                        <div className="pt-5 flex">
-                            <button className="rounded-xl px-5 bg-green-standard text-white-standard shadow-sm hover:shadow-md text-justify h-8 opacity-90 hover:opacity-100" disabled={!validateForm}
+                        <div className="py-5 flex">
+                            <button className="rounded-lg px-5 bg-green-standard text-white-standard shadow-sm hover:shadow-md text-justify h-8 opacity-90 hover:opacity-100" disabled={!validateForm}
                                 onClick={requestResetPwd}>
                                 <span id="button-text">
                                     {processing ? (
@@ -61,7 +61,7 @@ const ResetPwd = () => {
                     </div>
 
                     <div>
-                        <img className="object-fill w-full h-96 pl-5 rounded-xxl" src="/images/fish.png" alt="forgot password illustration" />
+                        <img className="hidden md:block object-fill w-full h-96 pl-5 rounded-xxl" src="/images/fish.png" alt="forgot password illustration" />
                     </div>
                 </div>
             </div>
