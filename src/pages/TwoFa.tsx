@@ -58,11 +58,11 @@ const TwoFa = () => {
         <div className="bg-yellow-standard h-screen">
             <div className="flex justify-center">
                 <div className="mt-32 p-10 bg-white-standard w-10/12 md:w-7/12 grid md:grid-cols-5 shadow-xxl shadow rounded-xxl">
-                    <img className="transform scale-90 col-span-2 my-auto grid" src="/images/twoFactorAuthentication.png" alt="2fa" />
+                    <img className="hidden md:block transform scale-90 col-span-2 my-auto " src="/images/twoFactorAuthentication.png" alt="2fa" />
                     <div className="col-span-3 py-5">
-                        <h1 className="text-4xl tracking-wide font-semibold mb-4 text-green-standard my-auto">{twoFaEnabled ? "Disable" : "Enable"} 2FA</h1>
+                        <h1 className="text-2xl md:text-4xl tracking-wide font-semibold mb-4 text-green-standard my-auto">{twoFaEnabled ? "Disable" : "Enable"} 2FA</h1>
 
-                        <div className="grid grid-cols-2">
+                        <div className="grid md:grid-cols-2 gap-y-5">
                             <div>
                                 {(
                                     twoFaEnabled ?
@@ -89,7 +89,7 @@ const TwoFa = () => {
                         </div>
 
 
-                        <div className="pr-20 pt-3">
+                        <div className="md:pr-20 pt-3">
                             <input className="focus:outline-none px-4 py-1 my-2 h-11 rounded-full border border-grey-lightest w-full"
                                 placeholder="OTP"
                                 type="number"
