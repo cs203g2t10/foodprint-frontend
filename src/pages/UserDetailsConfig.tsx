@@ -82,9 +82,9 @@ const UserDetailsConfig = () => {
     return (
         <div className="bg-yellow-standard h-screen ">
             <div className="flex justify-center">
-                <div className="mt-32 mb-10 bg-white-standard w-7/12 grid md:grid-cols-2 shadow-xxl shadow rounded-xxl">
+                <div className="mt-32 mb-10 bg-white-standard md:w-7/12 mx-4 grid md:grid-cols-2 shadow-xxl shadow rounded-xxl">
                     <div className="ml-16 my-auto">
-                        <h1 className="text-4xl tracking-wide font-semibold mb-4 text-green-standard">Update Details</h1>
+                        <h1 className="md:text-4xl text-2xl pt-5 tracking-wide font-semibold mb-4 text-green-standard">Update Details</h1>
                         <h2 className="text-grey-lighter mb-5">Make changes to fields you wish to update</h2>
 
                         <div className="mb-4 flex items-center">
@@ -165,7 +165,7 @@ const UserDetailsConfig = () => {
 
                     </div>
                     <div>
-                        <img className="transform scale-90" src="/images/UserDetailsConfig.png" alt="user details config illustration" style={{ 'borderRadius': '25px' }} />
+                        <img className="transform scale-90 md:block hidden" src="/images/UserDetailsConfig.png" alt="user details config illustration" style={{ 'borderRadius': '25px' }} />
                     </div>
                 </div>
             </div>
