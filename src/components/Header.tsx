@@ -27,7 +27,7 @@ const Header = () => {
     return (
         <div>
             <nav className="bg-yellow-standard relative">
-                <div className="px-4 mx-20 sm:px-6 lg:px-8 relative z-50">
+                <div className="px-4 md:mx-20 mx-4 sm:px-6 lg:px-8 relative z-50">
                     <div className="flex items-center justify-between h-16">
                         <Link to='/' className=" text-black px-1 py-2 rounded-md text-md font-medium">
                             foodprint
@@ -128,36 +128,22 @@ const Header = () => {
                     {(ref) => (
                         <>
                             <div className="md:hidden" id="mobile-menu">
-                                <div ref={ref} className="px-1 pt-2 pb-3 space-y-1 sm:px-1">
+                                <div ref={ref} className="px-4 pt-2 pb-3 space-y-1 sm:px-1 grid justify-end text-right">
                                     <Link to="/restaurants" className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
                                         Marketplace
                                     </Link>
                                     <Link to='/about' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
                                         About Us
                                     </Link>
-                                    {isUserAdmin() ? (
-                                        <>
-                                            <Link to='/ManageUser' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                                Management Console
-                                            </Link>
-                                        </>
-                                    ) : (
-                                        <>
-
-                                        </>
-                                    )
+                                    {isUserAdmin() &&
+                                        <Link to='/admin' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
+                                            Admin
+                                        </Link>
                                     }
-                                    {isUserManager() ? (
-                                        <>
-                                            <Link to='/manager' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                                Manage Restaurant
-                                            </Link>
-                                        </>
-                                    ) : (
-                                        <>
-
-                                        </>
-                                    )
+                                    {isUserManager() &&
+                                        <Link to='/manager' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
+                                            Manager
+                                        </Link>
                                     }
                                     {isAuthenticated ? (
                                         <>

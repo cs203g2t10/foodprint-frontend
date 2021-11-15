@@ -68,28 +68,34 @@ const Home = () => {
 
     return (
         <div className="w-full">
-
             <div className="grid grid-cols-6 absolute">
-                <img className="col-span-2 px-0 z-10 mt-28 -rotate-65 transform scale-110 xl:scale-90" src="/images/aboutUs.png" alt="about us" />
+                <img className="col-span-2 z-10 mt-28 -rotate-65 transform scale-110 xl:scale-90 opacity-0 md:opacity-100" src="/images/aboutUs.png" alt="deco pic" />
                 <div className="col-span-2"></div>
-                <img className="col-span-2 px-0 z-10 mt-56 -rotate-45 transform scale-90" src="/images/aboutUs2.png" alt="about us" />
+                <img className="col-span-2 z-10 mt-56 -rotate-45 transform scale-90 opacity-60 md:opacity-100" src="/images/aboutUs2.png" alt="deco pic 2" />
 
             </div>
-            <div className="absolute z-10 grid grid-cols-8">
+            <div className="absolute z-10 grid md:grid-cols-8">
                 <div className="col-span-2"></div>
-                <div className="col-span-4 px-10">
+                <div className="col-span-4 md:px-10 text-center">
                     <h1 className="sm:text-xs md:text-xl md:mt-24 lg:mt-52 text-center text-grey-standard animate__animated animate__fadeIn">
                         {isAuthenticated && 'Hello ' + getUserName() + '!'}
                     </h1>
-                    <h1 className="lg:text-6xl sm:text-4xl sm:leading-3 text-green-standard lg:leading-extra-tight text-center font-semibold tracking-wide">Discover and book the best restaurants.</h1>
+                    <h1 className="lg:text-6xl sm:text-4xl sm:leading-3 text-green-standard lg:leading-extra-tight text-center font-semibold tracking-wide"
+                    >Discover and book the best restaurants.</h1>
                     {
                         isAuthenticated ? <>
-                            <h1 className="text-center text-grey-standard text-base mt-5">Reserve a table, save with deals and reduce food wastage.</h1>
+                            <h1 className="text-center text-grey-standard text-base md:mt-5 mt-2 md:mx-0 mx-14 ">Reserve a table, save with deals and reduce food wastage.</h1>
                             <div className="flex justify-center items-center">
-                                <Link to="/restaurants" className="border border-green-standard mt-4 pt-2 pb-3 px-5 text-center text-green-standard hover:shadow-lg rounded-xl">Start browsing now!</Link>
+                                <Link to="/restaurants" className="border border-green-standard md:mt-4 mt-3 py-1 md:pt-2 md:pb-3 px-5 text-center text-green-standard hover:shadow-lg rounded-lg">
+                                    Start browsing now!
+                                </Link>
                             </div>
                         </> : <>
-                            <h1 className="text-center text-grey-lighter text-base mt-5"><Link to="/login" className="text-green-standard">Log in</Link> to an existing account, or get started by <Link to="/register" className="text-green-standard">registering</Link>!</h1>
+                            <h1 className="text-center text-grey-lighter text-base mt-5">
+                                <Link to="/login" className="text-green-standard">Log in</Link>
+                                to an existing account, or get started by
+                                <Link to="/register" className="text-green-standard">registering</Link>!
+                            </h1>
                         </>
                     }
                 </div>
@@ -103,8 +109,8 @@ const Home = () => {
                 </g>
             </svg>
 
-            <div className="overflow-hidden mt-10 w-full px-3 bg-white-standard">
-                <div className="grid md:grid-cols-2 gap-4 bg-white-standard md:pb-16 md:pl-12">
+            <div className="overflow-hidden mt-10 w-full px-3 bg-white-standard hidden md:block">
+                <div className="grid md:grid-cols-2 gap-4 bg-white-standard pb-16 pl-12">
                     <motion.div ref={ref} className="Box" initial="hidden" animate={controls} variants={fadeInLeft}>
                         <img className="transform scale-75" src="/images/landingPage2.webp" alt="landing page" />
                     </motion.div>
@@ -112,15 +118,15 @@ const Home = () => {
                         <h1 className="text-4xl md:pt-32 md:pr-64 font-bold">Reduce food waste and Save money</h1>
                         <h2 className="md:pt-4 md:pr-44 text-grey-light">Here at foodprint, we encourage restaurant reservation to help F&B establishments reduce food waste. </h2>
                         <div className="flex justify-left">
-                            <Link to="/restaurants" className="border border-green-standard mt-4 pt-2 pb-3 px-5 text-center text-green-standard hover:shadow-lg rounded-xl">Discover Restaurants</Link>
+                            <Link to="/restaurants" className="border border-green-standard mt-4 pt-2 pb-3 px-5 text-center text-green-standard hover:shadow-lg rounded-lg">Discover Restaurants</Link>
                         </div>
                     </motion.div>
                 </div>
             </div>
             {
                 isAuthenticated ?
-                    <div className="md:pl-24 md:pt-10 bg-white-standard md:pb-24 px-5">
-                        <h1 className="text-4xl md:pr-64 pl-1 font-extrabold pb-7">Your Favourites</h1>
+                    <div className="md:pl-24 md:pt-10 pt-4 bg-white-standard md:pb-24 px-5">
+                        <h1 className="text-4xl md:pr-64 pl-1 font-extrabold md:pb-7">Your Favourites</h1>
                         <div className="overflow-hidden h-full w-full pr-24">
                             <div className="flex flex-row gap-x-10 w-full overflow-auto h-auto py-5">
                                 {
@@ -141,9 +147,9 @@ const Home = () => {
                     : <></>
             }
 
-            <div className="md:pl-24 bg-white-standard pb-32 px-5">
-                <h1 className="text-4xl md:pr-64 pl-1 font-extrabold pb-7">Good deals</h1>
-                <div className="overflow-hidden h-full pr-20">
+            <div className="md:pl-24 bg-white-standard md:pb-32 pb-10 px-5">
+                <h1 className="text-4xl md:pr-64 pl-1 font-extrabold md:pb-7">Good deals</h1>
+                <div className="overflow-hidden h-full md:pr-20">
                     <div className="flex flex-row gap-x-10 w-full overflow-auto  h-auto py-5">
                         {
                             restaurants.map(restaurant => {
