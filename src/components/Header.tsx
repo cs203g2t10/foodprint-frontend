@@ -36,32 +36,44 @@ const Header = () => {
 
                             <div className="hidden md:block">
                                 <div className="ml-10 flex items-baseline space-x-4">
-
                                     <Link to='/restaurants' className=" text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
                                         Marketplace
                                     </Link>
-
                                     <Link to='/about' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">About Us</Link>
                                 </div>
                             </div>
                             <div className="hidden md:block self-end">
                                 <div className="flex items-baseline space-x-4">
                                     {isUserAdmin() &&
-                                        <Link to='/admin' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Admin</Link>
+                                        <Link to='/admin' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
+                                            Admin
+                                        </Link>
                                     }
                                     {isUserManager() &&
-                                        <Link to='/manager' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Manager</Link>
+                                        <Link to='/manager' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
+                                            Manager
+                                        </Link>
                                     }
                                     {isAuthenticated ? (
                                         <>
-                                            <Link to='/profile' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">{/*getUserName()*/}Profile</Link>
-                                            <Link to='/settings' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Settings</Link>
-                                            <Link onClick={handleLogout} to="/login" className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Logout</Link>
+                                            <Link to='/profile' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
+                                                Profile
+                                            </Link>
+                                            <Link to='/settings' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
+                                                Settings
+                                            </Link>
+                                            <Link onClick={handleLogout} to="/login" className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
+                                                Logout
+                                            </Link>
                                         </>
                                     ) : (
                                         <>
-                                            <Link to='/login' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Log In</Link>
-                                            <Link to='/register' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">Register</Link>
+                                            <Link to='/login' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
+                                                Log In
+                                            </Link>
+                                            <Link to='/register' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
+                                                Register
+                                            </Link>
                                         </>
                                     )
                                     }
@@ -126,54 +138,50 @@ const Header = () => {
                 >
 
                     {(ref) => (
-                        <>
-                            <div className="md:hidden" id="mobile-menu">
-                                <div ref={ref} className="px-4 pt-2 pb-3 space-y-1 sm:px-1 grid justify-end text-right">
-                                    <Link to="/restaurants" className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                        Marketplace
+                        <div className="md:hidden" id="mobile-menu">
+                            <div ref={ref} className="px-4 pt-2 pb-3 space-y-1 sm:px-1 grid justify-end text-right gap-y-3">
+                                <Link to="/restaurants" className="text-gray-700 hover:text-gray-900 rounded-md text-md font-medium">
+                                    Marketplace
+                                </Link>
+                                <Link to='/about' className="text-gray-700 hover:text-gray-900 rounded-md text-md font-medium">
+                                    About Us
+                                </Link>
+                                {isUserAdmin() &&
+                                    <Link to='/admin' className="text-gray-700 hover:text-gray-900 rounded-md text-md font-medium">
+                                        Admin
                                     </Link>
-                                    <Link to='/about' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                        About Us
+                                }
+                                {isUserManager() &&
+                                    <Link to='/manager' className="text-gray-700 hover:text-gray-900 rounded-md text-md font-medium">
+                                        Manager
                                     </Link>
-                                    {isUserAdmin() &&
-                                        <Link to='/admin' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                            Admin
+                                }
+                                {isAuthenticated ? (
+                                    <>
+                                        <Link to='/profile' className="text-gray-700 hover:text-gray-900 rounded-md text-md font-medium">
+                                            Profile
                                         </Link>
-                                    }
-                                    {isUserManager() &&
-                                        <Link to='/manager' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                            Manager
+                                        <Link to='/settings' className="text-gray-700 hover:text-gray-900 rounded-md text-md font-medium">
+                                            Settings
                                         </Link>
-                                    }
-                                    {isAuthenticated ? (
-                                        <>
-                                            <Link to='/profile' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                                {/* {getUserName()} */}
-                                                Profile
-                                            </Link>
-                                            <Link to='/settings' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                                Settings
-                                            </Link>
-                                            <Link onClick={handleLogout} to="/login" className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                                Logout
-                                            </Link>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <Link to='/login' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                                Log In
-                                            </Link>
-                                            <Link to='/register' className="text-gray-700 hover:text-gray-900 px-1 py-2 rounded-md text-md font-medium">
-                                                Register
-                                            </Link>
-                                        </>
-                                    )
-                                    }
-                                </div>
+                                        <Link onClick={handleLogout} to="/login" className="text-gray-700 hover:text-gray-900 rounded-md text-md font-medium">
+                                            Logout
+                                        </Link>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Link to='/login' className="text-gray-700 hover:text-gray-900 rounded-md text-md font-medium">
+                                            Log In
+                                        </Link>
+                                        <Link to='/register' className="text-gray-700 hover:text-gray-900 rounded-md text-md font-medium">
+                                            Register
+                                        </Link>
+                                    </>
+                                )
+                                }
                             </div>
-                        </>
+                        </div>
                     )}
-
                 </Transition>
             </nav>
         </div>

@@ -71,7 +71,7 @@ const Home = () => {
             <div className="grid grid-cols-6 absolute">
                 <img className="col-span-2 z-10 mt-28 -rotate-65 transform scale-110 xl:scale-90 opacity-0 md:opacity-100" src="/images/aboutUs.png" alt="deco pic" />
                 <div className="col-span-2"></div>
-                <img className="col-span-2 z-10 mt-56 -rotate-45 transform scale-90 opacity-60 md:opacity-100" src="/images/aboutUs2.png" alt="deco pic 2" />
+                <img className="col-span-2 z-10 mt-56 -rotate-45 transform scale-90 opacity-0 md:opacity-100" src="/images/aboutUs2.png" alt="deco pic 2" />
 
             </div>
             <div className="absolute z-10 grid md:grid-cols-8">
@@ -91,10 +91,10 @@ const Home = () => {
                                 </Link>
                             </div>
                         </> : <>
-                            <h1 className="text-center text-grey-lighter text-base mt-5">
-                                <Link to="/login" className="text-green-standard">Log in</Link>
+                            <h1 className="text-center text-grey-lighter text-base mt-5 md:mx-0 mx-14">
+                                <Link to="/login" className="text-green-standard">Log in </Link>
                                 to an existing account, or get started by
-                                <Link to="/register" className="text-green-standard">registering</Link>!
+                                <Link to="/register" className="text-green-standard"> registering</Link>!
                             </h1>
                         </>
                     }

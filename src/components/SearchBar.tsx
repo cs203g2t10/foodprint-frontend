@@ -33,9 +33,9 @@ const SearchBar = (props: any) => {
     }
 
     return <>
-        <div className="grid md:grid-cols-12 mx-4 md:mx-0">
+        <div className="grid md:grid-cols-12 mx-4 md:mx-0 md:mt-8">
             <h2 className="col-span-2">&nbsp;</h2>
-            <div className="col-span-5 bg-white-offWhite h-10 flex items-center rounded-xl shadow-lg mt-8">
+            <div className="col-span-5 bg-white-offWhite h-10 flex items-center rounded-xl shadow-lg">
                 <div className="px-5">
                     <FiSearch />
                 </div>
@@ -48,10 +48,10 @@ const SearchBar = (props: any) => {
                 />
             </div>
 
-            <div className="col-span-4 items-center rounded-xl flex px-5">
-                <div className="mt-8 md:flex items-center gap-x-2">
+            <div className="col-span-4 items-center rounded-xl flex px-5 mt-8 md:mt-0">
+                <div className="flex items-center gap-x-2">
                     <label htmlFor="restaurantSort" className="text-green-standard">Sort By: </label>
-                    <select name="restaurantSort" className="rounded-large h-10 px-3 text-grey-standard shadow-md" id="restaurantSort" ref={restaurantSortRef} onChange={onChangeFunction}>
+                    <select name="restaurantSort" className="rounded-large md:h-10 h-8 px-3 text-grey-standard shadow-md focus:outline-none" id="restaurantSort" ref={restaurantSortRef} onChange={onChangeFunction}>
                         <option value="restaurantId">New</option>
                         <option value="discount.discountPercentage">Discount %</option>
                         <option value="restaurantName">Restaurant Name</option>
@@ -59,9 +59,9 @@ const SearchBar = (props: any) => {
                     </select>
                 </div>
 
-                <div className="justify-items-center items-center md:flex">
-                    <label htmlFor="sortDescending" className=" ml-5 mr-2 text-green-standard mt-8">Dsc:</label>
-                    <input type="checkbox" className="form-checkbox checkbox checkbox-md mt-8 inline-block bg-white-standard" id="sortDescending" onChange={onChangeFunction} ref={restaurantSortDescRef} />
+                <div className="justify-items-center items-center flex">
+                    <label htmlFor="sortDescending" className=" ml-5 mr-2 text-green-standard ">Dsc:</label>
+                    <input type="checkbox" className="form-checkbox checkbox checkbox-md inline-block bg-white-standard" id="sortDescending" onChange={onChangeFunction} ref={restaurantSortDescRef} />
                 </div>
             </div>
             <h2 className="col-span-2">&nbsp;</h2>

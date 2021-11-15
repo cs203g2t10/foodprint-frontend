@@ -35,8 +35,10 @@ const Restaurants = () => {
     return (
         <div className="min-h-screen">
             <div className="bg-yellow-standard">
-                <img className="h-28 mx-auto pt-3" src="/images/burgers.png" alt="burger" />
-                <h1 className="flex text-center justify-center text-3xl font-bold tracking-wide text-grey-dark">Make reservations, reduce food waste and save money</h1>
+                <img className="md:h-28 h-20 mx-auto pt-3" src="/images/burgers.png" alt="burger" />
+                <h1 className="flex text-center justify-center md:text-3xl text-2xl font-bold tracking-wide text-grey-dark">
+                    Make reservations, reduce food waste and save money
+                </h1>
                 <SearchBar {...{ changeRestaurants, setLoading }} />
                 <div className="pb-3"></div>
             </div>
@@ -57,7 +59,7 @@ const Restaurants = () => {
                 </div>
             </div>
 
-            <div className="justify-items-center grid 3xl:grid-cols-6 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-y-16 md:px-24 mt-10 md:pb-8 animate__animated animate__fadeIn">
+            <div className="justify-items-center grid 3xl:grid-cols-6 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-y-16 md:px-24 mt-10 pb-8 animate__animated animate__fadeIn">
                 {
                     restaurants?.map(
                         restaurant => {
