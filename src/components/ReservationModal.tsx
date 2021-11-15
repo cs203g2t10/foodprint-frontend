@@ -160,6 +160,7 @@ const ReservationModal = (
                             showTimeSelect
                             includeTimes={availableSlots}
                             includeDates={availableSlots}
+                            excludeDates={[new Date()]}
                             dateFormat="d/MM/yyyy, h:mm aa"
                             className="flex flex-col focus:outline-none rounded-xl shadow-sm py-1 w-full pl-5"
                             disabled={reserved}
