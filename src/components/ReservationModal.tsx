@@ -94,8 +94,8 @@ const ReservationModal = (
     return <Modal isOpen={modalIsOpen} className="md:mt-20 mt-4 focus:outline-none" style={customStyles}>
         <div className="grid justify-center items-center gap-y-2 md:m-10 px-8 md:px-20 m-4 rounded-lg shadow lg:mx-64 pb-10 bg-white-dirtyWhite relative">
             <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setModal(false)}> <AiOutlineClose className="h-4 w-4" /> </button>
-            <h1 className=" flex md:text-5xl text-3xl md:pt-12 pt-6 text-green-standard font-bold">Reservation</h1>
-            <h1 className=" flex text-md mb-2 text-grey-standard font-light">Please confirm your order below </h1>
+            <h1 className="md:text-5xl text-4xl md:pt-12 pt-6 text-green-standard font-bold">Reservation</h1>
+            <h1 className="text-md mb-2 text-grey-standard font-light">Please confirm your order below </h1>
             <div className="grid lg:grid-cols-2 gap-x-16">
                 <div>
                     <div className="overflow-y-auto md:max-h-72 max-h-32 md:mb-0 mb-2">
