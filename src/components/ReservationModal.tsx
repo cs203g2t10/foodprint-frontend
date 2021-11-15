@@ -46,7 +46,7 @@ const ReservationModal = (
         ReservationService.getSlots(id.id).then((resp) => {
             var newDateArray: Date[] = [];
             var dates = resp.data;
-            for(let i = 0; i <= dates.length; i++) {
+            for (let i = 0; i <= dates.length; i++) {
                 let date = moment(dates[i]).toDate()
                 newDateArray.push(date)
             }
@@ -91,14 +91,14 @@ const ReservationModal = (
         overlay: { zIndex: 1000 }
     };
 
-    return <Modal isOpen={modalIsOpen} className="mt-20 focus:outline-none" style={customStyles}>
-        <div className="grid justify-center items-center gap-y-2 m-10 rounded-lg shadow lg:mx-64 pb-10 bg-white-dirtyWhite relative">
-        <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setModal(false)}> <AiOutlineClose className="h-4 w-4" /> </button>
-            <h1 className=" flex text-5xl pt-12 text-green-standard mx-20 font-bold">Reservation</h1>
-            <h1 className=" flex text-md mx-20 mb-2 text-grey-standard font-light">Please confirm your order below </h1>
-            <div className="grid lg:grid-cols-2 gap-x-16 mx-20">
+    return <Modal isOpen={modalIsOpen} className="md:mt-20 mt-4 focus:outline-none" style={customStyles}>
+        <div className="grid justify-center items-center gap-y-2 md:m-10 px-8 md:px-20 m-4 rounded-lg shadow lg:mx-64 pb-10 bg-white-dirtyWhite relative">
+            <button className="absolute top-5 right-5 rounded-full hover:bg-grey-lightest shadow-sm p-2 bg-gray-200" onClick={() => setModal(false)}> <AiOutlineClose className="h-4 w-4" /> </button>
+            <h1 className=" flex md:text-5xl text-3xl md:pt-12 pt-6 text-green-standard font-bold">Reservation</h1>
+            <h1 className=" flex text-md mb-2 text-grey-standard font-light">Please confirm your order below </h1>
+            <div className="grid lg:grid-cols-2 gap-x-16">
                 <div>
-                    <div className="overflow-y-auto max-h-72">
+                    <div className="overflow-y-auto md:max-h-72 max-h-32 md:mb-0 mb-2">
                         {
                             lineItems?.map(
                                 (lineItem: any) => {
@@ -115,14 +115,14 @@ const ReservationModal = (
                                                 <h1 className="text-grey-dark text-xl">{lineItem.food.foodName}</h1>
                                                 <h1 className="text-grey-light text-sm">${lineItem.food.foodPrice} each</h1>
                                             </div>
-                                            <p className="col-span-1 text-grey-light mr-4">{lineItem.quantity} x</p>
+                                            <p className="col-span-1 text-grey-light md:mr-4">{lineItem.quantity} x</p>
                                         </div>
                                     </div>
 
                                 })
                         }
                     </div>
-                    <div className="grid grid-cols-4">
+                    <div className="grid grid-cols-4 md:mb-0 mb-3">
                         <div className="col-span-2">
                             <div className="gap-x-2 text-md text-green-standard">Total:</div>
                             {
@@ -144,7 +144,7 @@ const ReservationModal = (
                     </div>
                 </div>
                 <div>
-                    <div className="flex mb-5">
+                    <div className="flex md:mb-5 mb-3">
                         <h1 className="text-md text-green-standard w-52">Pax (5 max): </h1>
                         <input className="flex focus:outline-none rounded-xl w-full pl-5 py-1 shadow-sm"
                             placeholder="0" type="number" min="1" max="5"
@@ -154,13 +154,13 @@ const ReservationModal = (
                     {
                         (selectDate ? <h1 className="text-red-standard text-base">Please select a booking slot</h1> : <></>)
                     }
-                    <div className="flex mb-5">
+                    <div className="flex md:mb-5 mb-3">
                         <h1 className="flex text-md text-green-standard mr-5">Booking: </h1>
                         <DatePicker selected={bookingDate} onChange={(date: Date) => { setBookingDate(date); setSelectDate(false) }}
                             showTimeSelect
                             includeTimes={availableSlots}
                             includeDates={availableSlots}
-                            dateFormat="d/MM/yyyy, h:mm aa" 
+                            dateFormat="d/MM/yyyy, h:mm aa"
                             className="flex flex-col focus:outline-none rounded-xl shadow-sm py-1 w-full pl-5"
                             disabled={reserved}
                         />
@@ -178,8 +178,8 @@ const ReservationModal = (
                                     disabled={reserved}
                                     onChange={(e: ChangeEvent<HTMLInputElement>) => {
                                         setVaxCheckBox(e.target.type === 'checkbox' ? e.target.checked : (e.target.value === 'true'));
-                                    }} 
-                                    className="my-auto mr-4 checkbox checkbox-md bg-white-standard " /> 
+                                    }}
+                                    className="my-auto mr-4 checkbox checkbox-md bg-white-standard " />
                                 <label htmlFor="checkbox" className="text-sm text-grey-standard cursor-pointer">I hereby declare that all of the guests are vaccinated (compulsory)</label>
                             </div> </> : <>
                             <h1 className="flex text-base text-green-standard">Your vaccination status is not verified,</h1>

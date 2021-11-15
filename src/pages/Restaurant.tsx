@@ -123,9 +123,9 @@ const Restaurant = () => {
     return (
         <div>
             <div>
-                <div className="absolute z-10 ">
-                    <div className="grid grid-cols-9 gap-x-16 md:mx-4 my-10">
-                        <h2 className="md:col-span-1">&nbsp;</h2>
+                <div className="md:absolute z-10 md:bg-transparent bg-yellow-standard">
+                    <div className="grid md:grid-cols-9 md:gap-x-16 md:mx-4 py-10 md:mb-0 mb-10 mx-14">
+                        <h2 className="md:col-span-1 hidden md:block">&nbsp;</h2>
                         <div className="col-span-2 w-40 h-40">
                             {
                                 imageUrl === "" ? <></> :
@@ -140,15 +140,15 @@ const Restaurant = () => {
                                     isAuthenticated &&
                                     (
                                         favLoading ?
-                                            <div className="pl-3 pb-7">
-                                                <PuffLoader size="40" color="green"/>
+                                            <div className="md:pl-3 pl-1 md:pb-7 pb-11">
+                                                <PuffLoader size="40" color="green" />
                                             </div> :
                                             (isFavourite ?
-                                                <AiFillHeart className="text-6xl my-auto pt-4 text-red-standard opacity-100 hover:opacity-90"
+                                                <AiFillHeart className="md:text-6xl text-5xl my-auto md:pt-4 text-red-standard opacity-100 hover:opacity-90"
                                                     onClick={() => {
                                                         deleteFavourite(restaurantDetails.restaurantId);
                                                     }} />
-                                                : <AiFillHeart className="text-6xl my-auto pt-4 text-grey-standard opacity-60 hover:text-red-standard hover:opacity-90"
+                                                : <AiFillHeart className="md:text-6xl text-5xl my-auto md:pt-4 text-grey-standard opacity-60 hover:text-red-standard hover:opacity-90"
                                                     onClick={() => {
                                                         addRestaurantToFav(restaurantDetails.restaurantId);
                                                     }}
@@ -163,7 +163,7 @@ const Restaurant = () => {
                         </div>
                     </div>
                 </div>
-                <svg className="waves h-72 w-full transform -rotate-180 " xmlns="http://www.w3.org/2000/svg" viewBox="100 20 130 70" preserveAspectRatio="none" shapeRendering="auto">
+                <svg className="waves h-72 w-full transform -rotate-180 md:block hidden" xmlns="http://www.w3.org/2000/svg" viewBox="100 20 130 70" preserveAspectRatio="none" shapeRendering="auto">
                     <defs>
                         <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
                     </defs>
@@ -174,12 +174,12 @@ const Restaurant = () => {
             </div>
 
             <div className="grid items-end mx-16 md:mx-0 md:justify-end md:mr-24">
-                <button className=" text-white-standard py-2 px-5 bg-green-standard rounded-lg shadow-md hover:shadow-lg" onClick={makeReservationButtonClick}>Make Reservation</button>
+                <button className="text-white-standard py-2 px-5 bg-green-standard rounded-lg shadow-md hover:shadow-lg" onClick={makeReservationButtonClick}>Make Reservation</button>
             </div>
             {haveFood &&
                 <h1 className="text-right text-red-standard mr-24">Please select some food</h1>
             }
-            <div className="gap-x-16  grid items-center justify-items-center 3xl:grid-cols-6 2xl:grid-cols-5 xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-y-16 md:mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
+            <div className="gap-x-16 grid items-center justify-items-center 3xl:grid-cols-6 2xl:grid-cols-5 xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-y-16 md:mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
                 {
                     food?.map(
                         (food: any) => <RestaurantFood {...{ food, setLineItems }} key={food.foodId} />
