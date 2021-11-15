@@ -69,51 +69,49 @@ const Login = () => {
     return (
         <div className="bg-yellow-standard h-screen">
             <div className="flex justify-center">
-                <div className="mt-20 bg-white-standard w-10/12 md:w-7/12 grid lg:grid-cols-2 shadow-xxl shadow rounded-xxl pb-16">
-                    <div className="ml-16 mt-16">
-                        <h1 className="text-5xl font-bold mb-2 text-green-standard">Log In</h1>
+                <div className="md:mt-20 mt-10 bg-white-standard w-10/12 md:w-7/12 grid lg:grid-cols-2 shadow-xxl shadow rounded-lg pb-16">
+                    <div className="md:ml-16 md:mt-16 ml-10 mt-10">
+                        <h1 className="md:text-5xl text-3xl font-bold mb-2 text-green-standard">Log In</h1>
                         <h2 className="text-grey-lighter mb-5">Reduce food waste now!</h2>
                         <div className="mb-4">
-                            <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-full"
+                            <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-full w-11/12"
                                 placeholder="test@example.com"
                                 type="email"
-                                // onInput ={e => {setEmail((e.target as HTMLInputElement).value); user2Fa()}}
-                                // onChange={e => setEmail(e.target.value)}
                                 onChange={e => { setEmail(e.target.value); user2Fa() }}
                                 ref={emailRef}
                             />
                         </div>
 
                         <div className="">
-                            <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-full"
+                            <input className="focus:outline-none px-4 py-1 my-1 h-10 rounded-full border border-grey-lightest md:w-full w-11/12"
                                 placeholder="********"
                                 type="password"
                                 onChange={e => setPassword(e.target.value)} />
                         </div>
 
-                        {(twoFa ?
+                        {twoFa &&
                             <div className="">
                                 <input className="focus:outline-none px-4 py-1 my-4 h-10 rounded-full border border-grey-lightest md:w-full"
                                     placeholder="2FA OTP"
                                     type="number"
                                     onChange={e => setToken(e.target.value)} />
-                            </div> : <></>
-                        )}
+                            </div>
+                        }
 
-                        <div className="grid grid-cols-2 pt-5 gap-x-4 pb-2">
-                            <button className="rounded-xl bg-green-standard shadow-sm hover:shadow-md text-white-standard opacity-90 hover:opacity-100 text-center py-1" disabled={!validateForm}
+                        <div className="grid md:grid-cols-2 pt-5 gap-x-4 pb-2 md:w-full w-11/12 gap-y-4 ">
+                            <button className="rounded-lg bg-green-standard shadow-sm hover:shadow-md text-white-standard opacity-90 hover:opacity-100 text-center py-1" disabled={!validateForm}
                                 onClick={userLogin}>
                                 {loading ? <BeatLoader size="9" color="#daeddb" />
                                     : 'Log in'}
                             </button>
-                            <Link to="/forgotpassword" className=" w-full py-1 border shadow-sm hover:shadow-md rounded-full border-green-standard text-green-standard text-center">Forgot password?</Link>
+                            <Link to="/forgotpassword" className=" w-full py-1 border shadow-sm hover:shadow-md rounded-lg border-green-standard text-green-standard text-center">Forgot password?</Link>
                         </div>
                         <div className="text-red-standard">{error}</div>
                         <h2 className="text-grey-lighter mt-2">Don't have an account? <Link to='/register' className="text-green-standard">Register now!</Link></h2>
 
                     </div>
                     <div>
-                        <img className="mt-16 my-7" src="/images/login.png" alt="log in illustration" />
+                        <img className="mt-16 my-7 hidden md:block" src="/images/login.png" alt="log in illustration" />
                     </div>
                 </div>
             </div>
