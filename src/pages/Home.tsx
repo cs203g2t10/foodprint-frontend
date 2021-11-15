@@ -80,7 +80,7 @@ const Home = () => {
                     <h1 className="sm:text-xs md:text-xl md:mt-24 lg:mt-52 text-center text-grey-standard animate__animated animate__fadeIn">
                         {isAuthenticated && 'Hello ' + getUserName() + '!'}
                     </h1>
-                    <h1 className="lg:text-6xl sm:text-4xl sm:leading-3 text-green-standard lg:leading-extra-tight text-center font-semibold tracking-wide"
+                    <h1 className="lg:text-6xl sm:text-4xl sm:leading-3 text-green-standard lg:leading-extra-tight text-center font-semibold tracking-wide mt-4"
                     >Discover and book the best restaurants.</h1>
                     {
                         isAuthenticated ? <>
@@ -109,16 +109,18 @@ const Home = () => {
                 </g>
             </svg>
 
-            <div className="overflow-hidden mt-10 w-full px-3 bg-white-standard hidden md:block">
-                <div className="grid md:grid-cols-2 gap-4 bg-white-standard pb-16 pl-12">
+            <div className="overflow-hidden mt-10 w-full px-3 bg-white-standard ">
+                <div className="grid md:grid-cols-2 gap-4 bg-white-standard pb-16 md:pl-12 px-4">
                     <motion.div ref={ref} className="Box" initial="hidden" animate={controls} variants={fadeInLeft}>
-                        <img className="transform scale-75" src="/images/landingPage2.webp" alt="landing page" />
+                        <img className="transform scale-75 hidden md:block" src="/images/landingPage2.webp" alt="landing page" />
                     </motion.div>
                     <motion.div ref={ref} initial="hidden" animate={controls} variants={fadeInRight}>
-                        <h1 className="text-4xl md:pt-32 md:pr-64 font-bold">Reduce food waste and Save money</h1>
-                        <h2 className="md:pt-4 md:pr-44 text-grey-light">Here at foodprint, we encourage restaurant reservation to help F&B establishments reduce food waste. </h2>
+                        <h1 className="md:text-4xl text-3xl md:pt-32 md:pr-64 font-bold">Reduce food waste and Save money</h1>
+                        <h2 className="pt-4 md:pr-44 text-grey-light">Here at foodprint, we encourage restaurant reservation to help F&B establishments reduce food waste. </h2>
                         <div className="flex justify-left">
-                            <Link to="/restaurants" className="border border-green-standard mt-4 pt-2 pb-3 px-5 text-center text-green-standard hover:shadow-lg rounded-lg">Discover Restaurants</Link>
+                            <Link to="/restaurants" className="border border-green-standard mt-4 pt-2 pb-3 px-5 text-center text-green-standard hover:shadow-lg rounded-lg">
+                                Discover Restaurants
+                            </Link>
                         </div>
                     </motion.div>
                 </div>
