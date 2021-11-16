@@ -118,7 +118,7 @@ const VaccinationCheck = () => {
             <Modal isOpen={modalIsOpened} className="mx-auto w-2/6  my-auto bg-white-standard mt-24 rounded-lg shadow-md">
                 <button
                     type="button"
-                    className="uk-button uk-button-danger uk-button-small ml-5 mt-5 bg-grey-lightest p-3 rounded-full shadow-sm hover:shadow-md"
+                    className="uk-button uk-button-danger uk-button-small ml-5 mt-5 bg-grey-lightest p-3 rounded-lg shadow-sm hover:shadow-md"
                     onClick={() => setModalIsOpened(false)}>
                     <AiOutlineClose />
                 </button>
