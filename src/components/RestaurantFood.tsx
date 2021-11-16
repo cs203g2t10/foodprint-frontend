@@ -12,7 +12,7 @@ const RestaurantFood = ({ food, setLineItems }: { food: any, setLineItems: any }
             </div>
             <p className="text-grey-standard md:text-sm text-xs text-center overflow-y-auto md:h-20 h-16 pb-2">{food.foodDesc}</p>
 
-            <div className="justify-center grid md:grid-cols-5 gap-4 md:absolute bottom-0 mb-5">
+            <div className="justify-center grid md:grid-cols-5 gap-4 md:absolute bottom-0 md:mb-5 mb-2">
                 <p className="md:col-start-1 md:col-end-2 md:flex md:text-xl text-sm font-bold text-green-standard text-center mx-2">${food.foodPrice}</p>
                 <div className="md:col-start-3 md:col-end-5 flex">
                     <p> Qty: </p>
