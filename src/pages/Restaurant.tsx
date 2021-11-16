@@ -124,16 +124,16 @@ const Restaurant = () => {
         <div>
             <div>
                 <div className="md:absolute z-10 md:bg-transparent bg-yellow-standard">
-                    <div className="grid md:grid-cols-9 md:gap-x-16 md:mx-4 py-10 md:mb-0 mb-10 mx-14">
+                    <div className="grid md:grid-cols-9 md:gap-x-16 md:mx-4 py-10 md:mb-0 mb-10 mx-10">
                         <h2 className="md:col-span-1 hidden md:block">&nbsp;</h2>
-                        <div className="col-span-2 w-40 h-40">
+                        <div className="md:col-span-2 w-40 h-40">
                             {
                                 imageUrl === "" ? <></> :
-                                    <img className="object-cover rounded-full w-40 h-40" src={imageUrl} alt="shop" />
+                                    <img className="object-cover rounded-full w-36 h-36 md:w-40 md:h-40" src={imageUrl} alt="shop" />
                             }
 
                         </div>
-                        <div className="col-span-6 px-0 leading-1">
+                        <div className="md:col-span-6 px-0 leading-1">
                             <h1 className="text-4xl md:text-6xl font-bold tracking-wide text-green-standard flex items-center gap-x-4">
                                 {restaurantDetails.restaurantName}
                                 {
@@ -179,7 +179,7 @@ const Restaurant = () => {
             {haveFood &&
                 <h1 className="text-right text-red-standard mr-24">Please select some food</h1>
             }
-            <div className="gap-x-16 grid items-center justify-items-center 3xl:grid-cols-6 2xl:grid-cols-5 xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-y-16 md:mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
+            <div className="gap-x-5 mx-5 md:gap-x-16 grid items-center justify-items-center grid-cols-2 3xl:grid-cols-6 2xl:grid-cols-5 xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-y-16 md:mx-24 mt-10 pb-8 animate__animated animate__fadeIn">
                 {
                     food?.map(
                         (food: any) => <RestaurantFood {...{ food, setLineItems }} key={food.foodId} />
