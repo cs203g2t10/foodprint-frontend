@@ -54,6 +54,8 @@ const Login = () => {
             } else if (response.data.status === "INCORRECT") {
                 console.log("Incorrect input")
                 setError("Please enter a valid username and password!")
+            } else if (response.data.status === "INCORRECT OTP") {
+                setError("The two-factor OTP provided is incorrect.")
             } else {
                 setError("Unexpected error occured. Please try again.")
             }
