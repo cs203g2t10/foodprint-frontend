@@ -43,7 +43,7 @@ const VaccinationCheck = () => {
             setError("")
             console.log(response);
             console.log("Success: ", response.data.reservationId)
-            setModalMessage(`Thank you! We have successfully verfied ${response.data.reason}`);
+            setModalMessage(`Thank you! ${response.data.reason}`);
             setModalIsOpened(true);
         }).catch((error) => {
             console.log(error.response.data);
